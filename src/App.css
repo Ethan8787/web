@@ -75,7 +75,7 @@ html, body {
     text-decoration: none;
     color: var(--text-color);
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 5px 10px;
     border-radius: 4px;
     transition: color 0.3s, background-color 0.3s;
