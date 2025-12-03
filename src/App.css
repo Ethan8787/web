@@ -287,4 +287,8 @@ html, body {
         flex-grow: 1;
         text-align: center;
     }
+    .container {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
 }
