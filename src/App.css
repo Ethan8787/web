@@ -277,17 +277,14 @@ html, body {
 }
 
 @media (max-width: 600px) {
-    .intro-card h1 {
-        font-size: 2rem;
-    }
-
-    .header-group {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .skill-item {
-        grid-template-columns: 80px 1fr;
+    .nav-links {
+        flex-wrap: wrap;
         gap: 10px;
+    }
+    .nav-link {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+        flex-grow: 1;
+        text-align: center;
     }
 }
