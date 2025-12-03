@@ -39,7 +39,7 @@ const Navbar = () => {
     </nav>);
 };
 const skillsData = [{name: 'Java', level: 90}, {name: 'Python', level: 80}, {name: 'C++', level: 65}, {
-    name: 'React', level: 55
+    name: 'React', level: 60
 },];
 const projectsData = [{
     title: 'Useful',
@@ -129,6 +129,7 @@ const DataSamples = () => {
 function App() {
     return (<>
         <MatrixBackground/>
+        <div id="blur-overlay"></div>
         <Navbar/>
 
         <div className="container">
