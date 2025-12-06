@@ -130,7 +130,7 @@ html, body {
 
 .intro-card h1 {
     font-size: 2.5rem;
-    color: var(#00ff00);
+    color: var(--accent-color);
 }
 
 .intro-card p {
