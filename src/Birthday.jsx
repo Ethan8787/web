@@ -12,16 +12,23 @@ export default function BirthdayPage() {
             <div className="intro-card birthday-card" id="intro">
                 <div className="header-group">
                     <img id="avatar" src="friend-photo.jpg" alt={`avatar`}/>
-                    <h1 className="birthday-headline">{friendName} 生日快樂!</h1>
+                    <h1 className="birthday-headline">{friendName}<br/>生日快樂!</h1>
                 </div>
                 <div className="personal-message-section">
                     <h2>給你的特別祝福</h2>
                     <p>
-                        黃靖恆，祝你生日快樂！感謝你一直以來都是這麼棒的朋友。希望你今天能擁有所有你喜歡的東西。
+                        ㊗️ 學業進步<br/>
+                        ㊗️ 跳舞越跳越好<br/>
+                        ㊗️ 心想事成<br/>
+                        ㊗️ 天天開心
                     </p>
                     <p className="signature">Ethan 敬上</p>
                 </div>
+                <p>TWICE - ONE SPARK</p>
             </div>
+        </div>
+        <div>
+            <audio src="one-spark.mp3" autoPlay loop/>
         </div>
     </>);
 }
