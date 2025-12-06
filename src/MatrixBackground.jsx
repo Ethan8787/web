@@ -19,10 +19,14 @@ const MatrixBackground = () => {
         const konkani = "◼"; //01
         const characters = konkani.split("");
         const resizeCanvas = () => {
-            c.height = window.innerHeight;
-            c.width = window.innerWidth;
+            const ratio = window.devicePixelRatio || 1;
+            c.style.width = window.innerWidth + "px";
+            c.style.height = window.innerHeight + "px";
+            c.width = window.innerWidth * ratio;
+            c.height = window.innerHeight * ratio;
+            ctx.scale(ratio, ratio);
             font_size = 14;
-            columns = c.width / font_size;
+            columns = c.width / ratio / font_size;
             drops = [];
             for (let x = 0; x < columns; x++) drops[x] = 1;
         };
