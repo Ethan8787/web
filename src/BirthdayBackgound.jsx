@@ -26,14 +26,14 @@ export default function BirthdayBackground() {
                 this.y = y;
                 this.color = color;
                 this.angle = angle;
-                this.speed = speed;
+                this.speed = speed * (w < 768 ? 0.6 : 0.7);
                 this.alpha = 1;
-                this.fadeRate = 1 / (60 * 3);
-                this.size = Math.random() + 0.4;
+                this.fadeRate = 1 / (60 * 5);
+                this.size = Math.random() * 1.5 + 0.5;
             }
             update() {
                 this.x += Math.cos(this.angle) * this.speed;
-                this.y += Math.sin(this.angle) * this.speed + 0.05;
+                this.y += Math.sin(this.angle) * this.speed + 0.1;
                 this.alpha -= this.fadeRate;
                 if (this.alpha < 0) this.alpha = 0;
             }
@@ -48,16 +48,18 @@ export default function BirthdayBackground() {
         }
         function createFirework() {
             const x = Math.random() * w;
-            const y = h * (0.5 + Math.random() * 0.5);
-            const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            for (let i = 0; i < 120; i++) {
-                const angle = (Math.PI * 2 * i) / 80;
-                const speed = Math.random() * 2.5;
+            const y = h * (0.3 + Math.random() * 0.7);
+            const color = `hsl(${Math.random() * 360}, 100%, 65%)`;
+            // 粒子數量增加: 從 100/80 增加到 150/120，讓煙花更飽滿
+            const particleCount = w < 768 ? 150 : 120;
+            for (let i = 0; i < particleCount; i++) {
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const speed = Math.random() * 3.5 + 0.5;
                 fireworks.push(new Particle(x, y, color, angle, speed));
             }
         }
         let lastFireworkTime = 0;
-        const fireworkInterval = 500;
+        const fireworkInterval = w < 768 ? 400 : 500;
         function animate(timestamp) {
             animationFrameId = requestAnimationFrame(animate);
             ctx.globalCompositeOperation = "source-over";
@@ -65,7 +67,8 @@ export default function BirthdayBackground() {
             ctx.fillRect(0, 0, w, h);
             ctx.globalCompositeOperation = "lighter";
             if (timestamp - lastFireworkTime > fireworkInterval) {
-                for (let i = 0; i < 4; i++) {
+                const burstAmount = w < 768 ? 6 : 5;
+                for (let i = 0; i < burstAmount; i++) {
                     createFirework();
                 }
                 lastFireworkTime = timestamp;
@@ -74,7 +77,7 @@ export default function BirthdayBackground() {
                 const p = fireworks[i];
                 p.update();
                 p.draw();
-                if (p.alpha <= 0) {
+                if (p.alpha <= 0 || p.x < 0 || p.x > w || p.y > h) {
                     fireworks.splice(i, 1);
                 }
             }
