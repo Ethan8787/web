@@ -61,6 +61,12 @@ html, body {
     transform: scale(1.1)
 }
 
+.pagamo-block {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 .navbar {
     position: sticky;
     top: 0;
