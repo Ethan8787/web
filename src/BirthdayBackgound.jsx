@@ -60,21 +60,21 @@ export default function BirthdayBackground() {
         }
 
         function createFirework() {
-            const x = Math.random() * w;
-            const y = h * (0.3 + Math.random() * 0.7);
-            const color = `hsl(${Math.random() * 360}, 100%, 65%)`;
+            const centerX = w * 0.4 + Math.random() * (w * 0.2);
+            const centerY = h * 0.3 + Math.random() * (h * 0.2);
 
+            const color = `hsl(${Math.random() * 360}, 100%, 65%)`;
             const particleCount = w < 768 ? 60 : 120;
 
             for (let i = 0; i < particleCount; i++) {
                 const angle = (Math.PI * 2 * i) / particleCount;
                 const speed = Math.random() * 3.5 + 0.5;
-                fireworks.push(new Particle(x, y, color, angle, speed));
+                fireworks.push(new Particle(centerX, centerY, color, angle, speed));
             }
         }
 
         let lastFireworkTime = 0;
-        const fireworkInterval = w < 768 ? 400 : 500;
+        const fireworkInterval = 1000;
 
         function animate(timestamp) {
             animationFrameId = requestAnimationFrame(animate);
@@ -86,8 +86,7 @@ export default function BirthdayBackground() {
             ctx.globalCompositeOperation = "lighter";
 
             if (timestamp - lastFireworkTime > fireworkInterval) {
-                const burstAmount = w < 768 ? 2 : 5;
-                for (let i = 0; i < burstAmount; i++) createFirework();
+                createFirework();
                 lastFireworkTime = timestamp;
             }
 
