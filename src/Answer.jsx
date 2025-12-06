@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import MatrixBackground from "./MatrixBackground.jsx";
 import Navbar from "./components/Navbar.jsx";
 import "./App.css"
@@ -19,33 +19,31 @@ export default function Answer() {
             .catch(err => setEn("載入失敗: " + err.message));
     }, []);
 
-    return (
-        <>
-            <MatrixBackground />
-            <div id="blur-overlay"></div>
+    return (<>
+        <MatrixBackground/>
+        <div id="blur-overlay"></div>
 
-            <Navbar />
+        <Navbar/>
 
-            <div className="container">
-                <div className="section">
-                    <h2>Pagamo 答案</h2>
-                    <p>上次更新時間: 2025/12/01 23:46:51</p>
+        <div className="container">
+            <div className="section">
+                <h2>Pagamo 答案</h2>
+                <p>上次更新時間: 2025/12/01 23:46:51</p>
 
-                    <h3 style={{ color: 'var(--accent-color)', marginTop: '20px' }}>
-                        中文丨閱讀素養
-                    </h3>
-                    <pre className="pagamo-block">
+                <h3 style={{color: 'var(--accent-color)', marginTop: '20px'}}>
+                    中文丨閱讀素養
+                </h3>
+                <pre className="pagamo-block">
                         {zhContent}
                     </pre>
 
-                    <h3 style={{ color: 'var(--accent-color)', marginTop: '20px' }}>
-                        英文丨閱讀素養
-                    </h3>
-                    <pre className="pagamo-block">
+                <h3 style={{color: 'var(--accent-color)', marginTop: '20px'}}>
+                    英文丨閱讀素養
+                </h3>
+                <pre className="pagamo-block">
                         {enContent}
                     </pre>
-                </div>
             </div>
-        </>
-    );
+        </div>
+    </>);
 }

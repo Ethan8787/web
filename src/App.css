@@ -130,7 +130,7 @@ html, body {
 
 .intro-card h1 {
     font-size: 2.5rem;
-    color: var(--accent-color);
+    color: var(#00ff00);
 }
 
 .intro-card p {
@@ -287,12 +287,14 @@ html, body {
         flex-wrap: wrap;
         gap: 10px;
     }
+
     .nav-link {
         font-size: 0.75rem;
         padding: 5px 8px;
         flex-grow: 1;
         text-align: center;
     }
+
     .container {
         margin-top: 20px;
         margin-bottom: 30px;
