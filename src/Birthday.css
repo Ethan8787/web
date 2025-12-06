@@ -17,6 +17,25 @@
     overflow: hidden;
 }
 
+.music-btn {
+    margin-left: 12px;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
 #fireworks-canvas {
     display: block;
     width: 100%;
