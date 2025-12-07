@@ -1,14 +1,15 @@
-import MatrixBackground from './MatrixBackground';
+import MatrixBackground from './components/MatrixBackground.jsx';
 import Navbar from './components/Navbar';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import "./App.css"
+import Footer from './components/Footer.jsx'
+import "./Home.css"
 
 export default function Home() {
     return (<>
         <MatrixBackground/>
-        <div id="blur-overlay"></div>
         <Navbar/>
+        <div className="App">
         <div className="container">
             <div className="intro-card" id="intro">
                 <div className="header-group">
@@ -16,12 +17,9 @@ export default function Home() {
                     <h1>Ethan</h1>
                 </div>
                 <p>
-                    嗨，我是Ethan，一位來自台灣的國三學生，熱愛程式設計與技術探索。
-                    我自學程式設計，最早從 Java入門，之後一路擴展到 Python、C、C++、JavaScript、HTML、CSS 等語言。
-                    除了後端與底層技術，我也會使用 React + Vite 開發前端專案，並部署在 Cloudflare Pages。
-                    我目前正在做一些 Side Projects 並且練習 LeetCode。
-                    我相信，「搞懂它為什麼能動」，比「讓它動起來」更重要。
-                    所以我會持續學、持續拆解，也持續打造屬於自己的作品。
+                    我是 Ethan，一位熱愛程式設計的台灣國三生。
+                    我自學 Java、Python、C/C++ 等後端及底層語言，並運用 React + Vite 實現前端開發與 Cloudflare Pages 部署。
+                    我透過 Side Projects 和 LeetCode 磨練自己。我相信「搞懂它為什麼能動」比「讓它動起來」更重要。我將持續實作，打造更好的作品。
                 </p>
                 <div className="button-group">
                     <a className="btn" href="https://discord.gg/AyucpYarpa" target="_blank">Discord</a>
@@ -33,6 +31,9 @@ export default function Home() {
             </div>
             <Skills/>
             <Projects/>
+
+        </div>
+        <Footer/>
         </div>
     </>);
 }

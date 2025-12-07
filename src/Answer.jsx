@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
-import MatrixBackground from "./MatrixBackground.jsx";
+import MatrixBackground from "./components/MatrixBackground.jsx";
 import Navbar from "./components/Navbar.jsx";
-import "./App.css"
+import Footer from "./components/Footer.jsx";
+import "./Answer.css"
 
 export default function Answer() {
     const [zhContent, setZh] = useState("載入中...");
     const [enContent, setEn] = useState("載入中...");
-
     useEffect(() => {
         fetch("/zh_pagamo.txt")
             .then(r => r.text())
@@ -18,17 +18,14 @@ export default function Answer() {
             .then(text => setEn(text))
             .catch(err => setEn("載入失敗: " + err.message));
     }, []);
-
     return (<>
         <MatrixBackground/>
-        <div id="blur-overlay"></div>
-
         <Navbar/>
-
+        <div className="answer">
         <div className="container">
             <div className="section">
                 <h2>Pagamo 答案</h2>
-                <p>上次更新時間: 2025/12/01 23:46:51</p>
+                <p>上次更新時間: 2025/12/07 23:12:15</p>
 
                 <h3 style={{color: 'var(--accent-color)', marginTop: '20px'}}>
                     中文丨閱讀素養
@@ -44,6 +41,8 @@ export default function Answer() {
                         {enContent}
                     </pre>
             </div>
+        </div>
+        <Footer/>
         </div>
     </>);
 }

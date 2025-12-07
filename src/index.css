@@ -1,0 +1,22 @@
+:root {
+    --bg-color: transparent;
+    --text-color: #f0f0f0;
+    --accent-color: #00ff00;
+    --card-bg: rgba(0, 0, 0, 0.7);
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    background: #000000;
+    font-family: var(--font-mono), monospace;
+    color: var(--text-color);
+    overflow-x: hidden;
+}

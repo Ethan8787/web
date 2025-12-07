@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from 'react';
+import './MatrixBackground.css'
 
 const MatrixBackground = () => {
     const canvasRef = useRef(null);
@@ -41,7 +42,6 @@ const MatrixBackground = () => {
                 ctx.fillRect(i * font_size, drops[i] * font_size, font_size, font_size);
                 const text = characters[Math.floor(Math.random() * characters.length)];
                 ctx.shadowBlur = 18;
-
                 if (root.rainbow) {
                     hue += (hueFw) ? 0.01 : -0.01;
                     const rr = Math.floor(127 * Math.sin(root.rainbowSpeed * hue) + 128);
