@@ -10,6 +10,6 @@ export default function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/answer" element={<Answer/>}/>
             <Route path="*" element={<NotFound/>}/>
-            <Route path="/matrix" element={<Matrix/>}
+            <Route path="/matrix" element={<Matrix/>}/>
         </Routes>);
 }
