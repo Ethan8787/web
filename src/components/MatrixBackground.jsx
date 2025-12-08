@@ -22,8 +22,11 @@ const MatrixBackground = () => {
         let font_size = 14;
         let columns;
         let drops = [];
-        const konkani = "◼";
+        const konkani = "01";//◼
         const characters = konkani.split("");
+        const RESIZE_THRESHOLD = 0.5;
+        let lastWidth = window.innerWidth;
+        let lastHeight = window.innerHeight;
         const resizeCanvas = () => {
             c.height = window.innerHeight;
             c.width = window.innerWidth;
@@ -32,17 +35,21 @@ const MatrixBackground = () => {
             for (let x = 0; x < columns; x++) {
                 drops[x] = 1;
             }
-            console.log("Canvas resized and drops re-initialized.");
+            lastWidth = c.width;
+            lastHeight = c.height;
         };
-        let resizeTimer;
-        const debouncedResize = () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
+        const handleResize = () => {
+            const currentWidth = window.innerWidth;
+            const currentHeight = window.innerHeight;
+            const widthChanged = Math.abs(currentWidth - lastWidth) / lastWidth > RESIZE_THRESHOLD;
+            const heightChanged = Math.abs(currentHeight - lastHeight) / lastHeight > RESIZE_THRESHOLD;
+
+            if (widthChanged || heightChanged) {
                 resizeCanvas();
-            }, 250);
+            }
         };
         resizeCanvas();
-        window.addEventListener('resize', debouncedResize);
+        window.addEventListener('resize', handleResize);
         const draw = () => {
             ctx.fillStyle = "rgba(10,10,10, 0.03)";
             ctx.fillRect(0, 0, c.width, c.height);
@@ -75,8 +82,7 @@ const MatrixBackground = () => {
         const intervalId = setInterval(draw, root.speed / 2);
         return () => {
             clearInterval(intervalId);
-            window.removeEventListener('resize', debouncedResize);
-            clearTimeout(resizeTimer);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
     return (<canvas id="c" ref={canvasRef}></canvas>);
