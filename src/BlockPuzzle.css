@@ -368,6 +368,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
+    margin: 4px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -378,6 +379,26 @@
 
 .play-again-button:active {
     transform: translateY(0);
+}
+
+.revive-button {
+    border: none;
+    padding: 16px 48px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    background-color: #4cdf50;
+    margin: 4px;
+    color: white;
+}
+
+.revive-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background-color: #45ff49;
 }
 
 @media (max-width: 640px) {

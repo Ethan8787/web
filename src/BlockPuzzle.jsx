@@ -4,7 +4,19 @@ import './BlockPuzzle.css';
 
 const GRID_SIZE = 8;
 const CELL_SIZE = 45;
-const BLOCK_SHAPES = [[[1]], [[1, 1]], [[1], [1]], [[1, 1, 1]], [[1], [1], [1]], [[1, 1], [1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[1, 1, 1, 1]], [[1], [1], [1], [1]], [[1, 1, 1, 1, 1]], [[1], [1], [1], [1], [1]], [[1, 1, 0], [0, 1, 1]], [[0, 1, 1], [1, 1, 0]], [[1, 0], [1, 1]], [[0, 1], [1, 1]], [[1, 1], [1, 0]], [[1, 1], [0, 1]], [[1, 1, 1], [1, 0, 0]], [[1, 1, 1], [0, 0, 1]], [[1, 0, 0], [1, 1, 1]], [[0, 0, 1], [1, 1, 1]], [[1, 1, 1], [0, 1, 0]], [[0, 1, 0], [1, 1, 1]], [[1, 0], [1, 0], [1, 1]], [[0, 1], [0, 1], [1, 1]], [[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1], [1, 1]],];
+const BLOCK_SHAPES = [
+    [[1]], [[1, 1]], [[1], [1]], [[1, 1, 1]], [[1], [1], [1]], [[1, 1], [1, 1]],
+    [[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[1, 1, 1, 1]], [[1], [1], [1], [1]], [[1, 1, 1, 1, 1]],
+    [[1], [1], [1], [1], [1]], [[1, 1, 0], [0, 1, 1]], [[0, 1, 1], [1, 1, 0]], [[1, 0], [1, 1]],
+    [[0, 1], [1, 1]], [[1, 1], [1, 0]], [[1, 1], [0, 1]], [[1, 1, 1], [1, 0, 0]],
+    [[1, 1, 1], [0, 0, 1]], [[1, 0, 0], [1, 1, 1]], [[0, 0, 1], [1, 1, 1]], [[1, 1, 1], [0, 1, 0]],
+    [[0, 1, 0], [1, 1, 1]], [[1, 0], [1, 0], [1, 1]], [[0, 1], [0, 1], [1, 1]],
+    [[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1], [1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]],
+    [[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1], [1, 1]],
+    [[1, 1], [1, 1], [1, 1]], [[1, 1], [1, 1], [1, 1]], [[1, 1, 1], [1, 1, 1]], [[1, 1, 1], [1, 1, 1]],
+    [[1, 1, 1], [1, 1, 1]], [[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1], [1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]],
+    [[1, 1, 1, 1, 1]], [[1, 1, 1, 1, 1]], [[1, 1, 1, 1, 1]],
+];
 const COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
 
 function BlockPuzzle() {
@@ -12,6 +24,7 @@ function BlockPuzzle() {
     const VERTICAL_OFFSET_MOBILE = 100;
     const HORIZONTAL_OFFSET = 20;
     const HORIZONTAL_OFFSET_MOBILE = 10;
+    const [revivesUsed, setRevivesUsed] = useState(0);
     const [grid, setGrid] = useState(() => Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null)));
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(() => parseInt(localStorage.getItem('blockPuzzleBestScore') || '0'));
@@ -79,6 +92,19 @@ function BlockPuzzle() {
         return pieces;
     };
 
+    const checkGameOver = (piecesToCheck, currentGrid) => {
+        const hasValidMove = piecesToCheck.some(piece => {
+            if (!piece) return false;
+            return canPlaceAnywhere(piece.shape, currentGrid);
+        });
+
+        if (!hasValidMove) {
+            setGameOver(true);
+            return true;
+        }
+        return false;
+    };
+
     const getPieceDimensions = (piece) => {
         if (!piece || !piece.shape || !piece.shape[0]) return {width: 0, height: 0};
         const {shape} = piece;
@@ -91,6 +117,25 @@ function BlockPuzzle() {
         const height = rows * cellSize + (rows - 1) * gap;
         return {width, height};
     };
+    const findAndGeneratePerfectPieces = () => {
+        if (revivesUsed >= 1) {
+            return;
+        }
+        const availableShapes = BLOCK_SHAPES.filter(shape => canPlaceAnywhere(shape, grid));
+        if (availableShapes.length === 0) {
+            return;
+        }
+        setGameOver(false);
+        setRevivesUsed(prev => prev + 1);
+        const pieces = [];
+        for (let i = 0; i < 3; i++) {
+            const randomIndex = Math.floor(Math.random() * availableShapes.length);
+            const shape = availableShapes[randomIndex];
+            const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            pieces.push({ shape, color, id: Math.random() });
+        }
+        setCurrentPieces(pieces);
+    };
 
     useEffect(() => {
         setCurrentPieces(generatePieces());
@@ -102,18 +147,13 @@ function BlockPuzzle() {
         }
     }, [currentPieces, gameOver, grid]);
 
+    // Game Over 檢查：當手牌或網格變化，且手牌不為空時，檢查是否還有地方可放
     useEffect(() => {
         if (currentPieces.length > 0 && !gameOver) {
-            const hasValidMove = currentPieces.some(piece => {
-                if (!piece) return false;
-                return canPlaceAnywhere(piece.shape, grid);
-            });
-
-            if (!hasValidMove) {
-                setGameOver(true);
-            }
+            checkGameOver(currentPieces, grid);
         }
     }, [currentPieces, grid]);
+
 
     useEffect(() => {
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -194,8 +234,10 @@ function BlockPuzzle() {
                     }
                     return newScore;
                 });
+
             }, 400);
         }
+        // Game Over 檢查現在由 useEffect [currentPieces, grid] 負責
     };
 
     const getGridPosition = (clientX, clientY) => {
@@ -314,6 +356,7 @@ function BlockPuzzle() {
         setGameOver(false);
         setDraggedPiece(null);
         setPreviewPosition(null);
+        setRevivesUsed(0);
         setCurrentPieces(generatePieces());
     };
 
@@ -348,18 +391,18 @@ function BlockPuzzle() {
         <div className="game-header">
             <div className="score-container">
                 <div className="score-box">
-                    <div className="score-label">Score</div>
+                    <div className="score-label">分數</div>
                     <div className="score-value">{score}</div>
                 </div>
                 <div className="score-box best">
                     <Trophy className="trophy-icon" size={18}/>
-                    <div className="score-label">Best</div>
+                    <div className="score-label">最高分</div>
                     <div className="score-value">{bestScore}</div>
                 </div>
             </div>
             <button className="reset-button" onClick={resetGame}>
                 <RotateCcw size={20}/>
-                <span>New Game</span>
+                <span>重開</span>
             </button>
         </div>
         <div className={`grid-container ${celebration ? 'celebration' : ''}`} ref={gridRef}>
@@ -417,14 +460,14 @@ function BlockPuzzle() {
         </div>)}
         {gameOver && (<div className="game-over-overlay">
             <div className="game-over-modal">
-                <h2>Game Over!</h2>
-                <div className="final-score">
-                    <div className="score-label">Final Score</div>
-                    <div className="score-value">{score}</div>
-                </div>
-                {score === bestScore && score > 0 && (<div className="new-best">New Best Score!</div>)}
+                <h2>你死了!</h2>
+                {revivesUsed === 0 && (
+                    <button className="revive-button" onClick={findAndGeneratePerfectPieces}>
+                        復活
+                    </button>
+                )}
                 <button className="play-again-button" onClick={resetGame}>
-                    Play Again
+                    重試
                 </button>
             </div>
         </div>)}
