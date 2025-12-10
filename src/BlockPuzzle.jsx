@@ -22,12 +22,14 @@ function BlockPuzzle() {
     const VERTICAL_OFFSET = 80;
     const VERTICAL_OFFSET_MOBILE = 80;
     const HORIZONTAL_OFFSET = 20;
+    const HORIZONTAL_OFFSET_MOBILE = 20;
     const [grid, setGrid] = useState(() => Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null)));
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(() => parseInt(localStorage.getItem('blockPuzzleBestScore') || '0'));
     const [currentPieces, setCurrentPieces] = useState([]);
     const [draggedPiece, setDraggedPiece] = useState(null);
     const [verticalOffset, setVerticalOffset] = useState(VERTICAL_OFFSET);
+    const [horizontalOffset, setHorizontalOffset] = useState(HORIZONTAL_OFFSET);
     const [dragOffset, setDragOffset] = useState({x: 0, y: 0});
     const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
     const [previewPosition, setPreviewPosition] = useState(null);
@@ -140,6 +142,13 @@ function BlockPuzzle() {
         }
     }, []);
 
+    useEffect(() => {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice) {
+            setHorizontalOffset(HORIZONTAL_OFFSET_MOBILE);
+        }
+    }, []);
+
     const placePiece = (piece, gridRow, gridCol) => {
         const newGrid = grid.map(row => [...row]);
         const {shape, color} = piece;
@@ -229,7 +238,7 @@ function BlockPuzzle() {
         const cols = shape[0].length;
         const centerCellXOffset = Math.floor(cols / 2);
         const centerCellYOffset = Math.floor(rows / 2);
-        const adjustedX = clientX - gridRect.left - (centerCellXOffset * (CELL_SIZE + 2) + HORIZONTAL_OFFSET) ;
+        const adjustedX = clientX - gridRect.left - (centerCellXOffset * (CELL_SIZE + 2) + horizontalOffset) ;
 
         const adjustedY = clientY - gridRect.top - (centerCellYOffset * (CELL_SIZE + 2)) - verticalOffset;
         if (adjustedX < -1 * (CELL_SIZE + 2) || adjustedY < -1 * (CELL_SIZE + 2) || adjustedX > gridRect.width || adjustedY > gridRect.height) {
