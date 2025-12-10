@@ -5,7 +5,16 @@ import './BlockPuzzle.css';
 const GRID_SIZE = 8;
 const CELL_SIZE = 45;
 
-const BLOCK_SHAPES = [[[1]], [[1, 1]], [[1], [1]], [[1, 1, 1]], [[1], [1], [1]], [[1, 1], [1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[1, 1, 1, 1]], [[1], [1], [1], [1]], [[1, 1, 1, 1, 1]], [[1], [1], [1], [1], [1]], [[1, 1, 0], [0, 1, 1]], [[0, 1, 1], [1, 1, 0]], [[1, 0], [1, 1]], [[0, 1], [1, 1]], [[1, 1], [1, 0]], [[1, 1], [0, 1]], [[1, 1, 1], [1, 0, 0]], [[1, 1, 1], [0, 0, 1]], [[1, 0, 0], [1, 1, 1]], [[0, 0, 1], [1, 1, 1]], [[1, 1, 1], [0, 1, 0]], [[0, 1, 0], [1, 1, 1]], [[1, 0], [1, 0], [1, 1]], [[0, 1], [0, 1], [1, 1]],];
+const BLOCK_SHAPES = [
+    [[1]], [[1, 1]], [[1], [1]], [[1, 1, 1]], [[1], [1], [1]],
+    [[1, 1], [1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[1, 1, 1, 1]],
+    [[1], [1], [1], [1]], [[1, 1, 1, 1, 1]], [[1], [1], [1], [1], [1]],
+    [[1, 1, 0], [0, 1, 1]], [[0, 1, 1], [1, 1, 0]], [[1, 0], [1, 1]],
+    [[0, 1], [1, 1]], [[1, 1], [1, 0]], [[1, 1], [0, 1]], [[1, 1, 1], [1, 0, 0]],
+    [[1, 1, 1], [0, 0, 1]], [[1, 0, 0], [1, 1, 1]], [[0, 0, 1], [1, 1, 1]],
+    [[1, 1, 1], [0, 1, 0]], [[0, 1, 0], [1, 1, 1]], [[1, 0], [1, 0], [1, 1]],
+    [[0, 1], [0, 1], [1, 1]], [[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1], [1, 1]],
+];
 
 const COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
 
@@ -25,14 +34,59 @@ function BlockPuzzle() {
 
     const gridRef = useRef(null);
 
-    const generateRandomPiece = () => {
-        const shape = BLOCK_SHAPES[Math.floor(Math.random() * BLOCK_SHAPES.length)];
+    const canPlacePiece = (shape, gridRow, gridCol, currentGrid) => {
+        for (let row = 0; row < shape.length; row++) {
+            for (let col = 0; col < shape[row].length; col++) {
+                if (shape[row][col] === 1) {
+                    const targetRow = gridRow + row;
+                    const targetCol = gridCol + col;
+
+                    if (targetRow < 0 || targetRow >= GRID_SIZE || targetCol < 0 || targetCol >= GRID_SIZE || currentGrid[targetRow][targetCol] !== null) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    };
+
+    const canPlaceAnywhere = (shape, currentGrid) => {
+        const rows = shape.length;
+        const cols = shape[0].length;
+
+        for (let row = 0; row <= GRID_SIZE - rows; row++) {
+            for (let col = 0; col <= GRID_SIZE - cols; col++) {
+                if (canPlacePiece(shape, row, col, currentGrid)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+
+    const generateRandomPiece = (availableShapes) => {
+        if (availableShapes.length === 0) return null;
+        const shape = availableShapes[Math.floor(Math.random() * availableShapes.length)];
         const color = COLORS[Math.floor(Math.random() * COLORS.length)];
         return {shape, color, id: Math.random()};
     };
 
     const generatePieces = () => {
-        return [generateRandomPiece(), generateRandomPiece(), generateRandomPiece()];
+        const availableShapes = BLOCK_SHAPES.filter(shape => canPlaceAnywhere(shape, grid));
+
+        if (availableShapes.length === 0) {
+            setGameOver(true);
+            return [];
+        }
+
+        const pieces = [];
+        for (let i = 0; i < 3; i++) {
+            const piece = generateRandomPiece(availableShapes);
+            if (piece) {
+                pieces.push(piece);
+            }
+        }
+        return pieces;
     };
 
     const getPieceDimensions = (piece) => {
@@ -60,13 +114,13 @@ function BlockPuzzle() {
         if (currentPieces.length === 0 && !gameOver) {
             setCurrentPieces(generatePieces());
         }
-    }, [currentPieces, gameOver]);
+    }, [currentPieces, gameOver, grid]);
 
     useEffect(() => {
         if (currentPieces.length > 0 && !gameOver) {
             const hasValidMove = currentPieces.some(piece => {
                 if (!piece) return false;
-                return canPlaceAnywhere(piece.shape);
+                return canPlaceAnywhere(piece.shape, grid);
             });
 
             if (!hasValidMove) {
@@ -75,32 +129,6 @@ function BlockPuzzle() {
         }
     }, [currentPieces, grid]);
 
-    const canPlaceAnywhere = (shape) => {
-        for (let row = 0; row < GRID_SIZE; row++) {
-            for (let col = 0; col < GRID_SIZE; col++) {
-                if (canPlacePiece(shape, row, col)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    };
-
-    const canPlacePiece = (shape, gridRow, gridCol) => {
-        for (let row = 0; row < shape.length; row++) {
-            for (let col = 0; col < shape[row].length; col++) {
-                if (shape[row][col] === 1) {
-                    const targetRow = gridRow + row;
-                    const targetCol = gridCol + col;
-
-                    if (targetRow < 0 || targetRow >= GRID_SIZE || targetCol < 0 || targetCol >= GRID_SIZE || grid[targetRow][targetCol] !== null) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    };
 
     const placePiece = (piece, gridRow, gridCol) => {
         const newGrid = grid.map(row => [...row]);
@@ -184,20 +212,35 @@ function BlockPuzzle() {
     };
 
     const getGridPosition = (clientX, clientY) => {
-        if (!gridRef.current) return null;
+        if (!gridRef.current || !draggedPiece) return null;
 
         const gridRect = gridRef.current.getBoundingClientRect();
-        const x = clientX - gridRect.left;
-        const y = clientY - gridRect.top;
+        const { shape } = draggedPiece;
+        const rows = shape.length;
+        const cols = shape[0].length;
 
-        if (x < 0 || y < 0 || x > gridRect.width || y > gridRect.height) {
+        // 計算積木中心點到其左上角積木格的單元格數量偏移量
+        const centerCellXOffset = Math.floor(cols / 2);
+        const centerCellYOffset = Math.floor(rows / 2);
+
+        // 調整滑鼠在網格內的相對座標，使其對應到「積木的左上角單元格」
+        const adjustedX = clientX - gridRect.left - (centerCellXOffset * (CELL_SIZE + 2));
+        const adjustedY = clientY - gridRect.top - (centerCellYOffset * (CELL_SIZE + 2));
+
+        // 檢查調整後的座標是否在網格邊界內
+        if (adjustedX < -1 * (CELL_SIZE + 2) || adjustedY < -1 * (CELL_SIZE + 2) || adjustedX > gridRect.width || adjustedY > gridRect.height) {
             return null;
         }
 
-        const col = Math.floor(x / CELL_SIZE);
-        const row = Math.floor(y / CELL_SIZE);
+        const col = Math.floor(adjustedX / (CELL_SIZE + 2));
+        const row = Math.floor(adjustedY / (CELL_SIZE + 2));
 
-        return {row, col};
+        // 檢查積木放置後是否會超出網格邊界
+        if (row < 0 || row + rows > GRID_SIZE || col < 0 || col + cols > GRID_SIZE) {
+            return null;
+        }
+
+        return { row, col };
     };
 
     const handleMouseDown = (piece, e) => {
@@ -217,7 +260,7 @@ function BlockPuzzle() {
 
         const gridPos = getGridPosition(e.clientX, e.clientY);
         if (gridPos) {
-            const canPlace = canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col);
+            const canPlace = canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col, grid);
             setPreviewPosition(gridPos);
             setIsValidPlacement(canPlace);
         } else {
@@ -229,7 +272,7 @@ function BlockPuzzle() {
     const handleMouseUp = (e) => {
         if (!draggedPiece) return;
         const gridPos = getGridPosition(e.clientX, e.clientY);
-        if (gridPos && canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col)) {
+        if (gridPos && canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col, grid)) {
             placePiece(draggedPiece, gridPos.row, gridPos.col);
         }
         setDraggedPiece(null);
@@ -257,7 +300,7 @@ function BlockPuzzle() {
 
         const gridPos = getGridPosition(touch.clientX, touch.clientY);
         if (gridPos) {
-            const canPlace = canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col);
+            const canPlace = canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col, grid);
             setPreviewPosition(gridPos);
             setIsValidPlacement(canPlace);
         } else {
@@ -272,7 +315,7 @@ function BlockPuzzle() {
         const touch = e.changedTouches[0];
         const gridPos = getGridPosition(touch.clientX, touch.clientY);
 
-        if (gridPos && canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col)) {
+        if (gridPos && canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col, grid)) {
             placePiece(draggedPiece, gridPos.row, gridPos.col);
         }
 
@@ -300,10 +343,11 @@ function BlockPuzzle() {
     const resetGame = () => {
         setGrid(Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null)));
         setScore(0);
-        setCurrentPieces(generatePieces());
         setGameOver(false);
         setDraggedPiece(null);
         setPreviewPosition(null);
+        // 调用 generatePieces，它会自动检查 grid 状态并生成
+        setCurrentPieces(generatePieces());
     };
 
     const renderPiece = (piece, isDragging = false) => {
@@ -319,7 +363,7 @@ function BlockPuzzle() {
                 display: 'grid',
                 gridTemplateColumns: `repeat(${shape[0].length}, ${cellSize}px)`,
                 gap: '3px',
-                opacity: isDragging ? 0 : 1, // 隱藏正在拖曳的下方積木
+                opacity: isDragging ? 0 : 1,
             }}
         >
             {shape.map((row, rowIndex) => (row.map((cell, colIndex) => (<div
@@ -391,7 +435,7 @@ function BlockPuzzle() {
         <div className="pieces-container">
             {currentPieces.map((piece, index) => (piece ? (<div
                 key={piece.id}
-                className={`piece-holder ${!canPlaceAnywhere(piece.shape) ? 'no-valid-move' : ''}`}
+                className={`piece-holder ${!canPlaceAnywhere(piece.shape, grid) ? 'no-valid-move' : ''}`}
                 onMouseDown={(e) => handleMouseDown(piece, e)}
                 onTouchStart={(e) => handleTouchStart(piece, e)}
             >
