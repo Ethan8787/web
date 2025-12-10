@@ -4,25 +4,14 @@ import './BlockPuzzle.css';
 
 const GRID_SIZE = 8;
 const CELL_SIZE = 45;
-
-const BLOCK_SHAPES = [
-    [[1]], [[1, 1]], [[1], [1]], [[1, 1, 1]], [[1], [1], [1]],
-    [[1, 1], [1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[1, 1, 1, 1]],
-    [[1], [1], [1], [1]], [[1, 1, 1, 1, 1]], [[1], [1], [1], [1], [1]],
-    [[1, 1, 0], [0, 1, 1]], [[0, 1, 1], [1, 1, 0]], [[1, 0], [1, 1]],
-    [[0, 1], [1, 1]], [[1, 1], [1, 0]], [[1, 1], [0, 1]], [[1, 1, 1], [1, 0, 0]],
-    [[1, 1, 1], [0, 0, 1]], [[1, 0, 0], [1, 1, 1]], [[0, 0, 1], [1, 1, 1]],
-    [[1, 1, 1], [0, 1, 0]], [[0, 1, 0], [1, 1, 1]], [[1, 0], [1, 0], [1, 1]],
-    [[0, 1], [0, 1], [1, 1]], [[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1], [1, 1]],
-];
-
+const BLOCK_SHAPES = [[[1]], [[1, 1]], [[1], [1]], [[1, 1, 1]], [[1], [1], [1]], [[1, 1], [1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[1, 1, 1, 1]], [[1], [1], [1], [1]], [[1, 1, 1, 1, 1]], [[1], [1], [1], [1], [1]], [[1, 1, 0], [0, 1, 1]], [[0, 1, 1], [1, 1, 0]], [[1, 0], [1, 1]], [[0, 1], [1, 1]], [[1, 1], [1, 0]], [[1, 1], [0, 1]], [[1, 1, 1], [1, 0, 0]], [[1, 1, 1], [0, 0, 1]], [[1, 0, 0], [1, 1, 1]], [[0, 0, 1], [1, 1, 1]], [[1, 1, 1], [0, 1, 0]], [[0, 1, 0], [1, 1, 1]], [[1, 0], [1, 0], [1, 1]], [[0, 1], [0, 1], [1, 1]], [[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1], [1, 1]],];
 const COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
 
 function BlockPuzzle() {
     const VERTICAL_OFFSET = 80;
-    const VERTICAL_OFFSET_MOBILE = 80;
+    const VERTICAL_OFFSET_MOBILE = 100;
     const HORIZONTAL_OFFSET = 20;
-    const HORIZONTAL_OFFSET_MOBILE = 20;
+    const HORIZONTAL_OFFSET_MOBILE = 10;
     const [grid, setGrid] = useState(() => Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null)));
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(() => parseInt(localStorage.getItem('blockPuzzleBestScore') || '0'));
@@ -37,7 +26,6 @@ function BlockPuzzle() {
     const [gameOver, setGameOver] = useState(false);
     const [clearedCells, setClearedCells] = useState(new Set());
     const [celebration, setCelebration] = useState(false);
-
     const gridRef = useRef(null);
 
     const canPlacePiece = (shape, gridRow, gridCol, currentGrid) => {
@@ -46,7 +34,6 @@ function BlockPuzzle() {
                 if (shape[row][col] === 1) {
                     const targetRow = gridRow + row;
                     const targetCol = gridCol + col;
-
                     if (targetRow < 0 || targetRow >= GRID_SIZE || targetCol < 0 || targetCol >= GRID_SIZE || currentGrid[targetRow][targetCol] !== null) {
                         return false;
                     }
@@ -59,7 +46,6 @@ function BlockPuzzle() {
     const canPlaceAnywhere = (shape, currentGrid) => {
         const rows = shape.length;
         const cols = shape[0].length;
-
         for (let row = 0; row <= GRID_SIZE - rows; row++) {
             for (let col = 0; col <= GRID_SIZE - cols; col++) {
                 if (canPlacePiece(shape, row, col, currentGrid)) {
@@ -79,12 +65,10 @@ function BlockPuzzle() {
 
     const generatePieces = () => {
         const availableShapes = BLOCK_SHAPES.filter(shape => canPlaceAnywhere(shape, grid));
-
         if (availableShapes.length === 0) {
             setGameOver(true);
             return [];
         }
-
         const pieces = [];
         for (let i = 0; i < 3; i++) {
             const piece = generateRandomPiece(availableShapes);
@@ -97,18 +81,14 @@ function BlockPuzzle() {
 
     const getPieceDimensions = (piece) => {
         if (!piece || !piece.shape || !piece.shape[0]) return {width: 0, height: 0};
-
         const {shape} = piece;
         const rows = shape.length;
         const cols = shape[0].length;
-
         const maxSize = Math.max(rows, cols);
         const cellSize = maxSize <= 2 ? 30 : maxSize === 3 ? 24 : 18;
         const gap = 3;
-
         const width = cols * cellSize + (cols - 1) * gap;
         const height = rows * cellSize + (rows - 1) * gap;
-
         return {width, height};
     };
 
@@ -152,7 +132,6 @@ function BlockPuzzle() {
     const placePiece = (piece, gridRow, gridCol) => {
         const newGrid = grid.map(row => [...row]);
         const {shape, color} = piece;
-
         for (let row = 0; row < shape.length; row++) {
             for (let col = 0; col < shape[row].length; col++) {
                 if (shape[row][col] === 1) {
@@ -160,13 +139,10 @@ function BlockPuzzle() {
                 }
             }
         }
-
         setGrid(newGrid);
         setCurrentPieces(prev => prev.filter(p => p.id !== piece.id));
-
         const pieceScore = shape.flat().filter(cell => cell === 1).length;
         setScore(prev => prev + pieceScore);
-
         setTimeout(() => clearLines(newGrid), 300);
     };
 
@@ -174,7 +150,6 @@ function BlockPuzzle() {
         const newClearedCells = new Set();
         const rowsToClear = [];
         const colsToClear = [];
-
         for (let row = 0; row < GRID_SIZE; row++) {
             if (currentGrid[row].every(cell => cell !== null)) {
                 rowsToClear.push(row);
@@ -183,7 +158,6 @@ function BlockPuzzle() {
                 }
             }
         }
-
         for (let col = 0; col < GRID_SIZE; col++) {
             if (currentGrid.every(row => row[col] !== null)) {
                 colsToClear.push(col);
@@ -192,30 +166,24 @@ function BlockPuzzle() {
                 }
             }
         }
-
         if (newClearedCells.size > 0) {
             setClearedCells(newClearedCells);
             setCelebration(true);
-
             setTimeout(() => {
                 const newGrid = currentGrid.map(row => [...row]);
-
                 rowsToClear.forEach(row => {
                     for (let col = 0; col < GRID_SIZE; col++) {
                         newGrid[row][col] = null;
                     }
                 });
-
                 colsToClear.forEach(col => {
                     for (let row = 0; row < GRID_SIZE; row++) {
                         newGrid[row][col] = null;
                     }
                 });
-
                 setGrid(newGrid);
                 setClearedCells(new Set());
                 setCelebration(false);
-
                 const linesCleared = new Set([...rowsToClear, ...colsToClear.map(c => `col${c}`)]).size;
                 const clearBonus = linesCleared * GRID_SIZE * 2;
                 setScore(prev => {
@@ -233,13 +201,12 @@ function BlockPuzzle() {
     const getGridPosition = (clientX, clientY) => {
         if (!gridRef.current || !draggedPiece) return null;
         const gridRect = gridRef.current.getBoundingClientRect();
-        const { shape } = draggedPiece;
+        const {shape} = draggedPiece;
         const rows = shape.length;
         const cols = shape[0].length;
         const centerCellXOffset = Math.floor(cols / 2);
         const centerCellYOffset = Math.floor(rows / 2);
-        const adjustedX = clientX - gridRect.left - (centerCellXOffset * (CELL_SIZE + 2) + horizontalOffset) ;
-
+        const adjustedX = clientX - gridRect.left - (centerCellXOffset * (CELL_SIZE + 2) + horizontalOffset);
         const adjustedY = clientY - gridRect.top - (centerCellYOffset * (CELL_SIZE + 2)) - verticalOffset;
         if (adjustedX < -1 * (CELL_SIZE + 2) || adjustedY < -1 * (CELL_SIZE + 2) || adjustedX > gridRect.width || adjustedY > gridRect.height) {
             return null;
@@ -249,7 +216,7 @@ function BlockPuzzle() {
         if (row < 0 || row + rows > GRID_SIZE || col < 0 || col + cols > GRID_SIZE) {
             return null;
         }
-        return { row, col };
+        return {row, col};
     };
 
     const handleMouseDown = (piece, e) => {
@@ -257,17 +224,14 @@ function BlockPuzzle() {
         const {width, height} = getPieceDimensions(piece);
         setDraggedPiece(piece);
         setDragOffset({
-            x: width / 2,
-            y: height / 2 + verticalOffset // 讓拖曳點向下偏移，視覺上積木向上移動
+            x: width / 2, y: height / 2 + verticalOffset
         });
         setMousePosition({x: e.clientX, y: e.clientY});
     };
 
     const handleMouseMove = (e) => {
         if (!draggedPiece) return;
-
         setMousePosition({x: e.clientX, y: e.clientY});
-
         const gridPos = getGridPosition(e.clientX, e.clientY);
         if (gridPos) {
             const canPlace = canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col, grid);
@@ -296,8 +260,7 @@ function BlockPuzzle() {
         const {width, height} = getPieceDimensions(piece);
         setDraggedPiece(piece);
         setDragOffset({
-            x: width / 2,
-            y: height / 2 + verticalOffset // 讓拖曳點向下偏移，視覺上積木向上移動
+            x: width / 2, y: height / 2 + verticalOffset
         });
         setMousePosition({x: touch.clientX, y: touch.clientY});
     };
@@ -305,10 +268,8 @@ function BlockPuzzle() {
     const handleTouchMove = (e) => {
         if (!draggedPiece) return;
         e.preventDefault();
-
         const touch = e.touches[0];
         setMousePosition({x: touch.clientX, y: touch.clientY});
-
         const gridPos = getGridPosition(touch.clientX, touch.clientY);
         if (gridPos) {
             const canPlace = canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col, grid);
@@ -322,14 +283,11 @@ function BlockPuzzle() {
 
     const handleTouchEnd = (e) => {
         if (!draggedPiece) return;
-
         const touch = e.changedTouches[0];
         const gridPos = getGridPosition(touch.clientX, touch.clientY);
-
         if (gridPos && canPlacePiece(draggedPiece.shape, gridPos.row, gridPos.col, grid)) {
             placePiece(draggedPiece, gridPos.row, gridPos.col);
         }
-
         setDraggedPiece(null);
         setPreviewPosition(null);
         setIsValidPlacement(false);
@@ -341,7 +299,6 @@ function BlockPuzzle() {
             window.addEventListener('mouseup', handleMouseUp);
             window.addEventListener('touchmove', handleTouchMove, {passive: false});
             window.addEventListener('touchend', handleTouchEnd);
-
             return () => {
                 window.removeEventListener('mousemove', handleMouseMove);
                 window.removeEventListener('mouseup', handleMouseUp);
@@ -357,17 +314,14 @@ function BlockPuzzle() {
         setGameOver(false);
         setDraggedPiece(null);
         setPreviewPosition(null);
-        // 调用 generatePieces，它会自动检查 grid 状态并生成
         setCurrentPieces(generatePieces());
     };
 
     const renderPiece = (piece, isDragging = false) => {
         if (!piece) return null;
-
         const {shape, color} = piece;
         const maxSize = Math.max(shape.length, shape[0]?.length || 0);
         const cellSize = maxSize <= 2 ? 30 : maxSize === 3 ? 24 : 18;
-
         return (<div
             className={`piece ${isDragging ? 'dragging' : ''}`}
             style={{
@@ -403,13 +357,11 @@ function BlockPuzzle() {
                     <div className="score-value">{bestScore}</div>
                 </div>
             </div>
-
             <button className="reset-button" onClick={resetGame}>
                 <RotateCcw size={20}/>
                 <span>New Game</span>
             </button>
         </div>
-
         <div className={`grid-container ${celebration ? 'celebration' : ''}`} ref={gridRef}>
             <div
                 className="grid"
@@ -429,7 +381,6 @@ function BlockPuzzle() {
                         }
                         return false;
                     })();
-
                     return (<div
                         key={`${rowIndex}-${colIndex}`}
                         className={`grid-cell ${cell ? 'filled' : ''} ${isClearedCell ? 'cleared' : ''} ${isPreview ? (isValidPlacement ? 'preview-valid' : 'preview-invalid') : ''}`}
@@ -442,7 +393,6 @@ function BlockPuzzle() {
                 })))}
             </div>
         </div>
-
         <div className="pieces-container">
             {currentPieces.map((piece, index) => (piece ? (<div
                 key={piece.id}
@@ -453,7 +403,6 @@ function BlockPuzzle() {
                 {renderPiece(piece, draggedPiece?.id === piece.id)}
             </div>) : <div key={index} className="piece-holder empty"/>))}
         </div>
-
         {draggedPiece && (<div
             className="dragged-piece"
             style={{
@@ -466,7 +415,6 @@ function BlockPuzzle() {
         >
             {renderPiece(draggedPiece)}
         </div>)}
-
         {gameOver && (<div className="game-over-overlay">
             <div className="game-over-modal">
                 <h2>Game Over!</h2>
