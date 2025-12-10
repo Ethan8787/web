@@ -1,3 +1,7 @@
+* {
+    overflow: hidden;
+}
+
 .block-puzzle-container {
     display: flex;
     flex-direction: column;
@@ -105,8 +109,8 @@
 
 .grid-container {
     background: rgba(255, 255, 255, 0.95);
-    padding: 15px;
-    border-radius: 16px;
+    border-radius: 10px;
+    padding: 5px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     margin-bottom: 24px;
     transition: transform 0.3s ease;

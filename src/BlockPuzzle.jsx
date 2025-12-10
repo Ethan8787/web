@@ -20,12 +20,14 @@ const COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F'
 
 function BlockPuzzle() {
     const VERTICAL_OFFSET = 80;
+    const VERTICAL_OFFSET_MOBILE = 80;
     const HORIZONTAL_OFFSET = 20;
     const [grid, setGrid] = useState(() => Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null)));
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(() => parseInt(localStorage.getItem('blockPuzzleBestScore') || '0'));
     const [currentPieces, setCurrentPieces] = useState([]);
     const [draggedPiece, setDraggedPiece] = useState(null);
+    const [verticalOffset, setVerticalOffset] = useState(VERTICAL_OFFSET);
     const [dragOffset, setDragOffset] = useState({x: 0, y: 0});
     const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
     const [previewPosition, setPreviewPosition] = useState(null);
@@ -131,6 +133,12 @@ function BlockPuzzle() {
         }
     }, [currentPieces, grid]);
 
+    useEffect(() => {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice) {
+            setVerticalOffset(VERTICAL_OFFSET_MOBILE);
+        }
+    }, []);
 
     const placePiece = (piece, gridRow, gridCol) => {
         const newGrid = grid.map(row => [...row]);
@@ -223,7 +231,7 @@ function BlockPuzzle() {
         const centerCellYOffset = Math.floor(rows / 2);
         const adjustedX = clientX - gridRect.left - (centerCellXOffset * (CELL_SIZE + 2) + HORIZONTAL_OFFSET) ;
 
-        const adjustedY = clientY - gridRect.top - (centerCellYOffset * (CELL_SIZE + 2)) - VERTICAL_OFFSET;
+        const adjustedY = clientY - gridRect.top - (centerCellYOffset * (CELL_SIZE + 2)) - verticalOffset;
         if (adjustedX < -1 * (CELL_SIZE + 2) || adjustedY < -1 * (CELL_SIZE + 2) || adjustedX > gridRect.width || adjustedY > gridRect.height) {
             return null;
         }
@@ -241,7 +249,7 @@ function BlockPuzzle() {
         setDraggedPiece(piece);
         setDragOffset({
             x: width / 2,
-            y: height / 2 + VERTICAL_OFFSET // 讓拖曳點向下偏移，視覺上積木向上移動
+            y: height / 2 + verticalOffset // 讓拖曳點向下偏移，視覺上積木向上移動
         });
         setMousePosition({x: e.clientX, y: e.clientY});
     };
@@ -280,7 +288,7 @@ function BlockPuzzle() {
         setDraggedPiece(piece);
         setDragOffset({
             x: width / 2,
-            y: height / 2 + VERTICAL_OFFSET // 讓拖曳點向下偏移，視覺上積木向上移動
+            y: height / 2 + verticalOffset // 讓拖曳點向下偏移，視覺上積木向上移動
         });
         setMousePosition({x: touch.clientX, y: touch.clientY});
     };
