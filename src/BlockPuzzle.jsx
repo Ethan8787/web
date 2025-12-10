@@ -19,6 +19,8 @@ const BLOCK_SHAPES = [
 const COLORS = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
 
 function BlockPuzzle() {
+    const VERTICAL_OFFSET = 80;
+    const HORIZONTAL_OFFSET = 20;
     const [grid, setGrid] = useState(() => Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(null)));
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(() => parseInt(localStorage.getItem('blockPuzzleBestScore') || '0'));
@@ -213,33 +215,23 @@ function BlockPuzzle() {
 
     const getGridPosition = (clientX, clientY) => {
         if (!gridRef.current || !draggedPiece) return null;
-
         const gridRect = gridRef.current.getBoundingClientRect();
         const { shape } = draggedPiece;
         const rows = shape.length;
         const cols = shape[0].length;
-
-        // 計算積木中心點到其左上角積木格的單元格數量偏移量
         const centerCellXOffset = Math.floor(cols / 2);
         const centerCellYOffset = Math.floor(rows / 2);
+        const adjustedX = clientX - gridRect.left - (centerCellXOffset * (CELL_SIZE + 2) + HORIZONTAL_OFFSET) ;
 
-        // 調整滑鼠在網格內的相對座標，使其對應到「積木的左上角單元格」
-        const adjustedX = clientX - gridRect.left - (centerCellXOffset * (CELL_SIZE + 2));
-        const adjustedY = clientY - gridRect.top - (centerCellYOffset * (CELL_SIZE + 2));
-
-        // 檢查調整後的座標是否在網格邊界內
+        const adjustedY = clientY - gridRect.top - (centerCellYOffset * (CELL_SIZE + 2)) - VERTICAL_OFFSET;
         if (adjustedX < -1 * (CELL_SIZE + 2) || adjustedY < -1 * (CELL_SIZE + 2) || adjustedX > gridRect.width || adjustedY > gridRect.height) {
             return null;
         }
-
         const col = Math.floor(adjustedX / (CELL_SIZE + 2));
         const row = Math.floor(adjustedY / (CELL_SIZE + 2));
-
-        // 檢查積木放置後是否會超出網格邊界
         if (row < 0 || row + rows > GRID_SIZE || col < 0 || col + cols > GRID_SIZE) {
             return null;
         }
-
         return { row, col };
     };
 
@@ -248,7 +240,8 @@ function BlockPuzzle() {
         const {width, height} = getPieceDimensions(piece);
         setDraggedPiece(piece);
         setDragOffset({
-            x: width / 2, y: height / 2
+            x: width / 2,
+            y: height / 2 + VERTICAL_OFFSET // 讓拖曳點向下偏移，視覺上積木向上移動
         });
         setMousePosition({x: e.clientX, y: e.clientY});
     };
@@ -286,7 +279,8 @@ function BlockPuzzle() {
         const {width, height} = getPieceDimensions(piece);
         setDraggedPiece(piece);
         setDragOffset({
-            x: width / 2, y: height / 2
+            x: width / 2,
+            y: height / 2 + VERTICAL_OFFSET // 讓拖曳點向下偏移，視覺上積木向上移動
         });
         setMousePosition({x: touch.clientX, y: touch.clientY});
     };
