@@ -1,7 +1,3 @@
-* {
-    overflow: hidden;
-}
-
 .block-puzzle-container {
     display: flex;
     flex-direction: column;
