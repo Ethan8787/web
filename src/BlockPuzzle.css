@@ -1,8 +1,5 @@
-* {
-    overflow: hidden;
-}
-
 .block-puzzle-container {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
