@@ -56,7 +56,7 @@
     }
     .nav-link {
         font-size: 0.75rem;
-        padding: 1rem 1rem;
+        padding: 0.5rem 0.5rem;
         flex-grow: 1;
         text-align: center;
     }
