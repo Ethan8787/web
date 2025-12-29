@@ -1,37 +1,13 @@
-.header-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-#avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 15px;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-#avatar:hover {
-    transform: scale(1.1)
-}
-
-.intro-card h1 {
-    font-size: 2.5rem;
-    color: var(--accent-color);
+.intro-card h2 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
 }
 
 .intro-card p {
     font-size: 1.1rem;
     line-height: 1.7;
-}
-
-.pagamo-block {
-    white-space: pre-wrap;
-    word-break: break-word;
-    overflow-wrap: break-word;
 }
 
 .button-group {
@@ -44,19 +20,17 @@
 
 .btn {
     text-decoration: none;
-    color: var(--card-bg);
-    background-color: var(--text-color);
-    padding: 10px 20px;
-    border: 2px solid var(--text-color);
-    border-radius: 4px;
+    color: var(--text-color);
+    outline: 0;
+    background-color: var(--accent-color);
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
     font-size: 0.9rem;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .btn:hover {
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    border-color: var(--accent-color);
+    transform: translateY(-2px);
     box-shadow: 0 0 10px var(--accent-color);
 }

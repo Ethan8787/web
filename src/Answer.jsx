@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import MatrixBackground from "./components/MatrixBackground.jsx";
+import Background from "./components/Background.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import "./Answer.css"
@@ -19,7 +19,7 @@ export default function Answer() {
             .catch(err => setEn("載入失敗: " + err.message));
     }, []);
     return (<>
-        <MatrixBackground/>
+        <Background/>
         <Navbar/>
         <div className="answer">
         <div className="container">

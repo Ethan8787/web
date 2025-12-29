@@ -1,4 +1,4 @@
-import MatrixBackground from './components/MatrixBackground.jsx';
+import Background from './components/Background.jsx';
 import Navbar from './components/Navbar';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -7,15 +7,13 @@ import "./Home.css"
 
 export default function Home() {
     return (<>
-        <MatrixBackground/>
+        <Background/>
         <Navbar/>
         <div className="App">
         <div className="container">
             <div className="intro-card" id="intro">
-                <div className="header-group">
-                    <img id="avatar" src="512.png" alt="Avatar"/>
-                    <h1>Ethan</h1>
-                </div>
+                <h2>關於我</h2>
+
                 <p>
                     我是 Ethan，一位熱愛程式設計的台灣國三生。
                     我自學 Java、Python、C/C++ 等後端及底層語言，並運用 React + Vite 實現前端開發與 Cloudflare Pages 部署。
@@ -31,7 +29,6 @@ export default function Home() {
             </div>
             <Skills/>
             <Projects/>
-
         </div>
         <Footer/>
         </div>

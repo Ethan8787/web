@@ -2,6 +2,9 @@ import './Navbar.css'
 export default function Navbar() {
     return (<nav className="navbar">
         <div className="nav-links">
+            <div className="header-group">
+                <img id="avatar" src="/512.png" alt="Avatar"/>
+            </div>
             <a
                 href="/#intro"
                 className="nav-link"

@@ -1,7 +1,7 @@
 :root {
     --bg-color: transparent;
-    --text-color: #f0f0f0;
-    --accent-color: #00ff00;
+    --text-color: #ffffff;
+    --accent-color: #50B8E7;
     --card-bg: rgba(0, 0, 0, 0.7);
     --font-mono: 'JetBrains Mono', monospace;
 }

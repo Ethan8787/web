@@ -17,17 +17,14 @@
 }
 
 .intro-card, .section {
-    background: var(--card-bg);
+    background: #111416;
     padding: 30px;
     border-radius: 28px;
-    border: 1px solid var(--accent-color);
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .intro-card:hover, .section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 30px rgba(0, 255, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .section h2 {
