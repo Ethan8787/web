@@ -7,7 +7,6 @@
 .container {
     position: relative;
     z-index: 10;
-    width: 100%;
     max-width: 900px;
     margin: 60px auto;
     padding: 0 20px;
@@ -17,14 +16,25 @@
 }
 
 .intro-card, .section {
-    background: #111416;
-    padding: 30px;
+    background: var(--card-bg);
+    padding: 25px;
     border-radius: 28px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.intro-card p {
+    color: #b0b0b0;
+    transition: all 0.3s;
+}
+
+.intro-card:hover {
+    p {
+        color: var(--text-color);
+    }
+}
+
 .intro-card:hover, .section:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    box-shadow: var(--box-shadow);
 }
 
 .section h2 {
@@ -32,6 +42,7 @@
     padding-bottom: 10px;
     margin-bottom: 25px;
     font-size: 1.8rem;
+    text-align: center;
 }
 
 @media (max-width: 600px) {

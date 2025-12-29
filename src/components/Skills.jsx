@@ -14,7 +14,7 @@ function SkillItem({name, level}) {
 
 export default function Skills() {
     return (<div className="section" id="skills">
-        <h2>我的能力</h2>
+        <h2>我的能力 Skills</h2>
         <div className="skills-list">
             {skillsData.map(skill => (<SkillItem key={skill.name} {...skill} />))}
         </div>

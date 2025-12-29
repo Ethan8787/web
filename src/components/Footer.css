@@ -21,6 +21,6 @@ footer {
 .left p {
     margin: 0;
     text-align: center;
-    color: #999;
+    color: var(--text-color);
     letter-spacing: 0.5px;
 }

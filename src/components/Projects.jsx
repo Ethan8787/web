@@ -42,7 +42,7 @@ function ProjectCard({ title, tag, description, githubLink }) {
 export default function Projects() {
     return (
         <div className="section" id="projects">
-            <h2>我的專案</h2>
+            <h2>我的專案 Projects</h2>
             <div className="project-grid">
                 {projectsData.map(project => (
                     <ProjectCard key={project.title} {...project} />

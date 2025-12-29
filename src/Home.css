@@ -1,21 +1,52 @@
 .intro-card h2 {
     border-bottom: 2px solid var(--accent-color);
     padding-bottom: 10px;
-    margin-bottom: 30px;
-    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .intro-card p {
     font-size: 1.1rem;
     line-height: 1.7;
+    text-align: center;
 }
 
 .button-group {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: 30px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.header-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-bg);
+    border-radius: 28px;
+    padding: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.header-group:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.header-group h1 {
+    color: var(--accent-color);
+    font-size: 4.5rem;
+}
+
+#avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1.25rem;
+    margin-top: 1px;
+    transition: transform 0.3s ease;
 }
 
 .btn {

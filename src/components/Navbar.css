@@ -34,34 +34,14 @@
     transform: translateY(-1px);
 }
 
-.header-group {
-    display: flex;
-    align-items: center;
-}
-
-#avatar {
-    width: 1.75rem;
-    height: 1.75rem;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 2px;
-    margin-top: 1px;
-    transition: transform 0.3s ease;
-}
-
 @media (max-width: 600px) {
     .nav-links {
         flex-wrap: wrap;
-        gap: 0px;
     }
     .nav-link {
-        font-size: 0.75rem;
-        padding: 0.5rem 0.5rem;
+        font-size: 1.5rem;
+        padding: 0.5rem 0.25rem;
         flex-grow: 1;
         text-align: center;
-    }
-    #avatar {
-        width: 1.5rem;
-        height: 1.5rem;
     }
 }

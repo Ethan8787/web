@@ -1,9 +1,10 @@
 :root {
     --bg-color: transparent;
     --text-color: #ffffff;
-    --accent-color: #50B8E7;
-    --card-bg: rgba(0, 0, 0, 0.7);
+    --accent-color: #0098EE;
+    --card-bg: rgba(0, 0, 0, 0.3);
     --font-mono: 'JetBrains Mono', monospace;
+    --box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
 }
 
 * {
