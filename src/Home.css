@@ -13,11 +13,12 @@
 }
 
 .button-group {
-    display: flex;
+    display: grid;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .header-group {
@@ -58,10 +59,17 @@
     border-radius: 9999px;
     font-size: 0.9rem;
     font-weight: bold;
+    text-align: center;
     transition: all 0.2s ease;
 }
 
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 10px var(--accent-color);
+}
+
+@media (max-width: 600px) {
+    .button-group {
+        grid-template-columns: repeat(1, 4fr);
+    }
 }

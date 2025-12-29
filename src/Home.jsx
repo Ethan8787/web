@@ -18,9 +18,7 @@ export default function Home() {
             <div className="intro-card" id="intro">
                 <h2>關於我 About Me</h2>
                 <p>
-                    你好，我是 Ethan，來自台灣的國三程式宅。<br/>
-                    比起「能跑」，我更在意「為什麼能跑」。<br/>
-                    Debug 是日常，搞懂原理是信仰。
+                    你好，我是 Ethan，來自台灣的國三程式設計愛好者。
                 </p>
                 <div className="button-group">
                     <a className="btn" href="https://discord.gg/AyucpYarpa" target="_blank">Discord</a>
