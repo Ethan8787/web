@@ -19,5 +19,4 @@ html, body {
     background: #000000;
     font-family: var(--font-mono), monospace;
     color: var(--text-color);
-    overflow-x: hidden;
 }
