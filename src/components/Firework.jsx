@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import {useEffect, useRef} from "react";
 import "./Firework.css";
 
 export default function Firework() {
@@ -8,29 +8,22 @@ export default function Firework() {
         const root = rootRef.current;
         if (!root) return;
 
-        const loadScript = (src) =>
-            new Promise((resolve, reject) => {
-                const s = document.createElement("script");
-                s.src = src;
-                s.async = true;
-                s.onload = () => resolve(s);
-                s.onerror = reject;
-                document.body.appendChild(s);
-            });
+        const loadScript = (src) => new Promise((resolve, reject) => {
+            const s = document.createElement("script");
+            s.src = src;
+            s.async = true;
+            s.onload = () => resolve(s);
+            s.onerror = reject;
+            document.body.appendChild(s);
+        });
 
         let injectedMainScript = null;
         let cancelled = false;
 
         (async () => {
-            await loadScript(
-                "https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js"
-            );
-            await loadScript(
-                "https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js"
-            );
-            await loadScript(
-                "https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js"
-            );
+            await loadScript("https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js");
+            await loadScript("https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js");
+            await loadScript("https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js");
 
             if (cancelled) return;
 
@@ -379,6 +372,13 @@ Object.keys(appNodes).forEach((key) => {
   appNodes[key] = document.querySelector(appNodes[key]);
 });
 
+const closeMenuBtn = document.querySelector(".close-menu-btn");
+if (closeMenuBtn) {
+  closeMenuBtn.addEventListener("click", () => {
+    toggleMenu(false);
+  });
+}
+
 if (!fullscreenEnabled()) {
   appNodes.fullscreenFormOption.classList.add("remove");
 }
@@ -395,6 +395,7 @@ function renderApp(state) {
     state.menuOpen || state.config.hideControls
   );
   appNodes.canvasContainer.classList.toggle("blur", state.menuOpen);
+  appNodes.canvasContainer.style.pointerEvents = state.menuOpen ? "none" : "auto";
   appNodes.menu.classList.toggle("hide", !state.menuOpen);
   appNodes.finaleModeFormOption.style.opacity = state.config.autoLaunch
     ? 1
@@ -2056,15 +2057,14 @@ if (IS_HEADER) {
         };
     }, []);
 
-    return (
-        <div ref={rootRef} className="firework-root">
-            <div style={{ height: 0, width: 0, position: "absolute", visibility: "hidden" }}>
+    return (<div ref={rootRef} className="firework-root">
+            <div style={{height: 0, width: 0, position: "absolute", visibility: "hidden"}}>
                 <svg xmlns="http://www.w3.org/2000/svg">
                     <symbol id="icon-play" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
+                        <path d="M8 5v14l11-7z"/>
                     </symbol>
                     <symbol id="icon-pause" viewBox="0 0 24 24">
-                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
                     </symbol>
                     <symbol id="icon-close" viewBox="0 0 24 24">
                         <path
@@ -2151,23 +2151,23 @@ if (IS_HEADER) {
                                 </div>
                                 <div className="form-option form-option--checkbox">
                                     <label className="auto-launch-label">Auto Fire</label>
-                                    <input className="auto-launch" type="checkbox" />
+                                    <input className="auto-launch" type="checkbox"/>
                                 </div>
                                 <div className="form-option form-option--checkbox form-option--finale-mode">
                                     <label className="finale-mode-label">Finale Mode</label>
-                                    <input className="finale-mode" type="checkbox" />
+                                    <input className="finale-mode" type="checkbox"/>
                                 </div>
                                 <div className="form-option form-option--checkbox">
                                     <label className="hide-controls-label">Hide Controls</label>
-                                    <input className="hide-controls" type="checkbox" />
+                                    <input className="hide-controls" type="checkbox"/>
                                 </div>
                                 <div className="form-option form-option--checkbox form-option--fullscreen">
                                     <label className="fullscreen-label">Fullscreen</label>
-                                    <input className="fullscreen" type="checkbox" />
+                                    <input className="fullscreen" type="checkbox"/>
                                 </div>
                                 <div className="form-option form-option--checkbox">
                                     <label className="long-exposure-label">Open Shutter</label>
-                                    <input className="long-exposure" type="checkbox" />
+                                    <input className="long-exposure" type="checkbox"/>
                                 </div>
                             </form>
 
@@ -2193,6 +2193,5 @@ if (IS_HEADER) {
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        </div>);
 }
