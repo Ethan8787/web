@@ -25,7 +25,7 @@ export default function Answer() {
         <div className="container">
             <div className="section">
                 <h2>Pagamo 答案</h2>
-                <p>上次更新時間: 2025/12/28 22:22:05</p>
+                <p>上次更新時間: 2026/01/09 00:57:07</p>
 
                 <h3 style={{color: 'var(--accent-color)', marginTop: '20px'}}>
                     中文丨閱讀素養

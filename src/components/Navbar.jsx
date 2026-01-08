@@ -1,36 +1,37 @@
 import './Navbar.css'
+
 export default function Navbar() {
     return (<nav className="navbar">
         <div className="nav-links">
             <a
-                href="/#intro"
+                href="/"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
-                    window.location.href = "/#intro";
+                    window.location.href = "/";
                 }}
             >
-                關於我
+                首頁
             </a>
             <a
-                href="/#skills"
+                href="/matrix"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
-                    window.location.href = "/#skills";
+                    window.location.href = "/matrix";
                 }}
             >
-                我的能力
+                矩陣
             </a>
             <a
-                href="/#projects"
+                href="/firework"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
-                    window.location.href = "/#projects";
+                    window.location.href = "/firework";
                 }}
             >
-                我的專案
+                煙火
             </a>
             <a
                 href="/answer"
@@ -40,7 +41,7 @@ export default function Navbar() {
                     window.location.href = "/answer";
                 }}
             >
-                答案專區
+                答案
             </a>
         </div>
     </nav>);

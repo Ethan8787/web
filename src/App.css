@@ -27,6 +27,12 @@
     transition: all 0.3s;
 }
 
+.section:hover {
+    .skill-name {
+        color: var(--text-color);
+    }
+}
+
 .intro-card:hover {
     p {
         color: var(--text-color);
@@ -34,7 +40,7 @@
 }
 
 .intro-card:hover, .section:hover {
-    box-shadow: var(--box-shadow);
+    transform: translateY(-2px);
 }
 
 .section h2 {

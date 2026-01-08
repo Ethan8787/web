@@ -21,9 +21,8 @@
 .nav-link {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: bold;
-    font-size: 1em;
-    padding: 7px 12px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 12px;
     transition: all 0.2s ease-in-out;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -40,8 +39,7 @@
     }
     .nav-link {
         font-size: 1rem;
-        padding: 0.5rem 0.25rem;
-        flex-grow: 1;
+        padding: 0.5rem 1rem;
         text-align: center;
     }
 }
