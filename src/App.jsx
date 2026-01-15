@@ -3,7 +3,8 @@ import Home from "./Home.jsx";
 import Answer from "./Answer.jsx";
 import NotFound from "./NotFound.jsx";
 import Matrix from "./components/MatrixBackground.jsx";
-import Firework from "./components/Firework.jsx";
+import Clock from "./components/Clock.jsx";
+import Navbar from "./components/Navbar.jsx";
 import "./App.css"
 
 export default function App() {
@@ -11,7 +12,9 @@ export default function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/answer" element={<Answer/>}/>
             <Route path="*" element={<NotFound/>}/>
-            <Route path="/firework" element={<Firework/>}/>
             <Route path="/matrix" element={<Matrix/>}/>
+            <Route path="/clock" element={
+                <Clock/>
+            }/>
         </Routes>);
 }

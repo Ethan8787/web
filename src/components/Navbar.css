@@ -4,7 +4,7 @@
     z-index: 50;
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
-    padding: 0.3rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     display: flex;
     backdrop-filter: blur(5px);
     justify-content: center;
@@ -26,11 +26,6 @@
     border-radius: 12px;
     transition: all 0.2s ease-in-out;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
-.nav-link:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-1px);
 }
 
 @media (max-width: 600px) {

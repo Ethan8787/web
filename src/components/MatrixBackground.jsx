@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 import './MatrixBackground.css';
+import Navbar from "./Navbar.jsx";
 
 const MatrixBackground = () => {
     const canvasRef = useRef(null);
@@ -85,6 +86,11 @@ const MatrixBackground = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    return (<canvas id="c" ref={canvasRef}></canvas>);
+    return (
+        <div className={"matrix"}>
+            <Navbar/>
+            <canvas id="c" ref={canvasRef}></canvas>
+        </div>
+    );
 };
 export default MatrixBackground;

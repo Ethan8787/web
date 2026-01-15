@@ -24,14 +24,14 @@ export default function Navbar() {
                 矩陣
             </a>
             <a
-                href="/firework"
+                href="/clock"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
-                    window.location.href = "/firework";
+                    window.location.href = "/clock";
                 }}
             >
-                煙火
+                時鐘
             </a>
             <a
                 href="/answer"

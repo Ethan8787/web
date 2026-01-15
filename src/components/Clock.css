@@ -1,0 +1,39 @@
+.clock-shell {
+    inset: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.clock-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scroll-timer {
+    display: flex;
+    font-size: 15rem;
+}
+
+.digit {
+    position: relative;
+    width: 0.7em;
+    height: 1.2em;
+    overflow: hidden;
+}
+
+.digit span {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.45,0,0.55,1);
+}
+
+.colon {
+    font-size: 0.9em;
+    line-height: 1.2em;
+}
+
