@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./Clock.css";
+import Navbar from "./Navbar.jsx";
 
 export default function Clock() {
     const digitRefs = useRef({});
@@ -60,7 +61,7 @@ export default function Clock() {
         };
 
         tick();
-        const id = setInterval(tick, 1);
+        const id = setInterval(tick, 1000);
         return () => clearInterval(id);
     }, []);
 
