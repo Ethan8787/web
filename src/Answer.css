@@ -116,7 +116,6 @@
 
 .answer-btn:not(.active) {
     opacity: 0.5;
-    box-shadow: 0 0 50px rgba(0, 152, 238, 0.2);
 }
 
 .answer-section p {
