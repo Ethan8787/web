@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Clock.css";
+import Navbar from "./Navbar.jsx";
 
 export default function Clock() {
     const digitRefs = useRef({});
     const timerRef = useRef(null);
+    const [isFullscreen, setIsFullscreen] = useState(true);
 
     const clearDigit = digit => {
         while (digit.firstChild) digit.removeChild(digit.firstChild);
@@ -25,7 +27,6 @@ export default function Clock() {
     const animateDigit = (id, value) => {
         const digit = digitRefs.current[id];
         if (!digit) return;
-
         if (digit.dataset.value == value) return;
 
         const oldSpan = digit.querySelector("span");
@@ -95,32 +96,41 @@ export default function Clock() {
             }
         };
 
+        const onFullscreenChange = () => {
+            setIsFullscreen(!!document.fullscreenElement);
+        };
+
         document.addEventListener("visibilitychange", onVisibilityChange);
+        document.addEventListener("fullscreenchange", onFullscreenChange);
 
         return () => {
             clearTimeout(timerRef.current);
             document.removeEventListener("visibilitychange", onVisibilityChange);
+            document.removeEventListener("fullscreenchange", onFullscreenChange);
         };
     }, []);
 
     const bind = id => el => (digitRefs.current[id] = el);
 
     return (
-        <div className="clock-shell">
-            <div className="clock-layer">
-                <div className="scroll-timer">
-                    <div className="digit" ref={bind("hourTens")} />
-                    <div className="digit" ref={bind("hourOnes")} />
-                    <div className="colon">:</div>
+        <>
+            {!isFullscreen && <Navbar />}
+            <div className="clock-shell">
+                <div className="clock-layer">
+                    <div className="scroll-timer">
+                        <div className="digit" ref={bind("hourTens")} />
+                        <div className="digit" ref={bind("hourOnes")} />
+                        <div className="colon">:</div>
 
-                    <div className="digit" ref={bind("minTens")} />
-                    <div className="digit" ref={bind("minOnes")} />
-                    <div className="colon">:</div>
+                        <div className="digit" ref={bind("minTens")} />
+                        <div className="digit" ref={bind("minOnes")} />
+                        <div className="colon">:</div>
 
-                    <div className="digit" ref={bind("secTens")} />
-                    <div className="digit" ref={bind("secOnes")} />
+                        <div className="digit" ref={bind("secTens")} />
+                        <div className="digit" ref={bind("secOnes")} />
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }

@@ -27,8 +27,12 @@
 
 .scroll-timer {
     display: flex;
-    font-size: 15rem;
     align-items: center;
+    font-size: clamp(
+            4rem,
+            calc(100vw - 575px),
+            15rem
+    );
 }
 
 .digit {
@@ -49,11 +53,7 @@
 }
 
 .colon {
-    font-size: 0.9em;
-    line-height: 1.2em;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 1em;
     transform: translate3d(0, 0, 0);
     will-change: opacity;
     animation: colonBreath 1s infinite;
