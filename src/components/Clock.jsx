@@ -5,7 +5,7 @@ import Navbar from "./Navbar.jsx";
 export default function Clock() {
     const digitRefs = useRef({});
     const timerRef = useRef(null);
-    const [isFullscreen, setIsFullscreen] = useState(true);
+    const [isFullscreen, setIsFullscreen] = useState(false);
 
     const clearDigit = digit => {
         while (digit.firstChild) digit.removeChild(digit.firstChild);
