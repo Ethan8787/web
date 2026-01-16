@@ -27,8 +27,12 @@
 
 .scroll-timer {
     display: flex;
-    font-size: 15rem;
     align-items: center;
+    font-size: clamp(
+            4rem,
+            calc(100vw - 750px),
+            15rem
+    );
 }
 
 .digit {
@@ -49,7 +53,7 @@
 }
 
 .colon {
-    font-size: 0.9em;
+    font-size: 0.7em;
     line-height: 1.2em;
     display: inline-flex;
     align-items: center;

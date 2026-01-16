@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./Clock.css";
+import Navbar from "./Navbar.jsx";
 
 export default function Clock() {
     const digitRefs = useRef({});
@@ -78,6 +79,7 @@ export default function Clock() {
 
     const tick = () => {
         render(false);
+        // eslint-disable-next-line react-hooks/purity
         const now = Date.now();
         const delay = 1000 - (now % 1000);
         timerRef.current = setTimeout(tick, delay);
@@ -106,6 +108,8 @@ export default function Clock() {
     const bind = id => el => (digitRefs.current[id] = el);
 
     return (
+        <>
+            <Navbar/>
         <div className="clock-shell">
             <div className="clock-layer">
                 <div className="scroll-timer">
@@ -122,5 +126,6 @@ export default function Clock() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
