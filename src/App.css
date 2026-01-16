@@ -21,6 +21,7 @@
     padding: 25px;
     border-radius: 28px;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 80px rgba(0, 152, 238, 0.2);
 }
 
 .intro-card p {
@@ -41,7 +42,7 @@
 }
 
 .intro-card:hover, .section:hover {
-    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 152, 238, 0.5);
 }
 
 .section h2 {

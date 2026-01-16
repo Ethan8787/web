@@ -1,6 +1,19 @@
 .clock-shell {
     inset: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            "Noto Sans",
+            "PingFang TC",
+            "Microsoft JhengHei",
+            sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
 }
 
 .clock-layer {
@@ -15,11 +28,12 @@
 .scroll-timer {
     display: flex;
     font-size: 15rem;
+    align-items: center;
 }
 
 .digit {
     position: relative;
-    width: 0.7em;
+    width: 0.6em;
     height: 1.2em;
     overflow: hidden;
 }
@@ -29,11 +43,33 @@
     top: 0;
     width: 100%;
     text-align: center;
-    transition: transform 0.4s cubic-bezier(0.45,0,0.55,1);
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    transition: transform 260ms cubic-bezier(0.45,0,0.55,1);
 }
 
 .colon {
     font-size: 0.9em;
     line-height: 1.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate3d(0, 0, 0);
+    will-change: opacity;
+    animation: colonBreath 1s infinite;
 }
 
+@keyframes colonBreath {
+    0% {
+        opacity: 0.4;
+    }
+    30% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.85;
+    }
+    100% {
+        opacity: 0.25;
+    }
+}

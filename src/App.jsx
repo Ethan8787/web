@@ -4,7 +4,6 @@ import Answer from "./Answer.jsx";
 import NotFound from "./NotFound.jsx";
 import Matrix from "./components/MatrixBackground.jsx";
 import Clock from "./components/Clock.jsx";
-import Navbar from "./components/Navbar.jsx";
 import "./App.css"
 
 export default function App() {

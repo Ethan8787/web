@@ -29,10 +29,11 @@
     border-radius: 28px;
     padding: 25px;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 80px rgba(0, 152, 238, 0.2);
 }
 
 .header-group:hover {
-    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 152, 238, 0.5);
 }
 
 .header-group h1 {
