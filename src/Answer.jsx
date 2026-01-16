@@ -28,7 +28,7 @@ export default function Answer() {
             <div className="answer">
                 <div className="answer-container">
                     <div className="answer-section">
-                        <h2>Pagamo 答案 (中英各40篇)</h2>
+                        <h2>Pagamo 答案</h2>
                         <p>上次更新時間: 2026/01/16 19:57:07</p>
 
                         <div className="answer-lang-switch">
@@ -36,13 +36,13 @@ export default function Answer() {
                                 className={`answer-btn ${lang === "zh" ? "active" : ""}`}
                                 onClick={() => setLang("zh")}
                             >
-                                中文｜閱讀素養
+                                中文閱讀
                             </button>
                             <button
                                 className={`answer-btn ${lang === "en" ? "active" : ""}`}
                                 onClick={() => setLang("en")}
                             >
-                                英文｜閱讀素養
+                                英文閱讀
                             </button>
                         </div>
 
