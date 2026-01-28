@@ -34,6 +34,7 @@
     padding: 20px;
     background-color: #121212;
     border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
     flex: 1;
     overflow-y: auto;
 }

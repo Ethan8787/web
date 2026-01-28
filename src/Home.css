@@ -81,6 +81,7 @@
 .btn-youtube {
     background: #ff0000;
 }
+
 .btn-youtube:hover {
     box-shadow: 0 0 12px #ff0000;
 }
@@ -91,6 +92,7 @@
             #833ab4,#fd1d1d,#fcb045
     );
 }
+
 .btn-instagram:hover {
     box-shadow: 0 0 12px #833ab4;
 }
