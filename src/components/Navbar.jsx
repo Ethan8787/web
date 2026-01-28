@@ -34,14 +34,14 @@ export default function Navbar() {
                 時鐘
             </a>
             <a
-                href="/answer"
+                href="/code"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
-                    window.location.href = "/answer";
+                    window.location.href = "/code";
                 }}
             >
-                答案
+                程式
             </a>
         </div>
     </nav>);

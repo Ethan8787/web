@@ -1,0 +1,87 @@
+.code-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 160px);
+}
+
+.code-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: var(--card-bg, #1a1a1a);
+    padding: 25px;
+    border-radius: 28px;
+    box-shadow: 0 0 80px rgba(0, 152, 238, 0.2);
+}
+
+.code-section h2 {
+    border-bottom: 2px solid var(--accent-color, #0098ee);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.code-block-wrapper {
+    position: relative;
+    margin: 10px 0;
+    padding: 20px;
+    background-color: #121212;
+    border-radius: 12px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.copy-btn-sticky-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.copy-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: #888888;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.copy-btn:hover {
+    position: sticky;
+    color: #ffffff;
+}
+
+.copy-btn svg {
+    opacity: 0.8;
+}
+
+.code-block-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.code-block-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .code-container {
+        margin-top: 20px;
+        height: calc(100vh - 120px);
+    }
+}
