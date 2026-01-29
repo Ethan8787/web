@@ -1,136 +1,152 @@
-import { useEffect, useRef, useState } from "react";
-import "./Clock.css";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import Navbar from "./Navbar.jsx";
+import "./Clock.css";
 
 export default function Clock() {
-    const digitRefs = useRef({});
-    const timerRef = useRef(null);
+    const [mode, setMode] = useState("CLOCK");
+    const [timeStr, setTimeStr] = useState("00:00.00");
+    const [isRunning, setIsRunning] = useState(false);
+    const [fontSize, setFontSize] = useState(16); // 單位: vw
+    const [showControls, setShowControls] = useState(true);
     const [isFullscreen, setIsFullscreen] = useState(false);
 
-    const clearDigit = digit => {
-        while (digit.firstChild) digit.removeChild(digit.firstChild);
+    const requestRef = useRef();
+    const startTimeRef = useRef(0);
+    const elapsedRef = useRef(0);
+    const displayRef = useRef(null);
+    const idleTimerRef = useRef(null);
+
+    const formatTime = (ms) => {
+        const totalSeconds = Math.floor(ms / 1000);
+        const centiseconds = Math.floor((ms % 1000) / 10);
+        const d = Math.floor(totalSeconds / 86400);
+        const h = Math.floor((totalSeconds % 86400) / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+        const pad = (num) => String(num).padStart(2, "0");
+
+        if (d > 0) return `${d}:${pad(h)}:${pad(m)}:${pad(s)}`;
+        if (h > 0) return `${pad(h)}:${pad(m)}:${pad(s)}.${pad(centiseconds)}`;
+        return `${pad(m)}:${pad(s)}.${pad(centiseconds)}`;
     };
 
-    const setInstant = (id, value) => {
-        const digit = digitRefs.current[id];
-        if (!digit) return;
-
-        clearDigit(digit);
-
-        const span = document.createElement("span");
-        span.textContent = value;
-        span.style.transform = "translate3d(0,0,0)";
-        digit.appendChild(span);
-        digit.dataset.value = value;
+    const resetIdleTimer = () => {
+        setShowControls(true);
+        if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+        idleTimerRef.current = setTimeout(() => {
+            if (isRunning || mode === "CLOCK") setShowControls(false);
+        }, 3000);
     };
 
-    const animateDigit = (id, value) => {
-        const digit = digitRefs.current[id];
-        if (!digit) return;
-        if (digit.dataset.value == value) return;
+    useLayoutEffect(() => {
+        if (displayRef.current) {
+            const containerWidth = window.innerWidth * 0.95;
+            const textWidth = displayRef.current.scrollWidth;
+            if (textWidth > containerWidth) {
+                const newSize = (containerWidth / textWidth) * fontSize;
+                setFontSize(newSize);
+            }
+        }
+    }, [timeStr, fontSize]);
 
-        const oldSpan = digit.querySelector("span");
-        const newSpan = document.createElement("span");
-
-        newSpan.textContent = value;
-        newSpan.style.transform = "translate3d(0,100%,0)";
-        digit.appendChild(newSpan);
-
-        newSpan.offsetHeight;
-        newSpan.style.transform = "translate3d(0,0,0)";
-        if (oldSpan) oldSpan.style.transform = "translate3d(0,-100%,0)";
-
-        newSpan.addEventListener(
-            "transitionend",
-            () => {
-                clearDigit(digit);
-                digit.appendChild(newSpan);
-                digit.dataset.value = value;
-            },
-            { once: true }
-        );
-    };
-
-    const render = instant => {
-        const d = new Date();
-        const h = d.getHours();
-        const m = d.getMinutes();
-        const s = d.getSeconds();
-
-        const values = [
-            Math.floor(h / 10), h % 10,
-            Math.floor(m / 10), m % 10,
-            Math.floor(s / 10), s % 10
-        ];
-
-        const ids = [
-            "hourTens",
-            "hourOnes",
-            "minTens",
-            "minOnes",
-            "secTens",
-            "secOnes"
-        ];
-
-        ids.forEach((id, i) =>
-            instant ? setInstant(id, values[i]) : animateDigit(id, values[i])
-        );
-    };
-
-    const tick = () => {
-        render(false);
-        const now = Date.now();
-        const delay = 1000 - (now % 1000);
-        timerRef.current = setTimeout(tick, delay);
+    const animate = () => {
+        if (mode === "CLOCK") {
+            const now = new Date();
+            setTimeStr(`${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}:${String(now.getSeconds()).padStart(2, "0")}`);
+            requestRef.current = setTimeout(animate, 1000);
+        } else {
+            const currentElapsed = isRunning
+                // eslint-disable-next-line react-hooks/purity
+                ? Date.now() - startTimeRef.current + elapsedRef.current
+                : elapsedRef.current;
+            setTimeStr(formatTime(currentElapsed));
+            requestRef.current = requestAnimationFrame(animate);
+        }
     };
 
     useEffect(() => {
-        render(true);
-        tick();
-
-        const onVisibilityChange = () => {
-            clearTimeout(timerRef.current);
-            if (!document.hidden) {
-                render(true);
-                tick();
-            }
-        };
-
-        const onFullscreenChange = () => {
-            setIsFullscreen(!!document.fullscreenElement);
-        };
-
-        document.addEventListener("visibilitychange", onVisibilityChange);
-        document.addEventListener("fullscreenchange", onFullscreenChange);
+        animate();
+        window.addEventListener("mousemove", resetIdleTimer);
+        const fsChange = () => setIsFullscreen(!!document.fullscreenElement);
+        document.addEventListener("fullscreenchange", fsChange);
 
         return () => {
-            clearTimeout(timerRef.current);
-            document.removeEventListener("visibilitychange", onVisibilityChange);
-            document.removeEventListener("fullscreenchange", onFullscreenChange);
+            clearTimeout(requestRef.current);
+            cancelAnimationFrame(requestRef.current);
+            window.removeEventListener("mousemove", resetIdleTimer);
+            document.removeEventListener("fullscreenchange", fsChange);
         };
-    }, []);
+    }, [mode, isRunning]);
 
-    const bind = id => el => (digitRefs.current[id] = el);
+    const toggleStopwatch = () => {
+        if (!isRunning) {
+            startTimeRef.current = Date.now();
+            setIsRunning(true);
+        } else {
+            elapsedRef.current += Date.now() - startTimeRef.current;
+            setIsRunning(false);
+        }
+    };
+
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    };
 
     return (
-        <>
-            {!isFullscreen && <Navbar />}
-            <div className="clock-shell">
-                <div className="clock-layer">
-                    <div className="scroll-timer">
-                        <div className="digit" ref={bind("hourTens")} />
-                        <div className="digit" ref={bind("hourOnes")} />
-                        <div className="colon">:</div>
+        <div className={`clock-shell ${!showControls ? "hide-cursor" : ""}`}>
+            <div className={`clock-nav-container ${(!showControls || isFullscreen) ? "fade-out" : ""}`}>
+                <Navbar />
+            </div>
 
-                        <div className="digit" ref={bind("minTens")} />
-                        <div className="digit" ref={bind("minOnes")} />
-                        <div className="colon">:</div>
+            <div
+                ref={displayRef}
+                className="time-display"
+                style={{ fontSize: `${fontSize}vw` }}
+            >
+                {timeStr}
+            </div>
+            <div className={`ui-overlay ${showControls ? "visible" : "hidden"}`}>
+                <button className="btn-fs" onClick={toggleFullscreen}>
+                    {isFullscreen ? (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+                    ) : (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                    )}
+                </button>
 
-                        <div className="digit" ref={bind("secTens")} />
-                        <div className="digit" ref={bind("secOnes")} />
-                    </div>
+                <div className={`controls-layer ${mode === "STOPWATCH" ? "is-stopwatch" : ""}`}>
+                    <button className="btn-circle reset" onClick={() => { elapsedRef.current = 0; if(!isRunning) setTimeStr("00:00.00"); }}>
+                        Reset
+                    </button>
+                    <button className={`btn-circle ${isRunning ? "stop" : "start"}`} onClick={toggleStopwatch}>
+                        {isRunning ? "Stop" : "Start"}
+                    </button>
+                </div>
+
+                <div className="slider-container">
+                    <p className="slider-icon">A</p>
+                    <input
+                        type="range"
+                        min="2"
+                        max="20"
+                        step="0.1"
+                        value={fontSize}
+                        onChange={(e) => setFontSize(parseFloat(e.target.value))}
+                        className="ios-slider"
+                    />
+                    <h2 className="slider-icon large">A</h2>
+                </div>
+
+                <div className="mode-pill-container">
+                    <button className="btn-pill" onClick={() => setMode(mode === "CLOCK" ? "STOPWATCH" : "CLOCK")}>
+                        {mode === "CLOCK" ? "Stopwatch" : "Clock"}
+                    </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

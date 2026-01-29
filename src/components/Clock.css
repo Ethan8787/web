@@ -1,75 +1,218 @@
 .clock-shell {
-    inset: 0;
-    font-family:
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            "Noto Sans",
-            "PingFang TC",
-            "Microsoft JhengHei",
-            sans-serif;
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum";
-}
+    --clock-bg: #000000;
+    --clock-fg: #ffffff;
+    --ios-green: #30d158;
+    --ios-red: #ff453a;
+    --ios-grey: #333333;
 
-.clock-layer {
-    position: absolute;
+    position: fixed;
     inset: 0;
+    background-color: var(--clock-bg);
+    color: var(--clock-fg);
+    font-family: "SF Mono", "Roboto Mono", monospace;
+    font-weight: 200;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
     overflow: hidden;
 }
 
-.scroll-timer {
-    display: flex;
-    align-items: center;
-    font-size: clamp(
-            4rem,
-            calc(100vw - 575px),
-            15rem
-    );
+.clock-shell.hide-cursor {
+    cursor: none;
 }
 
-.digit {
-    position: relative;
-    width: 0.6em;
-    height: 1.2em;
-    overflow: hidden;
-}
-
-.digit span {
-    position: absolute;
+.clock-nav-container {
+    position: fixed;
     top: 0;
     width: 100%;
-    text-align: center;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    transition: transform 260ms cubic-bezier(0.45,0,0.55,1);
+    z-index: 200;
+    font-weight: normal;
+    transition: opacity 0.5s ease;
+}
+.clock-nav-container.fade-out {
+    opacity: 0; pointer-events: none;
 }
 
-.colon {
-    font-size: 1em;
-    transform: translate3d(0, 0, 0);
-    will-change: opacity;
-    animation: colonBreath 1s infinite;
+.time-display {
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+    white-space: nowrap;
+    z-index: 1;
+    transition: font-size 0.05s linear;
 }
 
-@keyframes colonBreath {
+
+.ui-overlay {
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ui-overlay.hidden { opacity: 0; pointer-events: none; }
+.ui-overlay.visible { opacity: 1; pointer-events: auto; }
+
+
+.btn-fs {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+.btn-fs:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+.slider-container {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 24px;
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+}
+
+.ios-slider {
+    -webkit-appearance: none;
+    width: 220px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    outline: none;
+}
+
+.ios-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.ios-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.controls-layer {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    visibility: hidden;
+}
+.controls-layer.is-stopwatch { visibility: visible; }
+
+.btn-circle {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: none;
+    font-family: inherit;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 0 0 4px var(--clock-bg);
+    transition:
+            background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.1s cubic-bezier(0.4, 0, 0.2, 1),
+            filter 0.2s ease;
+}
+
+.btn-circle::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    z-index: -1;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-circle:active {
+    transform: scale(0.88);
+}
+
+.btn-circle:active::after {
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+
+.btn-circle.reset {
+    background-color: var(--ios-grey);
+    color: #fff;
+}
+.btn-circle.reset:hover {
+    background-color: #444;
+}
+
+.btn-circle.start {
+    background-color: var(--ios-green);
+    color: #000;
+    font-weight: 500;
+    animation: buttonEntry 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-circle.stop {
+    background-color: var(--ios-red);
+    color: #000;
+    font-weight: 500;
+    animation: buttonEntry 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes buttonEntry {
     0% {
-        opacity: 0.4;
-    }
-    30% {
-        opacity: 1;
-    }
-    60% {
-        opacity: 0.85;
+        transform: scale(0.5);
+        opacity: 0;
     }
     100% {
-        opacity: 0.25;
+        transform: scale(1);
+        opacity: 1;
     }
+}
+
+.btn-circle.start:active {
+    filter: brightness(1.2);
+}
+
+.btn-circle.stop:active {
+    filter: brightness(0.8);
+}
+
+.mode-pill-container {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn-pill {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }

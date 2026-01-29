@@ -3,7 +3,7 @@
     --text-color: #ffffff;
     --accent-color: #0098EE;
     --card-bg: rgba(0, 0, 0, 0.3);
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-mono: JetBrains Mono, Menlo, Consolas, "Courier New", monospace
 }
 
 * {
@@ -18,4 +18,13 @@ html, body {
     background: #000000;
     font-family: var(--font-mono), monospace;
     color: var(--text-color);
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
