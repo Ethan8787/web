@@ -7,18 +7,20 @@ import Footer from "./components/Footer.jsx";
 import "./Code.css";
 
 export default function Code() {
+    const [activeTab, setActiveTab] = useState("code1"); // "code1" or "code2"
     const [codeContent, setCodeContent] = useState("// 載入中...");
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
-        fetch("/code.txt")
+        setCodeContent("// 載入中..."); // Show loading when switching
+        fetch(`/${activeTab}.txt`)
             .then(r => {
-                if (!r.ok) throw new Error("找不到 code.txt");
+                if (!r.ok) throw new Error(`找不到 ${activeTab}.txt`);
                 return r.text();
             })
             .then(text => setCodeContent(text))
             .catch(err => setCodeContent(`// 載入失敗: ${err.message}`));
-    }, []);
+    }, [activeTab]);
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(codeContent).then(() => {
@@ -27,16 +29,6 @@ export default function Code() {
         });
     };
 
-    useEffect(() => {
-        fetch("/code.txt")
-            .then(r => {
-                if (!r.ok) throw new Error("找不到 code.txt");
-                return r.text();
-            })
-            .then(text => setCodeContent(text))
-            .catch(err => setCodeContent(`// 載入失敗: ${err.message}`));
-    }, []);
-
     return (
         <>
             <Background />
@@ -44,7 +36,21 @@ export default function Code() {
             <div className="code-page">
                 <div className="code-container">
                     <div className="code-section">
-                        <h2>Arduino 程式碼</h2>
+                        <h2>程式碼 Code</h2>
+                        <div className="tab-container">
+                            <button
+                                className={`tab-btn ${activeTab === "code1" ? "active" : ""}`}
+                                onClick={() => setActiveTab("code1")}
+                            >
+                                比賽題目
+                            </button>
+                            <button
+                                className={`tab-btn ${activeTab === "code2" ? "active" : ""}`}
+                                onClick={() => setActiveTab("code2")}
+                            >
+                                可變電阻
+                            </button>
+                        </div>
 
                         <div className="code-block-wrapper">
                             <div className="copy-btn-sticky-wrapper">
@@ -55,7 +61,7 @@ export default function Code() {
                                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                                             </svg>
-                                            <span>複製</span>
+                                            <p>複製</p>
                                         </>
                                     )}
                                 </button>
@@ -68,8 +74,7 @@ export default function Code() {
                                     background: 'transparent',
                                     padding: '0',
                                     margin: '0',
-                                    fontSize: '1em',
-                                    fontWeight: 'normal',
+                                    fontSize: '0.95em',
                                     lineHeight: '1.6',
                                     fontFamily: "'JetBrains Mono', monospace",
                                 }}

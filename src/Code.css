@@ -1,47 +1,105 @@
+:root {
+    --accent-color: #0098ee;
+    --card-bg: #1a1a1a;
+    --code-bg: #121212;
+    --text-dim: #888888;
+}
+
 .code-container {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 900px;
-    margin: 60px auto;
+    max-width: 1000px; /* Slightly wider for better code readability */
+    margin: 40px auto;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 180px);
 }
 
 .code-section {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    background: var(--card-bg, #1a1a1a);
-    padding: 25px;
+    background: var(--card-bg);
+    padding: 30px;
     border-radius: 28px;
-    box-shadow: 0 0 80px rgba(0, 152, 238, 0.2);
+    box-shadow: 0 0 50px rgba(0, 152, 238, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .code-section h2 {
-    border-bottom: 2px solid var(--accent-color, #0098ee);
+    border-bottom: 2px solid var(--accent-color);
     padding-bottom: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-size: 1.8rem;
     text-align: center;
 }
 
+/* Tabs Styling */
+.tab-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border-radius: 12px;
+    width: fit-content;
+    align-self: center;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 152, 238, 0.3);
+}
+
+.tab-btn:hover:not(.active) {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+}
+
 .code-block-wrapper {
     position: relative;
-    margin: 10px 0;
-    padding: 20px;
-    background-color: #121212;
-    border-radius: 12px;
-    font-family: 'JetBrains Mono', monospace;
+    margin-top: 5px;
+    padding: 25px;
+    background-color: var(--code-bg);
+    border-radius: 16px;
     flex: 1;
     overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom Scrollbar for the Code Block */
+.code-block-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+.code-block-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+.code-block-wrapper::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+.code-block-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
 }
 
 .copy-btn-sticky-wrapper {
     position: sticky;
-    top: 0;
+    top: -10px;
+    right: 0;
     z-index: 100;
     height: 0;
     display: flex;
@@ -49,40 +107,19 @@
 }
 
 .copy-btn {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: none;
+    background: rgba(0, 0, 0, 0);
     border: none;
-    color: #888888;
+    color: var(--text-dim);
     cursor: pointer;
-    font-size: 0.85rem;
-    padding: 8px 12px;
     transition: all 0.2s;
-    border-radius: 4px;
-}
-
-.copy-btn:hover {
-    position: sticky;
-    color: #ffffff;
+    display: flex;
 }
 
 .copy-btn svg {
-    opacity: 0.8;
+    margin-right: 3px;
 }
 
-.code-block-wrapper::-webkit-scrollbar {
-    width: 8px;
-}
-
-.code-block-wrapper::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-}
-
-@media (max-width: 600px) {
-    .code-container {
-        margin-top: 20px;
-        height: calc(100vh - 120px);
-    }
+.copy-btn:hover {
+    color: white;
+    border-color: var(--accent-color);
 }
