@@ -173,7 +173,7 @@ export default function Clock() {
                         onChange={(e) => setFontSize(parseFloat(e.target.value))}
                         className="clean-slider"
                     />
-                    <span className="slider-label large">A</span>
+                    <span className="slider-label large" >A</span>
                 </div>
 
                 <div className="mode-switch-container">

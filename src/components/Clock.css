@@ -222,6 +222,14 @@
     border-radius: 50%;
 }
 
+.slider-label.small {
+    font-size: 0.8rem;
+}
+
+.slider-label.large {
+    font-size: 1.2rem;
+}
+
 .mode-switch-container {
     position: absolute;
     bottom: 5%;
