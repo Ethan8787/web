@@ -68,8 +68,10 @@ export default function Code() {
                                     background: 'transparent',
                                     padding: '0',
                                     margin: '0',
-                                    fontSize: '1rem',
+                                    fontSize: '1em',
+                                    fontWeight: 'normal',
                                     lineHeight: '1.6',
+                                    fontFamily: "'JetBrains Mono', monospace",
                                 }}
                             >
                                 {codeContent}

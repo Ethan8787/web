@@ -1,8 +1,6 @@
-#include <Ethernet.h>
-
-int L[8] = {3, 4, 5, 6, 7, 8, 9, 10};
-int S[8] = {52, 50, 48, 46, 47, 49, 51, 53};
-int B[5] = {26, 25, 24, 23, 22};
+int L[8] = {29, 28, 27, 26, 25, 24, 23, 22};
+int S[8] = {11, 10, 9, 8, 7, 6, 5, 4};
+int B[5] = {34, 35, 36, 37, 38};
 bool debug = 0;
 
 // LED 第一題
@@ -157,26 +155,22 @@ void loop() {
 
   // 第五個按鈕 七段-2
   sw = digitalRead(B[4]);
-  delay(20);
-  if (sw == LOW) {
-    while(digitalRead(B[4]) == LOW);
+  if (sw == 0) {
     for (int i = 0; i < 11; i++) {
       for (int j = 0; j < 8; j++) {
         digitalWrite(S[j], data6[i][j]);
       }
       delay(500);
-      if (digitalRead(B[4]) == LOW) {
-        while(digitalRead(B[4]) == LOW);
-        delay(50);
-        while (true) {
-          if (digitalRead(B[4]) == LOW) {
-            while(digitalRead(B[4]) == LOW);
+      if (digitalRead(B[4]) == 0) {
+        while (digitalRead(B[4]) == 0);
+        while (1) {
+          if (digitalRead(B[4]) == 0) {
             break;
           }
         }
       }
       for (int j = 0; j < 8; j++) {
-        digitalWrite(S[j], LOW);
+        digitalWrite(S[j], 0);
       }
       delay(500);
     }

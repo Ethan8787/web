@@ -101,7 +101,7 @@
     height: 5rem;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 1.25rem;
+    margin-right: 1rem;
     margin-top: 1px;
     transition: transform 0.3s ease;
 }
@@ -162,13 +162,13 @@
 
 @media (max-width: 600px) {
     .button-group {
-        grid-template-columns: repeat(2, 4fr);
+        grid-template-columns: repeat(1, 1fr);
     }
     #avatar {
-        width: 4rem;
-        height: 4rem;
+        width: 3.5rem;
+        height: 3.5rem;
     }
     .header-group h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 }
