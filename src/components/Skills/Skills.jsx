@@ -1,4 +1,5 @@
 import "./Skills.css"
+
 const skillsData = [{name: 'Java', level: 90}, {name: 'Python', level: 80}, {name: 'C/C++', level: 65}, {
     name: 'React', level: 60
 },];

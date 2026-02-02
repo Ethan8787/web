@@ -9,7 +9,7 @@
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1000px; /* Slightly wider for better code readability */
+    max-width: 1000px;
     margin: 40px auto;
     padding: 0 20px;
     display: flex;
@@ -83,15 +83,17 @@
 
 /* Custom Scrollbar for the Code Block */
 .code-block-wrapper::-webkit-scrollbar {
-    width: 6px;
+    width: 0;
 }
+
 .code-block-wrapper::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .code-block-wrapper::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 10px;
+    background: transparent;
 }
+
 .code-block-wrapper::-webkit-scrollbar-thumb:hover {
     background: var(--accent-color);
 }
@@ -107,6 +109,7 @@
 }
 
 .copy-btn {
+
     background: rgba(0, 0, 0, 0);
     border: none;
     color: var(--text-dim);

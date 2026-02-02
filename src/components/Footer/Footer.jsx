@@ -1,7 +1,7 @@
 import './Footer.css'
 
 export default function Footer() {
-    return(
+    return (
         <footer>
             <div className="bottom">
                 <div className="left">

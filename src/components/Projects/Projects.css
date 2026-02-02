@@ -18,6 +18,7 @@
 
 .project-card:hover {
     transform: scale(1.02);
+
     .description {
         color: #ffffff;
     }
@@ -72,7 +73,7 @@
     color: #ff6666;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
     .project-grid {
         grid-template-columns: repeat(1, 1fr);
     }

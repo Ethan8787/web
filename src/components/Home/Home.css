@@ -129,6 +129,7 @@
 .btn-discord {
     background: #5865f2;
 }
+
 .btn-discord:hover {
     box-shadow: 0 0 12px #5865f2;
 }
@@ -144,7 +145,7 @@
 .btn-instagram {
     background: linear-gradient(
             to right,
-            #833ab4,#fd1d1d,#fcb045
+            #833ab4, #fd1d1d, #fcb045
     );
 }
 
@@ -164,10 +165,12 @@
     .button-group {
         grid-template-columns: repeat(1, 1fr);
     }
+
     #avatar {
         width: 3.5rem;
         height: 3.5rem;
     }
+
     .header-group h1 {
         font-size: 3rem;
     }

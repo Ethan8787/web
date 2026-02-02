@@ -1,4 +1,5 @@
 import './Projects.css'
+
 const projectsData = [
     {
         title: 'Useful',
@@ -26,7 +27,7 @@ const projectsData = [
     },
 ];
 
-function ProjectCard({ title, tag, description, githubLink }) {
+function ProjectCard({title, tag, description, githubLink}) {
     return (
         <div className="project-card">
             <div className="project-info">
