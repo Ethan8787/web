@@ -1,8 +1,8 @@
-import Background from './components/Background.jsx';
-import Navbar from './components/Navbar';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Footer from './components/Footer.jsx';
+import Background from '../Background/Background.jsx';
+import Navbar from '../Navbar/Navbar.jsx';
+import Skills from '../Skills/Skills.jsx';
+import Projects from '../Projects/Projects.jsx';
+import Footer from '../Footer/Footer.jsx';
 import "./Home.css";
 
 export default function Home() {

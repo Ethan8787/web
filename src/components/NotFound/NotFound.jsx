@@ -9,7 +9,7 @@ export default function NotFound() {
                 <p className="not-found-message">
                     Sorry, but the page you were trying to view does not exist.
                 </p>
-                <a href="/" className="not-found-home-link">
+                <a href="/public" className="not-found-home-link">
                     Go Home
                 </a>
             </div>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import Background from "./components/Background.jsx";
-import Navbar from "./components/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
+import Background from "../Background/Background.jsx";
+import Navbar from "../Navbar/Navbar.jsx";
+import Footer from "../Footer/Footer.jsx";
 import "./Code.css";
 
 export default function Code() {

@@ -1,8 +1,8 @@
 import React, {useEffect, useRef} from 'react';
-import './MatrixBackground.css';
-import Navbar from "./Navbar.jsx";
+import './Matrix.css';
+import Navbar from "../Navbar/Navbar.jsx";
 
-const MatrixBackground = () => {
+const Matrix = () => {
     const canvasRef = useRef(null);
     useEffect(() => {
         const root = {
@@ -93,4 +93,4 @@ const MatrixBackground = () => {
         </div>
     );
 };
-export default MatrixBackground;
+export default Matrix;

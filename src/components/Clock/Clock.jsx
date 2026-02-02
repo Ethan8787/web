@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from "react";
-import Navbar from "./Navbar.jsx";
+import Navbar from "../Navbar/Navbar.jsx";
 import "./Clock.css";
-import Background from "./Background.jsx";
+import Background from "../Background/Background.jsx";
 
 export default function Clock() {
     const [mode, setMode] = useState("CLOCK");

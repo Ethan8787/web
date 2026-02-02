@@ -286,8 +286,6 @@
     cursor: pointer;
 }
 
-
-
 .mode-btn.active {
     color: var(--accent-color);
     font-weight: 700;

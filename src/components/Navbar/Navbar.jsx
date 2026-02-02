@@ -4,7 +4,7 @@ export default function Navbar() {
     return (<nav className="navbar">
         <div className="nav-links">
             <a
-                href="/"
+                href="/public"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
@@ -14,7 +14,7 @@ export default function Navbar() {
                 首頁
             </a>
             <a
-                href="/matrix"
+                href="/Matrix/Matrix"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
@@ -24,7 +24,7 @@ export default function Navbar() {
                 矩陣
             </a>
             <a
-                href="/clock"
+                href="/Clock/Clock"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
@@ -34,7 +34,7 @@ export default function Navbar() {
                 時鐘
             </a>
             <a
-                href="/code"
+                href="/Code/Code"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
