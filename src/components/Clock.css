@@ -11,12 +11,8 @@
     user-select: none;
 }
 
-.clock-shell.hide-cursor { cursor: none; }
-
-.bg-mask {
-    position: fixed;
-    background: rgba(0, 0, 0, 0);
-    z-index: 0;
+.clock-shell.hide-cursor {
+    cursor: none;
 }
 
 .clock-nav-container {
@@ -26,8 +22,11 @@
     z-index: 200;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 .clock-nav-container.fade-out {
-    opacity: 0; transform: translateY(-20px); pointer-events: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
 }
 
 .content-layout {
@@ -76,8 +75,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
     padding: 20px 0;
     transition: opacity 0.3s ease;
 }
@@ -89,9 +86,18 @@
     }
 }
 
-.laps-container::-webkit-scrollbar { display: none; }
-.laps-container { -ms-overflow-style: none; scrollbar-width: none; }
-.laps-container.dimmed { opacity: 0.3; }
+.laps-container::-webkit-scrollbar {
+    display: none;
+}
+
+.laps-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.laps-container.dimmed {
+    opacity: 0.3;
+}
 
 .lap-item {
     display: flex;
@@ -99,8 +105,8 @@
     font-size: 1rem;
     padding: 10px 16px;
 
-    border-bottom: 1px solid rgba(255,255,255,1);
-    color: rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 0.7);
     animation: slideIn 0.2s ease-out;
 }
 
@@ -110,8 +116,14 @@
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateX(10px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .ui-overlay {
@@ -120,9 +132,18 @@
     pointer-events: none;
     transition: opacity 0.4s ease;
 }
-.ui-overlay.hidden { opacity: 0; }
-.ui-overlay.visible { opacity: 1; }
-.ui-overlay > * { pointer-events: auto; }
+
+.ui-overlay.hidden {
+    opacity: 0;
+}
+
+.ui-overlay.visible {
+    opacity: 1;
+}
+
+.ui-overlay > * {
+    pointer-events: auto;
+}
 
 .btn-fs {
     position: absolute;
@@ -155,8 +176,11 @@
     pointer-events: none;
     z-index: 99;
 }
+
 .controls-layer.is-stopwatch {
-    opacity: 1; transform: translateY(0); pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .btn-outline {
@@ -172,12 +196,14 @@
     cursor: pointer;
     transition: all 0.2s ease;
 }
+
 .btn-outline.secondary:hover {
-    color: #000; background: var(--accent-color);
+    color: #000;
+    background: var(--accent-color);
 }
 
 .btn-outline.start {
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(255, 255, 255, 0.2);
     color: #fff;
 }
 
@@ -187,7 +213,7 @@
 }
 
 .btn-outline.stop {
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(255, 255, 255, 0.2);
     color: #fff;
 }
 
@@ -213,6 +239,7 @@
     height: 2px;
     background: rgba(255, 255, 255, 0.2);
 }
+
 .clean-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 16px;
@@ -239,10 +266,29 @@
     align-items: center;
     gap: 1rem;
     z-index: 99;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     padding: 8px 16px;
     border-radius: 4px;
 }
-.divider { width: 1px; height: 12px; background: rgba(255,255,255,0.2); }
-.mode-btn { background: none; border: none; color: rgba(255, 255, 255, 0.4); font-family: var(--font-mono); font-size: 0.75rem; cursor: pointer; }
-.mode-btn.active { color: var(--accent-color); font-weight: 700; }
+
+.divider {
+    width: 1px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0);
+}
+
+.mode-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+
+
+.mode-btn.active {
+    color: var(--accent-color);
+    font-weight: 700;
+}

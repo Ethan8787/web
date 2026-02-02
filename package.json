@@ -1,20 +1,8 @@
 {
   "name": "bio",
-  "version": "0.0.0",
   "private": true,
-  "description": "一個以 React + Vite 建立的個人簡介頁面，包含矩陣背景動畫、技能進度與專案連結。",
-  "homepage": "https://github.com/Ethan8787/web#readme",
-  "bugs": {
-    "url": "https://github.com/Ethan8787/web/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ethan8787/web.git"
-  },
-  "license": "ISC",
-  "author": "",
+  "version": "0.0.0",
   "type": "module",
-  "main": "eslint.config.js",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
@@ -28,7 +16,8 @@
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.10.1",
     "react-syntax-highlighter": "^16.1.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
