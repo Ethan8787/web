@@ -164,7 +164,7 @@ export default function Clock() {
                     type="range"
                     min="2"
                     max="12"
-                    step="0.5"
+                    step="2"
                     value={fontSize}
                     onChange={(e) => setFontSize(parseFloat(e.target.value))}
                     className="clean-slider"
