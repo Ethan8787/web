@@ -84,7 +84,7 @@ export default function Code() {
                     </div>
                 </div>
             </div>
-            <Footer/>
         </div>
+        <Footer/>
     </>);
 }

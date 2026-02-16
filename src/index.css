@@ -1,10 +1,51 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/poppins.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'jett';
+    src: url('./assets/fonts/jettt.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ubuntu';
+    src: url('./assets/fonts/ubuntu-mono.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'zhtw';
+    src: url('./assets/fonts/zhtw.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'pinfang';
+    src: url('./assets/fonts/pingfang.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --bg-color: transparent;
     --text-color: #ffffff;
     --accent-color: #0098EE;
     --card-bg: rgba(0, 0, 0, 0.3);
-    --font-mono: "Poppins", sans-serif
-    --bg
+    --font-main: 'Poppins', 'zhtw', sans-serif;
+    --font-secondary: 'ubuntu', 'pinfang', sans-serif;
+    --font-third: 'jett', 'pinfang', sans-serif;
 }
 
 * {
@@ -17,8 +58,12 @@ html, body {
     width: 100%;
     min-height: 100vh;
     background: #000000;
-    font-family: var(--font-mono), monospace;
+    font-family: var(--font-main), monospace;
     color: var(--text-color);
+}
+
+body {
+    font-family: 'Poppins', 'zhtw', system-ui, sans-serif;
 }
 
 html::-webkit-scrollbar {

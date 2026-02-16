@@ -118,7 +118,7 @@ export default function Clock() {
                 className="time-display"
                 style={{fontSize: `${fontSize}vw`}}
             >
-                我買早餐
+                {timeStr}
             </div>
 
             {mode === "STOPWATCH" && laps.length > 0 && (

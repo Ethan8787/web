@@ -48,6 +48,7 @@
 
 .tag {
     font-size: 0.75rem;
+    font-family: var(--font-third), monospace;
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 16px;

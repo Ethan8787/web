@@ -81,6 +81,8 @@
     padding: 10px 14px;
     border-radius: 22px;
     font-size: 0.85rem;
+    font-weight: 200;
+    font-family: var(--font-secondary), sans-serif;
     max-width: 8rem;
     word-break: break-all;
     white-space: normal;
