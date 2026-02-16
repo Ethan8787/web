@@ -1,0 +1,137 @@
+.discord-icon svg {
+    fill: #5865F2;
+}
+
+.github-icon svg {
+    fill: #ffffff;
+}
+
+.instagram-icon svg {
+    fill: #E1306C;
+}
+
+.youtube-icon svg {
+    fill: #FF0000;
+}
+
+.pubg-icon svg {
+    fill: #F2A900;
+}
+
+.valorant-icon svg {
+    fill: #FF4655;
+}
+
+.icon-wrapper svg {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.game-id-item:hover svg {
+    transform: scale(1.15);
+}
+
+.game-id-item:hover {
+    transform: translateX(8px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--accent-color);
+}
+
+.game-id-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.game-id-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    z-index: 5;
+}
+
+.game-id-list {
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.game-id-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 15, 15, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px 24px;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: default;
+}
+
+.icon-wrapper {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--brand-color);
+    transition: all 0.3s ease;
+}
+
+.game-id-item:hover svg {
+    transform: scale(1.15);
+}
+
+.game-id-item:hover {
+    transform: translateX(8px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--accent-color);
+}
+
+.game-id-content-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.platform-name {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.link-btn {
+    color: rgba(255, 255, 255, 0.2);
+    padding: 8px;
+    transition: color 0.2s;
+}
+
+.game-id-item:hover .link-btn {
+    color: #fff;
+}

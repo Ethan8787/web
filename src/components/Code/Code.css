@@ -10,7 +10,7 @@
     z-index: 10;
     width: 100%;
     max-width: 1000px;
-    margin: 40px auto;
+    margin: 60px auto;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
@@ -36,33 +36,43 @@
     text-align: center;
 }
 
-/* Tabs Styling */
 .tab-container {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 5px;
-    border-radius: 12px;
+    gap: 12px;
+    margin-bottom: 25px;
+    background: transparent;
+    padding: 0;
     width: fit-content;
     align-self: center;
 }
 
 .tab-btn {
-    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #24292f;
+    color: #fff;
     border: none;
-    color: var(--text-dim);
-    padding: 8px 20px;
     cursor: pointer;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    opacity: 0.5;
+}
+
+.tab-btn:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 12px #24292f;
+    transform: translateY(-2px);
 }
 
 .tab-btn.active {
+    opacity: 1;
     background: var(--accent-color);
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 152, 238, 0.3);
+    box-shadow: 0 0 20px rgba(0, 152, 238, 0.6);
 }
 
 .tab-btn:hover:not(.active) {
@@ -81,7 +91,6 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Custom Scrollbar for the Code Block */
 .code-block-wrapper::-webkit-scrollbar {
     width: 0;
 }
