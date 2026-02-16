@@ -1,48 +1,53 @@
-import './Navbar.css'
+import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import './Navbar.css';
 
 export default function Navbar() {
-    return (<nav className="navbar">
-        <div className="nav-links">
-            <a
-                href="/public"
-                className="nav-link"
-                onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = "/";
-                }}
-            >
-                首頁
-            </a>
-            <a
-                href="/GameId/GameId"
-                className="nav-link"
-                onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = "/gameid";
-                }}
-            >
-                資料
-            </a>
-            <a
-                href="/Clock/Clock"
-                className="nav-link"
-                onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = "/clock";
-                }}
-            >
-                時鐘
-            </a>
-            <a
-                href="/Code/Code"
-                className="nav-link"
-                onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = "/code";
-                }}
-            >
-                程式
-            </a>
-        </div>
-    </nav>);
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const controlNavbar = () => {
+            if (typeof window !== 'undefined') {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > 50 && currentScrollY > lastScrollY) {
+                    setIsVisible(false);
+                } else {
+                    setIsVisible(true);
+                }
+                setLastScrollY(currentScrollY);
+            }
+        };
+
+        window.addEventListener('scroll', controlNavbar);
+        return () => {
+            window.removeEventListener('scroll', controlNavbar);
+        };
+    }, [lastScrollY]);
+
+    return (
+        <nav className={`navbar ${isVisible ? 'visible' : 'hidden'}`}>
+            <div className="nav-dock glass-panel">
+                <NavLink to="/" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+                    <span>首頁</span>
+                </NavLink>
+
+                <NavLink to="/gameid" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+                    <span>資料</span>
+                </NavLink>
+
+                <NavLink to="/code" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+                    <span>程式</span>
+                </NavLink>
+
+                <NavLink to="/clock" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+                    <span>時鐘</span>
+                </NavLink>
+
+                <NavLink to="/timestamp" className={({ isActive }) => isActive ? "nav-item active tool-highlight" : "nav-item tool-highlight"}>
+                    <span>工具</span>
+                </NavLink>
+            </div>
+        </nav>
+    );
 }

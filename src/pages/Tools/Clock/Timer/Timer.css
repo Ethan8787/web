@@ -1,0 +1,32 @@
+.timer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.tm-display {
+    font-size: 10vw;
+    font-family: monospace;
+    color: #ffffff;
+}
+
+.tm-controls {
+    display: flex;
+    gap: 20px;
+}
+
+.tm-btn {
+    padding: 10px 30px;
+    border-radius: 8px;
+    border: 1px solid #0098EE;
+    background: transparent;
+    color: #0098EE;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tm-btn:hover {
+    background: #0098EE;
+    color: white;
+}

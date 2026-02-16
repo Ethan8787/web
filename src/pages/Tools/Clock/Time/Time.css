@@ -1,0 +1,15 @@
+.time-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.large-display {
+    font-size: 12vw;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: #ffffff;
+    text-shadow: 0 0 50px rgba(0, 152, 238, 0.3);
+    font-family: monospace;
+}

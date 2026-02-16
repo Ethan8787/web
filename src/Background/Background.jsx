@@ -1,5 +1,5 @@
 import React from 'react';
-import bgDark from '../../assets/background/dark.jpg';
+import bgDark from '../assets/background/dark.jpg';
 import './Background.css';
 
 const Background = ({ mode = 'dark' }) => {

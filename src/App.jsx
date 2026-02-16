@@ -1,19 +1,45 @@
-import {Route, Routes} from "react-router-dom";
-import Home from "./components/Home/Home.jsx";
-import Code from "./components/Code/Code.jsx";
-import NotFound from "./components/NotFound/NotFound.jsx";
-import GameId from "./components/GameId/GameId.jsx";
-import Clock from "./components/Clock/Clock.jsx";
-import "./App.css"
+import {Routes, Route} from 'react-router-dom';
+
+import Navbar from './components/Navbar/Navbar';
+import Background from './Background/Background';
+import Footer from './components/Footer/Footer';
+
+import Home from './pages/Home/Home';
+import Code from './pages/Code/Code';
+import GameId from './pages/GameId/GameId';
+import Tools from './pages/Tools/Tools';
+import NotFound from './pages/NotFound/NotFound';
+
+import Stopwatch from './pages/Tools/Clock/Stopwatch/Stopwatch';
+import Time from './pages/Tools/Clock/Time/Time';
+import Timer from './pages/Tools/Clock/Timer/Timer';
+import DiscordTool from './pages/Tools/Discord/DiscordTool';
+
+import './App.css';
 
 export default function App() {
-    return (<Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/code" element={<Code/>}/>
-        <Route path="*" element={<NotFound/>}/>
-        <Route path="/gameid" element={<GameId/>}/>
-        <Route path="/clock" element={
-            <Clock/>
-        }/>
-    </Routes>);
+    return (
+        <>
+            <Background/>
+            <Navbar/>
+
+            <div className="page-wrapper">
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/code" element={<Code/>}/>
+                    <Route path="/gameid" element={<GameId/>}/>
+                    <Route path="/tools" element={<Tools/>}/>
+
+                    <Route path="/timestamp" element={<DiscordTool/>}/>
+                    <Route path="/stopwatch" element={<Stopwatch/>}/>
+                    <Route path="/clock" element={<Time/>}/>
+                    <Route path="/timer" element={<Timer/>}/>
+
+                    <Route path="*" element={<NotFound/>}/>
+                </Routes>
+            </div>
+
+            <Footer/>
+        </>
+    );
 }

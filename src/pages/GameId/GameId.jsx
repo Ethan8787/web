@@ -1,8 +1,5 @@
 import React from 'react';
 import './GameId.css';
-import Background from '../Background/Background.jsx';
-import Navbar from '../Navbar/Navbar.jsx';
-import Footer from '../Footer/Footer.jsx';
 
 const PlatformIcon = ({platform}) => {
     const classMap = {
@@ -101,8 +98,6 @@ const GameId = () => {
     }];
 
     return (<div className="game-id-layout">
-        <Background/>
-        <Navbar/>
         <main className="game-id-main">
             <div className="game-id-list">
                 {accounts.map((acc) => (<div key={acc.id} className="game-id-item" style={{'--brand-color': acc.color}}>
@@ -125,7 +120,6 @@ const GameId = () => {
                 </div>))}
             </div>
         </main>
-        <Footer/>
     </div>);
 };
 

@@ -1,0 +1,74 @@
+.tools-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.tools-content {
+    flex: 1;
+    max-width: 900px;
+    margin: 100px auto 50px;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background: #0098EE;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    background: rgba(20, 20, 25, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    border-color: #0098EE;
+    box-shadow: 0 0 20px rgba(0, 152, 238, 0.2);
+}
+
+.tool-card-icon {
+    font-size: 2rem;
+}
+
+.tool-card-text h3 {
+    color: #0098EE;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+}
+
+.tool-card-text p {
+    color: #a0a0a0;
+    margin: 0;
+    font-size: 0.9rem;
+}

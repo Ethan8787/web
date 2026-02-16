@@ -1,41 +1,100 @@
 .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    position: fixed;
+    top: 20px;
+    left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 0.4rem 0.5rem;
-    display: flex;
-    backdrop-filter: blur(5px);
-    justify-content: center;
-}
-
-.nav-links {
-    max-width: 900px;
-    width: 100%;
+    z-index: 1000;
     display: flex;
     justify-content: center;
-    gap: 0.3rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 }
 
-.nav-link {
+.navbar.hidden {
+    transform: translateY(-150%);
+}
+
+.navbar.visible {
+    transform: translateY(0);
+}
+
+.nav-dock {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 50px;
+    background: rgba(20, 20, 25, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
     text-decoration: none;
-    color: var(--text-color);
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    transition: all 0.2s ease-in-out;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    border-radius: 24px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.nav-item span {
+    position: relative;
+    z-index: 2;
+}
+
+.nav-item:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    color: #ffffff;
+    background: rgba(0, 152, 238, 0.2);
+    box-shadow: 0 0 15px rgba(0, 152, 238, 0.15);
+    font-weight: 600;
+}
+
+.nav-item.tool-highlight {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.nav-item.tool-highlight svg {
+    transition: transform 0.3s ease;
+}
+
+.nav-item.tool-highlight:hover svg {
+    transform: rotate(20deg);
+    color: #0098EE;
 }
 
 @media (max-width: 600px) {
-    .nav-links {
-        flex-wrap: wrap;
+    .navbar {
+        top: 10px;
     }
 
-    .nav-link {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        text-align: center;
+    .nav-dock {
+        padding: 0.4rem 0.6rem;
+        gap: 0.2rem;
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    .nav-item {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-item span {
+        font-size: 0.8rem;
     }
 }

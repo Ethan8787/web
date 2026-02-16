@@ -1,0 +1,33 @@
+.stopwatch-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.sw-display {
+    font-size: 10vw;
+    font-family: monospace;
+    color: #0098EE;
+    font-variant-numeric: tabular-nums;
+}
+
+.sw-controls {
+    display: flex;
+    gap: 20px;
+}
+
+.sw-btn {
+    padding: 15px 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.sw-btn.start:hover { background: #34c759; color: black; }
+.sw-btn.stop:hover { background: #ff4d4d; }
+.sw-btn.reset:hover { background: #0098EE; }
