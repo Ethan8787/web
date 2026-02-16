@@ -4,7 +4,6 @@ import './ZhuyinSecret.css';
 
 const ZhuyinSecret = () => {
     const [raw, setRaw] = useState('');
-
     const keyboardMap = {
         '1':'ㄅ','q':'ㄆ','a':'ㄇ','z':'ㄈ',
         '2':'ㄉ','w':'ㄊ','s':'ㄋ','x':'ㄌ',
@@ -18,8 +17,6 @@ const ZhuyinSecret = () => {
         ';':'ㄤ','/':'ㄥ','-':'ㄦ',
         '.':'ㄡ'
     };
-
-
     const tones = ['ˇ', 'ˋ', 'ˊ', '˙', 'ˉ'];
 
     const convert = (t) => {
@@ -28,52 +25,28 @@ const ZhuyinSecret = () => {
         chars.forEach((char) => {
             if (char === ' ') {
                 const prev = result[result.length - 1];
-                const isPrevZhuyin = Object.values(keyboardMap).includes(prev);
-                const isPrevTone = tones.includes(prev);
-                if (isPrevZhuyin && !isPrevTone) result.push('ˉ');
+                if (Object.values(keyboardMap).includes(prev) && !tones.includes(prev)) result.push('ˉ');
                 else result.push(' ');
-            } else {
-                result.push(keyboardMap[char] || char);
-            }
+            } else { result.push(keyboardMap[char] || char); }
         });
         return result.join('');
     };
 
     return (
-        <div className="container">
-            <div className="secret-section">
-                <div className="icon-header">
-                    <ShieldCheck size={80} strokeWidth={1.5} />
+        <div className="tool-page-container">
+            <div className="secret-section-card">
+                <ShieldCheck size={80} className="top-icon" />
+                <h2 className="tool-title">注音密碼轉換器</h2>
+                <div className="input-group">
+                    <label>INPUT 原始碼</label>
+                    <input type="text" value={raw} onChange={(e) => setRaw(e.target.value)} placeholder="su3g4e.3..." />
                 </div>
-
-                <h2>注音密碼轉換器</h2>
-
-                <div className="secret-card-content">
-                    <div className="input-field">
-                        <label>INPUT / 原始輸入</label>
-                        <input
-                            type="text"
-                            value={raw}
-                            onChange={(e) => setRaw(e.target.value)}
-                            placeholder="su3g4e.3 187..."
-                        />
-                    </div>
-
-                    <div className="output-field">
-                        <label>RESULT / 轉換結果</label>
-                        <div className="output-box">
-                            {convert(raw) || <span className="cursor">_</span>}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="tool-info">
-                    <Keyboard size={16} />
-                    <span>SMART QWERTY MAPPING ACTIVE</span>
+                <div className="output-group">
+                    <label>RESULT 轉換結果</label>
+                    <div className="output-display">{convert(raw) || <span className="cursor">_</span>}</div>
                 </div>
             </div>
         </div>
     );
 };
-
 export default ZhuyinSecret;

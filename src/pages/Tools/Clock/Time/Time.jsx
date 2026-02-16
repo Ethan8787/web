@@ -15,8 +15,8 @@ export default function Time() {
     }, []);
 
     return (
-        <div className="time-wrapper">
-            <div className="large-display">{timeStr}</div>
+        <div className="tool-full-page">
+            <div className="large-clock-display">{timeStr}</div>
         </div>
     );
 }

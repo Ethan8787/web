@@ -40,11 +40,7 @@ export default function Navbar() {
                     <span>程式</span>
                 </NavLink>
 
-                <NavLink to="/clock" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-                    <span>時鐘</span>
-                </NavLink>
-
-                <NavLink to="/timestamp" className={({ isActive }) => isActive ? "nav-item active tool-highlight" : "nav-item tool-highlight"}>
+                <NavLink to="/tools" className={({ isActive }) => isActive ? "nav-item active tool-highlight" : "nav-item tool-highlight"}>
                     <span>工具</span>
                 </NavLink>
             </div>

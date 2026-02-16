@@ -117,21 +117,27 @@
     justify-content: flex-end;
 }
 
-.copy-btn {
-
-    background: rgba(0, 0, 0, 0);
-    border: none;
-    color: var(--text-dim);
-    cursor: pointer;
-    transition: all 0.2s;
+.o-copy-btn {
+    position: relative;
     display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: #888888;
+    cursor: pointer;
+    font-size: 0.85rem;
+    border: rgba(255, 255, 255, 0.15);
+    padding: 8px 8px;
+    transition: all 0.2s;
+    border-radius: 50%;
 }
 
-.copy-btn svg {
-    margin-right: 3px;
+.o-copy-btn:hover {
+    position: sticky;
+    color: #ffffff;
 }
 
-.copy-btn:hover {
-    color: white;
-    border-color: var(--accent-color);
+.o-copy-btn svg {
+    opacity: 0.8;
 }

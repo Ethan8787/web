@@ -1,33 +1,31 @@
-.stopwatch-wrapper {
+.sw-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 40px;
 }
 
 .sw-display {
-    font-size: 10vw;
-    font-family: monospace;
-    color: #0098EE;
+    font-size: 12vw;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-color);
     font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 30px rgba(0, 152, 238, 0.2);
 }
 
-.sw-controls {
-    display: flex;
-    gap: 20px;
-}
+.sw-controls { display: flex; gap: 20px; }
 
 .sw-btn {
-    padding: 15px 40px;
-    border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.2);
+    padding: 15px 45px;
+    border-radius: 99px;
+    border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.05);
     color: white;
     cursor: pointer;
-    font-weight: 600;
-    transition: 0.2s;
+    font-weight: bold;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sw-btn.start:hover { background: #34c759; color: black; }
-.sw-btn.stop:hover { background: #ff4d4d; }
-.sw-btn.reset:hover { background: #0098EE; }
+.sw-btn.start:hover { background: #34c759; color: #000; box-shadow: 0 0 20px #34c759; }
+.sw-btn.stop:hover { background: #ff4d4d; color: #fff; box-shadow: 0 0 20px #ff4d4d; }
+.sw-btn.reset:hover { background: var(--accent-color); color: #fff; }

@@ -1,15 +1,17 @@
-.time-wrapper {
+.tool-full-page {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: 60vh;
 }
 
-.large-display {
-    font-size: 12vw;
-    font-weight: 700;
+.large-clock-display {
+    font-size: 15vw;
+    font-weight: 800;
     font-variant-numeric: tabular-nums;
     color: #ffffff;
-    text-shadow: 0 0 50px rgba(0, 152, 238, 0.3);
-    font-family: monospace;
+    text-shadow: 0 0 50px rgba(0, 152, 238, 0.4);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -2px;
 }

@@ -11,31 +11,20 @@ export default function Stopwatch() {
         const savedData = localStorage.getItem("ethan_stopwatch");
         if (savedData) {
             const { savedTime, savedIsRunning, lastTimestamp } = JSON.parse(savedData);
-
             if (savedIsRunning) {
-                const gap = Date.now() - lastTimestamp;
-                const totalTime = savedTime + gap;
+                const totalTime = savedTime + (Date.now() - lastTimestamp);
                 setTime(totalTime);
                 startTimeRef.current = Date.now() - totalTime;
                 setIsRunning(true);
                 requestRef.current = requestAnimationFrame(step);
-            } else {
-                setTime(savedTime);
-            }
+            } else { setTime(savedTime); }
         }
     }, []);
 
     useEffect(() => {
-        const handleSave = () => {
-            const data = {
-                savedTime: time,
-                savedIsRunning: isRunning,
-                lastTimestamp: Date.now()
-            };
-            localStorage.setItem("ethan_stopwatch", JSON.stringify(data));
-        };
-
-        handleSave();
+        localStorage.setItem("ethan_stopwatch", JSON.stringify({
+            savedTime: time, savedIsRunning: isRunning, lastTimestamp: Date.now()
+        }));
     }, [time, isRunning]);
 
     const format = (ms) => {
@@ -62,18 +51,19 @@ export default function Stopwatch() {
     };
 
     const handleReset = () => {
-        setTime(0);
-        setIsRunning(false);
+        setTime(0); setIsRunning(false);
         cancelAnimationFrame(requestRef.current);
-        localStorage.removeItem("ethan_stopwatch");
     };
-
     return (
-        <div className="stopwatch-wrapper">
-            <div className="sw-display">{format(time)}</div>
-            <div className="sw-controls">
-                <button className="sw-btn reset" onClick={handleReset}>RESET</button>
-                <button className={`sw-btn ${isRunning ? "stop" : "start"}`} onClick={toggle}>{isRunning ? "STOP" : "START"}</button>
+        <div className="tool-full-page">
+            <div className="sw-container">
+                <div className="sw-display">{format(time)}</div>
+                <div className="sw-controls">
+                    <button className="sw-btn reset" onClick={handleReset}>RESET</button>
+                    <button className={`sw-btn ${isRunning ? "stop" : "start"}`} onClick={toggle}>
+                        {isRunning ? "STOP" : "START"}
+                    </button>
+                </div>
             </div>
         </div>
     );

@@ -9,9 +9,7 @@ export default function Timer() {
     useEffect(() => {
         if (isRunning && ms > 0) {
             timerRef.current = setInterval(() => setMs(v => Math.max(0, v - 1000)), 1000);
-        } else {
-            clearInterval(timerRef.current);
-        }
+        } else { clearInterval(timerRef.current); }
         return () => clearInterval(timerRef.current);
     }, [isRunning, ms]);
 
@@ -21,11 +19,15 @@ export default function Timer() {
     };
 
     return (
-        <div className="timer-wrapper">
-            <div className="tm-display">{format(ms)}</div>
-            <div className="tm-controls">
-                <button className="tm-btn" onClick={() => setIsRunning(!isRunning)}>{isRunning ? "PAUSE" : "START"}</button>
-                <button className="tm-btn" onClick={() => {setIsRunning(false); setMs(1500000);}}>RESET</button>
+        <div className="tool-full-page">
+            <div className="tm-container">
+                <div className="tm-display">{format(ms)}</div>
+                <div className="tm-controls">
+                    <button className="tm-btn" onClick={() => setIsRunning(!isRunning)}>
+                        {isRunning ? "PAUSE" : "START"}
+                    </button>
+                    <button className="tm-btn" onClick={() => {setIsRunning(false); setMs(1500000);}}>RESET</button>
+                </div>
             </div>
         </div>
     );

@@ -1,32 +1,29 @@
-.timer-wrapper {
+.tm-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 40px;
 }
 
 .tm-display {
-    font-size: 10vw;
-    font-family: monospace;
+    font-size: 12vw;
+    font-family: 'JetBrains Mono', monospace;
     color: #ffffff;
 }
 
-.tm-controls {
-    display: flex;
-    gap: 20px;
-}
-
 .tm-btn {
-    padding: 10px 30px;
-    border-radius: 8px;
-    border: 1px solid #0098EE;
+    padding: 12px 40px;
+    border-radius: 12px;
+    border: 2px solid var(--accent-color);
     background: transparent;
-    color: #0098EE;
+    color: var(--accent-color);
+    font-weight: 800;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .tm-btn:hover {
-    background: #0098EE;
+    background: var(--accent-color);
     color: white;
+    box-shadow: 0 0 30px rgba(0, 152, 238, 0.4);
 }
