@@ -118,7 +118,6 @@
 }
 
 .copy-btn {
-
     background: rgba(0, 0, 0, 0);
     border: none;
     color: var(--text-dim);
@@ -133,5 +132,4 @@
 
 .copy-btn:hover {
     color: white;
-    border-color: var(--accent-color);
 }
