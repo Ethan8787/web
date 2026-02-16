@@ -236,8 +236,44 @@
 .clean-slider {
     -webkit-appearance: none;
     width: 200px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.2);
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.15);
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+/* Webkit track */
+.clean-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.15);
+}
+
+.clean-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1da1f2;
+    cursor: pointer;
+    margin-top: -6px;
+    transition:
+            transform 0.25s cubic-bezier(.22,1,.36,1),
+            box-shadow 0.25s ease,
+            background 0.3s ease;
+}
+
+.clean-slider:hover::-webkit-slider-thumb {
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(29,161,242,0.6);
+}
+
+.clean-slider:active::-webkit-slider-thumb {
+    transform: scale(1.3);
+    box-shadow: 0 0 18px rgba(29,161,242,0.8);
 }
 
 .clean-slider::-webkit-slider-thumb {

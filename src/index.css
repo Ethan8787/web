@@ -3,7 +3,8 @@
     --text-color: #ffffff;
     --accent-color: #0098EE;
     --card-bg: rgba(0, 0, 0, 0.3);
-    --font-mono: JetBrains Mono, Menlo, Consolas, "Courier New", monospace
+    --font-mono: "Poppins", sans-serif
+    --bg
 }
 
 * {

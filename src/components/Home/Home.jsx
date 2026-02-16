@@ -8,12 +8,19 @@ import "./Home.css";
 export default function Home() {
     return (
         <>
-            <Background/>
-            <Navbar/>
+            <Background />
+            <Navbar />
             <div className="App">
                 <div className="container">
                     <div className="header-group">
-                        <img id="avatar" src="/512.png" alt="Avatar"/>
+                        <div className="avatar-wrapper">
+                            <div className="cont1">
+                                <div className="status-bubble">我想買域名ㄚㄚㄚ</div>
+                                <div className="thought-dot dot-1"></div>
+                            </div>
+                            <div className="thought-dot dot-2"></div>
+                            <img id="avatar" src="/src/assets/avatar/512.png" alt="Avatar" />
+                        </div>
                         <h1>Ethan</h1>
                     </div>
                     <div className="intro-card" id="intro">
@@ -22,30 +29,28 @@ export default function Home() {
                             你好，我是 Ethan，來自台灣的國三程式設計愛好者。
                         </p>
                         <div className="button-group">
-                            <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank">
-                                <img src="/discord.svg" className="btn-icon"/>
+                            <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank" rel="noreferrer">
+                                <img src="/src/assets/icons/discord.svg" className="btn-icon" alt="icon" />
                                 Discord
                             </a>
-                            <a className="btn btn-youtube"
-                               href="https://www.youtube.com/channel/UCDiFgkr0I6uAgRlBBPnflNw" target="_blank">
-                                <img src="/youtube.svg" className="btn-icon"/>
+                            <a className="btn btn-youtube" href="https://www.youtube.com/channel/UCDiFgkr0I6uAgRlBBPnflNw" target="_blank" rel="noreferrer">
+                                <img src="/src/assets/icons/youtube.svg" className="btn-icon" alt="icon" />
                                 YouTube
                             </a>
-                            <a className="btn btn-instagram" href="https://www.instagram.com/ethantw.dev/"
-                               target="_blank">
-                                <img src="/instagram.svg" className="btn-icon"/>
+                            <a className="btn btn-instagram" href="https://www.instagram.com/ethantw.dev/" target="_blank" rel="noreferrer">
+                                <img src="/src/assets/icons/instagram.svg" className="btn-icon" alt="icon" />
                                 Instagram
                             </a>
-                            <a className="btn btn-github" href="https://github.com/Ethan8787/" target="_blank">
-                                <img src="/github.svg" className="btn-icon"/>
+                            <a className="btn btn-github" href="https://github.com/Ethan8787/" target="_blank" rel="noreferrer">
+                                <img src="/src/assets/icons/github.svg" className="btn-icon" alt="icon" />
                                 GitHub
                             </a>
                         </div>
                     </div>
-                    <Skills/>
-                    <Projects/>
+                    <Skills />
+                    <Projects />
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </>
     );

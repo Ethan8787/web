@@ -14,14 +14,14 @@ export default function Navbar() {
                 首頁
             </a>
             <a
-                href="/Matrix/Matrix"
+                href="/GameId/GameId"
                 className="nav-link"
                 onClick={(e) => {
                     e.preventDefault();
-                    window.location.href = "/matrix";
+                    window.location.href = "/gameid";
                 }}
             >
-                矩陣
+                遊戲
             </a>
             <a
                 href="/Clock/Clock"

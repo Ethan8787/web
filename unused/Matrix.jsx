@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import './Matrix.css';
-import Navbar from "../Navbar/Navbar.jsx";
+import Navbar from "../src/components/Navbar/Navbar.jsx";
 
 const Matrix = () => {
     const canvasRef = useRef(null);
