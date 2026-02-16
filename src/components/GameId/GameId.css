@@ -122,7 +122,6 @@
     color: rgba(255, 255, 255, 0.4);
     font-size: 0.7rem;
     font-weight: 800;
-    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
@@ -134,4 +133,24 @@
 
 .game-id-item:hover .link-btn {
     color: #fff;
+}
+
+.game-id-item:hover .icon-wrapper svg {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var());
+}
+
+.icon-wrapper svg {
+    width: 32px;
+    height: 32px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.game-id-item:hover .icon-wrapper svg {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.game-id-item[style*="currentColor"]:hover {
+    background: rgba(242, 169, 0, 0.08);
+    box-shadow: inset 0 0 1px rgba(242, 169, 0, 0.05);
 }

@@ -12,7 +12,6 @@ export default function Code() {
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
-        // 每次切換 Tab 先清空內容，給使用者視覺反饋
         setCodeContent("正在讀取原始碼...");
 
         fetch(`/${activeTab}.txt`)
@@ -43,7 +42,6 @@ export default function Code() {
                     <div className="code-section">
                         <h2>程式碼 Code</h2>
 
-                        {/* 這裡使用了與 Answer 頁面一致的切換邏輯 */}
                         <div className="tab-container">
                             <button
                                 className={`tab-btn ${activeTab === "code1" ? "active" : ""}`}

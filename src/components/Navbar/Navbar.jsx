@@ -21,7 +21,7 @@ export default function Navbar() {
                     window.location.href = "/gameid";
                 }}
             >
-                遊戲
+                資料
             </a>
             <a
                 href="/Clock/Clock"
