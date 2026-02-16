@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom';
+import { MessageSquare, Timer, Hourglass, Clock, ShieldCheck } from 'lucide-react';
 import "./Tools.css";
 
 export default function Tools() {
     const tools = [
-        { name: "Discord Timestamp", desc: "動態時間代碼生成", path: "/timestamp", icon: "💬" },
-        { name: "Stopwatch", desc: "毫秒級精準計時", path: "/clock", icon: "⏱️" },
-        { name: "Countdown", desc: "高效倒數計時器", path: "/clock", icon: "⌛" },
-        { name: "Clock", desc: "全螢幕極簡時鐘", path: "/clock", icon: "🕒" }
+        { name: "Discord Timestamp", desc: "動態時間代碼生成", path: "/timestamp", icon: <MessageSquare size={32} /> },
+        { name: "Stopwatch", desc: "毫秒級精準計時", path: "/stopwatch", icon: <Timer size={32} /> },
+        { name: "Countdown", desc: "高效倒數計時器", path: "/timer", icon: <Hourglass size={32} /> },
+        { name: "Clock", desc: "全螢幕極簡時鐘", path: "/clock", icon: <Clock size={32} /> },
+        { name: "Zhuyin Secret", desc: "優雅紳士解密工具", path: "/secret", icon: <ShieldCheck size={32} /> }
     ];
 
     return (

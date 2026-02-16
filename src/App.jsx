@@ -14,6 +14,7 @@ import Stopwatch from './pages/Tools/Clock/Stopwatch/Stopwatch';
 import Time from './pages/Tools/Clock/Time/Time';
 import Timer from './pages/Tools/Clock/Timer/Timer';
 import DiscordTool from './pages/Tools/Discord/DiscordTool';
+import ZhuyinSecret from "./pages/Tools/ZhuyinSecret/ZhuyinSecret.jsx";
 
 import './App.css';
 
@@ -33,6 +34,7 @@ export default function App() {
                     <Route path="/timestamp" element={<DiscordTool/>}/>
                     <Route path="/stopwatch" element={<Stopwatch/>}/>
                     <Route path="/clock" element={<Time/>}/>
+                    <Route path="/ehconverter" element={<ZhuyinSecret />} />
                     <Route path="/timer" element={<Timer/>}/>
 
                     <Route path="*" element={<NotFound/>}/>

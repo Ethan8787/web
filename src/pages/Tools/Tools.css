@@ -21,12 +21,13 @@
     font-size: 2rem;
     color: #ffffff;
     margin-bottom: 10px;
+    font-weight: 10;
 }
 
 .title-underline {
     width: 60px;
     height: 4px;
-    background: #0098EE;
+    background: var(--accent-color);
     margin: 0 auto;
     border-radius: 2px;
 }
@@ -53,16 +54,19 @@
 
 .tool-card:hover {
     transform: translateY(-5px);
-    border-color: #0098EE;
-    box-shadow: 0 0 20px rgba(0, 152, 238, 0.2);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.2);
 }
 
 .tool-card-icon {
-    font-size: 2rem;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tool-card-text h3 {
-    color: #0098EE;
+    color: var(--accent-color);
     margin: 0 0 5px 0;
     font-size: 1.2rem;
 }
