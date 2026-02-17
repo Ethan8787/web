@@ -76,25 +76,3 @@
     transform: rotate(20deg);
     color: #0098EE;
 }
-
-@media (max-width: 600px) {
-    .navbar {
-        top: 10px;
-    }
-
-    .nav-dock {
-        padding: 0.4rem 0.6rem;
-        gap: 0.2rem;
-        width: 90%;
-        justify-content: space-between;
-    }
-
-    .nav-item {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.85rem;
-    }
-
-    .nav-item span {
-        font-size: 0.8rem;
-    }
-}

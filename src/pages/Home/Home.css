@@ -83,8 +83,9 @@
     font-size: 0.85rem;
     font-weight: 200;
     font-family: var(--font-secondary), sans-serif;
-    max-width: 8rem;
-    word-break: break-all;
+    max-width: 200px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
     white-space: normal;
     line-height: 1.4;
     text-align: center;
@@ -154,72 +155,72 @@
     filter: invert(1);
 }
 
-.btn-discord {
-    background: #5865f2;
-}
-
-.btn-discord:hover {
-    box-shadow: 0 0 12px #5865f2;
-}
-
-.btn-youtube {
-    background: #ff0000;
-}
-
-.btn-youtube:hover {
-    box-shadow: 0 0 12px #ff0000;
-}
-
-.btn-instagram {
-    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
-}
-
-.btn-instagram:hover {
-    box-shadow: 0 0 12px #833ab4;
-}
-
-.btn-github {
-    background: #24292f;
-}
-
-.btn-github:hover {
-    box-shadow: 0 0 12px #24292f;
-}
+.btn-discord { background: #5865f2; }
+.btn-discord:hover { box-shadow: 0 0 12px #5865f2; }
+.btn-youtube { background: #ff0000; }
+.btn-youtube:hover { box-shadow: 0 0 12px #ff0000; }
+.btn-instagram { background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); }
+.btn-instagram:hover { box-shadow: 0 0 12px #833ab4; }
+.btn-github { background: #24292f; }
+.btn-github:hover { box-shadow: 0 0 12px #24292f; }
 
 @keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0px); }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
     .container {
-        margin-top: 20px;
-        margin-bottom: 30px;
+        margin-top: 30px;
+        margin-bottom: 40px;
+        gap: 30px;
+    }
+
+    .header-group {
+        flex-direction: column;
+        padding: 30px 20px;
+        text-align: center;
     }
 
     .header-group h1 {
-        font-size: 3rem;
-    }
-
-    #avatar {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-
-    .status-bubble {
-        bottom: 105%;
-        font-size: 0.75rem;
-        max-width: 4.5em;
+        font-size: 3.5rem;
     }
 
     .button-group {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 320px;
+        margin: 20px auto 0;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    #avatar {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .status-bubble {
+        bottom: 110%;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 180px;
+    }
+
+    .thought-dot.dot-1 {
+        bottom: 105%;
+        left: 50%;
+        margin-left: -5px;
+    }
+
+    .thought-dot.dot-2 {
+        bottom: 98%;
+        left: 50%;
+        margin-left: 10px;
     }
 }

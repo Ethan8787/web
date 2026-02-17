@@ -71,11 +71,12 @@
 }
 
 .private-link {
-    color: #ff6666;
+    color: #ff6666 !important;
+    cursor: default;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
     .project-grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
     }
 }
