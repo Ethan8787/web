@@ -38,11 +38,11 @@ const ZhuyinSecret = () => {
                 <ShieldCheck size={80} className="top-icon" />
                 <h2 className="tool-title">注音密碼轉換器</h2>
                 <div className="input-group">
-                    <label>INPUT 原始碼</label>
+                    <label>Input</label>
                     <input type="text" value={raw} onChange={(e) => setRaw(e.target.value)} placeholder="su3g4e.3..." />
                 </div>
                 <div className="output-group">
-                    <label>RESULT 轉換結果</label>
+                    <label>Result</label>
                     <div className="output-display">{convert(raw) || <span className="cursor">_</span>}</div>
                 </div>
             </div>

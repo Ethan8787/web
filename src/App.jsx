@@ -34,7 +34,7 @@ export default function App() {
                     <Route path="/timestamp" element={<DiscordTool/>}/>
                     <Route path="/stopwatch" element={<Stopwatch/>}/>
                     <Route path="/clock" element={<Time/>}/>
-                    <Route path="/secret" element={<ZhuyinSecret />} />
+                    <Route path="/zhu-yin-convert" element={<ZhuyinSecret />} />
                     <Route path="/timer" element={<Timer/>}/>
 
                     <Route path="*" element={<NotFound/>}/>
