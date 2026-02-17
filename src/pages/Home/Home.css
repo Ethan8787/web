@@ -155,19 +155,48 @@
     filter: invert(1);
 }
 
-.btn-discord { background: #5865f2; }
-.btn-discord:hover { box-shadow: 0 0 12px #5865f2; }
-.btn-youtube { background: #ff0000; }
-.btn-youtube:hover { box-shadow: 0 0 12px #ff0000; }
-.btn-instagram { background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); }
-.btn-instagram:hover { box-shadow: 0 0 12px #833ab4; }
-.btn-github { background: #24292f; }
-.btn-github:hover { box-shadow: 0 0 12px #24292f; }
+.btn-discord {
+    background: #5865f2;
+}
+
+.btn-discord:hover {
+    box-shadow: 0 0 12px #5865f2;
+}
+
+.btn-youtube {
+    background: #ff0000;
+}
+
+.btn-youtube:hover {
+    box-shadow: 0 0 12px #ff0000;
+}
+
+.btn-instagram {
+    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+}
+
+.btn-instagram:hover {
+    box-shadow: 0 0 12px #833ab4;
+}
+
+.btn-github {
+    background: #24292f;
+}
+
+.btn-github:hover {
+    box-shadow: 0 0 12px #24292f;
+}
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-3px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 @media (max-width: 850px) {
