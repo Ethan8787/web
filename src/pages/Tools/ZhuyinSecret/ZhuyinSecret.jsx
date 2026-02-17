@@ -32,7 +32,7 @@ const ZhuyinSecret = () => {
                         type="text"
                         value={raw}
                         onChange={(e) => setRaw(e.target.value)}
-                        placeholder="請輸入英文代碼..."
+                        placeholder="試著不切換輸入法.."
                         autoFocus
                     />
                 </div>
