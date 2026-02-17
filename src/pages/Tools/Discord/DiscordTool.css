@@ -1,0 +1,167 @@
+.discord-tool-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+.glass-card {
+    background: rgba(20, 20, 25, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', 'zhtw', sans-serif;
+    color: #ffffff;
+    transition: box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 8px 40px rgba(0, 152, 238, 0.15);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.badge {
+    background: rgba(0, 152, 238, 0.2);
+    color: #0098EE;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 152, 238, 0.3);
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.input-wrapper.full-width {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.input-wrapper label {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    font-weight: 500;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-family: 'ubuntu', 'pinfang', monospace;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+    color-scheme: dark;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    border-color: #0098EE;
+    box-shadow: 0 0 0 2px rgba(0, 152, 238, 0.2);
+}
+
+.output-section {
+    margin-top: 1rem;
+}
+
+.code-box {
+    display: flex;
+    align-items: center;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 6px;
+    margin-top: 0.5rem;
+    gap: 10px;
+}
+
+.code-box code {
+    flex: 1;
+    padding: 0 12px;
+    font-family: 'ubuntu', monospace;
+    color: #0098EE;
+    font-size: 1rem;
+}
+
+.copy-btn {
+    background: #0098EE;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.copy-btn svg {
+    flex-shrink: 0;
+}
+
+.copy-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+}
+
+.copy-btn.copied {
+    background: #10b981;
+}
+
+.preview-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.discord-preview {
+    background: rgba(88, 101, 242, 0.2);
+    color: #dee0fc;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
