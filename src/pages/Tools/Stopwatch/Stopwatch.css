@@ -1,0 +1,141 @@
+.sw-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px;
+    padding: 60px 40px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.sw-display {
+    font-family: 'JetBrains Mono', monospace;
+    color: #ffffff;
+    font-size: 6rem;
+    font-weight: 800;
+    letter-spacing: -4px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    font-variant-numeric: tabular-nums;
+}
+
+.sw-sub {
+    color: #ffffff;
+    font-size: 3.5rem;
+}
+
+.sw-dot {
+    color: #ffffff;
+    margin: 0 5px;
+}
+
+.sw-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.sw-btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-reset {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-reset:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.btn-start {
+    background: #0098ee;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 152, 238, 0.3);
+}
+
+.btn-stop {
+    background: #ff4444;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+.btn-lap {
+    background: rgba(255, 255, 255, 0.1);
+    color: #eee;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sw-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.sw-btn:hover:not(:disabled) {
+    filter: brightness(1.2);
+}
+
+.sw-btn:active {
+    transform: translateY(0);
+}
+
+.sw-laps-area {
+    margin-top: 40px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.sw-lap-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.lap-idx {
+    color: #555;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.lap-val {
+    color: #eee;
+    font-size: 1.1rem;
+}
+
+.lap-val small {
+    color: #ffffff;
+    font-size: 0.8rem;
+}
+
+.sw-laps-area::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sw-laps-area::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}

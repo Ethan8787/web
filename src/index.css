@@ -46,6 +46,42 @@
     --font-main: 'Poppins', 'zhtw', sans-serif;
     --font-secondary: 'ubuntu', 'pinfang', sans-serif;
     --font-third: 'jett', 'pinfang', sans-serif;
+    --bg-glass: rgba(20, 20, 25, 0.7);
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --accent-blue: #0098EE;
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    --font-mono: 'JetBrains Mono', 'Ubuntu Mono', monospace;
+}
+
+.glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: var(--text-main);
+    margin: 20px auto;
+}
+
+.base-btn {
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.base-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
 }
 
 * {

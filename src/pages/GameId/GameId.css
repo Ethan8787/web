@@ -158,7 +158,7 @@
 .insta-mask-fix {
     width: 32px;
     height: 32px;
-    background-image: url('./insta.png');
+    background-image: url('/insta.png');
     background-size: cover;
     background-position: center;
 
@@ -174,7 +174,7 @@
 }
 
 .game-id-item:hover .insta-mask-fix {
-    transform: scale(1.2) rotate(-5deg);
+    transform: scale(1.1) rotate(-5deg);
 }
 
 .dead-svg {

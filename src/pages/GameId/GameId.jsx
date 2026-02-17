@@ -1,16 +1,7 @@
 import React from 'react';
 import './GameId.css';
 
-const PlatformIcon = ({platform}) => {
-    const classMap = {
-        Discord: 'discord-icon',
-        GitHub: 'github-icon',
-        Instagram: 'instagram-icon',
-        YouTube: 'youtube-icon',
-        PUBG: 'pubg-icon',
-        VALORANT: 'valorant-icon'
-    };
-
+const GameIdMain = ({platform}) => {
     const icons = {
         Discord: (
             <svg viewBox="0 0 32 32" fill="currentColor">
@@ -20,6 +11,20 @@ const PlatformIcon = ({platform}) => {
         GitHub: (
             <svg viewBox="0 0 20 20" fill="currentColor">
                 <path d="M10,0 C15.523,0 20,4.59 20,10.253 C20,14.782 17.138,18.624 13.167,19.981 C12.66,20.082 12.48,19.762 12.48,19.489 C12.48,19.151 12.492,18.047 12.492,16.675 C12.492,15.719 12.172,15.095 11.813,14.777 C14.04,14.523 16.38,13.656 16.38,9.718 C16.38,8.598 15.992,7.684 15.35,6.966 C15.454,6.707 15.797,5.664 15.252,4.252 C15.252,4.252 14.414,3.977 12.505,5.303 C11.706,5.076 10.85,4.962 10,4.958 C9.15,4.962 8.295,5.076 7.497,5.303 C5.586,3.977 4.746,4.252 4.746,4.252 C4.203,5.664 4.546,6.707 4.649,6.966 C4.01,7.684 3.619,8.598 3.619,9.718 C3.619,13.646 5.954,14.526 8.175,14.785 C7.889,15.041 7.63,15.493 7.54,16.156 C6.97,16.418 5.522,16.871 4.63,15.304 C4.63,15.304 4.101,14.319 3.097,14.247 C3.097,14.247 2.122,14.234 3.029,14.87 C3.029,14.87 3.684,15.185 4.139,16.37 C4.139,16.37 4.726,18.2 7.508,17.58 C7.513,18.437 7.522,19.245 7.522,19.489 C7.522,19.76 7.338,20.077 6.839,19.982 C2.865,18.627 0,14.783 0,10.253 C0,4.59 4.478,0 10,0" />
+            </svg>
+        ),
+        JetBrains: (
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.17 1.83L1.83 10.17C0.66 11.34 0 12.93 0 14.59V29.5C0 30.88 1.12 32 2.5 32H17.41C19.07 32 20.655 31.34 21.83 30.17L30.17 21.83C31.34 20.66 32 19.07 32 17.41V2.5C32 1.12 30.88 0 29.5 0H14.59C12.93 0 11.345 0.66 10.17 1.83Z" fill="url(#paint0_linear)"/>
+                <path d="M24 8H4V28H24V8Z" fill="black"/>
+                <path d="M15 23.5H6.5V25.5H15V23.5Z" fill="white"/>
+                <defs>
+                    <linearGradient id="paint0_linear" x1="0.425" y1="31.36" x2="31.31" y2="0.905" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FF9419"/>
+                        <stop offset="0.43" stop-color="#FF021D"/>
+                        <stop offset="0.99" stop-color="#E600FF"/>
+                    </linearGradient>
+                </defs>
             </svg>
         ),
         Instagram: (
@@ -42,6 +47,7 @@ const PlatformIcon = ({platform}) => {
                 <path d="M19.8,26.1h-0.2c-2.4,0-4.8,0-7.2,0c-0.3,0-0.5-0.1-0.6-0.3c-2.5-3.2-5.1-6.3-7.6-9.5C4.1,16.1,4,16,4,15.8c0-3.1,0-6.1,0-9.2c0-0.1,0-0.2,0.1-0.2h0.1c5.2,6.5,10.4,13,15.5,19.5c0,0,0,0.1,0.1,0.1L19.8,26.1L19.8,26.1z M27.8,16.3c-0.7,0.9-1.5,1.8-2.2,2.8c-0.2,0.2-0.4,0.3-0.6,0.3c-2.4,0-4.8,0-7.1,0c0,0-0.1,0-0.1,0c-0.1,0-0.2-0.1-0.1-0.2c0,0,0-0.1,0.1-0.1c2.4-3,4.7-5.9,7.1-8.9c1-1.2,2-2.5,2.9-3.7c0-0.1,0.1-0.1,0.2-0.1c0,0,0.1,0,0.1,0c0,0.1,0,0.1,0,0.2c0,3,0,6.1,0,9.1C28,16,27.9,16.2,27.8,16.3L27.8,16.3z" />
             </svg>
         )
+
     };
 
     if (platform === 'Instagram') {
@@ -58,46 +64,52 @@ const PlatformIcon = ({platform}) => {
 const GameId = () => {
     const accounts = [{
         id: 1,
-        platform: 'YouTube',
-        username: 'YouTube',
-        handle: '@ethantwdev',
-        color: '#ff0000',
-        url: 'https://youtube.com/@ethantwdev'
-    }, {
-        id: 2,
-        platform: 'Instagram',
-        username: 'Instagram',
-        handle: '@ethantw.dev',
-        color: '#ffffff',
-        url: 'https://instagram.com/ethantw.dev'
-    }, {
-        id: 3,
         platform: 'Discord',
         username: 'Discord',
         handle: '@ethantw.dev',
         color: '#5865F2',
         url: 'https://discord.com/users/ethantw.dev'
-    },
-    {
-        id: 4,
+    }, {
+        id: 2,
         platform: 'GitHub',
         username: 'GitHub',
         handle: 'Ethan8787',
         color: '#ffffff',
         url: 'https://github.com/Ethan8787'
     }, {
-       id: 5,
-       platform: 'VALORANT',
-       username: 'Riot Games',
-       handle: 'Wh1ff #Ethan',
-       color: '#FF4655',
-       url: '#'
+        id: 3,
+        platform: 'JetBrains',
+        username: 'JetBrains',
+        handle: '@EthanNetwork',
+        color: '#FF2D20',
+        url: 'https://account.jetbrains.com/licenses/assets'
+    }, {
+        id: 4,
+        platform: 'Instagram',
+        username: 'Instagram',
+        handle: '@ethantw.dev',
+        color: '#ffffff',
+        url: 'https://instagram.com/ethantw.dev'
+    }, {
+        id: 5,
+        platform: 'YouTube',
+        username: 'YouTube',
+        handle: '@ethantwdev',
+        color: '#ff0000',
+        url: 'https://youtube.com/@ethantwdev'
     }, {
         id: 6,
         platform: 'PUBG Mobile',
         username: 'PL・Gun神',
         handle: 'UID: 5470792693',
         color: '#F2A900',
+        url: '#'
+    }, {
+        id: 7,
+        platform: 'VALORANT',
+        username: 'Riot Games',
+        handle: 'Wh1ff #Ethan',
+        color: '#FF4655',
         url: '#'
     }];
 
@@ -107,7 +119,7 @@ const GameId = () => {
                 {accounts.map((acc) => (<div key={acc.id} className="game-id-item" style={{'--brand-color': acc.color}}>
                     <div className="game-id-content-left">
                         <div className="icon-wrapper">
-                            <PlatformIcon platform={acc.platform}/>
+                            <GameIdMain platform={acc.platform}/>
                         </div>
                         <div className="text-wrapper">
                             <span className="user-name">{acc.username}</span>
