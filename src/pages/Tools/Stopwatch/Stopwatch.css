@@ -54,30 +54,27 @@
 }
 
 .btn-reset {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .btn-reset:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
     border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
 .btn-start {
     background: #0098ee;
     color: white;
     border: none;
-    box-shadow: 0 4px 15px rgba(0, 152, 238, 0.3);
 }
 
 .btn-stop {
     background: #ff4444;
     color: white;
     border: none;
-    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
 }
 
 .btn-lap {
@@ -87,13 +84,20 @@
 }
 
 .sw-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: none !important;
+    background: transparent;
+    color: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: none;
 }
 
 .sw-btn:hover:not(:disabled) {
     filter: brightness(1.2);
+}
+
+.sw-btn:disabled:hover {
+    filter: none;
 }
 
 .sw-btn:active {

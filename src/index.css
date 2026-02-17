@@ -47,59 +47,40 @@
     --font-secondary: 'ubuntu', 'pinfang', sans-serif;
     --font-third: 'jett', 'pinfang', sans-serif;
     --bg-glass: rgba(20, 20, 25, 0.7);
-    --border-glass: rgba(255, 255, 255, 0.1);
+    --border-glass: rgba(255, 255, 255, 0.07);
     --accent-blue: #0098EE;
     --text-main: #ffffff;
     --text-dim: #a0a0a0;
     --font-mono: 'JetBrains Mono', 'Ubuntu Mono', monospace;
-}
-
-.glass-card {
-    background: var(--bg-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-glass);
-    border-radius: 16px;
-    padding: 2rem;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    color: var(--text-main);
-    margin: 20px auto;
-}
-
-.base-btn {
-    background: var(--accent-blue);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.base-btn:hover {
-    filter: brightness(1.1);
-    transform: translateY(-1px);
+    --ios-dark-blue: #5856d6;
+    --ios-deep-blue: #007aff;
+    --ios-blue: #34aadc;
+    --ios-light-blue: #5ac8fa;
+    --ios-green: #4cd964;
+    --ios-pink: #ff2d55;
+    --ios-red: #ff3b30;
+    --ios-orange: #ff9500;
+    --ios-yellow: #ffcc00;
+    --ios-grey: #8e8e93;
+    --ios-light-grey: #ceced2;
+    --ios-background: #efeff4;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
     width: 100%;
     min-height: 100vh;
     background: #000000;
-    font-family: var(--font-main), monospace;
+    font-family: var(--font-main), system-ui, -apple-system, sans-serif;
     color: var(--text-color);
-}
-
-body {
-    font-family: 'Poppins', 'zhtw', system-ui, sans-serif;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
 }
 
 html::-webkit-scrollbar {
@@ -109,4 +90,133 @@ html::-webkit-scrollbar {
 html {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 1.5rem;
+    width: 92%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: var(--text-main);
+    margin: 20px auto;
+}
+
+@media (min-width: 768px) {
+    .glass-card {
+        padding: 2rem;
+        width: 100%;
+    }
+}
+
+.base-btn {
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.base-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.ios-dark-blue {
+    background-color: var(--ios-dark-blue);
+}
+
+.ios-deep-blue {
+    background-color: var(--ios-deep-blue);
+}
+
+.ios-blue {
+    background-color: var(--ios-blue);
+}
+
+.ios-light-blue {
+    background-color: var(--ios-light-blue);
+}
+
+.ios-green {
+    background-color: var(--ios-green);
+}
+
+.ios-pink {
+    background-color: var(--ios-pink);
+}
+
+.ios-red {
+    background-color: var(--ios-red);
+}
+
+.ios-orange {
+    background-color: var(--ios-orange);
+}
+
+.ios-yellow {
+    background-color: var(--ios-yellow);
+}
+
+.ios-grey {
+    background-color: var(--ios-grey);
+}
+
+.ios-light-grey {
+    background-color: var(--ios-light-grey);
+}
+
+.ios-background {
+    background-color: var(--ios-background);
+}
+
+.ios-text-dark-blue {
+    color: var(--ios-dark-blue);
+}
+
+.ios-text-deep-blue {
+    color: var(--ios-deep-blue);
+}
+
+.ios-text-blue {
+    color: var(--ios-blue);
+}
+
+.ios-text-light-blue {
+    color: var(--ios-light-blue);
+}
+
+.ios-text-green {
+    color: var(--ios-green);
+}
+
+.ios-text-pink {
+    color: var(--ios-pink);
+}
+
+.ios-text-red {
+    color: var(--ios-red);
+}
+
+.ios-text-orange {
+    color: var(--ios-orange);
+}
+
+.ios-text-yellow {
+    color: var(--ios-yellow);
+}
+
+.ios-text-grey {
+    color: var(--ios-grey);
 }
