@@ -46,8 +46,12 @@ const GameIdMain = ({platform}) => {
             <svg viewBox="0 0 32 32" fill="currentColor">
                 <path d="M19.8,26.1h-0.2c-2.4,0-4.8,0-7.2,0c-0.3,0-0.5-0.1-0.6-0.3c-2.5-3.2-5.1-6.3-7.6-9.5C4.1,16.1,4,16,4,15.8c0-3.1,0-6.1,0-9.2c0-0.1,0-0.2,0.1-0.2h0.1c5.2,6.5,10.4,13,15.5,19.5c0,0,0,0.1,0.1,0.1L19.8,26.1L19.8,26.1z M27.8,16.3c-0.7,0.9-1.5,1.8-2.2,2.8c-0.2,0.2-0.4,0.3-0.6,0.3c-2.4,0-4.8,0-7.1,0c0,0-0.1,0-0.1,0c-0.1,0-0.2-0.1-0.1-0.2c0,0,0-0.1,0.1-0.1c2.4-3,4.7-5.9,7.1-8.9c1-1.2,2-2.5,2.9-3.7c0-0.1,0.1-0.1,0.2-0.1c0,0,0.1,0,0.1,0c0,0.1,0,0.1,0,0.2c0,3,0,6.1,0,9.1C28,16,27.9,16.2,27.8,16.3L27.8,16.3z" />
             </svg>
+        ),
+        Minecraft: (
+            <svg fill="#000000" width="800px" height="800px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.213 0c-5.088 0-9.213 4.125-9.213 9.213v22.787h22.787c5.088 0 9.213-4.125 9.213-9.213v-22.787zM22.697 3.459c0.756 0 1.365 3.339 1.365 4.093 0.025 0.771-0.593 1.407-1.365 1.407-0.771 0-1.391-0.636-1.364-1.407 0-0.755 0.615-4.093 1.364-4.093zM19.213 7.328c0.923 0.256 2.776 5.032 4.849 2.959 1.932-1.932 2.735 9.552 2.735 9.552l-2.735-1.365c0 0 0-2.728-4.093-5.457-5.079-3.391-10.923-1.156-10.923 4.088 0 10.713 17.751 6.828 17.751 6.828s-0.005 2.729-2.735 2.729h-16.375c-2.729 0-2.735-2.729-2.735-2.729v-13.645c0-2.735 2.735-2.735 2.735-2.735h5.457c2.729 0 5.459 2.735 5.459 2.735 0-1.989 0.156-2.803 0.437-2.943 0.057-0.027 0.115-0.032 0.172-0.016z"/>
+            </svg>
         )
-
     };
 
     if (platform === 'Instagram') {
@@ -111,6 +115,13 @@ const GameId = () => {
         handle: 'Wh1ff #Ethan',
         color: '#FF4655',
         url: '#'
+    }, {
+        id: 8,
+        platform: 'Minecraft',
+        username: '27ms__',
+        handle: '27ms__',
+        color: '#AA0000',
+        url: 'https://namemc.com/profile/27ms__'
     }];
 
     return (<div className="game-id-layout">
@@ -123,11 +134,20 @@ const GameId = () => {
                         </div>
                         <div className="text-wrapper">
                             <span className="user-name">{acc.username}</span>
-                            <span className="platform-name">{acc.handle}</span>
+                            <span className="platform-name">
+                                {acc.platform === 'Minecraft' && (
+                                    <img
+                                        src={`https://minotar.net/helm/${acc.handle}/100.png`}
+                                        alt={acc.handle}
+                                        className="mc-head"
+                                    />
+                                )}
+                                {acc.handle}
+                            </span>
                         </div>
                     </div>
                     <a href={acc.url} target="_blank" rel="noreferrer" className="link-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                              strokeWidth="2">
                             <path
                                 d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
