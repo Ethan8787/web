@@ -18,25 +18,39 @@
 
 .project-card:hover {
     transform: scale(1.02);
+}
 
-    .description {
-        color: #ffffff;
-    }
+.project-card:hover .description {
+    color: #ffffff;
 }
 
 .project-info {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    gap: 12px;
     margin-bottom: 12px;
 }
-
 
 .project-info h3 {
     font-size: 1.4rem;
     color: var(--accent-color);
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tag {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-family: var(--font-third), monospace;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 16px;
+    background-color: var(--text-color);
+    color: #000;
 }
 
 .description {
@@ -46,20 +60,6 @@
     margin-bottom: 20px;
     flex-grow: 1;
     transition: all 0.3s;
-}
-
-.svg-one {
-    margin-right: 4px;
-}
-
-.tag {
-    font-size: 0.75rem;
-    font-family: var(--font-third), monospace;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 16px;
-    background-color: var(--text-color);
-    color: #000;
 }
 
 .project-link {
@@ -82,13 +82,7 @@
 }
 
 @media (max-width: 900px) {
-    .section {
-        padding: 20px;
-    }
     .project-grid {
         grid-template-columns: 1fr;
-    }
-    .description {
-        font-size: 0.9rem;
     }
 }

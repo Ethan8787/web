@@ -31,15 +31,12 @@ export default function App() {
                     <Route path="/code" element={<Code />} />
                     <Route path="/gameid" element={<GameId />} />
                     <Route path="/tools" element={<Tools />} />
-
-                    {/* 工具類頁面路由 */}
                     <Route path="/timestamp" element={<DiscordTool />} />
                     <Route path="/stopwatch" element={<Stopwatch />} />
                     <Route path="/clock" element={<Clock />} />
                     <Route path="/timer" element={<Timer />} />
                     <Route path="/lottery" element={<RandomWheel />} />
                     <Route path="/zhu-yin-convert" element={<ZhuyinSecret />} />
-
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
