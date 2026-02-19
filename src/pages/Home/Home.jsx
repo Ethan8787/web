@@ -28,7 +28,6 @@ export default function Home() {
                     你好，我是 Ethan，來自台灣的國三程式設計愛好者。
                 </p>
                 <div className="button-group">
-                    {/* 3. 這裡也都改成變數 */}
                     <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank"
                        rel="noreferrer">
                         <img src={discordIcon} className="btn-icon" alt="icon"/>
