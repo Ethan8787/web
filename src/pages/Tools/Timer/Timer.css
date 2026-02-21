@@ -83,7 +83,7 @@ input::-webkit-inner-spin-button {
 
 .timer-progress-track {
     width: 100%;
-    height: 5px;
+    height: 15px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50px;
     border: 0;

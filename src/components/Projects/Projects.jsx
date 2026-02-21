@@ -26,3 +26,5 @@ const ProjectGrid = ({ projects }) => {
         </div>
     );
 };
+
+export default { ProjectCard, ProjectGrid };

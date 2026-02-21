@@ -1,8 +1,11 @@
 import "./Skills.css"
 
-const skillsData = [{name: 'Java', level: 90}, {name: 'Python', level: 80}, {name: 'C/C++', level: 65}, {
-    name: 'React', level: 60
-},];
+const skillsData = [
+    {name: 'Java', level: 15},
+    {name: 'Python', level: 12},
+    {name: 'C/C++', level: 11},
+    {name: 'React', level: 16}
+];
 
 function SkillItem({name, level}) {
     return (<div className="skill-item">
