@@ -1,4 +1,5 @@
-import "./Skills.css"
+import React from 'react';
+import "./Skills.css";
 
 const skillsData = [
     {name: 'Java', level: 15},
@@ -8,19 +9,25 @@ const skillsData = [
 ];
 
 function SkillItem({name, level}) {
-    return (<div className="skill-item">
-        <span className="skill-name">{name}</span>
-        <div className="skill-bar-container">
-            <div className="skill-bar" style={{width: `${level}%`}}></div>
+    return (
+        <div className="skill-item">
+            <span className="skill-name">{name}</span>
+            <div className="skill-bar-container">
+                <div className="skill-bar" style={{width: `${level}%`}}></div>
+            </div>
         </div>
-    </div>);
+    );
 }
 
 export default function Skills() {
-    return (<div className="section" id="skills">
-        <h2>我的能力 Skills</h2>
-        <div className="skills-list">
-            {skillsData.map(skill => (<SkillItem key={skill.name} {...skill} />))}
+    return (
+        <div className="section" id="skills">
+            <h2>我的能力 Skills</h2>
+            <div className="skills-list">
+                {skillsData.map(skill => (
+                    <SkillItem key={skill.name} {...skill} />
+                ))}
+            </div>
         </div>
-    </div>);
+    );
 }
