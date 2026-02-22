@@ -1,9 +1,6 @@
 import {useEffect, useState} from "react";
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {atomDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
-import Background from "../../Background/Background.jsx";
-import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
 import "./Code.css";
 
 export default function Code() {
@@ -22,7 +19,7 @@ export default function Code() {
             .then(text => setCodeContent(text))
             .catch(err => {
                 console.error(err);
-                setCodeContent(`// ❌ 載入失敗\n// 原因: ${err.message}\n// 請檢查 public 資料夾下是否有 ${activeTab}.txt`);
+                setCodeContent(`// 載入失敗\n// 原因: ${err.message}\n// 請檢查 public 資料夾下是否有 ${activeTab}.txt`);
             });
     }, [activeTab]);
 

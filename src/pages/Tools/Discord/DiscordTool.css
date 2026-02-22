@@ -68,8 +68,10 @@
 }
 
 .copy-btn {
-    background: #00FFFF;
-    color: #000;
+    position: relative;
+    background: rgba(0, 0, 0, 0);
+    margin-left: 12vw;
+    color: #fff;
     border: none;
     padding: 8px 16px;
     border-radius: 6px;
@@ -82,4 +84,10 @@
     color: #dee0fc;
     padding: 4px 8px;
     border-radius: 4px;
+}
+
+@media (max-width: 500px) {
+    .copy-btn {
+        margin-left: 24vw;
+    }
 }
