@@ -58,18 +58,22 @@
 
 .nav-item.active {
     color: #ffffff;
-    background: rgba(0, 152, 238, 0.2);
-    box-shadow: 0 0 15px rgba(0, 152, 238, 0.15);
+    background: rgba(0, 255, 255, 0.14);
+    border: 1px solid rgba(0, 255, 255, 0.18);
+    box-shadow: 0 0 18px rgba(0, 255, 255, 0.12);
     font-weight: 600;
 }
 
-.nav-item.tool-highlight {
-    padding-left: 1rem;
-    padding-right: 1rem;
+.nav-item:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.06);
 }
 
-.nav-item.tool-highlight svg {
-    transition: transform 0.3s ease;
+.nav-item.tool-highlight:hover svg {
+    transform: rotate(20deg);
+    color: #00FFFF;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.25));
 }
 
 .nav-item.tool-highlight:hover svg {

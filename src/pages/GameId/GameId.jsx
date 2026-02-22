@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './GameId.css';
 
 const GameIdMain = ({platform}) => {
@@ -48,7 +48,7 @@ const GameIdMain = ({platform}) => {
             </svg>
         ),
         Minecraft: (
-            <svg fill="#000000" width="800px" height="800px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="currentColor" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.213 0c-5.088 0-9.213 4.125-9.213 9.213v22.787h22.787c5.088 0 9.213-4.125 9.213-9.213v-22.787zM22.697 3.459c0.756 0 1.365 3.339 1.365 4.093 0.025 0.771-0.593 1.407-1.365 1.407-0.771 0-1.391-0.636-1.364-1.407 0-0.755 0.615-4.093 1.364-4.093zM19.213 7.328c0.923 0.256 2.776 5.032 4.849 2.959 1.932-1.932 2.735 9.552 2.735 9.552l-2.735-1.365c0 0 0-2.728-4.093-5.457-5.079-3.391-10.923-1.156-10.923 4.088 0 10.713 17.751 6.828 17.751 6.828s-0.005 2.729-2.735 2.729h-16.375c-2.729 0-2.735-2.729-2.735-2.729v-13.645c0-2.735 2.735-2.735 2.735-2.735h5.457c2.729 0 5.459 2.735 5.459 2.735 0-1.989 0.156-2.803 0.437-2.943 0.057-0.027 0.115-0.032 0.172-0.016z"/>
             </svg>
         )
@@ -66,97 +66,86 @@ const GameIdMain = ({platform}) => {
 };
 
 const GameId = () => {
-    const accounts = [{
-        id: 1,
-        platform: 'Discord',
-        username: 'Discord',
-        handle: '@ethantw.dev',
-        color: '#5865F2',
-        url: 'https://discord.com/users/ethantw.dev'
-    }, {
-        id: 2,
-        platform: 'GitHub',
-        username: 'GitHub',
-        handle: 'Ethan8787',
-        color: '#ffffff',
-        url: 'https://github.com/Ethan8787'
-    }, {
-        id: 3,
-        platform: 'JetBrains',
-        username: 'JetBrains',
-        handle: '@EthanNetwork',
-        color: '#FF2D20',
-        url: 'https://account.jetbrains.com/licenses/assets'
-    }, {
-        id: 4,
-        platform: 'Instagram',
-        username: 'Instagram',
-        handle: '@ethantw.dev',
-        color: '#ffffff',
-        url: 'https://instagram.com/ethantw.dev'
-    }, {
-        id: 5,
-        platform: 'YouTube',
-        username: 'YouTube',
-        handle: '@ethantwdev',
-        color: '#ff0000',
-        url: 'https://youtube.com/@ethantwdev'
-    }, {
-        id: 6,
-        platform: 'PUBG Mobile',
-        username: 'PL・Gun神',
-        handle: 'UID: 5470792693',
-        color: '#F2A900',
-        url: '#'
-    }, {
-        id: 7,
-        platform: 'VALORANT',
-        username: 'Riot Games',
-        handle: 'Wh1ff #Ethan',
-        color: '#FF4655',
-        url: '#'
-    }, {
-        id: 8,
-        platform: 'Minecraft',
-        username: '27ms__',
-        handle: '27ms__',
-        color: '#AA0000',
-        url: 'https://namemc.com/profile/27ms__'
-    }];
+    const [copiedId, setCopiedId] = useState(null);
 
-    return (<div className="game-id-layout">
-        <main className="game-id-main">
-            <div className="game-id-list">
-                {accounts.map((acc) => (<div key={acc.id} className="game-id-item" style={{'--brand-color': acc.color}}>
-                    <div className="game-id-content-left">
-                        <div className="icon-wrapper">
-                            <GameIdMain platform={acc.platform}/>
+    const initialAccounts = [
+        { id: 1, platform: 'Discord', username: 'Discord', handle: '@ethantw.dev', color: '#5865F2', url: 'https://discord.com/users/ethantw.dev' },
+        { id: 2, platform: 'GitHub', username: 'GitHub', handle: 'Ethan8787', color: '#ffffff', url: 'https://github.com/Ethan8787' },
+        { id: 3, platform: 'JetBrains', username: 'JetBrains', handle: '@EthanNetwork', color: '#FF2D20', url: 'https://account.jetbrains.com/licenses/assets' },
+        { id: 4, platform: 'Instagram', username: 'Instagram', handle: '@ethantw.dev', color: '#ffffff', url: 'https://instagram.com/ethantw.dev' },
+        { id: 5, platform: 'YouTube', username: 'YouTube', handle: '@ethantwdev', color: '#ff0000', url: 'https://youtube.com/@ethantwdev' },
+        { id: 6, platform: 'PUBG Mobile', username: 'PL・Gun神', handle: '5470792693', color: '#F2A900', url: '#', isCopy: true },
+        { id: 7, platform: 'VALORANT', username: 'Riot Games', handle: 'Wh1ff #Ethan', color: '#FF4655', url: '#', isCopy: true },
+        { id: 8, platform: 'Minecraft', username: '27ms__', handle: '27ms__', color: '#AA0000', url: 'https://namemc.com/profile/27ms__' }
+    ];
+
+    const sortedAccounts = [...initialAccounts].sort((a, b) => {
+        if (a.isCopy && !b.isCopy) return 1;
+        if (!a.isCopy && b.isCopy) return -1;
+        return 0;
+    });
+
+    const handleCopy = (text, id) => {
+        navigator.clipboard.writeText(text);
+        setCopiedId(id);
+        setTimeout(() => setCopiedId(null), 2000);
+    };
+
+    return (
+        <div className="game-id-layout">
+            <main className="game-id-main">
+                <div className="game-id-list">
+                    {sortedAccounts.map((acc) => (
+                        <div key={acc.id} className="game-id-item" style={{ '--brand-color': acc.color }}>
+                            <div className="game-id-content-left">
+                                <div className="icon-wrapper">
+                                    <GameIdMain platform={acc.platform} />
+                                </div>
+                                <div className="text-wrapper">
+                                    <span className="user-name">{acc.username}</span>
+                                    <span className="platform-name">
+                                        {acc.platform === 'Minecraft' && (
+                                            <img
+                                                src={`https://minotar.net/helm/${acc.handle}/100.png`}
+                                                alt={acc.handle}
+                                                className="mc-head"
+                                            />
+                                        )}
+                                        {acc.platform === 'PUBG Mobile' ? `UID: ${acc.handle}` : acc.handle}
+                                    </span>
+                                </div>
+                            </div>
+
+                            {acc.isCopy ? (
+                                <button
+                                    className="link-btn copy-btn"
+                                    onClick={() => handleCopy(acc.handle, acc.id)}
+                                    title="Copy ID"
+                                >
+                                    {copiedId === acc.id ? (
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    ) : (
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    )}
+                                </button>
+                            ) : (
+                                <a href={acc.url} target="_blank" rel="noreferrer" className="link-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                                    </svg>
+                                </a>
+                            )}
                         </div>
-                        <div className="text-wrapper">
-                            <span className="user-name">{acc.username}</span>
-                            <span className="platform-name">
-                                {acc.platform === 'Minecraft' && (
-                                    <img
-                                        src={`https://minotar.net/helm/${acc.handle}/100.png`}
-                                        alt={acc.handle}
-                                        className="mc-head"
-                                    />
-                                )}
-                                {acc.handle}
-                            </span>
-                        </div>
-                    </div>
-                    <a href={acc.url} target="_blank" rel="noreferrer" className="link-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                             strokeWidth="2">
-                            <path
-                                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
-                        </svg>
-                    </a>
-                </div>))}
-            </div>
-        </main>
-    </div>);
+                    ))}
+                </div>
+            </main>
+        </div>
+    );
 };
 
 export default GameId;

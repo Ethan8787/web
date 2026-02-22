@@ -1,5 +1,5 @@
 import React from 'react';
-import avatarImg from '../../assets/avatar/512.png';
+import avatarImg from '../../assets/avatar/1024.png';
 import discordIcon from '../../assets/icons/discord.svg';
 import youtubeIcon from '../../assets/icons/youtube.svg';
 import instagramIcon from '../../assets/icons/instagram.svg';
@@ -25,11 +25,12 @@ export default function Home() {
             <div className="intro-card" id="intro">
                 <h2>關於我 About Me</h2>
                 <p>
-                    你好，我是 <span style={{ color: 'var(--accent-color)', fontWeight: 'bold' }}>Ethan</span>。
+                    你好，我是 <span style={{color: 'var(--accent-color)', fontWeight: 'bold'}}>Ethan</span>。
                     一名在底層 <code className="tech-tag">C/C++</code> 影像處理與現代
-                    <code className="tech-tag">React</code> 網頁開發之間反覆橫跳的 14 歲開發者。
-                    我喜歡把複雜的邏輯轉化為乾淨的代碼，無論是編寫高性能的 <strong>Canny 算子</strong>，
-                    還是捏出具有質感的 React UI。目前正全力往「大安高工」衝刺，目標是在技術的邊界上不斷突破。
+                    <code className="tech-tag">React</code> 網頁開發的 14 歲開發者。<br/>
+                    另外也有 Java（Bukkit/Paper/Purpur 插件） 的實戰經驗，熟悉事件驅動與模組化設計。
+                    我喜歡把複雜的邏輯轉化為乾淨的代碼，無論是編寫高性能的 <strong>Canny</strong>，
+                    還是捏出質感 React UI。目前正全力往「大安高工」衝刺，目標是在技術的上有實際突破。
                 </p>
                 <div className="button-group">
                     <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank"
