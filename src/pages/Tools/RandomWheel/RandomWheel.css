@@ -1,0 +1,130 @@
+.tool-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.05);
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 4s cubic-bezier(0.1, 0.7, 0.1, 1);
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    isolation: isolate;
+}
+
+.wheel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    background: repeating-conic-gradient(
+            from 0deg,
+            rgba(255, 255, 255, 0) 0deg calc(var(--slice-deg) - 0.9deg),
+            rgba(255, 255, 255, 0.18) calc(var(--slice-deg) - 0.9deg) var(--slice-deg)
+    );
+    mix-blend-mode: screen;
+    opacity: 0.65;
+}
+
+.wheel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+.wheel > * {
+    position: relative;
+    z-index: 2;
+}
+
+.spin-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    color: #000;
+    font-weight: 900;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.winner-display {
+    text-align: center;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glow-text {
+    color: #00FFFF;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00FFFF;
+}
+
+.input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.base-btn {
+    background: #00FFFF;
+    color: #000;
+    border: none;
+    padding: 0 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.list-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.delete-x {
+    color: #ef4444;
+    cursor: pointer;
+    font-weight: bold;
+}

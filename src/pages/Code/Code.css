@@ -71,7 +71,7 @@
 
 .tab-btn.active {
     opacity: 1;
-    background: var(--accent-color);
+    background: rgba(0,80,203, 0.8);
     box-shadow: 0 0 20px rgba(0, 152, 238, 0.6);
 }
 

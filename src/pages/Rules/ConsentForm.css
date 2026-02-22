@@ -1,0 +1,110 @@
+.consent-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 150px);
+    padding: 40px 0;
+}
+
+.minimal-doc-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 45px;
+    width: 90%;
+    max-width: 500px;
+    color: white;
+    transition: box-shadow 0.3s ease, border-color 0.3s;
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.05);
+}
+
+.minimal-doc-card:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    border-color: #00FFFF;
+}
+
+.doc-title {
+    text-align: center;
+    font-size: 1.4rem;
+    letter-spacing: 5px;
+    color: #00FFFF;
+    margin: 0 0 10px 0;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 35px;
+}
+
+.promise-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    margin-bottom: 24px;
+}
+
+.custom-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.custom-icon.checked {
+    background: #00FFFF;
+    border-color: #00FFFF;
+    color: black;
+}
+
+.draw-check polyline {
+    stroke-dasharray: 25;
+    stroke-dashoffset: 25;
+    animation: draw 0.3s ease-out forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.promise-text {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: 0.3s;
+}
+
+.promise-text.strikethrough {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.doc-footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.sig-item .label {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+}
+
+.sig-item .val {
+    font-family: monospace;
+    font-size: 1rem;
+    color: #00FFFF;
+}

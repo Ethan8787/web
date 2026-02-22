@@ -6,31 +6,29 @@
 }
 
 .clock-content {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     padding: 60px 80px;
-    border-radius: 12%;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     text-align: center;
     position: relative;
     overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.05);
 }
 
-.clock-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color, #0098ee), transparent);
+.clock-content:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    transform: translateY(-5px);
 }
 
 .clock-time {
     font-size: 7rem;
     font-weight: 900;
     font-family: 'JetBrains Mono', monospace;
-    color: white;
+    color: #ffffff;
     line-height: 1;
     letter-spacing: -2px;
     margin-bottom: 20px;
@@ -39,7 +37,7 @@
 
 .clock-date {
     font-size: 1.2rem;
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.6);
     letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 300;
@@ -47,9 +45,9 @@
 
 @media (max-width: 600px) {
     .clock-time {
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
     .clock-content {
-        padding: 60px 30px;
+        padding: 40px 20px;
     }
 }

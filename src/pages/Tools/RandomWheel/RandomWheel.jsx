@@ -1,28 +1,33 @@
-import React, { useState, useRef } from 'react';
-import './RandomWeel.css';
+// RandomWheel.jsx
+// 目的：把每片角度丟進 CSS 變數，overlay 分隔線才知道每片幾度
+
+import React, { useState } from 'react';
+import './RandomWheel.css';
 
 export default function RandomWheel() {
-    const [items, setItems] = useState(['測試1', '測試2']);
+    const [items, setItems] = useState(['測試1', '測試2', '3', '4', '5']);
     const [newItem, setNewItem] = useState('');
     const [isSpinning, setIsSpinning] = useState(false);
     const [rotation, setRotation] = useState(0);
-    const [winner, setWinner] = useState(null);
+    const [winnerIndex, setWinnerIndex] = useState(null);
 
     const colors = ['#5865F2', '#0098ee', '#10b981', '#f59e0b', '#ef4444'];
 
     const handleSpin = () => {
         if (isSpinning || items.length < 2) return;
         setIsSpinning(true);
-        setWinner(null);
+        setWinnerIndex(null);
+
         const randomDeg = Math.floor(Math.random() * 360);
-        const newRotation = rotation + 1800 + randomDeg;
-        setRotation(newRotation);
+        const nextRotation = rotation + 1800 + randomDeg;
+        setRotation(nextRotation);
+
         setTimeout(() => {
             setIsSpinning(false);
-            const actualDeg = newRotation % 360;
             const sliceDeg = 360 / items.length;
-            const index = Math.floor(((360 - actualDeg + 90) % 360) / sliceDeg);
-            setWinner(items[index]);
+            const actualRotation = nextRotation % 360;
+            const index = Math.floor(((360 - actualRotation + 180) % 360) / sliceDeg);
+            setWinnerIndex(index % items.length);
         }, 4000);
     };
 
@@ -30,6 +35,7 @@ export default function RandomWheel() {
         if (newItem.trim()) {
             setItems([...items, newItem.trim()]);
             setNewItem('');
+            setWinnerIndex(null);
         }
     };
 
@@ -38,72 +44,58 @@ export default function RandomWheel() {
         const slice = 100 / items.length;
         let gradient = 'conic-gradient(';
         items.forEach((_, i) => {
-            gradient += `${colors[i % colors.length]} ${i * slice}% ${(i + 1) * slice}%,`;
+            gradient += `${colors[i % colors.length]} ${i * slice}% ${(i + 1) * slice}%${i === items.length - 1 ? '' : ','}`;
         });
-        return gradient.slice(0, -1) + ')';
+        return gradient + ')';
     };
 
-    const RightArrow = () => (
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-            <path d="M8 4 L16 12 L8 20 Z" />
-        </svg>
-    );
-    const LeftArrow = () => (
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-            <path d="M16 4 L8 12 L16 20 Z" />
-        </svg>
-    );
+    const sliceDeg = items.length ? 360 / items.length : 360;
 
     return (
         <div className="tool-card">
-            <div className="card-header">
-                <h2>幸運輪盤</h2>
-                <span className="badge">Professional</span>
-            </div>
-
             <div className="wheel-main">
-                <div className="wheel" style={{
-                    background: getWheelBackground(),
-                    transform: `rotate(${rotation}deg)`,
-                    transition: isSpinning ? 'transform 4s cubic-bezier(0.1, 0.7, 0.1, 1)' : 'none'
-                }}>
-                    {items.map((item, i) => (
-                        <div key={i} className="wheel-segment" style={{
-                            transform: `rotate(${i * (360 / items.length) + (360 / items.length / 2)}deg) translateY(-42%)`,
-                            position: 'absolute', top: '50%', left: '50%', transformOrigin: 'top center'
-                        }}>
-                            <span style={{writingMode: 'vertical-rl', color: 'white', fontWeight: 'bold', textShadow: '0 1px 3px rgba(0,0,0,0.5)'}}>
-                                {item}
-                            </span>
-                        </div>
-                    ))}
+                <div
+                    className="wheel"
+                    style={{
+                        background: getWheelBackground(),
+                        transform: `rotate(${rotation}deg) translateZ(0)`,
+                        '--slice-deg': `${sliceDeg}deg`
+                    }}
+                >
+                    {items.map((item, i) => {
+                        const segmentCenterDeg = i * sliceDeg + (sliceDeg / 2);
+                        return (
+                            <div
+                                key={i}
+                                className={`wheel-segment ${winnerIndex === i ? 'active' : ''}`}
+                                style={{ transform: `rotate(${segmentCenterDeg}deg) translateY(-110px)` }}
+                            >
+                                <span style={{ transform: `rotate(${-rotation - segmentCenterDeg}deg)` }}>
+                                    {item}
+                                </span>
+                            </div>
+                        );
+                    })}
                 </div>
+
+                <div className="wheel-pointer-bottom"></div>
                 <button className="spin-btn" onClick={handleSpin} disabled={isSpinning}>
                     {isSpinning ? '...' : 'SPIN'}
                 </button>
             </div>
 
             <div className="winner-display">
-                {winner && (
-                    <div className="winner-inner">
-                        <LeftArrow />
-                        <span className="winner-text">{winner}</span>
-                        <RightArrow />
-                    </div>
-                )}
+                {winnerIndex !== null && <span className="glow-text">{items[winnerIndex]}</span>}
             </div>
 
-
-            <div className="input-group" style={{display: 'flex', gap: '8px'}}>
-                <div className="input-wrapper">
-                    <input
-                        type="text"
-                        value={newItem}
-                        onChange={(e) => setNewItem(e.target.value)}
-                        onKeyDown={(e) => e.key === 'Enter' && addItem()}
-                        placeholder="Add option..."
-                    />
-                </div>
+            <div className="input-group">
+                <input
+                    type="text"
+                    value={newItem}
+                    onChange={(e) => setNewItem(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && addItem()}
+                    placeholder="Add option..."
+                />
                 <button className="base-btn" onClick={addItem}>+</button>
             </div>
 
@@ -111,7 +103,7 @@ export default function RandomWheel() {
                 {items.map((item, i) => (
                     <div key={i} className="list-item">
                         {item}
-                        <span onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
+                        <span className="delete-x" onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
                     </div>
                 ))}
             </div>

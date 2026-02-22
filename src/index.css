@@ -51,9 +51,9 @@
 :root {
     --bg-color: transparent;
     --text-color: #ffffff;
-    --accent-color: #0098EE;
+    --accent-color: #00FFFF;
     --card-bg: rgba(0, 0, 0, 0.3);
-    --font-main: 'Poppins', 'zhtw', sans-serif;
+    --font-main: 'Poppins', 'pinfang', sans-serif;
     --font-secondary: 'ubuntu', 'pinfang', sans-serif;
     --font-third: 'jett', 'pinfang', sans-serif;
     --bg-glass: rgba(20, 20, 25, 0.7);

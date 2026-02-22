@@ -43,6 +43,13 @@ const projectsData = [
         description: "你的 GitHub 個人介紹 README。",
         link: "https://github.com/Ethan8787/Ethan8787",
         isPrivate: false
+    },
+    {
+        name: "Canny",
+        tag: "C",
+        description: "Pure C 圖像處理項目由--我的老師提出。",
+        link: "#",
+        isPrivate: true
     }
 ];
 
@@ -59,6 +66,7 @@ const ProjectCard = ({ project }) => {
             ) : (
                 <a href={project.link} className="project-link" target="_blank" rel="noreferrer">
                     <svg
+                        className="icon-arrow-go"
                         width="14"
                         height="14"
                         viewBox="0 0 24 24"
