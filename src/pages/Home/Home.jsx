@@ -14,7 +14,7 @@ export default function Home() {
             <div className="header-group">
                 <div className="avatar-wrapper">
                     <div className="cont1">
-                        <div className="status-bubble">我剛買域名ㄚㄚㄚ</div>
+                        <div className="status-bubble">我剛買域名</div>
                         <div className="thought-dot dot-1"></div>
                     </div>
                     <div className="thought-dot dot-2"></div>
