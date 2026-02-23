@@ -177,6 +177,35 @@
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.link-btn.copy-btn {
+    color: rgba(255, 255, 255, 0.5);
+    background: none;
+    border: none;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.game-id-item .link-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.game-id-item .copy-btn:active {
+    transform: scale(0.95);
+}
+
 .game-id-item:hover .insta-mask-fix {
     transform: scale(1.15) rotate(-5deg);
 }
