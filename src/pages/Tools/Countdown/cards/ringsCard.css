@@ -1,0 +1,61 @@
+.rings-container {
+    display: flex; /* 改用 flex 解決截圖中垂直排列的問題 */
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.ring-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.svg-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-container svg {
+    transform: rotate(-90deg); /* 確保從 12 點鐘方向開始跑 */
+}
+
+.ring-bg {
+    stroke: var(--border-glass); /* 使用你庫裡的玻璃邊框色 */
+    stroke-width: 7;
+}
+
+.ring-fg {
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.ring-value {
+    position: absolute;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: var(--font-mono); /* 同步 JetBrains Mono */
+    color: var(--text-main);
+}
+
+.ring-label {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-family: var(--font-main);
+}
+
+/* 對標你的 EGACSS iOS 調色盤 */
+.c-red { stroke: var(--ios-orange); }
+.c-yellow { stroke: var(--ios-yellow); }
+.c-cyan { stroke: var(--ios-light-blue); }
+.c-blue { stroke: var(--ios-blue); }
+
+@media (max-width: 480px) {
+    .ring-value { font-size: 0.9rem; }
+    .ring-label { font-size: 0.75rem; }
+}

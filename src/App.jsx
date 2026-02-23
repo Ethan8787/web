@@ -17,6 +17,7 @@ import Timer from './pages/Tools/Timer/Timer.jsx';
 import RandomWheel from './pages/Tools/RandomWheel/RandomWheel.jsx';
 import DiscordTool from './pages/Tools/Discord/DiscordTool.jsx';
 import ZhuyinSecret from "./pages/Tools/ZhuyinSecret/ZhuyinSecret.jsx";
+import ExamCountdown from "./pages/Tools/Countdown/Countdown.jsx";
 
 import './App.css';
 
@@ -37,6 +38,7 @@ export default function App() {
                 <Route path="/timer" element={<Timer/>}/>
                 <Route path="/consentForm" element={<ConsentForm/>}/>
                 <Route path="/lottery" element={<RandomWheel/>}/>
+                <Route path="/115" element={<ExamCountdown/>}/>
                 <Route path="/zhu-yin-convert" element={<ZhuyinSecret/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>

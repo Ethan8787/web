@@ -1,6 +1,3 @@
-// RandomWheel.jsx
-// 目的：把每片角度丟進 CSS 變數，overlay 分隔線才知道每片幾度
-
 import React, { useState } from 'react';
 import './RandomWheel.css';
 
@@ -17,7 +14,6 @@ export default function RandomWheel() {
         if (isSpinning || items.length < 2) return;
         setIsSpinning(true);
         setWinnerIndex(null);
-
         const randomDeg = Math.floor(Math.random() * 360);
         const nextRotation = rotation + 1800 + randomDeg;
         setRotation(nextRotation);
@@ -44,7 +40,9 @@ export default function RandomWheel() {
         const slice = 100 / items.length;
         let gradient = 'conic-gradient(';
         items.forEach((_, i) => {
-            gradient += `${colors[i % colors.length]} ${i * slice}% ${(i + 1) * slice}%${i === items.length - 1 ? '' : ','}`;
+            const start = i * slice;
+            const end = (i + 1) * slice;
+            gradient += `${colors[i % colors.length]} ${start}% ${end}%${i === items.length - 1 ? '' : ','}`;
         });
         return gradient + ')';
     };

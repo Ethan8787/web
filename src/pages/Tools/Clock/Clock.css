@@ -20,7 +20,6 @@
 }
 
 .clock-content:hover {
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
     transform: translateY(-5px);
 }
 

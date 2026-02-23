@@ -10,6 +10,13 @@
     box-shadow: 0 0 50px rgba(0, 255, 255, 0.05);
 }
 
+.wheel-main {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 2rem;
+}
+
 .wheel {
     width: 100%;
     height: 100%;
@@ -19,9 +26,6 @@
     overflow: hidden;
     transition: transform 4s cubic-bezier(0.1, 0.7, 0.1, 1);
     will-change: transform;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    isolation: isolate;
 }
 
 .wheel::after {
@@ -29,29 +33,48 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    pointer-events: none;
+    z-index: 2;
     background: repeating-conic-gradient(
             from 0deg,
-            rgba(255, 255, 255, 0) 0deg calc(var(--slice-deg) - 0.9deg),
-            rgba(255, 255, 255, 0.18) calc(var(--slice-deg) - 0.9deg) var(--slice-deg)
+            transparent 0deg calc(var(--slice-deg) - 1px),
+            rgba(255, 255, 255, 0.2) calc(var(--slice-deg) - 1px) var(--slice-deg)
     );
-    mix-blend-mode: screen;
-    opacity: 0.65;
-}
-
-.wheel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
     pointer-events: none;
-    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.35);
-    z-index: 1;
 }
 
-.wheel > * {
-    position: relative;
-    z-index: 2;
+.wheel-segment {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.wheel-segment span {
+    display: block;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    transition: none;
+}
+
+.wheel-pointer-bottom {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid #00FFFF;
+    z-index: 10;
+    filter: drop-shadow(0 0 5px #00FFFF);
 }
 
 .spin-btn {
@@ -67,7 +90,7 @@
     color: #000;
     font-weight: 900;
     cursor: pointer;
-    z-index: 10;
+    z-index: 11;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
 }
 
@@ -110,6 +133,11 @@
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.items-list {
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .list-item {

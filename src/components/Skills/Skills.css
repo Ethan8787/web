@@ -48,6 +48,8 @@
 .skill-item:hover .skill-bar {
     box-shadow: 0 0 15px #00FFFF !important;
     filter: brightness(1.2);
+    transition: scale 0.8s;
+    transform: scale(1.1);
 }
 
 @keyframes bar-glow {
@@ -58,7 +60,7 @@
         box-shadow: -3px 0 15px rgba(0, 255, 255, 0.7);
     }
     66% {
-        box-shadow: 2px 0 12px rgba(0, 255, 255, 0.7);
+        box-shadow: 2px 0 12px rgba(0, 255, 255, 0.9);
     }
 }
 
