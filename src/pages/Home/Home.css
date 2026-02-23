@@ -1,3 +1,59 @@
+.reveal {
+    opacity: 0;
+    transform: translateY(-18px);
+    transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal.delay-0 {
+    transition-delay: 0ms;
+}
+
+.reveal.delay-1 {
+    transition-delay: 120ms;
+}
+
+.page-enter .container > * {
+    opacity: 0;
+    transform: translateY(-18px);
+}
+
+.page-enter.is-loaded .container > * {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-enter.is-loaded .container > *:nth-child(1) {
+    transition-delay: 200ms;
+}
+
+.page-enter.is-loaded .container > *:nth-child(2) {
+    transition-delay: 300ms;
+}
+
+.page-enter.is-loaded .container > *:nth-child(3) {
+    transition-delay: 400ms;
+}
+
+.page-enter.is-loaded .container > *:nth-child(4) {
+    transition-delay: 500ms;
+}
+
+.page-enter.is-loaded .container > *:nth-child(5) {
+    transition-delay: 600ms;
+}
+
+.page-enter.is-loaded .container > *:nth-child(6) {
+    transition-delay: 700ms;
+}
+
 .container {
     position: relative;
     z-index: 10;
@@ -32,7 +88,7 @@
     margin-bottom: 25px;
     font-size: 2rem;
     text-align: center;
-    color: #00FFFF;
+    color: #ffffff;
 }
 
 .intro-card p {
@@ -58,12 +114,11 @@
 }
 
 #avatar {
-    width: 6rem;
-    height: 6rem;
+    width: 5.5rem;
+    height: 5.5rem;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #00FFFF;
-    padding: 4px;
+    border: 2px solid #00FFFF;
     background: rgba(0, 255, 255, 0.05);
 }
 
@@ -109,7 +164,7 @@
     background: rgba(15, 15, 20, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #ffffff;
-    transition: all 3s ease;
+    transition: all 0.8s ease;
 }
 
 .btn-icon {
@@ -117,7 +172,7 @@
     height: 20px !important;
     flex-shrink: 0;
     filter: invert(1) brightness(2);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.8s ease;
 }
 
 .btn:hover .btn-icon {
@@ -200,5 +255,24 @@
 
     .button-group {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-enter .container > *,
+    .page-enter.is-loaded .container > * {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal.is-visible {
+        transition: none;
+        transform: none;
+        opacity: 1;
     }
 }

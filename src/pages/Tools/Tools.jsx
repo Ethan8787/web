@@ -51,7 +51,7 @@ export default function Tools() {
                         <option value="time-display">極簡時鐘</option>
                         <option value="stopwatch">碼表計時</option>
                         <option value="zhu-yin-convert">注音轉換</option>
-                        <option value="discord-tool">Discord工具</option>
+                        <option value="discord-tool">Discord 工具</option>
                         <option value="lottery">幸運輪盤</option>
                     </select>
                     <div className="select-arrow">

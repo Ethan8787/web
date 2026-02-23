@@ -34,12 +34,19 @@
 
 .skill-bar {
     height: 100%;
-    background-color: #00FFFF;
+    width: 0;
+    background-color: #00ffff;
     border-radius: 999px;
-    transition: width 0.8s cubic-bezier(0.1, 0.42, 0.41, 1), box-shadow 0.3s;
-    animation: bar-glow 3s ease-in-out infinite;
+    transition: width 1400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.section.is-visible .skill-bar {
+    width: var(--level);
+}
+
+.section.is-visible .skill-bar {
+    animation: bar-glow 2000ms infinite;
+}
 .skill-item:hover .skill-name {
     color: #00FFFF;
     transform: translateX(5px);

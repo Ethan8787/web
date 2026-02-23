@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./Projects.css";
 
 const projectsData = [
@@ -75,7 +75,7 @@ const ProjectCard = ({ project }) => {
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        style={{marginRight: '6px', verticalAlign: 'text-top'}}
+                        style={{ marginRight: '6px', verticalAlign: 'text-top' }}
                     >
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
@@ -87,11 +87,38 @@ const ProjectCard = ({ project }) => {
 };
 
 export default function Projects() {
+    const ref = useRef(null);
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+
+        const obs = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVisible(true);
+                    obs.disconnect();
+                }
+            },
+            { threshold: 0.2 }
+        );
+
+        obs.observe(el);
+        return () => obs.disconnect();
+    }, []);
+
     return (
-        <div className="project-grid">
-            {projectsData.map((project, index) => (
-                <ProjectCard key={index} project={project} />
-            ))}
+        <div ref={ref} className={`reveal ${visible ? 'is-visible' : ''}`}>
+            <div className="header-group project-header">
+                <h1>Projects</h1>
+            </div>
+
+            <div className="project-grid">
+                {projectsData.map((project, index) => (
+                    <ProjectCard key={index} project={project} />
+                ))}
+            </div>
         </div>
     );
 }
