@@ -1,5 +1,5 @@
 import React from 'react';
-import avatarImg from '../../assets/avatar/1024.png';
+import avatarImg from '../../assets/avatar/512.png';
 import discordIcon from '../../assets/icons/discord.svg';
 import youtubeIcon from '../../assets/icons/youtube.svg';
 import instagramIcon from '../../assets/icons/instagram.svg';
