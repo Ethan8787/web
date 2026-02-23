@@ -14,7 +14,8 @@
     padding: 25px;
     border-radius: 28px;
     transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 0 80px rgba(0, 152, 238, 0.2);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .intro-card p {
@@ -39,7 +40,9 @@
 }
 
 .intro-card:hover, .section:hover {
-    box-shadow: 0 0 20px rgba(0, 152, 238, 0.5);
+    transform: scale(1.02);
+    border-color: #00FFFF;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
 }
 
 .intro-card:hover p {
@@ -51,7 +54,8 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: var(--card-bg);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 28px;
     padding: 25px;
     gap: 20px;
@@ -59,7 +63,10 @@
 }
 
 .header-group:hover {
-    box-shadow: 0 0 20px rgba(0, 152, 238, 0.5);
+    transform: scale(1.02);
+    border-color: #00FFFF;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+
 }
 
 .avatar-wrapper {
@@ -131,7 +138,7 @@
 
 .button-group {
     display: grid;
-    gap: 20px;
+    gap: 15px;
     margin-top: 20px;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -139,57 +146,99 @@
 .cont1 {
     animation: float 3s ease-in-out infinite;
 }
-
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 0.75rem 1.25rem;
-    border-radius: 9999px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+
+
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: rgba(15, 15, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: all 0.6s ease;
 }
 
 .btn-icon {
-    width: 24px;
-    height: 24px;
-    filter: invert(1);
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0;
+    filter: invert(1) brightness(2);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
-.btn-discord {
-    background: #5865f2;
+.btn:hover .btn-icon {
+    transform: rotate(340deg);
 }
 
 .btn-discord:hover {
-    box-shadow: 0 0 12px #5865f2;
-}
+    border-color: #5865f2;
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
 
-.btn-youtube {
-    background: #ff0000;
+
+
 }
 
 .btn-youtube:hover {
-    box-shadow: 0 0 12px #ff0000;
-}
-
-.btn-instagram {
-    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+    border-color: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
 }
 
 .btn-instagram:hover {
-    box-shadow: 0 0 12px #833ab4;
-}
-
-.btn-github {
-    background: #24292f;
+    border-color: rgba(193, 53, 132, 2);
+    box-shadow: 0 0 15px rgba(193, 53, 132, 0.4);
 }
 
 .btn-github:hover {
-    box-shadow: 0 0 12px #24292f;
+    border-color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.discord-tool-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 100%;
+    margin: 4vh 0;
+}
+
+.glass-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    color: #ffffff;
+}
+
+.code-box {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-copy-btn {
+    background: transparent;
+    color: #00FFFF;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.home-copy-btn:hover {
+    transform: scale(1.2);
 }
 
 @keyframes float {
