@@ -12,6 +12,7 @@ export default function Tools() {
     const [activeTool, setActiveTool] = useState(() => {
         return localStorage.getItem('lastActiveTool') || 'timer';
     });
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         localStorage.setItem('lastActiveTool', activeTool);
@@ -22,8 +23,20 @@ export default function Tools() {
             <path d="M4 8 L12 16 L20 8 Z" />
         </svg>
     );
-    ``
 
+    const activeToolName = {
+        'timer': '倒數計時',
+        'time-display': '極簡時鐘',
+        'stopwatch': '碼表計時',
+        'zhu-yin-convert': '注音轉換',
+        'discord-tool': 'Discord工具',
+        'lottery': '幸運輪盤',
+    }[activeTool];
+
+    const selectTool = (tool) => {
+        setActiveTool(tool);
+        setOpen(false);
+    };
 
     const renderTool = () => {
         switch (activeTool) {
@@ -41,21 +54,17 @@ export default function Tools() {
         <div className="tools-page-wrapper">
             <div className="tools-header">
                 <h2 className="tools-title">TOOLBOX</h2>
-                <div className="custom-select-wrapper">
-                    <select
-                        className="custom-select"
-                        value={activeTool}
-                        onChange={(e) => setActiveTool(e.target.value)}
-                    >
-                        <option value="timer">倒數計時</option>
-                        <option value="time-display">極簡時鐘</option>
-                        <option value="stopwatch">碼表計時</option>
-                        <option value="zhu-yin-convert">注音轉換</option>
-                        <option value="discord-tool">Discord工具</option>
-                        <option value="lottery">幸運輪盤</option>
-                    </select>
-                    <div className="select-arrow">
-                        <DownArrow/>
+                <div className="custom-dropdown">
+                    <button className="dropdown-btn" onClick={() => setOpen(!open)}>
+                        {activeToolName} <DownArrow />
+                    </button>
+                    <div className={`dropdown-menu ${open ? 'open' : ''}`}>
+                        <div className="dropdown-item" onClick={() => selectTool('timer')}>倒數計時</div>
+                        <div className="dropdown-item" onClick={() => selectTool('time-display')}>極簡時鐘</div>
+                        <div className="dropdown-item" onClick={() => selectTool('stopwatch')}>碼表計時</div>
+                        <div className="dropdown-item" onClick={() => selectTool('zhu-yin-convert')}>注音轉換</div>
+                        <div className="dropdown-item" onClick={() => selectTool('discord-tool')}>Discord工具</div>
+                        <div className="dropdown-item" onClick={() => selectTool('lottery')}>幸運輪盤</div>
                     </div>
                 </div>
             </div>
