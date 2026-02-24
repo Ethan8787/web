@@ -67,6 +67,10 @@
     color: #ffffff;
 }
 
+.intro-card h2:hover, .section h2:hover {
+    color: #12ffff;
+}
+
 .intro-card p {
     color: #ccd6f6;
     font-size: 1.1rem;

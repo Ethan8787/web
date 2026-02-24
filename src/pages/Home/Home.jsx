@@ -46,14 +46,15 @@ export default function Home() {
             <div className={`intro-card reveal delay-1 ${loaded ? 'is-visible' : ''}`} id="intro">
                 <h2>About Me</h2>
                 <p>
-                    我是 <span style={{color: 'var(--accent-color)', fontWeight: 'bold'}}>Ethan</span>，
-                    一名專注於技術開發 的 <strong>{age} 歲</strong> 程式愛好者。<></>
+                    我是 <span style={{color: 'var(--accent-color)', fontWeight: '2000'}}>Ethan</span>，
+                    一名喜愛技術開發 的 <strong>{age} 歲</strong> 程式愛好者
                     <br/>
-                    從 <strong>Python</strong> 入門，深入 <strong>Java</strong> 實作 Minecraft
-                    插件與 <strong>React</strong> 網頁開發；
-                    目前則深耕 <strong>C/C++</strong> 領域，開發過音樂播放器與底層影像處理。
+                    <strong>10 歲</strong>時， <strong>Python</strong> 入門，深入 <strong>Java</strong> Minecraft
+                    插件與 <strong>網頁開發</strong>
                     <br/>
-                    我追求極致效能與純粹邏輯，目前正全力衝刺「大安高工」，目標在技術領域達成實質突破。
+                    目前做過 <strong>C/C++</strong> 領域，開發音樂播放器與基礎影像處理
+                    <br/>
+                    我追求效能與純淨邏輯，目前正衝刺「大安高工」，目標是 技術突破
                 </p>
                 <div className="button-group">
                     <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank"
