@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './RandomWheel.css';
 
 export default function RandomWheel() {
-    const [items, setItems] = useState(['測試1', '測試2', '3', '4', '5']);
+    const [items, setItems] = useState(['1', '2', '3']);
     const [newItem, setNewItem] = useState('');
     const [isSpinning, setIsSpinning] = useState(false);
     const [rotation, setRotation] = useState(0);
@@ -49,8 +49,7 @@ export default function RandomWheel() {
 
     const sliceDeg = items.length ? 360 / items.length : 360;
 
-    return (
-        <div className="tool-card">
+    return (<div className="tool-card">
             <div className="wheel-main">
                 <div
                     className="wheel"
@@ -62,17 +61,15 @@ export default function RandomWheel() {
                 >
                     {items.map((item, i) => {
                         const segmentCenterDeg = i * sliceDeg + (sliceDeg / 2);
-                        return (
-                            <div
+                        return (<div
                                 key={i}
                                 className={`wheel-segment ${winnerIndex === i ? 'active' : ''}`}
-                                style={{ transform: `rotate(${segmentCenterDeg}deg) translateY(-110px)` }}
+                                style={{transform: `rotate(${segmentCenterDeg}deg) translateY(-110px)`}}
                             >
-                                <span style={{ transform: `rotate(${-rotation - segmentCenterDeg}deg)` }}>
+                                <span style={{transform: `rotate(${-rotation - segmentCenterDeg}deg)`}}>
                                     {item}
                                 </span>
-                            </div>
-                        );
+                            </div>);
                     })}
                 </div>
 
@@ -98,13 +95,11 @@ export default function RandomWheel() {
             </div>
 
             <div className="items-list">
-                {items.map((item, i) => (
-                    <div key={i} className="list-item">
+                {items.map((item, i) => (<div key={i} className="list-item">
                         {item}
-                        <span className="delete-x" onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
-                    </div>
-                ))}
+                        <span className="delete-x"
+                              onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
+                    </div>))}
             </div>
-        </div>
-    );
+        </div>);
 }

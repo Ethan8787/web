@@ -10,9 +10,22 @@ import "./Home.css";
 
 export default function Home() {
     const [loaded, setLoaded] = useState(false);
+    const [age, setAge] = useState(0);
+
+    const calculateAge = (birthDate) => {
+        const today = new Date();
+        const birth = new Date(birthDate);
+        let years = today.getFullYear() - birth.getFullYear();
+        const m = today.getMonth() - birth.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+            years--;
+        }
+        return years;
+    };
 
     useEffect(() => {
         const id = requestAnimationFrame(() => setLoaded(true));
+        setAge(calculateAge("2011-04-30"));
         return () => cancelAnimationFrame(id);
     }, []);
 
@@ -33,14 +46,15 @@ export default function Home() {
             <div className={`intro-card reveal delay-1 ${loaded ? 'is-visible' : ''}`} id="intro">
                 <h2>About Me</h2>
                 <p>
-                    你好，我是 <span style={{color: 'var(--accent-color)', fontWeight: 'bold'}}>Ethan</span>。
-                    一名在底層 <code className="tech-tag">C/C++</code> 影像處理與現代
-                    <code className="tech-tag">React</code> 網頁開發的 14 歲開發者。<br/>
-                    另外也有 Java（Bukkit 插件） 的實戰經驗，熟悉事件驅動與模組化設計。
-                    <br/>我喜歡把複雜的邏輯轉化為乾淨的代碼，無論是編寫高性能的 <strong>Canny</strong>，
-                    <br/>還是捏出質感 React UI。目前正全力往「大安高工」衝刺，目標是在技術的上有實際突破。
+                    我是 <span style={{color: 'var(--accent-color)', fontWeight: 'bold'}}>Ethan</span>，
+                    一名專注於技術開發 的 <strong>{age} 歲</strong> 程式愛好者。<></>
+                    <br/>
+                    從 <strong>Python</strong> 入門，深入 <strong>Java</strong> 實作 Minecraft
+                    插件與 <strong>React</strong> 網頁開發；
+                    目前則深耕 <strong>C/C++</strong> 領域，開發過音樂播放器與底層影像處理。
+                    <br/>
+                    我追求極致效能與純粹邏輯，目前正全力衝刺「大安高工」，目標在技術領域達成實質突破。
                 </p>
-
                 <div className="button-group">
                     <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank"
                        rel="noreferrer">

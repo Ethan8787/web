@@ -56,7 +56,6 @@
     box-shadow: 0 0 15px #00FFFF !important;
     filter: brightness(1.2);
     transition: scale 0.8s;
-    transform: scale(1.1);
 }
 
 @keyframes bar-glow {
