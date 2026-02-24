@@ -1,5 +1,5 @@
 .rings-container {
-    display: flex; /* 改用 flex 解決截圖中垂直排列的問題 */
+    display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
@@ -21,11 +21,11 @@
 }
 
 .svg-container svg {
-    transform: rotate(-90deg); /* 確保從 12 點鐘方向開始跑 */
+    transform: rotate(-90deg);
 }
 
 .ring-bg {
-    stroke: var(--border-glass); /* 使用你庫裡的玻璃邊框色 */
+    stroke: var(--border-glass);
     stroke-width: 7;
 }
 
@@ -38,7 +38,7 @@
     position: absolute;
     font-size: 1.1rem;
     font-weight: 700;
-    font-family: var(--font-mono); /* 同步 JetBrains Mono */
+    font-family: var(--font-mono);
     color: var(--text-main);
 }
 
@@ -62,7 +62,7 @@
 }
 
 .c-blue {
-    stroke: var(--ios-blue);
+    stroke: var(--ios-dark-blue);
 }
 
 @media (max-width: 480px) {
