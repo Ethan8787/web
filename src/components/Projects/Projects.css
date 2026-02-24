@@ -77,6 +77,11 @@
     display: inline-block;
 }
 
+.header-group.project-header h1 {
+    fill-size: 1em;
+    color: #fff;
+}
+
 .project-link:hover {
     color: white;
     text-decoration: underline;
