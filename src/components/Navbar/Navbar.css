@@ -6,7 +6,7 @@
     z-index: 1000;
     display: flex;
     justify-content: center;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
 }
 
@@ -43,7 +43,7 @@
     color: #a0a0a0;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-icon {
@@ -59,7 +59,7 @@
     margin-left: 0;
     overflow: hidden;
     white-space: nowrap;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-item:hover {
@@ -86,9 +86,6 @@
     opacity: 1;
 }
 
-/*
-   Mobile端專屬設定 (768px)
- */
 @media (max-width: 768px) {
     .navbar {
         top: auto;

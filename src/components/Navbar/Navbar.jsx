@@ -66,7 +66,7 @@ export default function Navbar() {
                     className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
                 >
                     <ExamIcon />
-                    <span>115 會考</span>
+                    <span>會考</span>
                 </NavLink>
             </div>
         </nav>
