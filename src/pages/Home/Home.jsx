@@ -47,14 +47,14 @@ export default function Home() {
                 <h2>About Me</h2>
                 <p>
                     我是 <span style={{color: 'var(--accent-color)', fontWeight: '2000'}}>Ethan</span>，
-                    一名喜愛技術開發 的 <strong>{age} 歲</strong> 程式愛好者
+                    一名喜愛技術開發 的 <strong>{age} 歲</strong> 程式愛好者。
                     <br/>
                     <strong>10 歲</strong>時， <strong>Python</strong> 入門，深入 <strong>Java</strong> Minecraft
-                    插件與 <strong>網頁開發</strong>
+                    插件與 <strong>網頁開發</strong>。
                     <br/>
-                    目前做過 <strong>C/C++</strong> 領域，開發音樂播放器與基礎影像處理
+                    目前做過 <strong>C/C++</strong> 領域，開發音樂播放器與基礎影像處理。
                     <br/>
-                    我追求效能與純淨邏輯，目前正衝刺「大安高工」，目標是 技術突破
+                    我追求效能與純淨邏輯，目前正衝刺「大安高工」，目標是 技術突破。
                 </p>
                 <div className="button-group">
                     <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank"
