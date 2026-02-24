@@ -28,8 +28,9 @@
 }
 
 .countdown-title {
-    font-size: 2.3rem;
+    font-size: 1.5rem;
     color: var(--text-main);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin: 0;
     font-family: var(--font-main), monospace;
     letter-spacing: 2px;

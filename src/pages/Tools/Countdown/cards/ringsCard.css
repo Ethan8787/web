@@ -49,13 +49,28 @@
     font-family: var(--font-main);
 }
 
-/* 對標你的 EGACSS iOS 調色盤 */
-.c-red { stroke: var(--ios-orange); }
-.c-yellow { stroke: var(--ios-yellow); }
-.c-cyan { stroke: var(--ios-light-blue); }
-.c-blue { stroke: var(--ios-blue); }
+.c-red {
+    stroke: var(--ios-orange);
+}
+
+.c-yellow {
+    stroke: var(--ios-yellow);
+}
+
+.c-cyan {
+    stroke: var(--ios-light-blue);
+}
+
+.c-blue {
+    stroke: var(--ios-blue);
+}
 
 @media (max-width: 480px) {
-    .ring-value { font-size: 0.9rem; }
-    .ring-label { font-size: 0.75rem; }
+    .ring-value {
+        font-size: 0.9rem;
+    }
+
+    .ring-label {
+        font-size: 0.75rem;
+    }
 }
