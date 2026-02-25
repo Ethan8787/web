@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import "./Skills.css";
 
 const skillsData = [
-    { name: 'Java', level: 15 },
-    { name: 'Python', level: 12 },
-    { name: 'C/C++', level: 11 },
-    { name: 'React', level: 16 }
+    {name: 'Java', level: 15},
+    {name: 'Python', level: 12},
+    {name: 'C/C++', level: 11},
+    {name: 'React', level: 16}
 ];
 
-function SkillItem({ name, level }) {
+function SkillItem({name, level}) {
     return (
         <div className="skill-item">
             <span className="skill-name">{name}</span>
             <div className="skill-bar-container">
-                <div className="skill-bar" style={{ '--level': `${level}%` }}></div>
+                <div className="skill-bar" style={{'--level': `${level}%`}}></div>
             </div>
         </div>
     );
@@ -34,7 +34,7 @@ export default function Skills() {
                     obs.disconnect();
                 }
             },
-            { threshold: 0.25 }
+            {threshold: 0.25}
         );
 
         obs.observe(el);

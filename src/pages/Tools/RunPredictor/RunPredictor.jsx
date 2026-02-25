@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import './RunPredictor.css';
 
 export default function RunPredictor() {
@@ -8,6 +8,24 @@ export default function RunPredictor() {
     const [d800, setD800] = useState('');
     const [targetDist, setTargetDist] = useState('1500');
     const [result, setResult] = useState('00:00.00');
+
+    const [ageGroup, setAgeGroup] = useState('adult');
+    const [isAthlete, setIsAthlete] = useState('no');
+    const [isDisabled, setIsDisabled] = useState('no');
+    const [kFactor, setKFactor] = useState(1.08);
+
+    useEffect(() => {
+        let baseK = 1.08;
+
+        if (ageGroup === 'child') baseK += 0.04;
+        if (ageGroup === 'youth') baseK -= 0.01;
+        if (ageGroup === 'elder') baseK += 0.06;
+
+        if (isAthlete === 'yes') baseK -= 0.04;
+        if (isDisabled === 'yes') baseK += 0.03;
+
+        setKFactor(parseFloat(baseK.toFixed(2)));
+    }, [ageGroup, isAthlete, isDisabled]);
 
     const parseTime = (str) => {
         if (!str) return 0;
@@ -32,10 +50,10 @@ export default function RunPredictor() {
 
     useEffect(() => {
         const records = [
-            { d: 800, t: parseTime(d800) },
-            { d: 400, t: parseTime(d400) },
-            { d: 200, t: parseTime(d200) },
-            { d: 100, t: parseTime(d100) }
+            {d: 800, t: parseTime(d800)},
+            {d: 400, t: parseTime(d400)},
+            {d: 200, t: parseTime(d200)},
+            {d: 100, t: parseTime(d100)}
         ].filter(r => r.t > 0);
 
         const target = parseFloat(targetDist);
@@ -45,28 +63,63 @@ export default function RunPredictor() {
             return;
         }
 
-        let k = 1.06;
+        const base = records[0];
+        const currentK = parseFloat(kFactor);
 
-        if (records.length >= 2) {
-            const r1 = records[0];
-            const r2 = records[1];
-            const calcK = Math.log(r1.t / r2.t) / Math.log(r1.d / r2.d);
-            if (calcK > 0.8 && calcK < 1.3) {
-                k = calcK;
-            }
+        if (isNaN(currentK) || currentK <= 0) {
+            setResult('參數錯誤');
+            return;
         }
 
-        const base = records[0];
-        const predictedSec = base.t * Math.pow(target / base.d, k);
+        const predictedSec = base.t * Math.pow(target / base.d, currentK);
         setResult(formatTime(predictedSec));
-    }, [d100, d200, d400, d800, targetDist]);
+    }, [d100, d200, d400, d800, targetDist, kFactor]);
 
     return (
         <div className="predictor-container">
             <div className="glass-card">
                 <div className="card-header">
                     <h2>跑步成績預測</h2>
-                    <span className="badge">運算模型</span>
+                    <span className="badge">Riegel 模型</span>
+                </div>
+
+                <div className="profile-section">
+                    <label className="section-title">跑者生理屬性</label>
+                    <div className="profile-grid">
+                        <div className="input-wrapper">
+                            <label>年齡層</label>
+                            <select value={ageGroup} onChange={(e) => setAgeGroup(e.target.value)}>
+                                <option value="child">幼年 (12歲以下)</option>
+                                <option value="youth">青年 (13-25歲)</option>
+                                <option value="adult">壯年 (26-50歲)</option>
+                                <option value="elder">老年 (51歲以上)</option>
+                            </select>
+                        </div>
+                        <div className="input-wrapper">
+                            <label>訓練狀態</label>
+                            <select value={isAthlete} onChange={(e) => setIsAthlete(e.target.value)}>
+                                <option value="no">一般人</option>
+                                <option value="yes">運動員</option>
+                            </select>
+                        </div>
+                        <div className="input-wrapper">
+                            <label>生理狀態</label>
+                            <select value={isDisabled} onChange={(e) => setIsDisabled(e.target.value)}>
+                                <option value="no">一般</option>
+                                <option value="yes">身心障礙</option>
+                            </select>
+                        </div>
+                        <div className="input-wrapper">
+                            <label>衰減係數 (k)</label>
+                            <input
+                                type="number"
+                                step="0.01"
+                                value={kFactor}
+                                onChange={(e) => setKFactor(e.target.value)}
+                                className="highlight-input"
+                            />
+                        </div>
+                    </div>
                 </div>
 
                 <div className="input-group">

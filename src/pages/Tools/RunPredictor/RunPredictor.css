@@ -8,15 +8,15 @@
 }
 
 .glass-card {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px;
     padding: 2rem;
     width: 100%;
-    max-width: 500px;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    max-width: 550px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
     color: #ffffff;
     transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
@@ -67,6 +67,29 @@
     font-weight: 600;
 }
 
+.profile-section {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 0.85rem;
+    color: #00FFFF;
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
 .input-group {
     display: flex;
     gap: 15px;
@@ -86,11 +109,11 @@
 
 .input-wrapper label, .output-section label {
     font-size: 0.85rem;
-    color: var(--text-dim, #a0a0a0);
+    color: #a0a0a0;
     margin-left: 2px;
 }
 
-.input-wrapper input {
+.input-wrapper input, .input-wrapper select {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #ffffff;
@@ -99,11 +122,28 @@
     outline: none;
     transition: border-color 0.2s;
     width: 100%;
-    font-family: var(--font-mono, monospace);
+    font-family: monospace;
+    appearance: none;
 }
 
-.input-wrapper input:focus {
+.input-wrapper select {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.input-wrapper select option {
+    background: #121212;
+    color: #fff;
+}
+
+.input-wrapper input:focus, .input-wrapper select:focus {
     border-color: #00FFFF;
+}
+
+.highlight-input {
+    color: #00FFFF !important;
+    font-weight: bold;
+    border-color: rgba(0, 255, 255, 0.3) !important;
 }
 
 .output-section {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import "./Projects.css";
 
 const projectsData = [
@@ -53,7 +53,7 @@ const projectsData = [
     }
 ];
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({project}) => {
     return (
         <div className="project-card">
             <div className="project-info">
@@ -75,7 +75,7 @@ const ProjectCard = ({ project }) => {
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        style={{ marginRight: '6px', verticalAlign: 'text-top' }}
+                        style={{marginRight: '6px', verticalAlign: 'text-top'}}
                     >
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
@@ -101,7 +101,7 @@ export default function Projects() {
                     obs.disconnect();
                 }
             },
-            { threshold: 0.2 }
+            {threshold: 0.2}
         );
 
         obs.observe(el);
@@ -116,7 +116,7 @@ export default function Projects() {
 
             <div className="project-grid">
                 {projectsData.map((project, index) => (
-                    <ProjectCard key={index} project={project} />
+                    <ProjectCard key={index} project={project}/>
                 ))}
             </div>
         </div>

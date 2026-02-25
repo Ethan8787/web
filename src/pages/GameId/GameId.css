@@ -227,12 +227,14 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     font-family: 'JetBrains Mono', monospace; /* 配合你的字體庫 */
-}.platform-divider {
-     display: flex;
-     align-items: center;
-     margin: 30px 0 20px;
-     width: 100%;
- }
+}
+
+.platform-divider {
+    display: flex;
+    align-items: center;
+    margin: 30px 0 20px;
+    width: 100%;
+}
 
 .platform-divider::before,
 .platform-divider::after {

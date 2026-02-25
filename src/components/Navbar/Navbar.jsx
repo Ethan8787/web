@@ -1,8 +1,8 @@
 // src/components/Navbar/Navbar.jsx
-import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {NavLink} from 'react-router-dom';
 import './Navbar.css';
-import { HomeIcon, DataIcon, CodeIcon, ToolIcon, ExamIcon } from './icons';
+import {CodeIcon, DataIcon, ExamIcon, HomeIcon, ToolIcon} from './icons';
 
 export default function Navbar() {
     const [isVisible, setIsVisible] = useState(true);
@@ -31,41 +31,41 @@ export default function Navbar() {
                 <NavLink
                     to="/"
                     end
-                    className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
+                    className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}
                 >
-                    <HomeIcon />
+                    <HomeIcon/>
                     <span>首頁</span>
                 </NavLink>
 
                 <NavLink
                     to="/gameid"
-                    className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
+                    className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}
                 >
-                    <DataIcon />
+                    <DataIcon/>
                     <span>資料</span>
                 </NavLink>
 
                 <NavLink
                     to="/code"
-                    className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
+                    className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}
                 >
-                    <CodeIcon />
+                    <CodeIcon/>
                     <span>程式</span>
                 </NavLink>
 
                 <NavLink
                     to="/tools"
-                    className={({ isActive }) => (isActive ? 'nav-item active tool-highlight' : 'nav-item tool-highlight')}
+                    className={({isActive}) => (isActive ? 'nav-item active tool-highlight' : 'nav-item tool-highlight')}
                 >
-                    <ToolIcon />
+                    <ToolIcon/>
                     <span>工具</span>
                 </NavLink>
 
                 <NavLink
                     to="/115"
-                    className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}
+                    className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}
                 >
-                    <ExamIcon />
+                    <ExamIcon/>
                     <span>會考</span>
                 </NavLink>
             </div>

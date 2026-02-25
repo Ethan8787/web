@@ -47,6 +47,7 @@
 .section.is-visible .skill-bar {
     animation: bar-glow 2000ms infinite;
 }
+
 .skill-item:hover .skill-name {
     color: #00FFFF;
     transform: translateX(5px);

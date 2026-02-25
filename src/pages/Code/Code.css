@@ -64,7 +64,7 @@
 
 .tab-btn.active {
     opacity: 1;
-    background: rgba(0,80,203, 0.8);
+    background: rgba(0, 80, 203, 0.8);
     box-shadow: 0 0 20px rgba(0, 152, 238, 0.6);
 }
 
@@ -80,15 +80,19 @@
     background-color: var(--bg-glass);
     border-radius: 16px;
     flex: 1;
-    overflow-y: auto;     border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 .ode-block-wrapper::-webkit-scrollbar {
-   width: 0;
+    width: 0;
 }
+
 .ode-block-wrapper::-webkit-scrollbar-track {
     background: transparent;
 }
- lock-wrapper::-webkit-scrollbar-thumb {
+
+lock-wrapper::-webkit-scrollbar-thumb {
     background: transparent;
 }
 

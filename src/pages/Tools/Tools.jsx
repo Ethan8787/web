@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Tools.css';
 
 import ZhuyinSecret from './ZhuyinSecret/ZhuyinSecret';
@@ -31,27 +31,35 @@ export default function Tools() {
     }, []);
 
     const toolItems = [
-        { label: "倒數計時", id: "timer" },
-        { label: "極簡時鐘", id: "time-display" },
-        { label: "碼表計時", id: "stopwatch" },
-        { label: "跑步預測", id: "run-predict" },
-        { label: "注音轉換", id: "zhu-yin-convert" },
-        { label: "Discord 工具", id: "discord-tool" },
-        { label: "幸運輪盤", id: "lottery" },
+        {label: "倒數計時", id: "timer"},
+        {label: "極簡時鐘", id: "time-display"},
+        {label: "碼表計時", id: "stopwatch"},
+        {label: "跑步預測", id: "run-predict"},
+        {label: "注音轉換", id: "zhu-yin-convert"},
+        {label: "動態時間", id: "discord-tool"},
+        {label: "幸運輪盤", id: "lottery"},
     ];
 
     const currentToolLabel = toolItems.find(item => item.id === activeTool)?.label;
 
     const renderTool = () => {
         switch (activeTool) {
-            case 'timer': return <Timer />;
-            case 'time-display': return <Clock />;
-            case 'stopwatch': return <Stopwatch />;
-            case 'zhu-yin-convert': return <ZhuyinSecret />;
-            case 'discord-tool': return <DiscordTool />;
-            case 'lottery': return <RandomWheel />;
-            case 'run-predict': return <RunPredictor />;
-            default: return <Timer />;
+            case 'timer':
+                return <Timer/>;
+            case 'time-display':
+                return <Clock/>;
+            case 'stopwatch':
+                return <Stopwatch/>;
+            case 'zhu-yin-convert':
+                return <ZhuyinSecret/>;
+            case 'discord-tool':
+                return <DiscordTool/>;
+            case 'lottery':
+                return <RandomWheel/>;
+            case 'run-predict':
+                return <RunPredictor/>;
+            default:
+                return <Timer/>;
         }
     };
 
@@ -66,8 +74,9 @@ export default function Tools() {
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         <span>{currentToolLabel}</span>
-                        <svg className={`arrow-icon ${isOpen ? 'rotate' : ''}`} viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
+                        <svg className={`arrow-icon ${isOpen ? 'rotate' : ''}`} viewBox="0 0 24 24" width="20"
+                             height="20">
+                            <path fill="currentColor" d="M7 10l5 5 5-5H7z"/>
                         </svg>
                     </button>
 

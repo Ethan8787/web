@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar.jsx';
 import Background from './Background/Background.jsx';
@@ -18,7 +18,7 @@ import Timer from './pages/Tools/Timer/Timer.jsx';
 import RandomWheel from './pages/Tools/RandomWheel/RandomWheel.jsx';
 import DiscordTool from './pages/Tools/Discord/DiscordTool.jsx';
 import ZhuyinSecret from "./pages/Tools/ZhuyinSecret/ZhuyinSecret.jsx";
-import ExamCountdown from "./pages/Tools/Countdown/Countdown.jsx";
+import ExamCountdown from "./pages/Countdown/Countdown.jsx";
 
 import './App.css';
 

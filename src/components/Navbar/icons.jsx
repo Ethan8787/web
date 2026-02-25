@@ -12,7 +12,8 @@ export function HomeIcon(props) {
 }
 
 export function DataIcon(props) {
-    return (<svg className="nav-icon" width="28px" height="28px" viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+    return (<svg className="nav-icon" width="28px" height="28px" viewBox="0 0 24 24" fill="none"
+                 aria-hidden="true" {...props}>
         <path
             d="M6 7.5C6 6.1 8.7 5 12 5s6 1.1 6 2.5S15.3 10 12 10 6 8.9 6 7.5Z"
             stroke="currentColor"

@@ -1,5 +1,8 @@
 .tools-page-wrapper {
+    display: flex;
     max-width: 1000px;
+    align-items: center;
+    flex-direction: column;
     margin: 40px auto;
     padding: 0 20px;
     min-height: 80vh;
@@ -8,15 +11,17 @@
 
 .tools-header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     padding: 20px 30px;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 40px;
+    gap: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
     position: relative;
     z-index: 100;
 }
@@ -31,7 +36,7 @@
 
 .custom-dropdown {
     position: relative;
-    width: 200px;
+    width: 150px;
 }
 
 .dropdown-trigger {
@@ -82,14 +87,20 @@
     padding: 8px;
     list-style: none;
     z-index: 9999;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
     animation: menuPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-origin: top center;
 }
 
 @keyframes menuPop {
-    from { opacity: 0; transform: scale(0.9) translateY(-10px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 .dropdown-menu li {
@@ -117,8 +128,16 @@
 }
 
 @keyframes toolSlideUp {
-    0% { opacity: 0; transform: translateY(30px); filter: blur(15px); }
-    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
 }
 
 @media (max-width: 768px) {
@@ -127,6 +146,7 @@
         gap: 20px;
         align-items: stretch;
     }
+
     .custom-dropdown {
         width: 100%;
     }
