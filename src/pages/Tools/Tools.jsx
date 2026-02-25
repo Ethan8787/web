@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Tools.css';
 
 import ZhuyinSecret from './ZhuyinSecret/ZhuyinSecret';
@@ -7,23 +7,40 @@ import Clock from '../Tools/Clock/Clcok.jsx';
 import Stopwatch from '../Tools/Stopwatch/Stopwatch.jsx';
 import Timer from '../Tools/Timer/Timer';
 import RandomWheel from './RandomWheel/RandomWheel';
+import RunPredictor from './RunPredictor/RunPredictor';
 
 export default function Tools() {
     const [activeTool, setActiveTool] = useState(() => {
         return localStorage.getItem('lastActiveTool') || 'timer';
     });
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
     useEffect(() => {
         localStorage.setItem('lastActiveTool', activeTool);
     }, [activeTool]);
 
-    const DownArrow = () => (
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-            <path d="M4 8 L12 16 L20 8 Z" />
-        </svg>
-    );
-    ``
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
+    const toolItems = [
+        { label: "倒數計時", id: "timer" },
+        { label: "極簡時鐘", id: "time-display" },
+        { label: "碼表計時", id: "stopwatch" },
+        { label: "跑步預測", id: "run-predict" },
+        { label: "注音轉換", id: "zhu-yin-convert" },
+        { label: "Discord 工具", id: "discord-tool" },
+        { label: "幸運輪盤", id: "lottery" },
+    ];
+
+    const currentToolLabel = toolItems.find(item => item.id === activeTool)?.label;
 
     const renderTool = () => {
         switch (activeTool) {
@@ -33,6 +50,7 @@ export default function Tools() {
             case 'zhu-yin-convert': return <ZhuyinSecret />;
             case 'discord-tool': return <DiscordTool />;
             case 'lottery': return <RandomWheel />;
+            case 'run-predict': return <RunPredictor />;
             default: return <Timer />;
         }
     };
@@ -41,26 +59,38 @@ export default function Tools() {
         <div className="tools-page-wrapper">
             <div className="tools-header">
                 <h2 className="tools-title">TOOLBOX</h2>
-                <div className="custom-select-wrapper">
-                    <select
-                        className="custom-select"
-                        value={activeTool}
-                        onChange={(e) => setActiveTool(e.target.value)}
+
+                <div className="custom-dropdown" ref={dropdownRef}>
+                    <button
+                        className={`dropdown-trigger ${isOpen ? 'active' : ''}`}
+                        onClick={() => setIsOpen(!isOpen)}
                     >
-                        <option value="timer">倒數計時</option>
-                        <option value="time-display">極簡時鐘</option>
-                        <option value="stopwatch">碼表計時</option>
-                        <option value="zhu-yin-convert">注音轉換</option>
-                        <option value="discord-tool">Discord 工具</option>
-                        <option value="lottery">幸運輪盤</option>
-                    </select>
-                    <div className="select-arrow">
-                        <DownArrow/>
-                    </div>
+                        <span>{currentToolLabel}</span>
+                        <svg className={`arrow-icon ${isOpen ? 'rotate' : ''}`} viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
+                        </svg>
+                    </button>
+
+                    {isOpen && (
+                        <ul className="dropdown-menu">
+                            {toolItems.map((item) => (
+                                <li
+                                    key={item.id}
+                                    className={activeTool === item.id ? 'selected' : ''}
+                                    onClick={() => {
+                                        setActiveTool(item.id);
+                                        setIsOpen(false);
+                                    }}
+                                >
+                                    {item.label}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
             </div>
 
-            <div className="tool-content-area">
+            <div className="tool-content-area" key={activeTool}>
                 {renderTool()}
             </div>
         </div>

@@ -1,10 +1,3 @@
-:root {
-    --accent-color: #0098ee;
-    --card-bg: #1a1a1a;
-    --code-bg: #121212;
-    --text-dim: #888888;
-}
-
 .code-container {
     position: relative;
     z-index: 10;
@@ -84,22 +77,18 @@
     position: relative;
     margin-top: 5px;
     padding: 25px;
-    background-color: var(--code-bg);
+    background-color: var(--bg-glass);
     border-radius: 16px;
     flex: 1;
-    overflow-y: auto;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow-y: auto;     border: 1px solid rgba(255, 255, 255, 0.05);
 }
-
-.code-block-wrapper::-webkit-scrollbar {
-    width: 0;
+.ode-block-wrapper::-webkit-scrollbar {
+   width: 0;
 }
-
-.code-block-wrapper::-webkit-scrollbar-track {
+.ode-block-wrapper::-webkit-scrollbar-track {
     background: transparent;
 }
-
-.code-block-wrapper::-webkit-scrollbar-thumb {
+ lock-wrapper::-webkit-scrollbar-thumb {
     background: transparent;
 }
 

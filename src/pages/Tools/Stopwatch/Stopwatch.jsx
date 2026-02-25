@@ -5,18 +5,32 @@ export default function Stopwatch() {
     const [time, setTime] = useState(0);
     const [running, setRunning] = useState(false);
     const [laps, setLaps] = useState([]);
+
     const timerRef = useRef(null);
+    const startTimeRef = useRef(0);
+    const accumulatedTimeRef = useRef(0);
 
     useEffect(() => {
         if (running) {
+            startTimeRef.current = Date.now() - accumulatedTimeRef.current;
             timerRef.current = setInterval(() => {
-                setTime(t => t + 10);
+                const now = Date.now();
+                const delta = now - startTimeRef.current;
+                setTime(delta);
+                accumulatedTimeRef.current = delta;
             }, 10);
         } else {
             clearInterval(timerRef.current);
         }
         return () => clearInterval(timerRef.current);
     }, [running]);
+
+    const handleReset = () => {
+        setRunning(false);
+        setTime(0);
+        setLaps([]);
+        accumulatedTimeRef.current = 0;
+    };
 
     const format = (ms) => {
         const m = Math.floor(ms / 60000);
@@ -54,7 +68,7 @@ export default function Stopwatch() {
                 </button>
                 <button
                     className="sw-btn btn-reset"
-                    onClick={() => { setTime(0); setLaps([]); setRunning(false); }}
+                    onClick={handleReset}
                 >
                     Reset
                 </button>
