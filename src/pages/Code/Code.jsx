@@ -33,7 +33,7 @@ export default function Code() {
     return (<div className="code-page">
         <div className="code-container">
             <div className="code-section">
-                <h2>程式碼 Code</h2>
+                <h2>Code</h2>
 
                 <div className="tab-container">
                     <button

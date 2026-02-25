@@ -1,0 +1,108 @@
+.consent-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 150px);
+    padding: 40px 0;
+}
+
+.minimal-doc-card {
+    background: rgba(15, 15, 20, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 16px;
+    width: 92%;
+    max-width: 480px;
+    margin: 20px auto;
+}
+
+.doc-title {
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 6px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    padding-bottom: 3px;
+}
+
+.promises-container {
+    padding-top: 27px;
+}
+
+.promise-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+}
+
+.custom-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.custom-icon.checked {
+    background: #00FFFF;
+    border-color: #00FFFF;
+}
+
+.promise-text {
+    position: relative;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.2;
+    display: inline-block;
+}
+
+.promise-text.strikethrough {
+    opacity: 0.3;
+}
+
+.promise-text.strikethrough::after {
+    content: "";
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    top: 50%;
+    height: 1px;
+    background: #ffffff;
+}
+
+.doc-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sig-item .label {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.3);
+    display: block;
+}
+
+.sig-item .val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    color: #00FFFF;
+}
+
+.sig-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    width: 100%;
+}

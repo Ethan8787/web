@@ -139,12 +139,19 @@ const GameId = () => {
         <main className="game-id-main">
             <div className="game-id-list">
                 {sortedAccounts.map((acc, index) => {
-                    const showDivider = index > 0 && acc.isCopy && !sortedAccounts[index - 1].isCopy;
+                    const isFirstSocial = index === 0 && !acc.isCopy;
+
+                    const showGameDivider = index > 0 && acc.isCopy && !sortedAccounts[index - 1].isCopy;
 
                     return (<React.Fragment key={acc.id}>
-                        {showDivider && (<div className="platform-divider">
+                        {isFirstSocial && (<div className="platform-divider">
+                            <span className="divider-text">Social Media</span>
+                        </div>)}
+
+                        {showGameDivider && (<div className="platform-divider">
                             <span className="divider-text">GAME IDs</span>
                         </div>)}
+
                         <div className="game-id-item" style={{'--brand-color': acc.color}}>
                             <div className="game-id-content-left">
                                 <div className="icon-wrapper">

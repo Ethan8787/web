@@ -1,0 +1,127 @@
+.countdown-main-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+}
+
+.countdown-main-layout .countdown-card,
+.countdown-main-layout .minimal-doc-card {
+    margin: 0 !important;
+    width: 92%;
+    max-width: 480px;
+}
+
+.countdown-main-layout .consent-page-wrapper {
+    min-height: auto !important;
+    padding: 0 !important;
+}
+
+.countdown-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.countdown-title {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 0;
+    font-family: var(--font-main), monospace;
+    letter-spacing: 2px;
+}
+
+.motto-wrap {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.motto-text {
+    font-size: 0.9rem;
+    color: var(--ios-light-blue);
+    font-weight: 500;
+    margin: 0;
+    transition: opacity 0.3s ease;
+}
+
+.side-tools {
+    position: fixed;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 15;
+}
+
+.tool-btn {
+    background: rgba(200, 255, 255, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(8px);
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50px !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+}
+
+.tool-btn:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    transform: scale(1.1);
+}
+
+.days-display {
+    font-family: var(--font-mono), monospace;
+    color: var(--text-dim);
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 5px;
+}
+
+.days-left {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-color);
+}
+
+.days-total {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.divider {
+    height: 1px;
+    background: var(--border-glass);
+    width: 100%;
+    margin: 8px 0;
+}
+
+.bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background-color: var(--ios-light-blue);
+    box-shadow: 0 0 12px var(--ios-light-blue);
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
