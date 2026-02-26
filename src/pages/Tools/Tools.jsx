@@ -1,13 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './Tools.css';
 
-import ZhuyinSecret from './ZhuyinSecret/ZhuyinSecret';
-import DiscordTool from './Discord/DiscordTool';
+import ZhuyinSecret from './ZhuyinSecret/ZhuyinSecret.jsx';
+import DiscordTool from './Discord/DiscordTool.jsx';
 import Clock from '../Tools/Clock/Clcok.jsx';
 import Stopwatch from '../Tools/Stopwatch/Stopwatch.jsx';
-import Timer from '../Tools/Timer/Timer';
-import RandomWheel from './RandomWheel/RandomWheel';
-import RunPredictor from './RunPredictor/RunPredictor';
+import Timer from '../Tools/Timer/Timer.jsx';
+import RandomWheel from './RandomWheel/RandomWheel.jsx';
+import Math from '../Tools/Math/Math.jsx';
+import RunPredictor from './RunPredictor/RunPredictor.jsx';
 
 export default function Tools() {
     const [activeTool, setActiveTool] = useState(() => {
@@ -38,6 +39,7 @@ export default function Tools() {
         {label: "注音轉換", id: "zhu-yin-convert"},
         {label: "動態時間", id: "discord-tool"},
         {label: "幸運輪盤", id: "lottery"},
+        {label: "格線繪圖", id: "math"},
     ];
 
     const currentToolLabel = toolItems.find(item => item.id === activeTool)?.label;
@@ -58,6 +60,8 @@ export default function Tools() {
                 return <RandomWheel/>;
             case 'run-predict':
                 return <RunPredictor/>;
+            case 'math':
+                return <Math/>;
             default:
                 return <Timer/>;
         }

@@ -141,10 +141,10 @@
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
-    background: rgba(15, 15, 20, 0.6);
+    background: rgba(15, 15, 15, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #ffffff;
-    transition: all 0.8s ease;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) ;
 }
 
 .btn-icon {
@@ -224,8 +224,13 @@
 }
 
 @media (max-width: 850px) {
+    #avatar {
+        height: 4.5rem;
+        width: 4.5rem;
+        margin-right: 0;
+    }
+
     .header-group {
-        flex-direction: column;
         text-align: center;
     }
 

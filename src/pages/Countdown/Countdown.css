@@ -13,11 +13,6 @@
     max-width: 480px;
 }
 
-.countdown-main-layout .consent-page-wrapper {
-    min-height: auto !important;
-    padding: 0 !important;
-}
-
 .countdown-card {
     display: flex;
     flex-direction: column;
@@ -25,30 +20,43 @@
     text-align: center;
     border-radius: 16px;
     overflow: hidden;
+    padding: 20px;
 }
 
 .countdown-title {
     font-size: 1.5rem;
-    color: var(--text-main);
+    color: #fff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin: 0;
-    font-family: var(--font-main), monospace;
+    font-family: monospace;
     letter-spacing: 2px;
 }
 
 .motto-wrap {
-    height: 30px;
+    height: 34px;
+    width: 60%; /* 稍微加寬，因為現在不跑馬燈了，需要空間顯示文字 */
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center; /* 文字水平置中 */
+    border-radius: 6px;
+    margin: 8px auto;
+    border: 1px solid rgba(0, 255, 255, 0.15);
 }
 
 .motto-text {
-    font-size: 0.9rem;
-    color: var(--ios-light-blue);
-    font-weight: 500;
-    margin: 0;
-    transition: opacity 0.3s ease;
+    font-size: 0.95rem;
+    color: #00ffff;
+    font-weight: 1000;
+    text-align: center;
+    animation: motto-fade 0.5s ease-in-out; /* 改為 0.5s 的透明度動畫 */
+    font-family: 'JetBrains Mono', monospace;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+@keyframes motto-fade {
+    0% { opacity: 0; transform: translateY(5px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .side-tools {
@@ -83,8 +91,8 @@
 }
 
 .days-display {
-    font-family: var(--font-mono), monospace;
-    color: var(--text-dim);
+    font-family: monospace;
+    color: #888;
     display: flex;
     align-items: baseline;
     justify-content: center;
@@ -92,9 +100,10 @@
 }
 
 .days-left {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    color: var(--accent-color);
+    color: #00ffff;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .days-total {
@@ -104,24 +113,22 @@
 
 .divider {
     height: 1px;
-    background: var(--border-glass);
+    background: rgba(255, 255, 255, 0.1);
     width: 100%;
     margin: 8px 0;
 }
 
 .bar-container {
     width: 100%;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
     overflow: hidden;
-    position: relative;
 }
 
 .bar-fill {
     height: 100%;
-    border-radius: 6px;
-    background-color: var(--ios-light-blue);
-    box-shadow: 0 0 12px var(--ios-light-blue);
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    box-shadow: 0 0 12px #00d2ff;
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

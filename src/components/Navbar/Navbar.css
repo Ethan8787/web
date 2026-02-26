@@ -18,8 +18,96 @@
     transform: translateY(0);
 }
 
-.nav-dock {
+.navbar-container {
+    width: 95%;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    pointer-events: none;
+}
+
+.nav-left, .nav-center, .nav-right {
+    display: flex;
+    align-items: center;
     pointer-events: auto;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-left {
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.side-icon {
+    width: 20px;
+    height: 20px;
+    color: #a0a0a0;
+    transition: color 0.3s ease;
+}
+
+.side-icon:hover {
+    color: #00ffff;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo svg {
+    height: 100%;
+    width: auto;
+}
+
+.logo-icon {
+    width: 240px;
+    height: 48px;
+}
+
+@media (max-width: 768px) {
+    .brand-logo {
+        display: flex;
+    }
+
+    .logo-icon {
+        width: 120px;
+        height: 24px;
+    }
+}
+
+.contact-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-btn:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+.nav-dock {
     display: flex;
     align-items: center;
     gap: 0;
@@ -51,6 +139,11 @@
     height: 20px;
     flex-shrink: 0;
     opacity: 0.85;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item:hover .nav-icon {
+    transform: rotate(360deg);
 }
 
 .nav-item span {
@@ -82,33 +175,36 @@
     font-weight: 600;
 }
 
-.nav-item.active .nav-icon {
-    opacity: 1;
+/* Responsive adjustments */
+
+@media (max-width: 1024px) {
+    .navbar-container {
+        grid-template-columns: auto 1fr;
+    }
+    .nav-center {
+        justify-content: flex-end;
+    }
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        top: auto;
-        bottom: 20px;
+    .navbar-container {
+        display: flex;
+        justify-content: center;
     }
-
-    .navbar.hidden {
-        transform: translateY(150%);
-    }
-
     .nav-dock {
-        gap: 0.2rem;
+        gap: 4px;
+    }
+    .nav-item {
+        margin: 0 2px;
         padding: 0.5rem;
     }
-
-    .nav-item:hover {
-        padding: 0.6rem;
-    }
-
-    .nav-item span,
-    .nav-item:hover span {
+    .nav-item span {
         display: none;
-        max-width: 0;
-        margin-left: 0;
+    }
+    .side-icon {
+        display: none;
+    }
+    .nav-right {
+        display: none;
     }
 }

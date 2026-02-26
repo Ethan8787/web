@@ -1,0 +1,8 @@
+<svg width="240" height="48" viewBox="0 0 240 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="10" width="28" height="28" rx="4" stroke="white" stroke-width="2.5" fill="none"/>
+    <rect x="16" y="18" width="12" height="12" rx="3" fill="#888888"/>
+    <text x="48" y="21" font-weight="900" font-size="18px">
+        <tspan x="48" dy="0" fill="white">NULL</tspan>
+        <tspan x="48" dy="18" fill="#888888">NETWORK</tspan>
+    </text>
+</svg>

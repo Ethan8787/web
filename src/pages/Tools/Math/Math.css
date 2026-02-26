@@ -1,0 +1,90 @@
+.math-wrapper {
+    background: #000;
+    color: var(--text-main);
+    font-family: var(--font-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.control-group {
+    background: rgba(255,255,255,0.05);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-glass);
+}
+
+h3 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+}
+
+input, select {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border-glass);
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    margin-bottom: 8px;
+}
+
+.canvas-container {
+    position: relative;
+    background: #050505;
+    border-radius: 12px;
+    border: 1px solid var(--border-glass);
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stats {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: rgba(0,0,0,0.6);
+    padding: 5px 10px;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.coords-list {
+    max-height: 120px;
+    overflow-y: auto;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: #aaa;
+}

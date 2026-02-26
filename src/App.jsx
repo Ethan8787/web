@@ -13,6 +13,7 @@ import ConsentForm from './pages/Rules/ConsentForm.jsx';
 
 import Stopwatch from './pages/Tools/Stopwatch/Stopwatch.jsx';
 import Run from './pages/Tools/RunPredictor/RunPredictor.jsx';
+import Math from './pages/Tools/Math/Math.jsx';
 import Clock from './pages/Tools/Clock/Clcok.jsx';
 import Timer from './pages/Tools/Timer/Timer.jsx';
 import RandomWheel from './pages/Tools/RandomWheel/RandomWheel.jsx';
@@ -42,6 +43,7 @@ export default function App() {
                 <Route path="/115" element={<ExamCountdown/>}/>
                 <Route path="/zhu-yin-convert" element={<ZhuyinSecret/>}/>
                 <Route path="/run" element={<Run/>}/>
+                <Route path="/math" element={<Math/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </div>

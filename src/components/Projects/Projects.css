@@ -54,8 +54,15 @@
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 16px;
-    background-color: #FFFFFF;
+    background-color: #333;
+    color: #ddd;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-card:hover .tag {
+    background-color: #fff;
     color: #000;
+    transition: color 0.4s ease;
 }
 
 .description {
