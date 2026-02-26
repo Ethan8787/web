@@ -1,79 +1,84 @@
-import React, {useEffect, useState, useMemo} from 'react';
+import React, {useEffect, useState} from 'react';
 import './graduateCard.css';
 
-const GradRingUnit = ({num, maxVal, desc, theme}) => {
-    const rSize = 36;
-    const perimeter = 2 * Math.PI * rSize;
-    const limitedNum = Math.min(num, maxVal);
-    const offsetVal = perimeter - (limitedNum / maxVal) * perimeter;
+const Ring = ({value, max, label, colorClass, showMax}) => {
+    const radius = 36;
+    const dashArray = 2 * Math.PI * radius;
+    const safeValue = Math.min(value, max);
+    const dashOffset = dashArray - (safeValue / max) * dashArray;
 
     return (
-        <div className="grad-ring-box">
-            <div className="grad-svg-box">
+        <div className="ring-item">
+            <div className="svg-container">
                 <svg width="85" height="85" viewBox="0 0 100 100">
-                    <circle className="grad-ring-underlay" cx="50" cy="50" r={rSize} fill="none"/>
+                    <circle className="ring-bg" cx="50" cy="50" r={radius} fill="none"/>
                     <circle
-                        className={`grad-ring-overlay ${theme}`}
-                        cx="50"
-                        cy="50"
-                        r={rSize}
+                        className={`ring-fg ${colorClass}`}
+                        cx="50" cy="50" r={radius}
                         fill="none"
                         style={{
-                            strokeDasharray: perimeter,
-                            strokeDashoffset: offsetVal,
-                            transition: "stroke-dashoffset 0.4s ease"
+                            strokeDasharray: dashArray,
+                            strokeDashoffset: dashOffset,
+                            transition: "stroke-dashoffset 0.3s ease"
                         }}
                     />
                 </svg>
-                <div className="grad-num-val">{num}</div>
+
+                <div className={`ring-value ${showMax ? 'ring-fraction' : ''}`}>
+                    {showMax ? (
+                        <>
+                            <span className="ring-main">{value}</span>
+                        </>
+                    ) : (
+                        value
+                    )}
+                </div>
             </div>
-            <div className="grad-label-text">{desc}</div>
+            <div className="ring-label">{label}</div>
         </div>
     );
 };
 
 export default function GraduateCard() {
-    const gradTarget = useMemo(() => new Date('2026-06-05T12:00:00+08:00'), []);
-    const [remain, setRemain] = useState({dd: 0, hh: 0, mm: 0, ss: 0});
-
-    const targetLabel = useMemo(() => {
-        return gradTarget.toLocaleString('zh-TW', {
-            timeZone: 'Asia/Taipei',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: '2-digit',
-            hour12: true
-        });
-    }, [gradTarget]);
+    const [time, setTime] = useState({d: 0, h: 0, m: 0, s: 0});
 
     useEffect(() => {
-        const syncTime = () => {
-            const current = new Date();
-            const msDiff = gradTarget - current;
-            if (msDiff <= 0) return;
+        const target = new Date('2026-06-05T12:00:00+08:00');
+        const update = () => {
+            const now = new Date();
+            const diff = target - now;
+            if (diff <= 0) return;
 
-            setRemain({
-                dd: Math.floor(msDiff / (1000 * 60 * 60 * 24)),
-                hh: Math.floor((msDiff / (1000 * 60 * 60)) % 24),
-                mm: Math.floor((msDiff / 1000 / 60) % 60),
-                ss: Math.floor((msDiff / 1000) % 60)
+            setTime({
+                d: Math.floor(diff / (1000 * 60 * 60 * 24)),
+                h: Math.floor((diff / (1000 * 60 * 60)) % 24),
+                m: Math.floor((diff / 1000 / 60) % 60),
+                s: Math.floor((diff / 1000) % 60)
             });
         };
 
-        syncTime();
-        const runner = setInterval(syncTime, 1000);
-        return () => clearInterval(runner);
-    }, [gradTarget]);
+        update();
+        const timer = setInterval(update, 1000);
+        return () => clearInterval(timer);
+    }, []);
 
     return (
-        <div className="grad-container-wrap">
-            <div className="grad-ring-row">
-                <GradRingUnit num={remain.dd} maxVal={365} desc="天" theme="c-grad-cherry"/>
-                <GradRingUnit num={remain.hh} maxVal={24} desc="時" theme="c-grad-sunset"/>
-                <GradRingUnit num={remain.mm} maxVal={60} desc="分" theme="c-grad-berry"/>
-                <GradRingUnit num={remain.ss} maxVal={60} desc="秒" theme="c-grad-plum"/>
+        <div className="grad-wrap">
+            <div className="rings-container">
+                <Ring value={time.d} max={365} label="天" colorClass="c-grad-cherry" showMax/>
+                <Ring value={time.h} max={24} label="時" colorClass="c-grad-sunset"/>
+                <Ring value={time.m} max={60} label="分" colorClass="c-grad-berry"/>
+                <Ring value={time.s} max={60} label="秒" colorClass="c-grad-plum"/>
+            </div>
+
+            <div className="grad-days-display">
+                <span className="grad-days-left">{time.d}</span>
+                <span className="grad-days-total"> / 365 Days</span>
+            </div>
+
+            <div className="grad-divider"></div>
+            <div className="grad-bar-container">
+                <div className="grad-bar-fill" style={{width: `${(time.d / 365) * 100}%`}}></div>
             </div>
         </div>
     );
