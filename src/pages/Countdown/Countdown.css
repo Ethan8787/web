@@ -34,11 +34,11 @@
 
 .motto-wrap {
     height: 34px;
-    width: 60%; /* 稍微加寬，因為現在不跑馬燈了，需要空間顯示文字 */
+    width: 60%;
     background: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
-    justify-content: center; /* 文字水平置中 */
+    justify-content: center;
     border-radius: 6px;
     margin: 8px auto;
     border: 1px solid rgba(0, 255, 255, 0.15);
@@ -47,16 +47,22 @@
 .motto-text {
     font-size: 0.95rem;
     color: #00ffff;
-    font-weight: 1000;
+    font-weight: 400;
     text-align: center;
-    animation: motto-fade 0.5s ease-in-out; /* 改為 0.5s 的透明度動畫 */
+    animation: motto-fade 0s ease;
     font-family: 'JetBrains Mono', monospace;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
 }
 
 @keyframes motto-fade {
-    0% { opacity: 0; transform: translateY(5px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .side-tools {
@@ -101,9 +107,9 @@
 
 .days-left {
     font-size: 2.5rem;
-    font-weight: 800;
+    font-weight: 1000;
     color: #00ffff;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
 }
 
 .days-total {
@@ -128,7 +134,6 @@
 
 .bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
-    box-shadow: 0 0 12px #00d2ff;
+    background: #00d2ff;
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

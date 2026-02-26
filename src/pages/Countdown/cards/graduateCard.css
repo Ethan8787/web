@@ -1,0 +1,115 @@
+.grad-container-wrap {
+    width: 100%;
+    padding: 12px 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.grad-target-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.78);
+    text-align: center;
+}
+
+.grad-ring-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 6px 18px 0;
+}
+
+.grad-ring-box {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.grad-svg-box {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grad-svg-box svg {
+    transform: rotate(-90deg);
+}
+
+.grad-ring-underlay {
+    stroke: rgba(255, 255, 255, 0.12);
+    stroke-width: 9;
+}
+
+.grad-ring-overlay {
+    stroke-width: 10;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.08));
+}
+
+.grad-num-val {
+    position: absolute;
+    font-size: 1.35rem;
+    font-weight: 800;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.grad-label-text {
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.c-grad-cherry { stroke: #ff9a9e; }
+.c-grad-sunset { stroke: #fad0c4; }
+.c-grad-berry  { stroke: #fbc2eb; }
+.c-grad-plum   { stroke: #a18cd1; }
+
+.grad-card-parent {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+.grad-title-color {
+    border-bottom: 1px solid rgba(255, 154, 158, 0.1) !important;
+}
+
+@media (max-width: 480px) {
+    .grad-ring-row {
+        gap: 10px;
+        padding: 4px 10px 0;
+    }
+
+    .grad-svg-box {
+        width: 74px;
+        height: 74px;
+    }
+
+    .grad-svg-box svg {
+        width: 74px;
+        height: 74px;
+    }
+
+    .grad-num-val {
+        font-size: 1.15rem;
+    }
+
+    .grad-label-text {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
+    .grad-target-text {
+        font-size: 0.9rem;
+    }
+}

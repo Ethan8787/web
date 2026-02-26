@@ -198,6 +198,9 @@
         margin: 0 2px;
         padding: 0.5rem;
     }
+    .nav-left {
+        gap: 10px;
+    }
     .nav-item span {
         display: none;
     }

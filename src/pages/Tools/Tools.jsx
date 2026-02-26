@@ -7,7 +7,6 @@ import Clock from '../Tools/Clock/Clcok.jsx';
 import Stopwatch from '../Tools/Stopwatch/Stopwatch.jsx';
 import Timer from '../Tools/Timer/Timer.jsx';
 import RandomWheel from './RandomWheel/RandomWheel.jsx';
-import Math from '../Tools/Math/Math.jsx';
 import RunPredictor from './RunPredictor/RunPredictor.jsx';
 
 export default function Tools() {
@@ -60,8 +59,6 @@ export default function Tools() {
                 return <RandomWheel/>;
             case 'run-predict':
                 return <RunPredictor/>;
-            case 'math':
-                return <Math/>;
             default:
                 return <Timer/>;
         }
