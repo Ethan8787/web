@@ -73,8 +73,8 @@
 
 .intro-card p {
     color: #ccd6f6;
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.3rem;
+    line-height: 2;
     text-align: justify;
     margin: 0 auto;
 }
@@ -241,23 +241,7 @@
     .button-group {
         grid-template-columns: 1fr;
     }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .page-enter .container > *,
-    .page-enter.is-loaded .container > * {
-        transition: none;
-        transform: none;
-        opacity: 1;
-    }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-    .reveal,
-    .reveal.is-visible {
-        transition: none;
-        transform: none;
-        opacity: 1;
+    .container {
+        padding-top: 50px;
     }
 }

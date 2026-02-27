@@ -31,9 +31,6 @@ export default function Navbar() {
                     <div className="brand-logo">
                         <LogoIcon />
                     </div>
-                    <div className="social-links">
-                        <a href="https://github.com/Nul1-Network" target="_blank" rel="noreferrer"><GithubIcon /></a>
-                    </div>
                 </div>
 
                 <div className="nav-center">
