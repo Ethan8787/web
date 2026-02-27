@@ -191,6 +191,10 @@
         display: flex;
         justify-content: center;
     }
+    .logo-icon {
+        width: 180px;
+        height: 26px;
+    }
     .nav-dock {
         gap: 4px;
     }
