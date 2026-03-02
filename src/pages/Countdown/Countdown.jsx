@@ -63,7 +63,6 @@ export default function Countdown() {
                 backgroundColor: null,
                 onclone: (clonedDoc) => {
                     if (clonedDoc.body) clonedDoc.body.style.backgroundColor = 'transparent';
-                    // 這裡針對 countdown-card 類型的元件加浮水印
                     const card = clonedDoc.querySelector('.countdown-card');
                     if (card) {
                         const wm = clonedDoc.createElement('div');
@@ -116,7 +115,7 @@ export default function Countdown() {
                 </button>
             </div>
 
-            <div className="countdown-card glass-card" ref={cardRef} style={{borderRadius: '16px', position: 'relative'}}>
+            <div className="countdown-card glass-card" ref={cardRef} style={{background: 'rgba(255, 255, 255, 0.03)', borderRadius: '16px', position: 'relative'}}>
                 <h2 className="countdown-title">115 會考</h2>
                 <RingsCard/>
                 <div className="days-display">
