@@ -6,6 +6,10 @@
     gap: 12px;
 }
 
+.grad-wrap p {
+    color: #777;
+}
+
 .rings-container {
     display: flex;
     justify-content: space-around;

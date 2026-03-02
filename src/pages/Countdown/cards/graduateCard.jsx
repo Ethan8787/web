@@ -76,6 +76,8 @@ export default function GraduateCard() {
                 <span className="grad-days-total"> / 365 Days</span>
             </div>
 
+            <p>2026 年 6 月 5 日 12:00</p>
+
             <div className="grad-divider"></div>
             <div className="grad-bar-container">
                 <div className="grad-bar-fill" style={{width: `${(time.d / 365) * 100}%`}}></div>
