@@ -8,7 +8,6 @@ import Stopwatch from '../Tools/Stopwatch/Stopwatch.jsx';
 import Timer from '../Tools/Timer/Timer.jsx';
 import RandomWheel from './RandomWheel/RandomWheel.jsx';
 import RunPredictor from './RunPredictor/RunPredictor.jsx';
-import Math1 from '../Tools/Math/Math.jsx';
 
 export default function Tools() {
     const [activeTool, setActiveTool] = useState(() => {
@@ -35,11 +34,9 @@ export default function Tools() {
         {label: "倒數計時", id: "timer"},
         {label: "極簡時鐘", id: "time-display"},
         {label: "碼表計時", id: "stopwatch"},
-        {label: "跑步預測", id: "run-predict"},
         {label: "注音轉換", id: "zhu-yin-convert"},
-        {label: "動態時間", id: "discord-tool"},
+        {label: "時間戳記", id: "discord-tool"},
         {label: "幸運輪盤", id: "lottery"},
-        {label: "格線繪圖", id: "math"},
     ];
 
     const currentToolLabel = toolItems.find(item => item.id === activeTool)?.label;
@@ -58,10 +55,6 @@ export default function Tools() {
                 return <DiscordTool/>;
             case 'lottery':
                 return <RandomWheel/>;
-            case 'run-predict':
-                return <RunPredictor/>;
-            case 'math':
-                return <Math1/>;
             default:
                 return <Timer/>;
         }
@@ -70,7 +63,7 @@ export default function Tools() {
     return (
         <div className="tools-page-wrapper">
             <div className="tools-header">
-                <h2 className="tools-title">TOOLBOX</h2>
+                <h2 className="tools-title">工具箱</h2>
 
                 <div className="custom-dropdown" ref={dropdownRef}>
                     <button

@@ -64,7 +64,7 @@ export default function Skills() {
     }, []);
 
     return (<div ref={ref} className={`section reveal ${visible ? 'is-visible' : ''}`} id="skills">
-        <h2 style={{color: '#00ffff', marginBottom: '30px'}}>Skills</h2>
+        <h2 style={{marginBottom: '30px'}}>Skills</h2>
         <div className="skills-list">
             {skillsData.map(skill => (<SkillItem key={skill.name} {...skill} />))}
         </div>

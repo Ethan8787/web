@@ -36,7 +36,6 @@ export default function Countdown() {
         if (!isVerified) {
             const inputUUID = prompt("UUID:");
             if (!inputUUID) return;
-
             try {
                 const res = await fetch('/caf', {cache: 'no-store'});
                 if (!res.ok) throw new Error('auth fetch failed');

@@ -33,11 +33,6 @@ export default function Home() {
         <div className="container">
             <div className={`header-group reveal delay-0 ${loaded ? 'is-visible' : ''}`}>
                 <div className="avatar-wrapper">
-                    <div className="cont1">
-                        <div className="status-bubble">好了!</div>
-                        <div className="thought-dot dot-1"></div>
-                    </div>
-                    <div className="thought-dot dot-2"></div>
                     <img id="avatar" src={avatarImg} alt="Avatar"/>
                 </div>
                 <h1>Ethan</h1>

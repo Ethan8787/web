@@ -41,7 +41,7 @@ export default function DiscordTool() {
     };
 
     return (<div className="discord-tool-container">
-        <div className="glass-card">
+        <div className="dc-glass-card">
             <div className="card-header">
                 <h2>Discord Timestamp</h2>
                 <span className="badge">Generator</span>

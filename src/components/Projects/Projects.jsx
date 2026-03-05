@@ -104,7 +104,7 @@ export default function Projects() {
     return (
         <div ref={ref} className={`reveal ${visible ? 'is-visible' : ''}`}>
             <div className="header-group project-header">
-                <h1>Projects</h1>
+                <h3>Projects</h3>
             </div>
 
             <div className="project-grid">

@@ -7,15 +7,15 @@
 }
 
 .project-card {
-    background-color: var(--card-bg);
+    background: rgba(15, 15, 20, 0.8);
     padding: 20px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-width: 0;
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s ease-out, box-shadow 0.3s ease-out, border-color 0.3s;
 }
 
@@ -84,8 +84,8 @@
     display: inline-block;
 }
 
-.header-group.project-header h1 {
-    fill-size: 1em;
+.header-group.project-header h3 {
+    font-size: 3.5em;
     color: #fff;
 }
 

@@ -67,10 +67,6 @@
     color: #ffffff;
 }
 
-.intro-card h2:hover, .section h2:hover {
-    color: #12ffff;
-}
-
 .intro-card p {
     color: #ccd6f6;
     font-size: 1.3rem;
@@ -102,28 +98,6 @@
     background: rgba(0, 255, 255, 0.05);
 }
 
-.status-bubble {
-    position: absolute;
-    bottom: 105%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #112240;
-    color: #00FFFF;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: 0.3s all;
-    z-index: 100;
-}
-
-.header-group:hover {
-    .status-bubble {
-        border: 1px solid #00FFFF;
-        animation-delay: 0.5s;
-    }
-}
 
 .button-group {
     display: grid;

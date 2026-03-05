@@ -6,17 +6,17 @@
 }
 
 .clock-content {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(15, 15, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     padding: 60px 80px;
-    border-radius: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
     text-align: center;
     position: relative;
     overflow: hidden;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 0 50px rgba(0, 255, 255, 0.05);
 }
 
 .clock-content:hover {

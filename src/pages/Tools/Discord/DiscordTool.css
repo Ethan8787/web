@@ -7,16 +7,14 @@
     gap: 5px;
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 40px;
+.dc-glass-card {
+    background: rgba(15, 15, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
     padding: 2rem;
     width: 100%;
     max-width: 500px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
     color: #ffffff;
     transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
@@ -106,10 +104,12 @@
 
 .preview-section {
     display: flex;
+    gap: 5px;
 }
 
 .preview-section span {
     margin-top: 5px;
+    padding-top: 2px;
 }
 
 .discord-preview {

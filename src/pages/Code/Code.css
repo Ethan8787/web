@@ -14,11 +14,17 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
-    background: var(--card-bg);
+    background: rgba(15, 15, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     padding: 30px;
-    border-radius: 28px;
-    box-shadow: 0 0 50px rgba(0, 152, 238, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease-out, box-shadow 0.3s ease-out, border-color 0.3s;
+    border-radius: 12px;
+}
+
+.code-section:hover {
+    border-color: #00FFFF;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
 }
 
 .code-section h2 {

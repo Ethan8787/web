@@ -23,9 +23,6 @@ const ZhuyinSecret = () => {
     return (
         <div className="tool-page-container">
             <div className="secret-section-card">
-                <ShieldCheck size={50} className="top-icon"/>
-                <h2 className="tool-title">注音轉換</h2>
-
                 <div className="input-group">
                     <label>INPUT</label>
                     <input
