@@ -75,7 +75,7 @@ export default function RandomWheel() {
 
             <div className="wheel-pointer-bottom"></div>
             <button className="spin-btn" onClick={handleSpin} disabled={isSpinning}>
-                {isSpinning ? '...' : 'SPIN'}
+                {isSpinning ? '...' : '轉動'}
             </button>
         </div>
 
@@ -89,9 +89,9 @@ export default function RandomWheel() {
                 value={newItem}
                 onChange={(e) => setNewItem(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && addItem()}
-                placeholder="Add option..."
+                placeholder="在此輸入..."
             />
-            <button className="base-btn" onClick={addItem}>+</button>
+            <button className="add-btn" onClick={addItem}>新增</button>
         </div>
 
         <div className="items-list">
