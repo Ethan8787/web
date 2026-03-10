@@ -168,7 +168,6 @@
     font-weight: 600;
 }
 
-/* Responsive adjustments */
 
 @media (max-width: 1024px) {
     .navbar-container {
@@ -176,6 +175,12 @@
     }
     .nav-center {
         justify-content: flex-end;
+    }
+    .nav-right {
+        display: none;
+    }
+    .contact-btn {
+        display: none;
     }
 }
 
@@ -206,6 +211,9 @@
         display: none;
     }
     .nav-right {
+        display: none;
+    }
+    .contact-btn {
         display: none;
     }
 }

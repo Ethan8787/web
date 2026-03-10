@@ -52,7 +52,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 80px 20px;
     z-index: 5;
 }
 
@@ -272,4 +271,10 @@
 
 .game-id-item:hover .insta-mask-fix {
     transform: scale(1.15) rotate(-5deg);
+}
+
+@media (max-width: 800px) {
+    .game-id-main {
+        padding: 50px;
+    }
 }
