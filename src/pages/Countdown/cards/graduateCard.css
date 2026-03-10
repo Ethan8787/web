@@ -3,176 +3,54 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 }
 
-.grad-wrap p {
-    color: #777;
+.c-grad-cherry {
+    stroke: #ff5588;
 }
 
-.rings-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 15px 0 8px;
+.c-grad-sunset {
+    stroke: #ff77aa;
 }
 
-.ring-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
+.c-grad-berry {
+    stroke: #ff99cc;
 }
 
-.svg-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.c-grad-plum {
+    stroke: #ffbbee;
 }
 
-.svg-container svg {
-    transform: rotate(-90deg);
+.grad-days-left {
+    color: #ff9a9e;
+    text-shadow: 0 0 18px rgba(255, 154, 158, 0.3);
 }
 
-.ring-bg {
-    stroke: rgba(255, 255, 255, 0.12);
-    stroke-width: 9;
+.grad-bar-fill {
+    background: #ff9a9e;
+    height: 100%;
 }
 
-.ring-fg {
-    stroke-width: 10;
-    stroke-linecap: round;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.08));
+.grad-card-parent:hover {
+    border: 1px solid rgba(255, 154, 158, 0.8) !important;
+    box-shadow: 0 10px 30px rgba(255, 154, 158, 0.2),
+    0 0 20px rgba(255, 154, 158, 0.1) inset !important;
 }
 
-.ring-value {
-    position: absolute;
-    font-size: 1.1rem;
-    font-weight: 800;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    color: rgba(255, 255, 255, 0.92);
+
+.exam-card-hover:hover {
+    border: 1px solid rgba(0, 255, 255, 0.5) !important;
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15),
+    0 0 20px rgba(0, 255, 255, 0.05) inset !important;
+}
+
+.grad-title-color {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ring-fraction {
     display: inline-flex;
     align-items: baseline;
-    gap: 4px;
-    line-height: 1;
-}
-
-.ring-main {
-    font-size: 1.15rem;
-}
-
-.ring-slash,
-.ring-max {
-    font-size: 0.85rem;
-    opacity: 0.8;
-    transform: translateY(-1px);
-}
-
-.ring-label {
-    margin-top: 8px;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
-    font-family: var(--font-main);
-    letter-spacing: 2px;
-    font-weight: 600;
-}
-
-.c-grad-cherry { stroke: #ff9a9e; }
-.c-grad-sunset { stroke: #fad0c4; }
-.c-grad-berry  { stroke: #fbc2eb; }
-.c-grad-plum   { stroke: #a18cd1; }
-
-.grad-days-display {
-    font-family: monospace;
-    color: rgba(255, 255, 255, 0.55);
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 6px;
-}
-
-.grad-days-left {
-    font-size: 2.1rem;
-    font-weight: 1000;
-    color: #ff9a9e;
-    text-shadow: 0 0 18px rgba(255, 154, 158, 0.12);
-}
-
-.grad-days-total {
-    font-size: 1.05rem;
-    font-weight: 600;
-}
-
-.grad-divider {
-    height: 1px;
-    background: rgba(255, 154, 158, 0.14);
-    width: 100%;
-    margin: 0;
-}
-
-.grad-bar-container {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.grad-bar-fill {
-    height: 100%;
-    background: #ff9a9e;
-    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.grad-card-parent {
-    background: rgba(255, 255, 255, 0.03) !important;
-}
-
-.grad-card-parent:hover {
-    border: 1px solid rgba(255, 154, 158, 1) !important;
-    box-shadow:
-            0 10px 26px rgba(255, 154, 158, 0.35),
-            0 0 0 1px rgba(255, 154, 158, 0.3) inset,
-            0 0 22px rgba(255, 154, 158, 0.3) !important;
-}
-
-.grad-title-color {
-    border-bottom: 1px solid rgba(255, 154, 158, 0.18) !important;
-}
-
-@media (max-width: 480px) {
-    .ring-value {
-        font-size: 0.95rem;
-    }
-
-    .ring-main {
-        font-size: 1.0rem;
-    }
-
-    .ring-slash,
-    .ring-max {
-        font-size: 0.78rem;
-    }
-
-    .side-tools {
-        display: none;
-    }
-
-    .ring-label {
-        font-size: 0.75rem;
-        letter-spacing: 1px;
-    }
-
-    .grad-days-left {
-        font-size: 1.7rem;
-    }
-
-    .grad-days-total {
-        font-size: 0.95rem;
-    }
+    gap: 2px;
 }

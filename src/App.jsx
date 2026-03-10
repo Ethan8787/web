@@ -9,7 +9,6 @@ import Code from './pages/Code/Code.jsx';
 import GameId from './pages/GameId/GameId.jsx';
 import Tools from './pages/Tools/Tools.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
-import ConsentForm from './pages/Rules/ConsentForm.jsx';
 
 import Stopwatch from './pages/Tools/Stopwatch/Stopwatch.jsx';
 import Run from './pages/Tools/RunPredictor/RunPredictor.jsx';
@@ -37,7 +36,6 @@ export default function App() {
                 <Route path="/stopwatch" element={<Stopwatch/>}/>
                 <Route path="/clock" element={<Clock/>}/>
                 <Route path="/timer" element={<Timer/>}/>
-                <Route path="/consentForm" element={<ConsentForm/>}/>
                 <Route path="/lottery" element={<RandomWheel/>}/>
                 <Route path="/115" element={<ExamCountdown/>}/>
                 <Route path="/zhu-yin-convert" element={<ZhuyinSecret/>}/>

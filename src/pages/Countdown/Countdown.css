@@ -2,72 +2,70 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    padding-top: 70px;
-}
-
-.countdown-main-layout .countdown-card,
-.countdown-main-layout .minimal-doc-card {
-    margin: 0 !important;
-    width: 92%;
-    max-width: 480px;
 }
 
 .countdown-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(10px);
+    width: 92%;
+    max-width: 480px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     text-align: center;
     border-radius: 16px;
-    overflow: hidden;
-    padding: 20px;
+    padding: 24px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
 }
 
 .countdown-title {
     font-size: 1.5rem;
     color: #fff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0;
+    padding-bottom: 12px;
     font-family: monospace;
     letter-spacing: 2px;
 }
 
-.motto-wrap {
-    height: 34px;
-    width: 60%;
-    background: rgba(255, 255, 255, 0.03);
+.days-display, .grad-days-display {
+    font-family: monospace;
+    color: rgba(255, 255, 255, 0.55);
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
-    border-radius: 6px;
-    margin: 8px auto;
-    border: 1px solid rgba(0, 255, 255, 0.15);
+    gap: 6px;
 }
 
-.motto-text {
-    font-size: 0.95rem;
+.days-left, .grad-days-left {
+    font-size: 2.5rem;
+    font-weight: 1000;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.days-left {
     color: #00ffff;
-    font-weight: 400;
-    text-align: center;
-    animation: motto-fade 0s ease;
-    font-family: 'JetBrains Mono', monospace;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
 }
 
-.time-date {
-    color: #777
+.bar-container, .grad-bar-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-@keyframes motto-fade {
-    0% {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.bar-fill {
+    background: #00d2ff;
+    height: 100%;
 }
 
 .side-tools {
@@ -81,64 +79,39 @@
     z-index: 15;
 }
 
+.time-date {
+    color: #777;
+}
+
 .tool-btn {
-    background: rgba(255, 255, 255, 0.8) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(8px);
-    width: 48px !important;
-    height: 48px !important;
-    border-radius: 50px !important;
+    background: rgba(255, 255, 255, 0.8);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0;
+    transition: 0.2s;
 }
 
 .tool-btn:hover {
-    background: rgba(255, 255, 255, 1) !important;
     transform: scale(1.1);
+    background: #fff;
 }
 
-.days-display {
-    font-family: monospace;
-    color: #888;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 5px;
-}
+@media (max-width: 480px) {
+    .countdown-card {
+        padding: 20px;
+        gap: 12px;
+    }
 
-.days-left {
-    font-size: 2.5rem;
-    font-weight: 1000;
-    color: #00ffff;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-}
+    .days-left {
+        font-size: 2rem;
+    }
 
-.days-total {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-.divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    margin: 8px 0;
-}
-
-.bar-container {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.bar-fill {
-    height: 100%;
-    background: #00d2ff;
-    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    .side-tools {
+        display: none;
+    }
 }
