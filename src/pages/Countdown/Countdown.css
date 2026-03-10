@@ -103,12 +103,8 @@
 
 @media (max-width: 480px) {
     .countdown-card {
-        padding: 20px;
+        padding: 50px;
         gap: 12px;
-    }
-
-    .days-left {
-        font-size: 2rem;
     }
 
     .side-tools {
