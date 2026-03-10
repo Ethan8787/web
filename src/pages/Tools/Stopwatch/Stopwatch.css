@@ -41,7 +41,7 @@
 }
 
 .sw-btn {
-    padding: 12px 24px;
+    padding: 12px 20px;
     border-radius: 12px;
     font-weight: 700;
     cursor: pointer;
@@ -142,4 +142,19 @@
 .sw-laps-area::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .sw-display {
+        font-size: 4rem;
+        margin-bottom: 30px;
+    }
+
+    .sw-sub {
+        font-size: 3rem;
+    }
+
+    .sw-btn {
+        padding: 10px 16px;
+    }
 }

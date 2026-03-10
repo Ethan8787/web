@@ -34,7 +34,7 @@
     position: relative;
     z-index: 10;
     max-width: 900px;
-    margin: 60px auto;
+    margin: 15px auto;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
@@ -198,6 +198,10 @@
 }
 
 @media (max-width: 850px) {
+    .container {
+        margin: 25px auto;
+    }
+
     #avatar {
         height: 4.5rem;
         width: 4.5rem;

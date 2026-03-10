@@ -3,7 +3,7 @@ import './Tools.css';
 
 import ZhuyinSecret from './ZhuyinSecret/ZhuyinSecret.jsx';
 import DiscordTool from './Discord/DiscordTool.jsx';
-import Clock from '../Tools/Clock/Clcok.jsx';
+import Clock from './Clock/Clock.jsx';
 import Stopwatch from '../Tools/Stopwatch/Stopwatch.jsx';
 import Timer from '../Tools/Timer/Timer.jsx';
 import RandomWheel from './RandomWheel/RandomWheel.jsx';

@@ -12,7 +12,7 @@ import NotFound from './pages/NotFound/NotFound.jsx';
 
 import Stopwatch from './pages/Tools/Stopwatch/Stopwatch.jsx';
 import Run from './pages/Tools/RunPredictor/RunPredictor.jsx';
-import Clock from './pages/Tools/Clock/Clcok.jsx';
+import Clock from './pages/Tools/Clock/Clock.jsx';
 import Timer from './pages/Tools/Timer/Timer.jsx';
 import RandomWheel from './pages/Tools/RandomWheel/RandomWheel.jsx';
 import DiscordTool from './pages/Tools/Discord/DiscordTool.jsx';

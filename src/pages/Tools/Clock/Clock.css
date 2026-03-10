@@ -19,17 +19,12 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.clock-content:hover {
-    transform: translateY(-5px);
-}
-
 .clock-time {
     font-size: 7rem;
     font-weight: 900;
     font-family: 'JetBrains Mono', monospace;
     color: #ffffff;
     line-height: 1;
-    letter-spacing: -2px;
     margin-bottom: 20px;
     font-variant-numeric: tabular-nums;
 }
@@ -37,7 +32,7 @@
 .clock-date {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 300;
 }
@@ -48,6 +43,10 @@
     }
 
     .clock-content {
-        padding: 40px 20px;
+        padding: 40px;
+    }
+
+    .clock-date {
+        font-size: 1rem;
     }
 }
