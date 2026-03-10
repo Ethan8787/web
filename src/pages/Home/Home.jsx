@@ -9,7 +9,6 @@ import Projects from '../../components/Projects/Projects.jsx';
 import "./Home.css";
 
 export default function Home() {
-    const [loaded, setLoaded] = useState(false);
     const [age, setAge] = useState(0);
 
     const calculateAge = (birthDate) => {
@@ -31,14 +30,14 @@ export default function Home() {
 
     return (<div className="App">
         <div className="container">
-            <div className={`header-group reveal delay-0 ${loaded ? 'is-visible' : ''}`}>
+            <div className="header-group">
                 <div className="avatar-wrapper">
                     <img id="avatar" src={avatarImg} alt="Avatar"/>
                 </div>
                 <h1>Ethan</h1>
             </div>
 
-            <div className={`intro-card reveal delay-1 ${loaded ? 'is-visible' : ''}`} id="intro">
+            <div className="intro-card">
                 <h2>About Me</h2>
                 <p>
                     我是 <span style={{color: 'var(--accent-color)', fontWeight: '2000'}}>Ethan</span>，
