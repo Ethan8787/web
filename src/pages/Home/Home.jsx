@@ -41,9 +41,10 @@ export default function Home() {
                 <h2>About Me</h2>
                 <p>
                     我是 <span style={{color: 'var(--accent-color)', fontWeight: '2000'}}>Ethan</span>，
-                    一名喜愛技術開發 的 <strong>{age} 歲</strong> 程式愛好者。
+                    一名 <strong>{age} 歲</strong> 學生，
+                    學習程式設計已達 <strong>{age - 10}</strong> 年。
                     <br/>
-                    學習程式設計已達 <strong>{age - 10}</strong> 年。以下是我的社群連結。
+                    以下是我的社群連結。
                 </p>
                 <div className="button-group">
                     <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank"
@@ -68,7 +69,6 @@ export default function Home() {
                     </a>
                 </div>
             </div>
-
             <Skills/>
             <Projects/>
         </div>

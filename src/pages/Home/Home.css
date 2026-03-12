@@ -2,7 +2,7 @@
     position: relative;
     z-index: 10;
     max-width: 900px;
-    margin: 15px auto;
+    margin: 20px auto;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
@@ -17,17 +17,11 @@
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, border-color 0.3s;
-}
-
-.intro-card:hover, .section:hover, .header-group:hover {
-    transform: translateY(-5px);
-    border-color: #00FFFF;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    transition: all 0.5s;
 }
 
 .intro-card h2, .section h2 {
-    border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+    border-bottom: 2px solid rgba(0, 255, 255, 0.5);
     padding-bottom: 12px;
     margin-bottom: 25px;
     font-size: 2rem;
@@ -37,7 +31,7 @@
 
 .intro-card p {
     color: #ccd6f6;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 2;
     text-align: justify;
     margin: 0 auto;
@@ -165,7 +159,7 @@
     transform: scale(1.2);
 }
 
-@media (max-width: 850px) {
+@media (max-width: 768px) {
     .container {
         margin: 25px auto;
     }

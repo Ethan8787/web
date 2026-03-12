@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
-import RingsCard from './cards/ringsCard';
+import ExamCard from './cards/examCard.jsx';
 import GraduateCard from './cards/graduateCard';
 import './Countdown.css';
 
@@ -102,10 +102,9 @@ export default function Countdown() {
                 </button>
             </div>
 
-            {/* 115 會考卡片 */}
             <div className="countdown-card glass-card" ref={cardRef}>
                 <h2 className="countdown-title">115 會考</h2>
-                <RingsCard />
+                <ExamCard />
                 <div className="days-display">
                     <span className="days-left">{examDays}</span>
                     <span className="days-total"> / 365 Days</span>

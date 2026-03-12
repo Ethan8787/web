@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './ringsCard.css';
+import './examCard.css';
 
 const Ring = ({value, max, label, colorClass}) => {
     const radius = 36;
@@ -28,7 +28,7 @@ const Ring = ({value, max, label, colorClass}) => {
     </div>);
 };
 
-export default function RingsCard() {
+export default function ExamCard() {
     const [time, setTime] = useState({d: 0, h: 0, m: 0, s: 0});
 
     useEffect(() => {

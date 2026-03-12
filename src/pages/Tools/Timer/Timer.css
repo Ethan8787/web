@@ -1,20 +1,22 @@
 .timer-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 35vh;
-    width: 90vw;
+    /* 你的核心要求 */
+    margin: 45px auto;
+
     max-width: 500px;
     background: rgba(15, 15, 20, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border-radius: 12px;
-    padding: 40px 20px;
-    margin: 20px auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: border-color 0.3s ease;
 }
 
-.timer-input-group, .timer-display-group {
+.timer-input-group {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,11 +24,10 @@
     width: 100%;
 }
 
-.time-field-wrapper, .control-group, .timer-controls {
+.time-field-wrapper {
     display: flex;
-    gap: 15px;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
     width: 100%;
 }
 
@@ -34,95 +35,99 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    flex: 1;
+    gap: 10px;
 }
 
 .time-field input {
-    width: 60%;
-    max-width: 130px;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    color: white;
-    font-size: 1.8rem;
+    color: #ffffff;
+    font-size: 2rem;
     text-align: center;
     font-family: 'JetBrains Mono', monospace;
+    transition: all 0.2s ease;
+}
+
+.time-field input:focus {
     outline: none;
-    -webkit-appearance: none;
+}
+
+.time-field span {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.timer-display-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+}
+
+.timer-digits {
+    font-size: 4.5rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: white;
+    letter-spacing: -2px;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.timer-btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    letter-spacing: 1px;
+}
+
+.timer-btn.start, .timer-btn.toggle {
+    background: #0098ee;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 152, 238, 0.3);
+}
+
+.timer-btn.reset {
+    background: rgba(255, 68, 68, 0.1);
+    color: #ff4444;
+    border: 1px solid rgba(255, 68, 68, 0.2);
+    margin-left: 10px;
+}
+
+.timer-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.timer-btn:active {
+    transform: translateY(0);
+}
+
+.timer-progress-track {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.timer-progress-fill {
+    height: 100%;
+    background: #00ffff;
+    transition: width 0.3s ease;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-.timer-digits {
-    font-size: 2rem;
-    font-weight: 200;
-    font-family: 'JetBrains Mono', monospace;
-    color: white;
-    text-align: center;
-    font-variant-numeric: tabular-nums;
-}
-
-.timer-btn {
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-weight: 900;
-    cursor: pointer;
-    font-size: 1rem;
-    min-width: 110px;
-    border: none;
-    transition: transform 0.1s;
-}
-
-.timer-progress-track {
-    width: 80%;
-    height: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    border: 0;
-    overflow: hidden;
-}
-
-.timer-progress-fill {
-    height: 100%;
-    background-color: var(--accent-color);
-    border-radius: 50px;
-    border: 0;
-    transition: width 1s linear;
-}
-
-.timer-btn:active {
-    transform: scale(0.95);
-}
-
-.timer-btn.start, .timer-btn.toggle {
-    background: #0098ee;
-    color: white;
-}
-
-.timer-btn.reset {
-    background: rgba(255, 255, 255, 0.05);
-    color: #ff4444;
-    border: 1px solid rgba(255, 68, 68, 0.2);
-}
-
-@media (min-width: 768px) {
-    .timer-container {
-        width: 60vh;
-    }
-
-    .timer-digits {
-        font-size: 3.3rem;
-    }
-
-    .time-field input {
-        width: 70%;
-        height: 70px;
-        font-size: 2.5rem;
-    }
 }

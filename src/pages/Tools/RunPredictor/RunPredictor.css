@@ -7,12 +7,12 @@
     gap: 5px;
 }
 
-.glass-card {
+.run-glass-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 40px;
+    border-radius: 12px;
     padding: 2rem;
     width: 100%;
     max-width: 550px;
@@ -27,7 +27,7 @@
     gap: 15px;
 }
 
-.glass-card:hover {
+.run-glass-card:hover {
     box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
     border-color: #00FFFF;
 }

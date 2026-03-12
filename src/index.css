@@ -78,115 +78,13 @@ html, body {
 }
 
 .glass-card {
-    background: var(--bg-glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border-glass);
-    border-radius: 20px;
+    background: rgba(15, 15, 20, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     padding: 1.25rem;
     margin: 16px auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     color: var(--text-main);
-}
-
-.ios-dark-blue {
-    background-color: var(--ios-dark-blue);
-}
-
-.ios-deep-blue {
-    background-color: var(--ios-deep-blue);
-}
-
-.ios-blue {
-    background-color: var(--ios-blue);
-}
-
-.ios-light-blue {
-    background-color: var(--ios-light-blue);
-}
-
-.ios-green {
-    background-color: var(--ios-green);
-}
-
-.ios-pink {
-    background-color: var(--ios-pink);
-}
-
-.ios-red {
-    background-color: var(--ios-red);
-}
-
-.ios-orange {
-    background-color: var(--ios-orange);
-}
-
-.ios-yellow {
-    background-color: var(--ios-yellow);
-}
-
-.ios-grey {
-    background-color: var(--ios-grey);
-}
-
-.ios-light-grey {
-    background-color: var(--ios-light-grey);
-}
-
-.ios-background {
-    background-color: var(--ios-background);
-}
-
-.ios-text-dark-blue {
-    color: var(--ios-dark-blue);
-}
-
-.ios-text-deep-blue {
-    color: var(--ios-deep-blue);
-}
-
-.ios-text-blue {
-    color: var(--ios-blue);
-}
-
-.ios-text-light-blue {
-    color: var(--ios-light-blue);
-}
-
-.ios-text-green {
-    color: var(--ios-green);
-}
-
-.ios-text-pink {
-    color: var(--ios-pink);
-}
-
-.ios-text-red {
-    color: var(--ios-red);
-}
-
-.ios-text-orange {
-    color: var(--ios-orange);
-}
-
-.ios-text-yellow {
-    color: var(--ios-yellow);
-}
-
-.ios-text-grey {
-    color: var(--ios-grey);
-}
-
-@media (max-width: 480px) {
-    .glass-card {
-        padding: 1rem;
-        margin: 12px auto;
-    }
-}
-
-@media (min-width: 768px) {
-    .glass-card {
-        padding: 2rem;
-        margin: 40px auto;
-    }
 }

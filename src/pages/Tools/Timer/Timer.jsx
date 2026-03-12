@@ -14,14 +14,17 @@ export default function Timer() {
             timerRef.current = setInterval(() => {
                 setTimeLeft((prev) => prev - 1);
             }, 1000);
-        } else if (timeLeft === 0) {
+        } else if (timeLeft === 0 && isRunning) {
             setIsRunning(false);
+            // 可以在這裡加個報警音效之類的
         }
         return () => clearInterval(timerRef.current);
     }, [isRunning, timeLeft]);
 
     const handleStart = () => {
-        const totalSeconds = inputTime.h * 3600 + inputTime.m * 60 + inputTime.s;
+        const totalSeconds = (parseInt(inputTime.h) || 0) * 3600 +
+            (parseInt(inputTime.m) || 0) * 60 +
+            (parseInt(inputTime.s) || 0);
         if (totalSeconds > 0) {
             setTotalDuration(totalSeconds);
             setTimeLeft(totalSeconds);
@@ -60,21 +63,34 @@ export default function Timer() {
                 <div className="timer-input-group">
                     <div className="time-field-wrapper">
                         <div className="time-field">
-                            <input type="number" value={inputTime.h} onChange={(e) => handleChange(e, 'h')}/>
-                            <span>H</span>
+                            <input
+                                type="number"
+                                value={inputTime.h}
+                                onChange={(e) => handleChange(e, 'h')}
+                                onFocus={(e) => e.target.select()}
+                            />
+                            <span>HOURS</span>
                         </div>
                         <div className="time-field">
-                            <input type="number" value={inputTime.m} onChange={(e) => handleChange(e, 'm')}/>
-                            <span>M</span>
+                            <input
+                                type="number"
+                                value={inputTime.m}
+                                onChange={(e) => handleChange(e, 'm')}
+                                onFocus={(e) => e.target.select()}
+                            />
+                            <span>MINS</span>
                         </div>
                         <div className="time-field">
-                            <input type="number" value={inputTime.s} onChange={(e) => handleChange(e, 's')}/>
-                            <span>S</span>
+                            <input
+                                type="number"
+                                value={inputTime.s}
+                                onChange={(e) => handleChange(e, 's')}
+                                onFocus={(e) => e.target.select()}
+                            />
+                            <span>SECS</span>
                         </div>
                     </div>
-                    <div className="control-group">
-                        <button className="timer-btn start" onClick={handleStart}>START</button>
-                    </div>
+                    <button className="timer-btn start" onClick={handleStart}>START TIMER</button>
                 </div>
             ) : (
                 <div className="timer-display-group">

@@ -77,7 +77,7 @@ export default function RunPredictor() {
 
     return (
         <div className="predictor-container">
-            <div className="glass-card">
+            <div className="run-glass-card">
                 <div className="card-header">
                     <h2>跑步成績預測</h2>
                     <span className="badge">Riegel 模型</span>
