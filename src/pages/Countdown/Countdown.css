@@ -22,11 +22,6 @@
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, border-color 0.3s;
 }
 
-.countdown-card:hover {
-    border-color: #00FFFF;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
-}
-
 .card-divider {
     height: 1px;
     background: rgba(255, 255, 255, 0.1);
