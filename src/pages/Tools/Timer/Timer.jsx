@@ -9,14 +9,36 @@ export default function Timer() {
     const [isInputting, setIsInputting] = useState(true);
     const timerRef = useRef(null);
 
+    const playAlarm = () => {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.5);
+        gain.gain.setValueAtTime(0.01, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.5);
+    };
+
     useEffect(() => {
         if (isRunning && timeLeft > 0) {
+            document.title = `(${formatTime(timeLeft)}) Timer`;
             timerRef.current = setInterval(() => {
                 setTimeLeft((prev) => prev - 1);
             }, 1000);
         } else if (timeLeft === 0 && isRunning) {
             setIsRunning(false);
-            // 可以在這裡加個報警音效之類的
+            document.title = "TIME'S UP!";
+            playAlarm();
+            if (Notification.permission === 'granted') {
+                new Notification('Timer Finished', { body: '時間到了老哥' });
+            }
+        } else {
+            document.title = 'React Timer';
         }
         return () => clearInterval(timerRef.current);
     }, [isRunning, timeLeft]);
@@ -26,6 +48,9 @@ export default function Timer() {
             (parseInt(inputTime.m) || 0) * 60 +
             (parseInt(inputTime.s) || 0);
         if (totalSeconds > 0) {
+            if (Notification.permission !== 'granted') {
+                Notification.requestPermission();
+            }
             setTotalDuration(totalSeconds);
             setTimeLeft(totalSeconds);
             setIsInputting(false);
@@ -94,7 +119,9 @@ export default function Timer() {
                 </div>
             ) : (
                 <div className="timer-display-group">
-                    <div className="timer-digits">{formatTime(timeLeft)}</div>
+                    <div className={`timer-digits ${timeLeft === 0 ? 'finished' : ''}`}>
+                        {formatTime(timeLeft)}
+                    </div>
                     <div className="timer-progress-track">
                         <div
                             className="timer-progress-fill"

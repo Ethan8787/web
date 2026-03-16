@@ -11,12 +11,10 @@ import Tools from './pages/Tools/Tools.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
 
 import Stopwatch from './pages/Tools/Stopwatch/Stopwatch.jsx';
-import Run from './pages/Tools/RunPredictor/RunPredictor.jsx';
 import Clock from './pages/Tools/Clock/Clock.jsx';
 import Timer from './pages/Tools/Timer/Timer.jsx';
 import RandomWheel from './pages/Tools/RandomWheel/RandomWheel.jsx';
 import DiscordTool from './pages/Tools/Discord/DiscordTool.jsx';
-import ZhuyinSecret from "./pages/Tools/ZhuyinSecret/ZhuyinSecret.jsx";
 import ExamCountdown from "./pages/Countdown/Countdown.jsx";
 
 import './App.css';
@@ -36,10 +34,8 @@ export default function App() {
                 <Route path="/stopwatch" element={<Stopwatch/>}/>
                 <Route path="/clock" element={<Clock/>}/>
                 <Route path="/timer" element={<Timer/>}/>
-                <Route path="/lottery" element={<RandomWheel/>}/>
+                <Route path="/wheel" element={<RandomWheel/>}/>
                 <Route path="/115" element={<ExamCountdown/>}/>
-                <Route path="/zhu-yin-convert" element={<ZhuyinSecret/>}/>
-                <Route path="/run" element={<Run/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </div>

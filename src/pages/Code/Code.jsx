@@ -74,7 +74,13 @@ export default function Code() {
                             language="python"
                             style={atomDark}
                             showLineNumbers={true}
-                            lineNumberStyle={{ textAlign: 'center'}}
+                            lineNumberStyle={{ textAlign: 'center', minWidth: '2.5em'}}
+                            customStyle={{
+                                margin: 0,
+                                padding: '20px',
+                                fontSize: '0.9rem',
+                                borderRadius: '8px'
+                            }}
                         >
                             {codeContent}
                         </SyntaxHighlighter>

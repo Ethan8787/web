@@ -4,9 +4,11 @@
     align-items: center;
     flex-direction: column;
     margin: 20px auto;
-    padding: 0 20px;
+    padding: 20px;
     min-height: 80vh;
     position: relative;
+    /* 確保子元素可以用百分比寬度 */
+    width: 100%;
 }
 
 .tools-header {
@@ -22,6 +24,10 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 100;
+    /* 強制寬度與內容區塊一致 */
+    width: 100%;
+    max-width: 500px; /* 設定一個舒服的最大寬度 */
+    box-sizing: border-box;
 }
 
 .tools-title {
@@ -34,12 +40,12 @@
 
 .custom-dropdown {
     position: relative;
-    width: 120px;
+    width: 140px;
 }
 
 .dropdown-trigger {
-    width: 100%;
-    padding: 10px 18px;
+    width: 90%;
+    padding: 8px 14px;
     background: rgba(15, 15, 20, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -53,13 +59,13 @@
     outline: none;
 }
 
-.dropdown-trigger:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: var(--accent-color, #0098ee);
+.dropdown-trigger span {
+    font-size: 1rem;
 }
 
-.dropdown-trigger:active {
-    transform: scale(0.92);
+.dropdown-trigger:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-color, #0098ee);
 }
 
 .dropdown-trigger.active {
@@ -84,7 +90,6 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(25px);
     border-radius: 18px;
-    padding: 8px;
     list-style: none;
     z-index: 9999;
     animation: menuPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -124,6 +129,10 @@
     position: relative;
     z-index: 10;
     animation: toolSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
 }
 
 @keyframes toolSlideUp {
@@ -141,18 +150,22 @@
 
 @media (max-width: 768px) {
     .tools-page-wrapper {
-    padding: 30px
+        padding: 10px;
+        width: 100%;
     }
 
     .tools-header {
-        padding-top: 20px;
-        gap: 20px;
+        width: 95%;
+        margin-top: 40px;
+    }
+
+    .tool-content-area {
+        width: 95%;
     }
 
     .tools-title {
-        font-size: 1rem;
         letter-spacing: 3px;
         color: var(--accent-color, #0098ee);
-        font-weight: 900;
+        font-weight: 400;
     }
 }

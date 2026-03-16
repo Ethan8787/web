@@ -1,7 +1,5 @@
 .timer-container {
-    /* 你的核心要求 */
     margin: 45px auto;
-
     max-width: 500px;
     background: rgba(15, 15, 20, 0.8);
     backdrop-filter: blur(12px);
@@ -53,6 +51,8 @@
 
 .time-field input:focus {
     outline: none;
+    border-color: #0098ee;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .time-field span {
@@ -130,4 +130,15 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+@media (max-width: 768px) {
+    .timer-container {
+        margin: 35px auto;
+        padding: 30px;
+    }
+
+    .timer-digits {
+        font-size: 3.8rem;
+    }
 }

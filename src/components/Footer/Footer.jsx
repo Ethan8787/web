@@ -5,7 +5,7 @@ export default function Footer() {
         <footer>
             <div className="bottom">
                 <div className="left">
-                    <p>Copyright &copy; 2025 Ethan. All Rights Reserved.</p>
+                    <p>Copyright &copy; 2026 Ethan. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

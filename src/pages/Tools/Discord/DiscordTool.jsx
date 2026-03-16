@@ -12,13 +12,13 @@ export default function DiscordTool() {
     const [result, setResult] = useState('');
     const [copied, setCopied] = useState(false);
 
-    const formats = [{code: 'R', label: 'Relative (e.g., 2 years ago)'}, {
-        code: 't', label: 'Short Time (e.g., 16:20)'
-    }, {code: 'T', label: 'Long Time (e.g., 16:20:30)'}, {
-        code: 'd', label: 'Short Date (e.g., 20/04/2021)'
-    }, {code: 'D', label: 'Long Date (e.g., 20 April 2021)'}, {
-        code: 'f', label: 'Short Date/Time (e.g., 20 April 2021 16:20)'
-    }, {code: 'F', label: 'Long Date/Time (e.g., Tuesday, 20 April 2021 16:20)'},];
+    const formats = [{code: 'R', label: '相對時間 (例如：2 年前)'}, {
+        code: 't', label: '短時間 (例如：16:20)'
+    }, {code: 'T', label: '長時間 (例如：16:20:30)'}, {code: 'd', label: '短日期 (例如：2021/04/20)'}, {
+        code: 'D', label: '長日期 (例如：2021年4月20日)'
+    }, {code: 'f', label: '短日期與時間 (例如：2021年4月20日 16:20)'}, {
+        code: 'F', label: '星期、日期與時間 (例如：2021年4月20日星期二 16:20)'
+    },];
 
     useEffect(() => {
         const dateTimeStr = `${date}T${time}`;
@@ -26,14 +26,14 @@ export default function DiscordTool() {
         const unixTimestamp = Math.floor(targetDate.getTime() / 1000);
 
         if (isNaN(unixTimestamp)) {
-            setResult('Invalid Date');
+            setResult('無效的日期');
         } else {
             setResult(`<t:${unixTimestamp}:${type}>`);
         }
     }, [date, time, type]);
 
     const handleCopy = () => {
-        if (result && result !== 'Invalid Date') {
+        if (result && result !== '無效的日期') {
             navigator.clipboard.writeText(result);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
@@ -42,32 +42,25 @@ export default function DiscordTool() {
 
     return (<div className="discord-tool-container">
         <div className="dc-glass-card">
-            <div className="card-header">
-                <h2>Discord Timestamp</h2>
-                <span className="badge">Generator</span>
+            <div className="input-wrapper">
+                <label>日期</label>
+                <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                />
             </div>
-
-            <div className="input-group">
-                <div className="input-wrapper">
-                    <label>Date</label>
-                    <input
-                        type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                    />
-                </div>
-                <div className="input-wrapper">
-                    <label>Time</label>
-                    <input
-                        type="time"
-                        value={time}
-                        onChange={(e) => setTime(e.target.value)}
-                    />
-                </div>
+            <div className="input-wrapper">
+                <label>時間</label>
+                <input
+                    type="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                />
             </div>
 
             <div className="input-wrapper full-width">
-                <label>Format Type</label>
+                <label>格式類型</label>
                 <select value={type} onChange={(e) => setType(e.target.value)}>
                     {formats.map(f => (<option key={f.code} value={f.code}>
                         {f.label}
@@ -76,36 +69,34 @@ export default function DiscordTool() {
             </div>
 
             <div className="output-section">
-                <label>Output Code</label>
+                <label>輸出代碼</label>
                 <div className="code-box">
                     <code>{result}</code>
                     <button
                         className={`copy-btn ${copied ? 'copied' : ''}`}
-                        onClick={typeof copyToClipboard !== 'undefined' ? copyToClipboard : handleCopy}
+                        onClick={handleCopy}
                     >
-                        {copied ? (
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
-                                 strokeLinejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        ) : (
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                                 strokeLinejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                        )}
+                        {copied ? (<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
+                                        strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>) : (<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                        strokeLinejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>)}
                     </button>
                 </div>
             </div>
 
             <div className="preview-section">
-                <span>Preview: </span>
-                <span className="discord-preview">
-                       {type === 'R' ? 'In 2 minutes' : type === 't' ? time : type === 'd' ? date : 'Dynamic Preview'}
+                <label>輸出代碼</label>
+                <div className="preview-box">
+                    <span className="discord-preview">
+                        {type === 'R' ? '2 分鐘後' : type === 't' ? time : type === 'd' ? date : '動態預覽'}
                     </span>
+                </div>
             </div>
         </div>
     </div>);

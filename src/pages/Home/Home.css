@@ -3,7 +3,7 @@
     z-index: 10;
     max-width: 900px;
     margin: 20px auto;
-    padding: 0 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -115,15 +115,6 @@
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-.discord-tool-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    width: 100%;
-    margin: 4vh 0;
-}
-
 .glass-card {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px);
@@ -161,7 +152,7 @@
 
 @media (max-width: 768px) {
     .container {
-        margin: 25px auto;
+        margin: 50px auto;
     }
 
     #avatar {
@@ -180,8 +171,5 @@
 
     .button-group {
         grid-template-columns: 1fr;
-    }
-    .container {
-        padding-top: 50px;
     }
 }

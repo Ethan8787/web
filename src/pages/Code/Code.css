@@ -1,19 +1,21 @@
-/* 你的原始樣式已整合至此 */
 .code-container {
     position: relative;
     z-index: 10;
     max-width: 800px;
+    width: 100%;
     margin: 20px auto;
-    padding: 0 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 180px);
+    box-sizing: border-box;
 }
 
 .code-section {
     display: flex;
     flex-direction: column;
     min-height: 0;
+    width: 100%;
     background: rgba(15, 15, 20, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -22,6 +24,8 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     padding: 30px;
     transition: transform 0.2s ease-out, box-shadow 0.3s ease-out, border-color 0.3s;
+    box-sizing: border-box;
+    overflow: hidden; /* 防止子元素撐開 */
 }
 
 .code-section h2 {
@@ -34,12 +38,13 @@
 
 .tab-container {
     display: flex;
+    flex-wrap: wrap; /* 讓按鈕在太窄時能換行 */
+    justify-content: center;
     gap: 12px;
     margin-bottom: 25px;
     background: transparent;
     padding: 0;
-    width: fit-content;
-    align-self: center;
+    width: 100%;
 }
 
 .tab-btn {
@@ -47,16 +52,17 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 12px 16px;
+    padding: 10px 16px;
     border-radius: 12px;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: bold;
     background: #000;
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
     opacity: 0.5;
+    white-space: nowrap;
 }
 
 .tab-btn:hover {
@@ -69,19 +75,18 @@
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
-.tab-btn:hover:not(.active) {
-    color: white;
-    background: rgba(255, 255, 255, 0.05);
-}
-
 .code-block-wrapper {
     position: relative;
-    overflow-y: auto;
-    border: none;
+    overflow: auto; /* 確保 code 太長時可以噴滾動條而不是撐開容器 */
+    border-radius: 8px;
+    background: #1d1f21; /* 跟著 atomDark 走 */
+    flex-grow: 1;
 }
 
+/* 滾動條樣式優化 */
 .code-block-wrapper::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
 }
 
 .code-block-wrapper::-webkit-scrollbar-track {
@@ -93,26 +98,28 @@
     border-radius: 10px;
 }
 
-.code-block-wrapper::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-color);
-}
-
 .copy-btn-sticky-wrapper {
     position: sticky;
+    top: 0;
+    right: 0;
     z-index: 100;
     display: flex;
     justify-content: flex-end;
+    pointer-events: none;
 }
 
 .o-copy-btn {
     position: absolute;
+    pointer-events: auto;
     display: flex;
-    background: none;
-    margin: 24px 16px;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(4px);
+    padding: 8px;
+    border-radius: 6px;
+    margin: 10px;
     border: none;
-    color: #888888;
+    color: #999;
     cursor: pointer;
-    border: rgba(255, 255, 255, 0.15);
     transition: all 0.2s;
 }
 
@@ -122,6 +129,22 @@
 
 @media (max-width: 768px) {
     .code-section {
-        margin: 25px auto;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .code-container {
+        height: auto;
+        min-height: calc(100vh - 100px);
+    }
+
+    .code-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
     }
 }

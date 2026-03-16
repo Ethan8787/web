@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
     margin-top: 20px;
 }
 
@@ -12,7 +13,7 @@
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    width: 92%;
+    width: 100%;
     max-width: 480px;
     display: flex;
     flex-direction: column;
@@ -106,8 +107,8 @@
 
 @media (max-width: 768px) {
     .countdown-main-layout {
-        margin-top: 50px;
-    }
+        margin: 50px 0;
+     }
 
     .side-tools {
         display: none;

@@ -1,32 +1,47 @@
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
     width: 100%;
 }
 
 .project-card {
     background: rgba(15, 15, 20, 0.8);
-    padding: 20px;
+    padding: 15px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 15px;
     min-width: 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s ease-out, box-shadow 0.3s ease-out, border-color 0.3s;
 }
 
-.project-card:hover {
-    transform: scale(1.02);
-    border-color: #00FFFF;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+.project-video-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    transition: background 0.3s;
 }
 
-.project-card:hover .description {
-    color: #ffffff;
+.placeholder-text {
+    color: #555;
+    font-size: 0.85rem;
+    font-family: var(--font-third), monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .project-info {
@@ -35,11 +50,11 @@
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .project-info h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #00FFFF;
     margin: 0;
     white-space: nowrap;
@@ -49,30 +64,35 @@
 
 .tag {
     flex-shrink: 0;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-family: var(--font-third), monospace;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 16px;
-    background-color: #333;
-    color: #ddd;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 400;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #888;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
 }
 
 .project-card:hover .tag {
-    background-color: #fff;
-    color: #000;
-    transition: color 0.4s ease;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 1);
 }
 
 .description {
     font-size: 0.95rem;
     font-family: var(--font-secondary), sans-serif;
     color: #b0b0b0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     flex-grow: 1;
     transition: all 0.3s;
     line-height: 1.5;
+}
+
+.project-footer {
+    margin-top: auto;
 }
 
 .project-link {
@@ -87,6 +107,7 @@
 .header-group.project-header h3 {
     font-size: 3.5em;
     color: #fff;
+    margin-bottom: 0;
 }
 
 .project-link:hover {

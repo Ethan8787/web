@@ -1,13 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './Tools.css';
 
-import ZhuyinSecret from './ZhuyinSecret/ZhuyinSecret.jsx';
 import DiscordTool from './Discord/DiscordTool.jsx';
 import Clock from './Clock/Clock.jsx';
 import Stopwatch from '../Tools/Stopwatch/Stopwatch.jsx';
 import Timer from '../Tools/Timer/Timer.jsx';
 import RandomWheel from './RandomWheel/RandomWheel.jsx';
-import RunPredictor from './RunPredictor/RunPredictor.jsx';
 
 export default function Tools() {
     const [activeTool, setActiveTool] = useState(() => {
@@ -34,7 +32,6 @@ export default function Tools() {
         {label: "倒數計時", id: "timer"},
         {label: "極簡時鐘", id: "time-display"},
         {label: "碼表計時", id: "stopwatch"},
-        {label: "注音轉換", id: "zhu-yin-convert"},
         {label: "時間戳記", id: "discord-tool"},
         {label: "幸運輪盤", id: "lottery"},
     ];
@@ -49,8 +46,6 @@ export default function Tools() {
                 return <Clock/>;
             case 'stopwatch':
                 return <Stopwatch/>;
-            case 'zhu-yin-convert':
-                return <ZhuyinSecret/>;
             case 'discord-tool':
                 return <DiscordTool/>;
             case 'lottery':

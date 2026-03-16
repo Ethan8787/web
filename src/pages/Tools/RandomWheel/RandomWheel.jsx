@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './RandomWheel.css';
 
 export default function RandomWheel() {
@@ -49,57 +49,60 @@ export default function RandomWheel() {
 
     const sliceDeg = items.length ? 360 / items.length : 360;
 
-    return (<div className="tool-card">
-        <div className="wheel-main">
-            <div
-                className="wheel"
-                style={{
-                    background: getWheelBackground(),
-                    transform: `rotate(${rotation}deg) translateZ(0)`,
-                    '--slice-deg': `${sliceDeg}deg`
-                }}
-            >
-                {items.map((item, i) => {
-                    const segmentCenterDeg = i * sliceDeg + (sliceDeg / 2);
-                    return (<div
-                        key={i}
-                        className={`wheel-segment ${winnerIndex === i ? 'active' : ''}`}
-                        style={{transform: `rotate(${segmentCenterDeg}deg) translateY(-110px)`}}
-                    >
-                                <span style={{transform: `rotate(${-rotation - segmentCenterDeg}deg)`}}>
+    return (
+        <div className="tool-card">
+            <div className="wheel-main">
+                <div
+                    className="wheel"
+                    style={{
+                        background: getWheelBackground(),
+                        transform: `rotate(${rotation}deg) translateZ(0)`
+                    }}
+                >
+                    {items.map((item, i) => {
+                        const segmentCenterDeg = i * sliceDeg + (sliceDeg / 2);
+                        return (
+                            <div
+                                key={i}
+                                className={`wheel-segment ${winnerIndex === i ? 'active' : ''}`}
+                                style={{ transform: `rotate(${segmentCenterDeg}deg) translateY(var(--text-radius))` }}
+                            >
+                                <span style={{ transform: `rotate(${-rotation - segmentCenterDeg}deg)` }}>
                                     {item}
                                 </span>
-                    </div>);
-                })}
+                            </div>
+                        );
+                    })}
+                </div>
+
+                <div className="wheel-pointer-bottom"></div>
+                <button className="spin-btn" onClick={handleSpin} disabled={isSpinning}>
+                    {isSpinning ? '...' : '轉動'}
+                </button>
             </div>
 
-            <div className="wheel-pointer-bottom"></div>
-            <button className="spin-btn" onClick={handleSpin} disabled={isSpinning}>
-                {isSpinning ? '...' : '轉動'}
-            </button>
-        </div>
+            <div className="winner-display">
+                {winnerIndex !== null && <span className="glow-text">{items[winnerIndex]}</span>}
+            </div>
 
-        <div className="winner-display">
-            {winnerIndex !== null && <span className="glow-text">{items[winnerIndex]}</span>}
-        </div>
+            <div className="wheel-input-group">
+                <input
+                    type="text"
+                    value={newItem}
+                    onChange={(e) => setNewItem(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && addItem()}
+                    placeholder="在此輸入..."
+                />
+            </div>
 
-        <div className="input-group">
-            <input
-                type="text"
-                value={newItem}
-                onChange={(e) => setNewItem(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && addItem()}
-                placeholder="在此輸入..."
-            />
-            <button className="add-btn" onClick={addItem}>新增</button>
+            <div className="items-list">
+                {items.map((item, i) => (
+                    <div key={i} className="list-item">
+                        {item}
+                        <span className="delete-x" onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
+                    </div>
+                ))}
+            </div>
         </div>
-
-        <div className="items-list">
-            {items.map((item, i) => (<div key={i} className="list-item">
-                {item}
-                <span className="delete-x"
-                      onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
-            </div>))}
-        </div>
-    </div>);
+    );
 }

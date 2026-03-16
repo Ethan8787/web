@@ -67,3 +67,24 @@
 .c-blue {
     stroke: #0a84ff;
 }
+
+/* 手機版縮小圓環 */
+@media (max-width: 480px) {
+    .svg-container svg {
+        width: 75px;  /* 從 85px 縮小 */
+        height: 75px;
+    }
+
+    .ring-value {
+        font-size: 0.85rem; /* 數字跟著縮小 */
+    }
+
+    .ring-label {
+        font-size: 0.7rem; /* 標籤文字縮小 */
+        margin-top: 5px;
+    }
+
+    .rings-container {
+        padding: 5px 0;
+    }
+}
