@@ -99,11 +99,10 @@
     gap: 0;
     padding: 0.4rem;
     border-radius: 50px;
-    background: rgba(20, 20, 25, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(20, 20, 25, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .nav-item {

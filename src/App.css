@@ -3,6 +3,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .page-wrapper {
@@ -12,10 +13,12 @@
     padding-top: 80px;
     padding-bottom: 50px;
     box-sizing: border-box;
+    width: 100%;
 }
 
 main {
     flex: 1;
+    width: 100%;
 }
 
 .tool-full-page {
@@ -24,4 +27,6 @@ main {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }

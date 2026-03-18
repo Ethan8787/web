@@ -11,24 +11,39 @@ export default function Timer() {
 
     const playAlarm = () => {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(880, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.5);
-        gain.gain.setValueAtTime(0.01, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.5);
+        const playBeep = (startTime) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(880, startTime);
+
+            gain.gain.setValueAtTime(0.1, startTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.4);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start(startTime);
+            osc.stop(startTime + 1);
+        };
+
+        for (let i = 0; i < 5; i++) {
+            playBeep(ctx.currentTime + i * 0.15);
+        }
     };
 
     useEffect(() => {
         if (isRunning && timeLeft > 0) {
             document.title = `(${formatTime(timeLeft)}) Timer`;
             timerRef.current = setInterval(() => {
-                setTimeLeft((prev) => prev - 1);
+                setTimeLeft((prev) => {
+                    if (prev <= 1) {
+                        clearInterval(timerRef.current);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
             }, 1000);
         } else if (timeLeft === 0 && isRunning) {
             setIsRunning(false);
@@ -37,6 +52,9 @@ export default function Timer() {
             if (Notification.permission === 'granted') {
                 new Notification('Timer Finished', { body: '時間到了老哥' });
             }
+        } else if (!isRunning && timeLeft > 0) {
+            document.title = `[Paused] ${formatTime(timeLeft)}`;
+            clearInterval(timerRef.current);
         } else {
             document.title = 'React Timer';
         }
