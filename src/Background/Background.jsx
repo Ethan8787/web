@@ -10,9 +10,7 @@ const Background = () => {
         let animationFrameId;
 
         let particles = [];
-        // 點的數量，100 左右最合適
-        const particleCount = 200;
-        // 關鍵：連線距離縮小到 120-150，這樣才會有「局部網格」的幾何感
+        const particleCount = window.innerWidth / 8;
         const connectionDistance = 120;
         const mouse = { x: null, y: null, radius: 100 };
 

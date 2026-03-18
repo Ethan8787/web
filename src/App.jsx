@@ -1,4 +1,4 @@
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar.jsx';
 import Background from './Background/Background.jsx';
@@ -20,26 +20,29 @@ import ExamCountdown from "./pages/Countdown/Countdown.jsx";
 import './App.css';
 
 export default function App() {
-    return (<>
-        <Background/>
-        <Navbar/>
-
-        <div className="page-wrapper">
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/code" element={<Code/>}/>
-                <Route path="/gameid" element={<GameId/>}/>
-                <Route path="/tools" element={<Tools/>}/>
-                <Route path="/timestamp" element={<DiscordTool/>}/>
-                <Route path="/stopwatch" element={<Stopwatch/>}/>
-                <Route path="/clock" element={<Clock/>}/>
-                <Route path="/timer" element={<Timer/>}/>
-                <Route path="/wheel" element={<RandomWheel/>}/>
-                <Route path="/115" element={<ExamCountdown/>}/>
-                <Route path="*" element={<NotFound/>}/>
-            </Routes>
-        </div>
-
-        <Footer/>
-    </>);
+    const location = useLocation();
+    const isBackgroundOnly = location.pathname === '/background';
+    return (
+        <>
+            {!isBackgroundOnly && <Background />}
+            {!isBackgroundOnly && <Navbar />}
+            <div className="page-wrapper">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/code" element={<Code />} />
+                    <Route path="/gameid" element={<GameId />} />
+                    <Route path="/tools" element={<Tools />} />
+                    <Route path="/timestamp" element={<DiscordTool />} />
+                    <Route path="/stopwatch" element={<Stopwatch />} />
+                    <Route path="/clock" element={<Clock />} />
+                    <Route path="/timer" element={<Timer />} />
+                    <Route path="/wheel" element={<RandomWheel />} />
+                    <Route path="/115" element={<ExamCountdown />} />
+                    <Route path="/background" element={<Background />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </div>
+            {!isBackgroundOnly && <Footer />}
+        </>
+    );
 }
