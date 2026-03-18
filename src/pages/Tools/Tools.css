@@ -7,7 +7,6 @@
     padding: 20px;
     min-height: 80vh;
     position: relative;
-    /* 確保子元素可以用百分比寬度 */
     width: 100%;
 }
 
@@ -37,15 +36,16 @@
     letter-spacing: 3px;
     color: var(--accent-color, #0098ee);
     font-weight: 900;
+    font-family: var(--font-mono), monospace;
 }
 
 .custom-dropdown {
     position: relative;
-    width: 140px;
+    width: 115px;
 }
 
 .dropdown-trigger {
-    width: 90%;
+    width: 100%;
     padding: 8px 14px;
     background: rgba(15, 15, 20, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);

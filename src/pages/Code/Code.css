@@ -76,13 +76,13 @@
 
 .code-block-wrapper {
     position: relative;
-    overflow: auto; /* 確保 code 太長時可以噴滾動條而不是撐開容器 */
+    overflow: auto;
     border-radius: 8px;
-    background: #1d1f21; /* 跟著 atomDark 走 */
+    background: #1d1f21;
     flex-grow: 1;
 }
 
-/* 滾動條樣式優化 */
+
 .code-block-wrapper::-webkit-scrollbar {
     width: 6px;
     height: 6px;

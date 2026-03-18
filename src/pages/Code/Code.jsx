@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {useEffect, useState} from "react";
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+import {atomDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import "./Code.css";
 
 export default function Code() {
@@ -9,6 +9,7 @@ export default function Code() {
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
+        document.title = "Ethan's Web - Code & Answer";
         setCodeContent("正在讀取原始碼...");
 
         fetch(`/${activeTab}.txt`)
@@ -74,7 +75,7 @@ export default function Code() {
                             language="python"
                             style={atomDark}
                             showLineNumbers={true}
-                            lineNumberStyle={{ textAlign: 'center', minWidth: '2.5em'}}
+                            lineNumberStyle={{textAlign: 'center', minWidth: '2.5em'}}
                             customStyle={{
                                 margin: 0,
                                 padding: '20px',

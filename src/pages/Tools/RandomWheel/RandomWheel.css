@@ -12,7 +12,7 @@
     padding: 30px;
     width: 100%;
     max-width: none;
-    margin: 60px 0;
+    margin-top: 45px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -71,7 +71,7 @@
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 18px solid #00FFFF;
+    border-bottom: 18px solid #ffffff;
     z-index: 10;
 }
 
@@ -92,7 +92,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .winner-display {

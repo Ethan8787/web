@@ -79,7 +79,7 @@
     background: rgba(15, 15, 15, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #ffffff;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) ;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-icon {

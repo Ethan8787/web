@@ -1,28 +1,45 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
 import './Background.css';
 
-const Background = () => {
+const Background = ({isPaused}) => {
     const canvasRef = useRef(null);
+
+    const isPausedRef = useRef(isPaused);
+
+
+    useEffect(() => {
+        isPausedRef.current = isPaused;
+    }, [isPaused]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         let animationFrameId;
-
         let particles = [];
-        const particleCount = window.innerWidth / 8;
+        const dpr = window.devicePixelRatio || 1;
+
+
+        const getWidth = () => window.innerWidth;
+        const getHeight = () => window.innerHeight;
+
+        const particleCount = getWidth() / 8;
         const connectionDistance = 120;
-        const mouse = { x: null, y: null, radius: 100 };
+        const mouse = {x: null, y: null, radius: 100};
 
         const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const width = getWidth();
+            const height = getHeight();
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+            ctx.scale(dpr, dpr);
         };
 
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
+                this.x = Math.random() * getWidth();
+                this.y = Math.random() * getHeight();
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.radius = 1.5;
@@ -31,11 +48,8 @@ const Background = () => {
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-                // 滑鼠互動
+                if (this.x < 0 || this.x > getWidth()) this.vx *= -1;
+                if (this.y < 0 || this.y > getHeight()) this.vy *= -1;
                 if (mouse.x !== null) {
                     const dx = this.x - mouse.x;
                     const dy = this.y - mouse.y;
@@ -69,12 +83,9 @@ const Background = () => {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-
                     if (dist < connectionDistance) {
-                        const opacity = 1;
                         ctx.beginPath();
-                        // 這裡使用動態透明度，視覺效果會非常 smooth
-                        ctx.strokeStyle = `rgba(240, 240, 255, ${opacity * 0.7})`;
+                        ctx.strokeStyle = `rgba(240, 240, 255, 0.7)`;
                         ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -85,18 +96,22 @@ const Background = () => {
         };
 
         const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            drawLines();
-
+            if (!isPausedRef.current) {
+                ctx.clearRect(0, 0, getWidth(), getHeight());
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                drawLines();
+            }
             animationFrameId = requestAnimationFrame(animate);
         };
 
-        window.addEventListener('resize', resize);
+        const handleResize = () => {
+            resize();
+            init();
+        };
+
         const handleMouseMove = (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
@@ -106,6 +121,7 @@ const Background = () => {
             mouse.y = null;
         };
 
+        window.addEventListener('resize', handleResize);
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseleave', handleMouseLeave);
 
@@ -114,7 +130,7 @@ const Background = () => {
         animate();
 
         return () => {
-            window.removeEventListener('resize', resize);
+            window.removeEventListener('resize', handleResize);
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseleave', handleMouseLeave);
             cancelAnimationFrame(animationFrameId);
@@ -123,8 +139,8 @@ const Background = () => {
 
     return (
         <div className="bg-canvas-wrapper">
-            <canvas ref={canvasRef} />
-            <div className="bg-vignette" />
+            <canvas ref={canvasRef}/>
+            <div className="bg-vignette"/>
         </div>
     );
 };

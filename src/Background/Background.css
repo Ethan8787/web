@@ -3,7 +3,7 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #010111; /* 極致深黑 */
+    background-color: #010111;
     z-index: 0;
     overflow: hidden;
 }
@@ -17,7 +17,6 @@
 .bg-vignette {
     position: absolute;
     inset: 0;
-    /* 這裡透過遮罩讓網格在螢幕邊緣消失，增加空間深度感 */
     background: radial-gradient(
             circle at center,
             transparent 20%,

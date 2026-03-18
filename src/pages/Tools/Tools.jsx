@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 import './Tools.css';
 
 import DiscordTool from './Discord/DiscordTool.jsx';
@@ -8,17 +9,24 @@ import Timer from '../Tools/Timer/Timer.jsx';
 import RandomWheel from './RandomWheel/RandomWheel.jsx';
 
 export default function Tools() {
-    const [activeTool, setActiveTool] = useState(() => {
-        return localStorage.getItem('lastActiveTool') || 'timer';
-    });
+    const location = useLocation();
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
-    useEffect(() => {
-        localStorage.setItem('lastActiveTool', activeTool);
-    }, [activeTool]);
+    const toolItems = [
+        {label: "倒數計時", id: "timer", path: "/timer"},
+        {label: "極簡時鐘", id: "clock", path: "/clock"},
+        {label: "碼表計時", id: "stopwatch", path: "/stopwatch"},
+        {label: "時間戳記", id: "timestamp", path: "/timestamp"},
+        {label: "幸運輪盤", id: "wheel", path: "/wheel"},
+    ];
+
+    const currentTool = toolItems.find(item => item.path === location.pathname) || toolItems[0];
 
     useEffect(() => {
+        document.title = `Ethan's Web - ${currentTool.label}`;
+
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsOpen(false);
@@ -26,29 +34,19 @@ export default function Tools() {
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
-    const toolItems = [
-        {label: "倒數計時", id: "timer"},
-        {label: "極簡時鐘", id: "time-display"},
-        {label: "碼表計時", id: "stopwatch"},
-        {label: "時間戳記", id: "discord-tool"},
-        {label: "幸運輪盤", id: "lottery"},
-    ];
-
-    const currentToolLabel = toolItems.find(item => item.id === activeTool)?.label;
+    }, [currentTool]);
 
     const renderTool = () => {
-        switch (activeTool) {
-            case 'timer':
+        switch (location.pathname) {
+            case '/timer':
                 return <Timer/>;
-            case 'time-display':
+            case '/clock':
                 return <Clock/>;
-            case 'stopwatch':
+            case '/stopwatch':
                 return <Stopwatch/>;
-            case 'discord-tool':
+            case '/timestamp':
                 return <DiscordTool/>;
-            case 'lottery':
+            case '/wheel':
                 return <RandomWheel/>;
             default:
                 return <Timer/>;
@@ -58,14 +56,14 @@ export default function Tools() {
     return (
         <div className="tools-page-wrapper">
             <div className="tools-header">
-                <h2 className="tools-title">工具箱</h2>
+                <h2 className="tools-title">Tools</h2>
 
                 <div className="custom-dropdown" ref={dropdownRef}>
                     <button
                         className={`dropdown-trigger ${isOpen ? 'active' : ''}`}
                         onClick={() => setIsOpen(!isOpen)}
                     >
-                        <span>{currentToolLabel}</span>
+                        <span>{currentTool.label}</span>
                         <svg className={`arrow-icon ${isOpen ? 'rotate' : ''}`} viewBox="0 0 24 24" width="20"
                              height="20">
                             <path fill="currentColor" d="M7 10l5 5 5-5H7z"/>
@@ -77,9 +75,9 @@ export default function Tools() {
                             {toolItems.map((item) => (
                                 <li
                                     key={item.id}
-                                    className={activeTool === item.id ? 'selected' : ''}
+                                    className={location.pathname === item.path ? 'selected' : ''}
                                     onClick={() => {
-                                        setActiveTool(item.id);
+                                        navigate(item.path);
                                         setIsOpen(false);
                                     }}
                                 >
@@ -91,7 +89,7 @@ export default function Tools() {
                 </div>
             </div>
 
-            <div className="tool-content-area" key={activeTool}>
+            <div className="tool-content-area" key={location.pathname}>
                 {renderTool()}
             </div>
         </div>

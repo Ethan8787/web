@@ -6,6 +6,7 @@ export default function Clock() {
 
     useEffect(() => {
         const timer = setInterval(() => setTime(new Date()), 1000);
+        document.title = `Tools - Clock`;
         return () => clearInterval(timer);
     }, []);
 

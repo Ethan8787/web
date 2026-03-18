@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './graduateCard.css';
 
-const Ring = ({ value, max, label, colorClass }) => {
+const Ring = ({value, max, label, colorClass}) => {
     const radius = 36;
     const dashArray = 2 * Math.PI * radius;
     const safeValue = Math.min(value, max);
@@ -11,7 +11,7 @@ const Ring = ({ value, max, label, colorClass }) => {
         <div className="ring-item">
             <div className="svg-container">
                 <svg width="85" height="85" viewBox="0 0 100 100">
-                    <circle className="ring-bg" cx="50" cy="50" r={radius} fill="none" />
+                    <circle className="ring-bg" cx="50" cy="50" r={radius} fill="none"/>
                     <circle
                         className={`ring-fg ${colorClass}`}
                         cx="50" cy="50" r={radius}
@@ -31,7 +31,7 @@ const Ring = ({ value, max, label, colorClass }) => {
 };
 
 export default function GraduateCard() {
-    const [time, setTime] = useState({ d: 0, h: 0, m: 0, s: 0 });
+    const [time, setTime] = useState({d: 0, h: 0, m: 0, s: 0});
 
     useEffect(() => {
         const target = new Date('2026-06-05T12:00:00');
@@ -55,10 +55,10 @@ export default function GraduateCard() {
 
     return (
         <div className="rings-container">
-            <Ring value={time.d} max={365} label="天" colorClass="c-grad-cherry" />
-            <Ring value={time.h} max={24} label="時" colorClass="c-grad-sunset" />
-            <Ring value={time.m} max={60} label="分" colorClass="c-grad-berry" />
-            <Ring value={time.s} max={60} label="秒" colorClass="c-grad-plum" />
+            <Ring value={time.d} max={365} label="天" colorClass="c-grad-cherry"/>
+            <Ring value={time.h} max={24} label="時" colorClass="c-grad-sunset"/>
+            <Ring value={time.m} max={60} label="分" colorClass="c-grad-berry"/>
+            <Ring value={time.s} max={60} label="秒" colorClass="c-grad-plum"/>
         </div>
     );
 }

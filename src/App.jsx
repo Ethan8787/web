@@ -1,4 +1,5 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import {useState} from 'react';
+import {Route, Routes, useLocation, Navigate} from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar.jsx';
 import Background from './Background/Background.jsx';
@@ -9,12 +10,6 @@ import Code from './pages/Code/Code.jsx';
 import GameId from './pages/GameId/GameId.jsx';
 import Tools from './pages/Tools/Tools.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
-
-import Stopwatch from './pages/Tools/Stopwatch/Stopwatch.jsx';
-import Clock from './pages/Tools/Clock/Clock.jsx';
-import Timer from './pages/Tools/Timer/Timer.jsx';
-import RandomWheel from './pages/Tools/RandomWheel/RandomWheel.jsx';
-import DiscordTool from './pages/Tools/Discord/DiscordTool.jsx';
 import ExamCountdown from "./pages/Countdown/Countdown.jsx";
 
 import './App.css';
@@ -22,27 +17,31 @@ import './App.css';
 export default function App() {
     const location = useLocation();
     const isBackgroundOnly = location.pathname === '/background';
+    const [isPaused, setIsPaused] = useState(false);
+
     return (
         <>
-            {!isBackgroundOnly && <Background />}
-            {!isBackgroundOnly && <Navbar />}
+            {!isBackgroundOnly && <Background isPaused={isPaused}/>}
+            {!isBackgroundOnly && <Navbar isPaused={isPaused} setIsPaused={setIsPaused}/>}
             <div className="page-wrapper">
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/code" element={<Code />} />
-                    <Route path="/gameid" element={<GameId />} />
-                    <Route path="/tools" element={<Tools />} />
-                    <Route path="/timestamp" element={<DiscordTool />} />
-                    <Route path="/stopwatch" element={<Stopwatch />} />
-                    <Route path="/clock" element={<Clock />} />
-                    <Route path="/timer" element={<Timer />} />
-                    <Route path="/wheel" element={<RandomWheel />} />
-                    <Route path="/115" element={<ExamCountdown />} />
-                    <Route path="/background" element={<Background />} />
-                    <Route path="*" element={<NotFound />} />
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/code" element={<Code/>}/>
+                    <Route path="/gameid" element={<GameId/>}/>
+
+                    <Route path="/tools" element={<Navigate to="/timer" replace />}/>
+                    <Route path="/timer" element={<Tools/>}/>
+                    <Route path="/clock" element={<Tools/>}/>
+                    <Route path="/stopwatch" element={<Tools/>}/>
+                    <Route path="/timestamp" element={<Tools/>}/>
+                    <Route path="/wheel" element={<Tools/>}/>
+
+                    <Route path="/115" element={<ExamCountdown/>}/>
+                    <Route path="/background" element={<Background isPaused={isPaused}/>}/>
+                    <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </div>
-            {!isBackgroundOnly && <Footer />}
+            {!isBackgroundOnly && <Footer/>}
         </>
     );
 }

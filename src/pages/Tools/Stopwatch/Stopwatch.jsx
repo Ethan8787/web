@@ -11,6 +11,7 @@ export default function Stopwatch() {
     const accumulatedTimeRef = useRef(0);
 
     useEffect(() => {
+        document.title = "Tools - Stopwatch";
         if (running) {
             startTimeRef.current = Date.now() - accumulatedTimeRef.current;
             timerRef.current = setInterval(() => {

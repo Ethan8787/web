@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './RandomWheel.css';
 
 export default function RandomWheel() {
+    useEffect(() => {
+        document.title = `Tools - Random Wheel`;
+    }, []);
     const [items, setItems] = useState(['1', '2', '3']);
     const [newItem, setNewItem] = useState('');
     const [isSpinning, setIsSpinning] = useState(false);
@@ -65,9 +68,9 @@ export default function RandomWheel() {
                             <div
                                 key={i}
                                 className={`wheel-segment ${winnerIndex === i ? 'active' : ''}`}
-                                style={{ transform: `rotate(${segmentCenterDeg}deg) translateY(var(--text-radius))` }}
+                                style={{transform: `rotate(${segmentCenterDeg}deg) translateY(var(--text-radius))`}}
                             >
-                                <span style={{ transform: `rotate(${-rotation - segmentCenterDeg}deg)` }}>
+                                <span style={{transform: `rotate(${-rotation - segmentCenterDeg}deg)`}}>
                                     {item}
                                 </span>
                             </div>
@@ -77,7 +80,7 @@ export default function RandomWheel() {
 
                 <div className="wheel-pointer-bottom"></div>
                 <button className="spin-btn" onClick={handleSpin} disabled={isSpinning}>
-                    {isSpinning ? '...' : '轉動'}
+                    {isSpinning ? 'SPIN' : 'SPIN'}
                 </button>
             </div>
 
@@ -99,7 +102,8 @@ export default function RandomWheel() {
                 {items.map((item, i) => (
                     <div key={i} className="list-item">
                         {item}
-                        <span className="delete-x" onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
+                        <span className="delete-x"
+                              onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
                     </div>
                 ))}
             </div>

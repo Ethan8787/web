@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import html2canvas from 'html2canvas';
 import ExamCard from './cards/examCard.jsx';
 import GraduateCard from './cards/graduateCard';
@@ -11,6 +11,7 @@ export default function Countdown() {
     const gradRef = useRef(null);
 
     useEffect(() => {
+        document.title = `Ethan's Web - Countdown`;
         const examTarget = new Date('2026-05-16T08:30:00');
         const gradTarget = new Date('2026-06-05T12:00:00');
 
@@ -35,7 +36,7 @@ export default function Countdown() {
             const inputUUID = prompt("UUID:");
             if (!inputUUID) return;
             try {
-                const res = await fetch('/caf', { cache: 'no-store' });
+                const res = await fetch('/caf', {cache: 'no-store'});
                 if (!res.ok) throw new Error('auth fetch failed');
                 const storedUUID = (await res.text()).trim();
 
@@ -88,14 +89,19 @@ export default function Countdown() {
     return (
         <div className="countdown-main-layout">
             <div className="side-tools">
-                <button onClick={() => takeScreenshot(cardRef, '115')} className="tool-btn screenshot" title="截圖會考倒數">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <button onClick={() => takeScreenshot(cardRef, '115')} className="tool-btn screenshot"
+                        title="截圖會考倒數">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="2"
+                         strokeLinecap="round" strokeLinejoin="round">
+                        <path
+                            d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
                         <circle cx="12" cy="13" r="4"></circle>
                     </svg>
                 </button>
-                <button onClick={() => takeScreenshot(gradRef, 'Grad')} className="tool-btn screenshot" title="截圖畢業倒數" style={{ marginTop: '10px' }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <button onClick={() => takeScreenshot(gradRef, 'Grad')} className="tool-btn screenshot"
+                        title="截圖畢業倒數" style={{marginTop: '10px'}}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="2"
+                         strokeLinecap="round" strokeLinejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
@@ -104,7 +110,7 @@ export default function Countdown() {
 
             <div className="countdown-card glass-card" ref={cardRef}>
                 <h2 className="countdown-title">115 會考</h2>
-                <ExamCard />
+                <ExamCard/>
                 <div className="days-display">
                     <span className="days-left">{examDays}</span>
                     <span className="days-total"> / 365 Days</span>
@@ -112,13 +118,13 @@ export default function Countdown() {
                 <p className="time-date">2026 年 5 月 16 日 08:30</p>
                 <div className="card-divider"></div>
                 <div className="bar-container">
-                    <div className="bar-fill" style={{ width: `${(examDays / 365) * 100}%` }}></div>
+                    <div className="bar-fill" style={{width: `${(examDays / 365) * 100}%`}}></div>
                 </div>
             </div>
 
-            <div className="countdown-card glass-card grad-card-parent" ref={gradRef} style={{ marginTop: '20px' }}>
+            <div className="countdown-card glass-card grad-card-parent" ref={gradRef} style={{marginTop: '20px'}}>
                 <h2 className="countdown-title grad-title-color">畢業倒數</h2>
-                <GraduateCard />
+                <GraduateCard/>
                 <div className="grad-days-display">
                     <span className="grad-days-left">{gradDays}</span>
                     <span className="grad-days-total"> / 365 Days</span>
@@ -126,7 +132,7 @@ export default function Countdown() {
                 <p className="time-date">2026 年 6 月 5 日 12:00</p>
                 <div className="card-divider"></div>
                 <div className="grad-bar-container">
-                    <div className="grad-bar-fill" style={{ width: `${(gradDays / 365) * 100}%` }}></div>
+                    <div className="grad-bar-fill" style={{width: `${(gradDays / 365) * 100}%`}}></div>
                 </div>
             </div>
         </div>

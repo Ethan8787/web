@@ -21,6 +21,7 @@ export default function DiscordTool() {
     },];
 
     useEffect(() => {
+        document.title = `Tools - Timestamp`;
         const dateTimeStr = `${date}T${time}`;
         const targetDate = new Date(dateTimeStr);
         const unixTimestamp = Math.floor(targetDate.getTime() / 1000);

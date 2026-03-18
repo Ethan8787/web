@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 35px;
+    margin-top: 45px;
 }
 
 .dc-glass-card {
@@ -63,10 +63,10 @@
     border-radius: 8px;
     outline: none;
     transition: border-color 0.2s;
-    width: 100%; /* 這裡強制子元件撐滿 wrapper */
+    width: 100%;
     font-family: inherit;
     color-scheme: dark;
-    box-sizing: border-box; /* 防止 padding 撐開寬度 */
+    box-sizing: border-box;
 }
 
 .input-wrapper select {

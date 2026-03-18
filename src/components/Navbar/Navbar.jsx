@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import './Navbar.css';
-import {CodeIcon, DataIcon, ExamIcon, HomeIcon, ToolIcon, LogoIcon, GithubIcon, MailIcon} from './icons';
+import {CodeIcon, DataIcon, ExamIcon, HomeIcon, LogoIcon, ToolIcon} from './icons';
 
-export default function Navbar() {
+export default function Navbar({isPaused, setIsPaused}) {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -11,26 +11,27 @@ export default function Navbar() {
         const controlNavbar = () => {
             if (typeof window !== 'undefined') {
                 const currentScrollY = window.scrollY;
-                if (currentScrollY > 50 && currentScrollY > lastScrollY) {
-                    setIsVisible(false);
-                } else {
-                    setIsVisible(true);
-                }
-                setLastScrollY(currentScrollY);
+                setLastScrollY(prev => {
+                    if (currentScrollY > 50 && currentScrollY > prev) {
+                        setIsVisible(false);
+                    } else {
+                        setIsVisible(true);
+                    }
+                    return currentScrollY;
+                });
             }
         };
-
         window.addEventListener('scroll', controlNavbar);
         return () => window.removeEventListener('scroll', controlNavbar);
-    }, [lastScrollY]);
+    }, []);
 
     return (
         <nav className={`navbar ${isVisible ? 'visible' : 'hidden'}`}>
             <div className="navbar-container">
                 <div className="nav-left">
-                    <div className="brand-logo">
-                        <LogoIcon />
-                    </div>
+                    <Link to="/" className="brand-logo">
+                        <LogoIcon/>
+                    </Link>
                 </div>
 
                 <div className="nav-center">
@@ -47,7 +48,8 @@ export default function Navbar() {
                             <CodeIcon/>
                             <span>程式</span>
                         </NavLink>
-                        <NavLink to="/tools" className={({isActive}) => (isActive ? 'nav-item active tool-highlight' : 'nav-item tool-highlight')}>
+                        <NavLink to="/tools"
+                                 className={({isActive}) => (isActive ? 'nav-item active tool-highlight' : 'nav-item tool-highlight')}>
                             <ToolIcon/>
                             <span>工具</span>
                         </NavLink>
@@ -59,14 +61,21 @@ export default function Navbar() {
                 </div>
 
                 <div className="nav-right">
-                    <a
-                        href="https://youtu.be/xMHJGd3wwZk?si=1QacjJGSXzeo1kpb"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="contact-btn"
+                    <button
+                        className="nav-control-btn"
+                        onClick={() => setIsPaused(!isPaused)}
+                        title={isPaused ? "播放背景" : "暫停背景"}
                     >
-                        Get in touch
-                    </a>
+                        {isPaused ? (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        ) : (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
+                        )}
+                    </button>
                 </div>
             </div>
         </nav>

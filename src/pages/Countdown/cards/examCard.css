@@ -24,7 +24,7 @@
     transform: rotate(-90deg);
 }
 
-/* 標準化圓環粗細 */
+
 .ring-bg {
     stroke: rgba(255, 255, 255, 0.12);
     stroke-width: 9;
@@ -38,7 +38,7 @@
 .ring-value {
     position: absolute;
     font-size: 1.1rem;
-    font-weight: 800; /* 加重文字 */
+    font-weight: 800;
     font-family: ui-monospace, SFMono-Regular, monospace;
     color: rgba(255, 255, 255, 0.92);
 }
@@ -51,7 +51,7 @@
     letter-spacing: 1px;
 }
 
-/* 會考顏色 */
+
 .c-red {
     stroke: #ff453a;
 }
@@ -68,19 +68,19 @@
     stroke: #0a84ff;
 }
 
-/* 手機版縮小圓環 */
+
 @media (max-width: 480px) {
     .svg-container svg {
-        width: 75px;  /* 從 85px 縮小 */
+        width: 75px;
         height: 75px;
     }
 
     .ring-value {
-        font-size: 0.85rem; /* 數字跟著縮小 */
+        font-size: 0.85rem;
     }
 
     .ring-label {
-        font-size: 0.7rem; /* 標籤文字縮小 */
+        font-size: 0.7rem;
         margin-top: 5px;
     }
 

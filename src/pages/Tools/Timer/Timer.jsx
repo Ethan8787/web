@@ -35,7 +35,7 @@ export default function Timer() {
 
     useEffect(() => {
         if (isRunning && timeLeft > 0) {
-            document.title = `(${formatTime(timeLeft)}) Timer`;
+            document.title = `Tools - Timer (${formatTime(timeLeft)})`;
             timerRef.current = setInterval(() => {
                 setTimeLeft((prev) => {
                     if (prev <= 1) {
@@ -47,16 +47,16 @@ export default function Timer() {
             }, 1000);
         } else if (timeLeft === 0 && isRunning) {
             setIsRunning(false);
-            document.title = "TIME'S UP!";
+            document.title = `Tools - Times Up`;
             playAlarm();
             if (Notification.permission === 'granted') {
-                new Notification('Timer Finished', { body: '時間到了老哥' });
+                new Notification('Timer Finished', {body: '時間到了老哥'});
             }
         } else if (!isRunning && timeLeft > 0) {
-            document.title = `[Paused] ${formatTime(timeLeft)}`;
+            document.title = `Tools - Paused ${formatTime(timeLeft)}`;
             clearInterval(timerRef.current);
         } else {
-            document.title = 'React Timer';
+            document.title = `Tools - Timer`;
         }
         return () => clearInterval(timerRef.current);
     }, [isRunning, timeLeft]);

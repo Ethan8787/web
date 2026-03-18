@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './GameId.css';
 
 const GameIdMain = ({platform, color}) => {
@@ -83,8 +83,11 @@ const GameIdMain = ({platform, color}) => {
 };
 
 const GameId = () => {
-    const [copiedId, setCopiedId] = useState(null);
+    useEffect(() => {
+        document.title = "Ethan's Web - Data";
+    }, []);
 
+    const [copiedId, setCopiedId] = useState(null);
     const initialAccounts = [
         {
             id: 1,

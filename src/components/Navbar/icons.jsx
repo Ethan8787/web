@@ -1,5 +1,6 @@
 export function LogoIcon(props) {
-    return (<svg className="logo-icon" width="135" height="48" viewBox="0 0 135 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    return (<svg className="logo-icon" width="135" height="48" viewBox="0 0 135 48" fill="none"
+                 xmlns="http://www.w3.org/2000/svg" {...props}>
         <rect x="8" y="10" width="28" height="28" rx="4" stroke="white" strokeWidth="2.5"/>
         <rect x="16" y="18" width="12" height="12" rx="3" fill="#888888"/>
         <text x="48" y="21" style={{fontWeight: 'bold', fontSize: '18px'}}>
