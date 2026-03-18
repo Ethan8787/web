@@ -3,24 +3,26 @@
     justify-content: center;
     align-items: center;
     margin-top: 45px;
+    width: 100%;
 }
 
 .clock-content {
-    background: rgba(15, 15, 20, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    padding: 60px 80px;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border-radius: 12px;
-    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 500px;
     position: relative;
+    padding: 40px;
+    text-align: center;
     overflow: hidden;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .clock-time {
-    font-size: 7rem;
+    font-size: 4.5rem;
     font-weight: 900;
     font-family: 'JetBrains Mono', monospace;
     color: #ffffff;

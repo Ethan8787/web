@@ -51,7 +51,7 @@ const Background = () => {
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#ffffff';
+                ctx.fillStyle = '#ddffff';
                 ctx.fill();
             }
         }
@@ -74,7 +74,7 @@ const Background = () => {
                         const opacity = 1;
                         ctx.beginPath();
                         // 這裡使用動態透明度，視覺效果會非常 smooth
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.7})`;
+                        ctx.strokeStyle = `rgba(240, 240, 255, ${opacity * 0.7})`;
                         ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);

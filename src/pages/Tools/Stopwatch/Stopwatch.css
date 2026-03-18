@@ -1,13 +1,14 @@
 .sw-card {
-    backdrop-filter: blur(25px);
     border-radius: 12px;
     padding: 40px;
     margin-top: 35px;
     width: 100%;
     max-width: 500px;
-    background: rgba(15, 15, 20, 0.8);
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
     text-align: center;
 }
 
