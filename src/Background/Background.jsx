@@ -24,7 +24,7 @@ const Background = ({isPaused}) => {
 
         const particleCount = getWidth() / 8;
         const connectionDistance = 120;
-        const mouse = {x: null, y: null, radius: 200};
+        const mouse = {x: null, y: null, radius: 150};
 
         const resize = () => {
             const width = getWidth();

@@ -35,7 +35,7 @@
     --text-color: #ffffff;
     --accent-color: #00FFFF;
     --card-bg: rgba(0, 0, 0, 0.5);
-    --card-border: px solid rgba(255, 255, 255, 0.1);
+    --card-border: 1px solid rgba(255, 255, 255, 0.15);
     --card-border-radius: 12px;
     --card-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --font-main: 'Poppins', 'pinfang', 'PingFang TC', sans-serif;
