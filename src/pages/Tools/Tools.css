@@ -11,18 +11,18 @@
 }
 
 .tools-header {
-    background: rgba(20, 20, 20, 0.6);
+    background: var(--card-bg);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: var(--card-border);
+    border-radius: var(--card-border-radius);
+    transition: var(--card-transition);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
     gap: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 100;
     width: 100%;

@@ -99,10 +99,11 @@
     gap: 0;
     padding: 0.4rem;
     border-radius: 50px;
-    background: rgba(20, 20, 25, 0.6);
+    background: var(--card-bg);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: var(--card-border);
+    transition: var(--card-transition);
 }
 
 .nav-item {

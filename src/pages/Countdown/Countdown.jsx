@@ -25,7 +25,7 @@ export default function Countdown() {
         };
 
         update();
-        const t1 = setInterval(update, 60000);
+        const t1 = setInterval(update, 1000);
         return () => clearInterval(t1);
     }, []);
 

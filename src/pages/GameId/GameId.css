@@ -26,16 +26,17 @@
 }
 
 .game-id-item {
+    background: var(--card-bg);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: var(--card-border);
+    border-radius: var(--card-border-radius);
+    transition: var(--card-transition);
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 24px 32px;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     cursor: default;
 }
 
