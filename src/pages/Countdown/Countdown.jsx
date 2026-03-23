@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import html2canvas from 'html2canvas';
-import ExamCard from './components/ExamCard/ExamCard';
-import GraduateCard from './components/GraduateCard/GraduateCard';
+import ExamCard from './components/ExamCard/ExamCard.jsx';
+import GraduateCard from './components/GraduateCard/GraduateCard.jsx';
 import './Countdown.css';
 
 export default function Countdown() {
