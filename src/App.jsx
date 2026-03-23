@@ -12,7 +12,7 @@ import NotFound from './pages/NotFound/NotFound.jsx';
 import ExamCountdown from "./pages/Countdown/Countdown.jsx";
 import Clock from "./pages/Clock/Clock.jsx";
 import RandomWheel from "./pages/RandomWheel/RandomWheel.jsx";
-import StopWatch from "./pages/StopWatch/StopWatch.jsx";
+import StopWatch from "./pages/Stopwatch/Stopwatch.jsx";
 import Timer from "./pages/Timer/Timer.jsx";
 import DiscordTool from "./pages/DiscordTool/DiscordTool.jsx";
 import './App.css';
