@@ -9,7 +9,6 @@
 .countdown-card {
     background: var(--card-bg);
     backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
     border: var(--card-border);
     border-radius: var(--card-border-radius);
     transition: var(--card-transition);
@@ -20,6 +19,7 @@
     gap: 16px;
     text-align: center;
     position: relative;
+    padding: 20px;
 }
 
 .card-divider {
@@ -34,12 +34,17 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0;
     padding-bottom: 12px;
-    font-family: monospace;
+    font-family: var(--font-mono), monospace;
     letter-spacing: 2px;
 }
 
-.days-display, .grad-days-display {
-    font-family: monospace;
+.grad-title-color {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.days-display,
+.grad-days-display {
+    font-family: var(--font-mono), monospace;
     color: rgba(255, 255, 255, 0.55);
     display: flex;
     align-items: baseline;
@@ -47,27 +52,44 @@
     gap: 6px;
 }
 
-.days-left, .grad-days-left {
-    font-size: 2.5rem;
-    font-weight: 1000;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+.days-total,
+.grad-days-total {
+    font-size: 1.2rem;
 }
 
 .days-left {
+    font-size: 2.5rem;
+    font-weight: 1000;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     color: #00ffff;
 }
 
-.bar-container, .grad-bar-container {
+.grad-days-left {
+    font-size: 2.5rem;
+    font-weight: 1000;
+    color: #ff9a9e;
+    text-shadow: 0 0 20px rgba(255, 154, 158, 0.3);
+}
+
+.bar-container,
+.grad-bar-container {
     margin-bottom: 10px;
     width: 100%;
     height: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.12);
     border-radius: 4px;
     overflow: hidden;
 }
 
 .bar-fill {
     background: #00d2ff;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.grad-bar-fill {
+    background: #ffaaff;
+    border-radius: 4px;
     height: 100%;
 }
 
@@ -97,6 +119,7 @@
     align-items: center;
     justify-content: center;
     transition: 0.2s;
+    font-size: 20px;
 }
 
 .tool-btn:hover {
@@ -108,7 +131,6 @@
     .countdown-main-layout {
         margin: 50px 0;
     }
-
     .side-tools {
         display: none;
     }

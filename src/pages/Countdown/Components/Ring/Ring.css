@@ -1,16 +1,24 @@
 .rings-container {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10px 0;
+    gap: 12px;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.ring-fg {
+    stroke-width: 5;
+    stroke-linecap: round;
+    transition: none;
 }
 
 .ring-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1;
 }
 
 .svg-container {
@@ -20,70 +28,47 @@
     align-items: center;
 }
 
-.svg-container svg {
-    transform: rotate(-90deg);
-}
-
-
 .ring-bg {
     stroke: rgba(255, 255, 255, 0.12);
-    stroke-width: 9;
-}
-
-.ring-fg {
-    stroke-width: 10;
-    stroke-linecap: round;
+    stroke-width: 6;
 }
 
 .ring-value {
     position: absolute;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 800;
-    font-family: ui-monospace, SFMono-Regular, monospace;
-    color: rgba(255, 255, 255, 0.92);
+    font-family: var(--font-mono), monospace;
+    color: rgba(255, 255, 255, 1);
 }
 
 .ring-label {
-    margin-top: 10px;
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.5);
     font-weight: 600;
     letter-spacing: 1px;
 }
-
-
-.c-red {
-    stroke: #ff453a;
+@keyframes ring-entrance {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
-
-.c-yellow {
-    stroke: #ffd60a;
-}
-
-.c-cyan {
-    stroke: #64d2ff;
-}
-
-.c-blue {
-    stroke: #0a84ff;
-}
-
 
 @media (max-width: 480px) {
     .svg-container svg {
         width: 75px;
         height: 75px;
     }
-
     .ring-value {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
-
     .ring-label {
         font-size: 0.7rem;
-        margin-top: 5px;
     }
-
     .rings-container {
         padding: 5px 0;
     }

@@ -1,0 +1,29 @@
+.c-grad-cherry {
+    stroke: #ff5588
+}
+
+.c-grad-sunset {
+    stroke: #ff77aa
+}
+
+.c-grad-berry {
+    stroke: #ff99cc
+}
+
+.c-grad-plum {
+    stroke: #ffbbee
+}
+
+.grad-days-left {
+    color: #ff9a9e;
+    text-shadow: 0 0 18px rgba(255, 154, 158, .3)
+}
+
+.grad-bar-fill {
+    background: #ffaaff;
+    height: 100%
+}
+
+.grad-title-color {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1)
+}

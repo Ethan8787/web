@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './GameId.css';
+import './Link.css';
 
 const GameIdMain = ({platform, color}) => {
     const icons = {
@@ -82,7 +82,7 @@ const GameIdMain = ({platform, color}) => {
     return icons[targetKey] || null;
 };
 
-const GameId = () => {
+const Link = () => {
     useEffect(() => {
         document.title = "Ethan's Web - Data";
     }, []);
@@ -237,4 +237,4 @@ const GameId = () => {
     );
 };
 
-export default GameId;
+export default Link;

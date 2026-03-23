@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import './Navbar.css';
-import {CodeIcon, DataIcon, ExamIcon, HomeIcon, LogoIcon, ToolIcon} from './icons';
+import {CodeIcon, DataIcon, ExamIcon, HomeIcon, LogoIcon, LinkIcon} from './icons.jsx';
 
 export default function Navbar({isPaused, setIsPaused}) {
     const [isVisible, setIsVisible] = useState(true);
@@ -40,18 +40,18 @@ export default function Navbar({isPaused, setIsPaused}) {
                             <HomeIcon/>
                             <span>首頁</span>
                         </NavLink>
-                        <NavLink to="/gameid" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
+                        <NavLink to="/server" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
                             <DataIcon/>
-                            <span>資料</span>
+                            <span>伺服器</span>
                         </NavLink>
                         <NavLink to="/code" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
                             <CodeIcon/>
                             <span>程式</span>
                         </NavLink>
-                        <NavLink to="/tools"
-                                 className={({isActive}) => (isActive ? 'nav-item active tool-highlight' : 'nav-item tool-highlight')}>
-                            <ToolIcon/>
-                            <span>工具</span>
+                        <NavLink to="/link"
+                                 className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
+                            <LinkIcon/>
+                            <span>連結</span>
                         </NavLink>
                         <NavLink to="/115" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
                             <ExamIcon/>
