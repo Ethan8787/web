@@ -44,7 +44,8 @@
 
 .days-display,
 .grad-days-display {
-    font-family: var(--font-mono), monospace;
+    font-family: var(--font-mono), sans-serif;
+    font-weight: 700;
     color: rgba(255, 255, 255, 0.55);
     display: flex;
     align-items: baseline;
@@ -59,14 +60,12 @@
 
 .days-left {
     font-size: 2.5rem;
-    font-weight: 1000;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     color: #00ffff;
 }
 
 .grad-days-left {
     font-size: 2.5rem;
-    font-weight: 1000;
     color: #ff9a9e;
     text-shadow: 0 0 20px rgba(255, 154, 158, 0.3);
 }
