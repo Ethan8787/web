@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Poppins';
+    font-family: 'poppins';
     src: url('./assets/fonts/poppins.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
@@ -38,7 +38,7 @@
     --card-border: 1px solid rgba(255, 255, 255, 0.15);
     --card-border-radius: 12px;
     --card-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --font-main: 'Poppins', 'pinfang', 'PingFang TC', sans-serif;
+    --font-main: 'poppins', 'pinfang', sans-serif;
     --font-secondary: 'ubuntu', 'pinfang', sans-serif;
     --font-third: 'jett', 'pinfang', sans-serif;
     --bg-glass: rgba(25, 25, 25, 0.75);
@@ -71,7 +71,7 @@
 html, body {
     width: 100%;
     background: var(--bg-color);
-    font-family: var(--font-main), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-main), sans-serif;
     color: var(--text-color);
 }
 
