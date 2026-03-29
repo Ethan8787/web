@@ -35,7 +35,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(20, 20, 20, 0.6);
     padding: 24px 32px;
     cursor: default;
 }

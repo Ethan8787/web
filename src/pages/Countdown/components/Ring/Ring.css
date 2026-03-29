@@ -37,7 +37,7 @@
     position: absolute;
     font-size: 1.3rem;
     font-weight: 800;
-    font-family: var(--font-main), sans-serif;
+    font-family: var(--font-mono), sans-serif;
     color: rgba(255, 255, 255, 1);
 }
 
@@ -47,6 +47,7 @@
     font-weight: 600;
     letter-spacing: 1px;
 }
+
 @keyframes ring-entrance {
     from {
         opacity: 0;

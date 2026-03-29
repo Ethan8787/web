@@ -3,9 +3,7 @@ import './Background.css';
 
 const Background = ({isPaused}) => {
     const canvasRef = useRef(null);
-
     const isPausedRef = useRef(isPaused);
-
 
     useEffect(() => {
         isPausedRef.current = isPaused;
@@ -18,13 +16,13 @@ const Background = ({isPaused}) => {
         let particles = [];
         const dpr = window.devicePixelRatio || 1;
 
-
         const getWidth = () => window.innerWidth;
         const getHeight = () => window.innerHeight;
 
         const particleCount = getWidth() / 8;
         const connectionDistance = 120;
-        const mouse = {x: null, y: null, radius: 150};
+        const repulsionDistance = 100;
+        const mouse = {x: null, y: null, radius: 100};
 
         const resize = () => {
             const width = getWidth();
@@ -42,14 +40,29 @@ const Background = ({isPaused}) => {
                 this.y = Math.random() * getHeight();
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = 1.5;
+                this.radius = 1;
             }
 
-            update() {
+            update(allParticles) {
+                allParticles.forEach(other => {
+                    if (other === this) return;
+                    const dx = this.x - other.x;
+                    const dy = this.y - other.y;
+                    const distSq = dx * dx + dy * dy;
+                    if (distSq < repulsionDistance * repulsionDistance) {
+                        const dist = Math.sqrt(distSq) || 1;
+                        const force = (repulsionDistance - dist) / repulsionDistance;
+                        this.x += (dx / dist) * force * 0.5;
+                        this.y += (dy / dist) * force * 0.5;
+                    }
+                });
+
                 this.x += this.vx;
                 this.y += this.vy;
+
                 if (this.x < 0 || this.x > getWidth()) this.vx *= -1;
                 if (this.y < 0 || this.y > getHeight()) this.vy *= -1;
+
                 if (mouse.x !== null) {
                     const dx = this.x - mouse.x;
                     const dy = this.y - mouse.y;
@@ -65,7 +78,7 @@ const Background = ({isPaused}) => {
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#ddffff';
+                ctx.fillStyle = '#000';
                 ctx.fill();
             }
         }
@@ -83,9 +96,11 @@ const Background = ({isPaused}) => {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
+
                     if (dist < connectionDistance) {
+                        const opacity = 0.999 - (dist / connectionDistance);
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(240, 240, 255, 0.7)`;
+                        ctx.strokeStyle = `rgba(240, 240, 255, ${opacity * 2})`;
                         ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -99,7 +114,7 @@ const Background = ({isPaused}) => {
             if (!isPausedRef.current) {
                 ctx.clearRect(0, 0, getWidth(), getHeight());
                 particles.forEach(p => {
-                    p.update();
+                    p.update(particles);
                     p.draw();
                 });
                 drawLines();
