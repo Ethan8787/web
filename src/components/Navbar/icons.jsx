@@ -56,9 +56,9 @@ export function CodeIcon(props) {
 
 export function ExamIcon(props) {
     return (<svg className="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-        <path d="M4.5 7.5 12 4l7.5 3.5L12 11 4.5 7.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
-        <path d="M19.5 7.5V12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-        <path d="M6.5 10.2V14c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3v-3.8" stroke="currentColor" strokeWidth="1.8"
+        <path d="M4.5 7.5 12 4l7.5 3.5L12 11 4.5 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M19.5 7.5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M6.5 10.2V14c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3v-3.8" stroke="currentColor" strokeWidth="1.5"
               strokeLinejoin="round"/>
     </svg>);
 }
