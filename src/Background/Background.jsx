@@ -13,6 +13,7 @@ const Background = ({isPaused}) => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         let animationFrameId;
+        let clickInterval;
         let particles = [];
         const dpr = window.devicePixelRatio || 1;
 
@@ -20,8 +21,10 @@ const Background = ({isPaused}) => {
         const getHeight = () => window.innerHeight;
 
         const particleCount = getWidth() / 8;
-        const connectionDistance = 120;
-        const repulsionDistance = 100;
+        const connectionDistance = 140;
+        const repulsionDistance = 150;
+        const edgeMargin = 30;
+        const edgeForce = 0.001;
         const mouse = {x: null, y: null, radius: 100};
 
         const resize = () => {
@@ -35,15 +38,23 @@ const Background = ({isPaused}) => {
         };
 
         class Particle {
-            constructor() {
-                this.x = Math.random() * getWidth();
-                this.y = Math.random() * getHeight();
+            constructor(x, y) {
+                this.x = x ?? Math.random() * getWidth();
+                this.y = y ?? Math.random() * getHeight();
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.radius = 1;
             }
 
             update(allParticles) {
+                const currentWidth = window.innerWidth;
+                const currentHeight = window.innerHeight;
+
+                if (this.x < edgeMargin) this.vx += edgeForce;
+                if (this.x > currentWidth - edgeMargin) this.vx -= edgeForce;
+                if (this.y < edgeMargin) this.vy += edgeForce;
+                if (this.y > currentHeight - edgeMargin) this.vy -= edgeForce;
+
                 allParticles.forEach(other => {
                     if (other === this) return;
                     const dx = this.x - other.x;
@@ -60,8 +71,17 @@ const Background = ({isPaused}) => {
                 this.x += this.vx;
                 this.y += this.vy;
 
-                if (this.x < 0 || this.x > getWidth()) this.vx *= -1;
-                if (this.y < 0 || this.y > getHeight()) this.vy *= -1;
+                const speedLimit = 1.5;
+                const currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                if (currentSpeed > speedLimit) {
+                    this.vx = (this.vx / currentSpeed) * speedLimit;
+                    this.vy = (this.vy / currentSpeed) * speedLimit;
+                }
+
+                if (this.x < 0) { this.x = 0; this.vx *= -0.2; }
+                if (this.x > currentWidth) { this.x = currentWidth; this.vx *= -0.2; }
+                if (this.y < 0) { this.y = 0; this.vy *= -0.2; }
+                if (this.y > currentHeight) { this.y = currentHeight; this.vy *= -0.2; }
 
                 if (mouse.x !== null) {
                     const dx = this.x - mouse.x;
@@ -98,7 +118,7 @@ const Background = ({isPaused}) => {
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
                     if (dist < connectionDistance) {
-                        const opacity = 0.999 - (dist / connectionDistance);
+                        const opacity = 1 - (dist / connectionDistance);
                         ctx.beginPath();
                         ctx.strokeStyle = `rgba(240, 240, 255, ${opacity * 2})`;
                         ctx.lineWidth = 0.8;
@@ -131,14 +151,36 @@ const Background = ({isPaused}) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
         };
+
         const handleMouseLeave = () => {
             mouse.x = null;
             mouse.y = null;
+            clearInterval(clickInterval);
+        };
+
+        const triggerSpawnLogic = () => {
+            if (mouse.x === null || mouse.y === null) return;
+            particles.push(new Particle(mouse.x, mouse.y));
+            particles.splice(0, 1);
+        };
+
+        const handleMouseDown = (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            triggerSpawnLogic();
+            clearInterval(clickInterval);
+            clickInterval = setInterval(triggerSpawnLogic, 5);
+        };
+
+        const handleMouseUp = () => {
+            clearInterval(clickInterval);
         };
 
         window.addEventListener('resize', handleResize);
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseleave', handleMouseLeave);
+        window.addEventListener('mousedown', handleMouseDown);
+        window.addEventListener('mouseup', handleMouseUp);
 
         resize();
         init();
@@ -148,6 +190,9 @@ const Background = ({isPaused}) => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseleave', handleMouseLeave);
+            window.removeEventListener('mousedown', handleMouseDown);
+            window.removeEventListener('mouseup', handleMouseUp);
+            clearInterval(clickInterval);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
