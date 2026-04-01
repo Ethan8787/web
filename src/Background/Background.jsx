@@ -20,8 +20,8 @@ const Background = ({isPaused}) => {
         const getWidth = () => window.innerWidth;
         const getHeight = () => window.innerHeight;
 
-        const particleCount = getWidth() / 8;
-        const connectionDistance = 140;
+        const particleCount = getWidth() / 10;
+        const connectionDistance = 145;
         const repulsionDistance = 150;
         const edgeMargin = 30;
         const edgeForce = 0.001;
