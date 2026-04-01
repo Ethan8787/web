@@ -42,7 +42,7 @@ export default function Countdown() {
                     const card = clonedDoc.querySelector('.countdown-card');
                     if (card) {
                         const wm = clonedDoc.createElement('div');
-                        wm.innerText = '@Ethan';
+                        wm.innerText = '@ethantw.dev';
                         wm.style.cssText = `
                         position:absolute;
                         top:0;
