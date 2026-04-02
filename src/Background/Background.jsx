@@ -23,7 +23,7 @@ const Background = ({isPaused}) => {
         const particleCount = getWidth() / 10;
         const connectionDistance = 145;
         const repulsionDistance = 150;
-        const edgeMargin = 40;
+        const edgeMargin = 50;
         const edgeForce = 0.02;
         const mouse = {x: null, y: null, radius: 100};
 
@@ -63,8 +63,8 @@ const Background = ({isPaused}) => {
                     if (distSq < repulsionDistance * repulsionDistance) {
                         const dist = Math.sqrt(distSq) || 1;
                         const force = (repulsionDistance - dist) / repulsionDistance;
-                        this.x += (dx / dist) * force * 0.5;
-                        this.y += (dy / dist) * force * 0.5;
+                        this.x += (dx / dist) * force * 1;
+                        this.y += (dy / dist) * force * 1;
                     }
                 });
 
@@ -89,8 +89,8 @@ const Background = ({isPaused}) => {
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < mouse.radius) {
                         const force = (mouse.radius - dist) / mouse.radius;
-                        this.x += (dx / dist) * force * 2;
-                        this.y += (dy / dist) * force * 2;
+                        this.x += (dx / dist) * force * 4;
+                        this.y += (dy / dist) * force * 4;
                     }
                 }
             }
