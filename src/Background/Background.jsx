@@ -23,8 +23,8 @@ const Background = ({isPaused}) => {
         const particleCount = getWidth() / 10;
         const connectionDistance = 145;
         const repulsionDistance = 150;
-        const edgeMargin = 30;
-        const edgeForce = 0.001;
+        const edgeMargin = 40;
+        const edgeForce = 0.02;
         const mouse = {x: null, y: null, radius: 100};
 
         const resize = () => {
