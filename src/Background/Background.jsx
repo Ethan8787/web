@@ -170,7 +170,7 @@ const Background = ({isPaused}) => {
             mouse.y = e.clientY;
             triggerSpawnLogic();
             clearInterval(clickInterval);
-            clickInterval = setInterval(triggerSpawnLogic, 5);
+            clickInterval = setInterval(triggerSpawnLogic, 10);
         };
 
         const handleMouseUp = () => {
