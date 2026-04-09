@@ -20,11 +20,11 @@ const Background = ({isPaused}) => {
         const getWidth = () => window.innerWidth;
         const getHeight = () => window.innerHeight;
 
-        const particleCount = getWidth() / 10;
-        const connectionDistance = 145;
+        const particleCount = getWidth() / 8;
+        const connectionDistance = 140;
         const repulsionDistance = 150;
-        const edgeMargin = 100;
-        const edgeForce = 0.05;
+        const edgeMargin = 30;
+        const edgeForce = 0.001;
         const mouse = {x: null, y: null, radius: 100};
 
         const resize = () => {
@@ -41,8 +41,8 @@ const Background = ({isPaused}) => {
             constructor(x, y) {
                 this.x = x ?? Math.random() * getWidth();
                 this.y = y ?? Math.random() * getHeight();
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
                 this.radius = 1;
             }
 
@@ -51,10 +51,9 @@ const Background = ({isPaused}) => {
                 const currentHeight = window.innerHeight;
 
                 if (this.x < edgeMargin) this.vx += edgeForce;
-                else if (this.x > currentWidth - edgeMargin) this.vx -= edgeForce;
-
+                if (this.x > currentWidth - edgeMargin) this.vx -= edgeForce;
                 if (this.y < edgeMargin) this.vy += edgeForce;
-                else if (this.y > currentHeight - edgeMargin) this.vy -= edgeForce;
+                if (this.y > currentHeight - edgeMargin) this.vy -= edgeForce;
 
                 allParticles.forEach(other => {
                     if (other === this) return;
@@ -64,10 +63,13 @@ const Background = ({isPaused}) => {
                     if (distSq < repulsionDistance * repulsionDistance) {
                         const dist = Math.sqrt(distSq) || 1;
                         const force = (repulsionDistance - dist) / repulsionDistance;
-                        this.vx += (dx / dist) * force * 0.2;
-                        this.vy += (dy / dist) * force * 0.2;
+                        this.x += (dx / dist) * force * 0.5;
+                        this.y += (dy / dist) * force * 0.5;
                     }
                 });
+
+                this.x += this.vx;
+                this.y += this.vy;
 
                 const speedLimit = 1.5;
                 const currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
@@ -76,13 +78,10 @@ const Background = ({isPaused}) => {
                     this.vy = (this.vy / currentSpeed) * speedLimit;
                 }
 
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0) { this.x = 2; this.vx *= -0.5; }
-                if (this.x > currentWidth) { this.x = currentWidth - 2; this.vx *= -0.5; }
-                if (this.y < 0) { this.y = 2; this.vy *= -0.5; }
-                if (this.y > currentHeight) { this.y = currentHeight - 2; this.vy *= -0.5; }
+                if (this.x < 0) { this.x = 0; this.vx *= -0.2; }
+                if (this.x > currentWidth) { this.x = currentWidth; this.vx *= -0.2; }
+                if (this.y < 0) { this.y = 0; this.vy *= -0.2; }
+                if (this.y > currentHeight) { this.y = currentHeight; this.vy *= -0.2; }
 
                 if (mouse.x !== null) {
                     const dx = this.x - mouse.x;
@@ -90,8 +89,8 @@ const Background = ({isPaused}) => {
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < mouse.radius) {
                         const force = (mouse.radius - dist) / mouse.radius;
-                        this.x += (dx / dist) * force * 4;
-                        this.y += (dy / dist) * force * 4;
+                        this.x += (dx / dist) * force * 2;
+                        this.y += (dy / dist) * force * 2;
                     }
                 }
             }
@@ -133,7 +132,7 @@ const Background = ({isPaused}) => {
 
         const animate = () => {
             if (!isPausedRef.current) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.clearRect(0, 0, getWidth(), getHeight());
                 particles.forEach(p => {
                     p.update(particles);
                     p.draw();
@@ -170,7 +169,7 @@ const Background = ({isPaused}) => {
             mouse.y = e.clientY;
             triggerSpawnLogic();
             clearInterval(clickInterval);
-            clickInterval = setInterval(triggerSpawnLogic, 10);
+            clickInterval = setInterval(triggerSpawnLogic, 5);
         };
 
         const handleMouseUp = () => {
