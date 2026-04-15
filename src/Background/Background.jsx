@@ -1,7 +1,7 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Background.css';
 
-const Background = ({isPaused}) => {
+const Background = ({ isPaused }) => {
     const canvasRef = useRef(null);
     const isPausedRef = useRef(isPaused);
 
@@ -14,18 +14,17 @@ const Background = ({isPaused}) => {
         const ctx = canvas.getContext('2d');
         let animationFrameId;
         let clickInterval;
+        let mouseDownTimestamp = 0;
         let particles = [];
         const dpr = window.devicePixelRatio || 1;
 
         const getWidth = () => window.innerWidth;
         const getHeight = () => window.innerHeight;
 
-        const particleCount = getWidth() / 8;
-        const connectionDistance = 140;
-        const repulsionDistance = 150;
-        const edgeMargin = 30;
-        const edgeForce = 0.001;
-        const mouse = {x: null, y: null, radius: 100};
+        const particleCount = getWidth() / 10;
+        const connectionDistance = 120;
+        const repulsionDistance = 120;
+        const mouse = { x: null, y: null, radius: 100 };
 
         const resize = () => {
             const width = getWidth();
@@ -50,11 +49,6 @@ const Background = ({isPaused}) => {
                 const currentWidth = window.innerWidth;
                 const currentHeight = window.innerHeight;
 
-                if (this.x < edgeMargin) this.vx += edgeForce;
-                if (this.x > currentWidth - edgeMargin) this.vx -= edgeForce;
-                if (this.y < edgeMargin) this.vy += edgeForce;
-                if (this.y > currentHeight - edgeMargin) this.vy -= edgeForce;
-
                 allParticles.forEach(other => {
                     if (other === this) return;
                     const dx = this.x - other.x;
@@ -78,10 +72,23 @@ const Background = ({isPaused}) => {
                     this.vy = (this.vy / currentSpeed) * speedLimit;
                 }
 
-                if (this.x < 0) { this.x = 0; this.vx *= -0.2; }
-                if (this.x > currentWidth) { this.x = currentWidth; this.vx *= -0.2; }
-                if (this.y < 0) { this.y = 0; this.vy *= -0.2; }
-                if (this.y > currentHeight) { this.y = currentHeight; this.vy *= -0.2; }
+                const minVelocity = 0.5;
+
+                if (this.x <= 0) {
+                    this.x = 0;
+                    this.vx = Math.max(Math.abs(this.vx), minVelocity);
+                } else if (this.x >= currentWidth) {
+                    this.x = currentWidth;
+                    this.vx = -Math.max(Math.abs(this.vx), minVelocity);
+                }
+
+                if (this.y <= 0) {
+                    this.y = 0;
+                    this.vy = Math.max(Math.abs(this.vy), minVelocity);
+                } else if (this.y >= currentHeight) {
+                    this.y = currentHeight;
+                    this.vy = -Math.max(Math.abs(this.vy), minVelocity);
+                }
 
                 if (mouse.x !== null) {
                     const dx = this.x - mouse.x;
@@ -167,9 +174,14 @@ const Background = ({isPaused}) => {
         const handleMouseDown = (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
-            triggerSpawnLogic();
+            mouseDownTimestamp = Date.now();
+
             clearInterval(clickInterval);
-            clickInterval = setInterval(triggerSpawnLogic, 5);
+            clickInterval = setInterval(() => {
+                if (Date.now() - mouseDownTimestamp >= 500) {
+                    triggerSpawnLogic();
+                }
+            }, 10);
         };
 
         const handleMouseUp = () => {
@@ -199,8 +211,8 @@ const Background = ({isPaused}) => {
 
     return (
         <div className="bg-canvas-wrapper">
-            <canvas ref={canvasRef}/>
-            <div className="bg-vignette"/>
+            <canvas ref={canvasRef} />
+            <div className="bg-vignette" />
         </div>
     );
 };
