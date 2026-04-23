@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 import "./Answer.css";
-import Background from "../../Background/Background.jsx";
-import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
 
 export default function Answer() {
     const [zhContent, setZh] = useState("載入中...");
@@ -22,36 +19,29 @@ export default function Answer() {
             .catch(err => setEn("載入失敗: " + err.message));
     }, []);
 
-    return (
-        <>
-            <Background />
-            <Navbar />
-            <div className="answer">
-                <div className="answer-container">
-                    <div className="answer-section">
-                        <h2>Pagamo 答案</h2>
-                        <div className="answer-lang-switch">
-                            <button
-                                className={`answer-btn ${lang === "zh" ? "active" : ""}`}
-                                onClick={() => setLang("zh")}
-                            >
-                                中文閱讀
-                            </button>
-                            <button
-                                className={`answer-btn ${lang === "en" ? "active" : ""}`}
-                                onClick={() => setLang("en")}
-                            >
-                                英文閱讀
-                            </button>
-                        </div>
+    return (<div className="answer">
+            <div className="answer-container">
+                <div className="answer-section">
+                    <h2>Pagamo 答案</h2>
+                    <div className="answer-lang-switch">
+                        <button
+                            className={`answer-btn ${lang === "zh" ? "active" : ""}`}
+                            onClick={() => setLang("zh")}
+                        >
+                            中文閱讀
+                        </button>
+                        <button
+                            className={`answer-btn ${lang === "en" ? "active" : ""}`}
+                            onClick={() => setLang("en")}
+                        >
+                            英文閱讀
+                        </button>
+                    </div>
 
-                        <pre className="answer-pagamo-block">
+                    <pre className="answer-pagamo-block">
                             {lang === "zh" ? zhContent : enContent}
                         </pre>
-                    </div>
                 </div>
-                <Footer />
             </div>
-        </>
-    );
+        </div>);
 }

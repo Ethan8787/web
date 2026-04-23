@@ -71,7 +71,6 @@ export default function Home() {
                 </div>
             </div>
             <Skills/>
-            <Projects/>
         </div>
     </div>);
 }

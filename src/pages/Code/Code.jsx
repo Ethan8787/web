@@ -72,7 +72,7 @@ export default function Code() {
                             </button>
                         </div>
                         <SyntaxHighlighter
-                            language="markdown"
+                            language="python"
                             style={atomDark}
                             showLineNumbers={true}
                             lineNumberStyle={{textAlign: 'center', minWidth: '2.5em'}}

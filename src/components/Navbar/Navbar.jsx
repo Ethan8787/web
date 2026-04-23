@@ -44,9 +44,9 @@ export default function Navbar({isPaused, setIsPaused}) {
                             <DataIcon/>
                             <span>伺服器</span>
                         </NavLink>
-                        <NavLink to="/code" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
+                        <NavLink to="/answer" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
                             <CodeIcon/>
-                            <span>程式</span>
+                            <span>答案</span>
                         </NavLink>
                         <NavLink to="/link"
                                  className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
