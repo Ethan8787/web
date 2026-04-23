@@ -1,0 +1,126 @@
+.answer-container {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 180px);
+    box-sizing: border-box;
+}
+
+.answer-section {
+    background: var(--card-bg);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: var(--card-border);
+    border-radius: var(--card-border-radius);
+    transition: var(--card-transition);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.answer-section h2 {
+    border-bottom: 2px solid rgba(0, 255, 255, 0.5);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.answer-lang-switch {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    background: transparent;
+    padding: 0;
+    width: 100%;
+}
+
+.answer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+    white-space: nowrap;
+}
+
+.answer-btn:hover {
+    opacity: 0.8;
+}
+
+.answer-btn.active {
+    opacity: 1;
+    border: 2px double rgba(0, 255, 255, 0.7);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.answer-pagamo-block {
+    position: relative;
+    overflow: auto;
+    border-radius: 8px;
+    background: #1d1f21;
+    flex-grow: 1;
+    padding: 16px;
+    font-size: 1rem;
+    font-family: var(--font-third), monospace;
+    font-weight: 500;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.answer-pagamo-block::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.answer-pagamo-block::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.answer-pagamo-block::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .answer-section {
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .answer-container {
+        height: auto;
+        min-height: calc(100vh - 100px);
+    }
+
+    .answer-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .answer-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+}

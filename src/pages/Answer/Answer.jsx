@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import Background from "./components/Background.jsx";
-import Navbar from "./components/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
+
 import "./Answer.css";
+import Background from "../../Background/Background.jsx";
+import Navbar from "../../components/Navbar/Navbar.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 
 export default function Answer() {
     const [zhContent, setZh] = useState("載入中...");
@@ -29,8 +30,6 @@ export default function Answer() {
                 <div className="answer-container">
                     <div className="answer-section">
                         <h2>Pagamo 答案</h2>
-                        <p>上次更新時間: 2026/01/16 19:57:07</p>
-
                         <div className="answer-lang-switch">
                             <button
                                 className={`answer-btn ${lang === "zh" ? "active" : ""}`}

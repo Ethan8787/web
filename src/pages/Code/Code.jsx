@@ -42,13 +42,13 @@ export default function Code() {
                             className={`tab-btn ${activeTab === "code1" ? "active" : ""}`}
                             onClick={() => setActiveTab("code1")}
                         >
-                            書籍計算
+                            中文素養
                         </button>
                         <button
                             className={`tab-btn ${activeTab === "code2" ? "active" : ""}`}
                             onClick={() => setActiveTab("code2")}
                         >
-                            BMI 計算
+                            英語素養
                         </button>
                     </div>
 
@@ -72,7 +72,7 @@ export default function Code() {
                             </button>
                         </div>
                         <SyntaxHighlighter
-                            language="python"
+                            language="markdown"
                             style={atomDark}
                             showLineNumbers={true}
                             lineNumberStyle={{textAlign: 'center', minWidth: '2.5em'}}
