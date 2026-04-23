@@ -12,7 +12,6 @@
 .ring-fg {
     stroke-width: 5;
     stroke-linecap: round;
-    transition: none;
 }
 
 .ring-item {
@@ -46,17 +45,6 @@
     color: rgba(255, 255, 255, 0.5);
     font-weight: 600;
     letter-spacing: 1px;
-}
-
-@keyframes ring-entrance {
-    from {
-        opacity: 0;
-        transform: translateY(10px) scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 }
 
 @media (max-width: 480px) {

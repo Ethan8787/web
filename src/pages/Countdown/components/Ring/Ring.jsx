@@ -7,8 +7,9 @@ export default function Ring({ targetDate, type, max, label, colorClass }) {
     const centerY = 50;
     const [displayValue, setDisplayValue] = useState(0);
     const [pathD, setPathD] = useState("");
+    const [isAnimating, setIsAnimating] = useState(false);
     const isResettingRef = useRef(false);
-    const prevValue = useRef(0);
+    const prevValue = useRef(-1);
     const requestRef = useRef();
 
     const polarToCartesian = (cx, cy, r, angleInDegrees) => {
@@ -63,21 +64,24 @@ export default function Ring({ targetDate, type, max, label, colorClass }) {
             progress = value / max;
         }
 
-        if (value > prevValue.current && prevValue.current !== 0) {
+        if (prevValue.current !== -1 && value > prevValue.current) {
             isResettingRef.current = true;
+            setIsAnimating(true);
             setPathD(getPathData(0.9999));
+            setDisplayValue(value);
 
             setTimeout(() => {
                 isResettingRef.current = false;
+                setIsAnimating(false);
                 requestRef.current = requestAnimationFrame(update);
-            }, 300);
+            }, 500);
         } else {
             setPathD(getPathData(progress));
+            setDisplayValue(value);
             requestRef.current = requestAnimationFrame(update);
         }
 
         prevValue.current = value;
-        setDisplayValue(value);
     };
 
     useEffect(() => {
@@ -91,7 +95,7 @@ export default function Ring({ targetDate, type, max, label, colorClass }) {
                 <svg width="100" height="100" viewBox="0 0 100 100">
                     <circle className="ring-bg" cx="50" cy="50" r={radius} fill="none" />
                     <path
-                        className={`ring-fg ${colorClass} ${isResettingRef.current ? 'is-animating' : ''}`}
+                        className={`ring-fg ${colorClass} ${isAnimating ? 'is-animating' : ''}`}
                         d={pathD}
                         fill="none"
                     />

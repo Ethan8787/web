@@ -70,8 +70,7 @@
 
 .answer-btn.active {
     opacity: 1;
-    border: 2px double rgba(0, 255, 255, 0.7);
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    border: 2px solid rgba(0, 255, 255, 1);
 }
 
 .answer-pagamo-block {
