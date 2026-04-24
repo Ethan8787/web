@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer>
             <div className="bottom">
-                <div className="left">
+                <div className="text-wrapper">
                     <p>Copyright &copy; 2026 Ethan. All Rights Reserved.</p>
                 </div>
             </div>

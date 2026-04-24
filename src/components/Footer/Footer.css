@@ -1,12 +1,8 @@
 footer {
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    background: var(--card-bg);
     color: #e0e0e0;
     width: 100%;
-    padding: 0.9rem 0;
-    margin-top: 2rem;
-    font-size: 0.9rem;
+    padding: 10px;
+    font-size: 1rem;
     z-index: 100;
     transition: var(--card-transition);
 }
@@ -20,7 +16,7 @@ footer {
     padding: 0 1.5rem;
 }
 
-.left p {
+.text-wrapper p {
     margin: 0;
     text-align: center;
     color: var(--text-color);
