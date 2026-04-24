@@ -31,7 +31,6 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/code" element={<Code/>}/>
-                    <Route path="/gameid" element={<Link/>}/>
 
                     <Route path="/link" element={<Link/>}/>
                     <Route path="/timer" element={<Timer/>}/>

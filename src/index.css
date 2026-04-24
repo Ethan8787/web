@@ -65,18 +65,21 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
     width: 100%;
-    background: var(--bg-color);
     font-family: var(--font-main), sans-serif;
-    color: var(--text-color);
 }
 
 ::-webkit-scrollbar {
     width: 6px;
     display: none;
+}
+
+.card-divider {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
 }
 

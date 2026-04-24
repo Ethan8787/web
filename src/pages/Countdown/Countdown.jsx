@@ -95,6 +95,7 @@ export default function Countdown() {
 
             <div className="countdown-card glass-card" ref={refs.exam}>
                 <h2 className="countdown-title">會考倒數</h2>
+                <div className="card-divider"></div>
                 <ExamCard/>
                 <div className="days-display">
                     <span className="days-left">{days.exam}</span>
@@ -109,6 +110,7 @@ export default function Countdown() {
 
             <div className="countdown-card glass-card" ref={refs.grad} style={{marginTop: '20px'}}>
                 <h2 className="countdown-title grad-title-color">畢業倒數</h2>
+                <div className="card-divider"></div>
                 <GraduateCard/>
                 <div className="grad-days-display">
                     <span className="grad-days-left">{days.grad}</span>

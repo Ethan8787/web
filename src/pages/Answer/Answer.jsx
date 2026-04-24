@@ -19,29 +19,28 @@ export default function Answer() {
             .catch(err => setEn("載入失敗: " + err.message));
     }, []);
 
-    return (<div className="answer">
-            <div className="answer-container">
-                <div className="answer-section">
-                    <h2>Pagamo 答案</h2>
-                    <div className="answer-lang-switch">
-                        <button
-                            className={`answer-btn ${lang === "zh" ? "active" : ""}`}
-                            onClick={() => setLang("zh")}
-                        >
-                            中文閱讀
-                        </button>
-                        <button
-                            className={`answer-btn ${lang === "en" ? "active" : ""}`}
-                            onClick={() => setLang("en")}
-                        >
-                            英文閱讀
-                        </button>
-                    </div>
+    return (<div className="answer-container">
+        <div className="answer-section">
+            <h2>Pagamo 答案</h2>
+            <div className="card-divider"></div>
+            <div className="answer-lang-switch">
+                <button
+                    className={`answer-btn ${lang === "zh" ? "active" : ""}`}
+                    onClick={() => setLang("zh")}
+                >
+                    中文閱讀
+                </button>
+                <button
+                    className={`answer-btn ${lang === "en" ? "active" : ""}`}
+                    onClick={() => setLang("en")}
+                >
+                    英文閱讀
+                </button>
+            </div>
 
-                    <pre className="answer-pagamo-block">
+            <pre className="answer-pagamo-block">
                             {lang === "zh" ? zhContent : enContent}
                         </pre>
-                </div>
-            </div>
-        </div>);
+        </div>
+    </div>);
 }

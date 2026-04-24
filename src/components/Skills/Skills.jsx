@@ -1,24 +1,35 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./Skills.css";
 
 const skillsData = [
-    {name: 'Java', level: 30},
-    {name: 'React', level: 25},
-    {name: 'Python', level: 20},
-    {name: 'Markdown', level: 20},
-    {name: 'CSS', level: 20},
-    {name: 'C++', level: 15},
-    {name: 'C', level: 10}
+    {
+        category: "Programming Languages",
+        items: [
+            { name: 'Java', level: 30 },
+            { name: 'Python', level: 20 },
+            { name: 'C++', level: 15 },
+            { name: 'C', level: 10 }
+        ]
+    },
+    {
+        category: "Web Development & Tools",
+        items: [
+            { name: 'React', level: 25 },
+            { name: 'CSS', level: 20 },
+            { name: 'Markdown', level: 20 }
+        ]
+    }
 ];
 
-function SkillItem({name, level}) {
+function SkillItem({ name, level }) {
     return (
         <div className="skill-item-container">
-            <div className="skill-item-grid">
+            <div className="skill-info">
                 <span className="skill-name">{name}</span>
-                <div className="skill-bar-container">
-                    <div className="skill-bar" style={{'--level': `${level}%`}}></div>
-                </div>
+                <span className="skill-percentage">{level}%</span>
+            </div>
+            <div className="skill-bar-container">
+                <div className="skill-bar" style={{ '--level': `${level}%` }}></div>
             </div>
         </div>
     );
@@ -29,28 +40,32 @@ export default function Skills() {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        const el = ref.current;
-        if (!el) return;
-
-        const obs = new IntersectionObserver(([entry]) => {
+        const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setVisible(true);
-                obs.disconnect();
+                observer.disconnect();
             }
-        }, {threshold: 0.25});
+        }, { threshold: 0.1 });
 
-        obs.observe(el);
-        return () => obs.disconnect();
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
     }, []);
 
     return (
-        <div ref={ref} className={`section reveal ${visible ? 'is-visible' : ''}`} id="skills">
-            <h2 style={{marginBottom: '30px'}}>Skills</h2>
-            <div className="skills-list">
-                {skillsData.map(skill => (
-                    <SkillItem key={skill.name} {...skill} />
+        <section ref={ref} className={`section ${visible ? 'is-visible' : ''}`} id="skills">
+            <h2 className="section-title">Skills</h2>
+            <div className="skills-container">
+                {skillsData.map((group) => (
+                    <div key={group.category} className="skills-group">
+                        <h3>{group.category}</h3>
+                        <div className="skills-list">
+                            {group.items.map(skill => (
+                                <SkillItem key={skill.name} {...skill} />
+                            ))}
+                        </div>
+                    </div>
                 ))}
             </div>
-        </div>
+        </section>
     );
 }

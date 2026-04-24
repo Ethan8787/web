@@ -36,6 +36,7 @@ export default function Code() {
             <div className="code-container">
                 <div className="code-section">
                     <h2>Code</h2>
+                    <div className="card-divider"></div>
 
                     <div className="tab-container">
                         <button

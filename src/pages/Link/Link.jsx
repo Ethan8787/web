@@ -198,7 +198,7 @@ const Link = () => {
 
                                     {acc.isCopy ? (
                                         <button
-                                            className="link-btn copy-btn"
+                                            className="game-copy-btn"
                                             onClick={() => handleCopy(acc.handle, acc.id)}
                                             title="Copy ID"
                                         >

@@ -40,6 +40,7 @@ export default function Home() {
 
             <div className="intro-card">
                 <h2>About Me</h2>
+                <div className="card-divider"></div>
                 <p>
                     我是 <span style={{color: 'var(--accent-color)', fontWeight: '2000'}}>Ethan</span>，
                     一名 <strong>{age} 歲</strong> 學生，
@@ -70,7 +71,6 @@ export default function Home() {
                     </a>
                 </div>
             </div>
-            <Skills/>
         </div>
     </div>);
 }
