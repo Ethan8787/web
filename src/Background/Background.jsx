@@ -13,17 +13,15 @@ const Background = ({ isPaused }) => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         let animationFrameId;
-        let clickInterval;
-        let mouseDownTimestamp = 0;
         let particles = [];
         const dpr = window.devicePixelRatio || 1;
 
         const getWidth = () => window.innerWidth;
         const getHeight = () => window.innerHeight;
 
-        const particleCount = getWidth() / 10;
+        const particleCount = getWidth() / 8;
         const connectionDistance = 120;
-        const repulsionDistance = 120;
+        const repulsionDistance = 90;
         const mouse = { x: null, y: null, radius: 100 };
 
         const resize = () => {
@@ -162,37 +160,19 @@ const Background = ({ isPaused }) => {
         const handleMouseLeave = () => {
             mouse.x = null;
             mouse.y = null;
-            clearInterval(clickInterval);
-        };
-
-        const triggerSpawnLogic = () => {
-            if (mouse.x === null || mouse.y === null) return;
-            particles.push(new Particle(mouse.x, mouse.y));
-            particles.splice(0, 1);
         };
 
         const handleMouseDown = (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
-            mouseDownTimestamp = Date.now();
-
-            clearInterval(clickInterval);
-            clickInterval = setInterval(() => {
-                if (Date.now() - mouseDownTimestamp >= 500) {
-                    triggerSpawnLogic();
-                }
-            }, 10);
-        };
-
-        const handleMouseUp = () => {
-            clearInterval(clickInterval);
+            particles.push(new Particle(mouse.x, mouse.y));
+            particles.splice(0, 1);
         };
 
         window.addEventListener('resize', handleResize);
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseleave', handleMouseLeave);
         window.addEventListener('mousedown', handleMouseDown);
-        window.addEventListener('mouseup', handleMouseUp);
 
         resize();
         init();
@@ -203,8 +183,6 @@ const Background = ({ isPaused }) => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseleave', handleMouseLeave);
             window.removeEventListener('mousedown', handleMouseDown);
-            window.removeEventListener('mouseup', handleMouseUp);
-            clearInterval(clickInterval);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
@@ -212,7 +190,6 @@ const Background = ({ isPaused }) => {
     return (
         <div className="bg-canvas-wrapper">
             <canvas ref={canvasRef} />
-            <div className="bg-vignette" />
         </div>
     );
 };

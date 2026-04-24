@@ -45,7 +45,7 @@
     letter-spacing: 1px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .svg-container svg {
         width: 75px;
         height: 75px;

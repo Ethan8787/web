@@ -19,7 +19,7 @@
     gap: 16px;
     text-align: center;
     position: relative;
-    padding: 20px;
+    padding: 30px;
 }
 
 .countdown-title {
@@ -74,6 +74,7 @@
     background: rgba(255, 255, 255, 0.12);
     border-radius: 4px;
     overflow: hidden;
+    margin-top: 10px;
 }
 
 .bar-fill {
@@ -125,6 +126,14 @@
 }
 
 @media (max-width: 768px) {
+    .countdown-card {
+        padding: 20px;
+    }
+    .bar-container,
+    .grad-bar-container {
+        margin-top: 0;
+    }
+
     .side-tools {
         display: none;
     }
