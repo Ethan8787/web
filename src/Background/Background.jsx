@@ -1,17 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import './Background.css';
 
-const Background = ({ isPaused }) => {
+const Background = ({ isPaused = true }) => {
     const canvasRef = useRef(null);
-    const isPausedRef = useRef(isPaused);
 
     useEffect(() => {
-        isPausedRef.current = isPaused;
-    }, [isPaused]);
+        if (isPaused) return;
 
-    useEffect(() => {
         const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d', { alpha: true });
         let animationFrameId;
         let particles = [];
         const dpr = window.devicePixelRatio || 1;
@@ -136,14 +135,12 @@ const Background = ({ isPaused }) => {
         };
 
         const animate = () => {
-            if (!isPausedRef.current) {
-                ctx.clearRect(0, 0, getWidth(), getHeight());
-                particles.forEach(p => {
-                    p.update(particles);
-                    p.draw();
-                });
-                drawLines();
-            }
+            ctx.clearRect(0, 0, getWidth(), getHeight());
+            particles.forEach(p => {
+                p.update(particles);
+                p.draw();
+            });
+            drawLines();
             animationFrameId = requestAnimationFrame(animate);
         };
 
@@ -185,11 +182,11 @@ const Background = ({ isPaused }) => {
             window.removeEventListener('mousedown', handleMouseDown);
             cancelAnimationFrame(animationFrameId);
         };
-    }, []);
+    }, [isPaused]); // 當 isPaused 改變時重新啟動或清除副作用
 
     return (
         <div className="bg-canvas-wrapper">
-            <canvas ref={canvasRef} />
+            {!isPaused && <canvas ref={canvasRef} />}
         </div>
     );
 };
