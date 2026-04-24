@@ -1,16 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import './Background.css';
 
-const Background = ({ isPaused = true }) => {
+const Background = ({ isPaused }) => {
     const canvasRef = useRef(null);
+    const isPausedRef = useRef(isPaused);
 
     useEffect(() => {
-        if (isPaused) return;
+        isPausedRef.current = isPaused;
+    }, [isPaused]);
 
+    useEffect(() => {
         const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext('2d', { alpha: true });
+        const ctx = canvas.getContext('2d');
         let animationFrameId;
         let particles = [];
         const dpr = window.devicePixelRatio || 1;
@@ -135,12 +136,14 @@ const Background = ({ isPaused = true }) => {
         };
 
         const animate = () => {
-            ctx.clearRect(0, 0, getWidth(), getHeight());
-            particles.forEach(p => {
-                p.update(particles);
-                p.draw();
-            });
-            drawLines();
+            if (!isPausedRef.current) {
+                ctx.clearRect(0, 0, getWidth(), getHeight());
+                particles.forEach(p => {
+                    p.update(particles);
+                    p.draw();
+                });
+                drawLines();
+            }
             animationFrameId = requestAnimationFrame(animate);
         };
 
@@ -182,17 +185,11 @@ const Background = ({ isPaused = true }) => {
             window.removeEventListener('mousedown', handleMouseDown);
             cancelAnimationFrame(animationFrameId);
         };
-    }, [isPaused]);
+    }, []);
 
     return (
         <div className="bg-canvas-wrapper">
-            <canvas
-                ref={canvasRef}
-                style={{
-                    zIndex: isPaused ? -10 : 0,
-                    display: isPaused ? 'none' : 'block'
-                }}
-            />
+            <canvas ref={canvasRef} />
         </div>
     );
 };

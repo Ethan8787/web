@@ -21,7 +21,7 @@ import './App.css';
 export default function App() {
     const location = useLocation();
     const isBackgroundOnly = location.pathname === '/background';
-    const [isPaused, setIsPaused] = useState(true);
+    const [isPaused, setIsPaused] = useState(false);
 
     return (
         <>
