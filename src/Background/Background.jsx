@@ -182,11 +182,17 @@ const Background = ({ isPaused = true }) => {
             window.removeEventListener('mousedown', handleMouseDown);
             cancelAnimationFrame(animationFrameId);
         };
-    }, [isPaused]); // 當 isPaused 改變時重新啟動或清除副作用
+    }, [isPaused]);
 
     return (
         <div className="bg-canvas-wrapper">
-            {!isPaused && <canvas ref={canvasRef} />}
+            <canvas
+                ref={canvasRef}
+                style={{
+                    zIndex: isPaused ? -10 : 0,
+                    display: isPaused ? 'none' : 'block'
+                }}
+            />
         </div>
     );
 };
