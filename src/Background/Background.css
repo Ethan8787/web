@@ -3,7 +3,8 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #010111;
+    background: #010111;
+    mix-blend-mode: plus-lighter;
     z-index: 0;
     overflow: hidden;
 }
