@@ -25,7 +25,6 @@ export default function App() {
 
     return (
         <>
-            {!isBackgroundOnly && <Background isPaused={isPaused}/>}
             {!isBackgroundOnly && <Navbar isPaused={isPaused} setIsPaused={setIsPaused}/>}
             <div className="page-wrapper">
                 <Routes>
