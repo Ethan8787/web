@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './RandomWheel.css';
 
 export default function RandomWheel() {
     useEffect(() => {
         document.title = `Tools - Random Wheel`;
     }, []);
-    const [items, setItems] = useState(['1', '2', '3']);
+
+    const [items, setItems] = useState(['1', '2', '3', '4', '5']);
     const [newItem, setNewItem] = useState('');
     const [isSpinning, setIsSpinning] = useState(false);
     const [rotation, setRotation] = useState(0);
@@ -15,18 +16,22 @@ export default function RandomWheel() {
 
     const handleSpin = () => {
         if (isSpinning || items.length < 2) return;
+
         setIsSpinning(true);
         setWinnerIndex(null);
-        const randomDeg = Math.floor(Math.random() * 360);
-        const nextRotation = rotation + 1800 + randomDeg;
+
+        const extraDegrees = Math.floor(Math.random() * 360);
+        const spinDegrees = 1800 + extraDegrees; // 旋轉 5 圈以上
+        const nextRotation = rotation + spinDegrees;
         setRotation(nextRotation);
 
         setTimeout(() => {
             setIsSpinning(false);
             const sliceDeg = 360 / items.length;
+            // 修正計算邏輯：指針在下方 (180度)，需考慮旋轉偏移
             const actualRotation = nextRotation % 360;
-            const index = Math.floor(((360 - actualRotation + 180) % 360) / sliceDeg);
-            setWinnerIndex(index % items.length);
+            const index = Math.floor(((180 - actualRotation + 360) % 360) / sliceDeg);
+            setWinnerIndex(index);
         }, 4000);
     };
 
@@ -40,14 +45,12 @@ export default function RandomWheel() {
 
     const getWheelBackground = () => {
         if (items.length === 0) return '#1a1a1a';
+        if (items.length === 1) return colors[0];
         const slice = 100 / items.length;
-        let gradient = 'conic-gradient(';
-        items.forEach((_, i) => {
-            const start = i * slice;
-            const end = (i + 1) * slice;
-            gradient += `${colors[i % colors.length]} ${start}% ${end}%${i === items.length - 1 ? '' : ','}`;
+        const gradientParts = items.map((_, i) => {
+            return `${colors[i % colors.length]} ${i * slice}% ${(i + 1) * slice}%`;
         });
-        return gradient + ')';
+        return `conic-gradient(${gradientParts.join(', ')})`;
     };
 
     const sliceDeg = items.length ? 360 / items.length : 360;
@@ -59,28 +62,25 @@ export default function RandomWheel() {
                     className="wheel"
                     style={{
                         background: getWheelBackground(),
-                        transform: `rotate(${rotation}deg) translateZ(0)`
+                        transform: `rotate(${rotation}deg)`
                     }}
                 >
-                    {items.map((item, i) => {
-                        const segmentCenterDeg = i * sliceDeg + (sliceDeg / 2);
-                        return (
-                            <div
-                                key={i}
-                                className={`wheel-segment ${winnerIndex === i ? 'active' : ''}`}
-                                style={{transform: `rotate(${segmentCenterDeg}deg) translateY(var(--text-radius))`}}
-                            >
-                                <span style={{transform: `rotate(${-rotation - segmentCenterDeg}deg)`}}>
-                                    {item}
-                                </span>
-                            </div>
-                        );
-                    })}
+                    {items.map((item, i) => (
+                        <div
+                            key={i}
+                            className="wheel-segment"
+                            style={{ transform: `rotate(${i * sliceDeg}deg)` }}
+                        >
+                            <span style={{ transform: `rotate(${- (i * sliceDeg) - rotation}deg)` }}>
+                                {item}
+                            </span>
+                        </div>
+                    ))}
                 </div>
 
                 <div className="wheel-pointer-bottom"></div>
                 <button className="spin-btn" onClick={handleSpin} disabled={isSpinning}>
-                    {isSpinning ? 'SPIN' : 'SPIN'}
+                    SPIN
                 </button>
             </div>
 
@@ -102,8 +102,12 @@ export default function RandomWheel() {
                 {items.map((item, i) => (
                     <div key={i} className="list-item">
                         {item}
-                        <span className="delete-x"
-                              onClick={() => setItems(items.filter((_, idx) => idx !== i))}>×</span>
+                        <span
+                            className="delete-x"
+                            onClick={() => setItems(items.filter((_, idx) => idx !== i))}
+                        >
+                            ×
+                        </span>
                     </div>
                 ))}
             </div>

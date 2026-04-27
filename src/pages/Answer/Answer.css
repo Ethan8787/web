@@ -16,7 +16,7 @@
     -webkit-backdrop-filter: blur(2px);
     border: var(--card-border);
     border-radius: var(--card-border-radius);
-    transition: var(--card-transition);
+    transition: all 0.4s ease-in-out;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -24,6 +24,7 @@
     padding: 30px;
     box-sizing: border-box;
     overflow: hidden;
+    width: 100%;
 }
 
 .answer-section h2 {
@@ -42,31 +43,13 @@
     width: 100%;
 }
 
-.answer-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px 16px;
-    border-radius: 12px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.95rem;
-    font-weight: bold;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    opacity: 0.5;
-    white-space: nowrap;
-}
-
-.answer-btn:hover {
+.btn:hover {
     opacity: 0.8;
 }
 
-.answer-btn.active {
+.btn.active {
     opacity: 1;
-    border: 2px solid rgba(0, 255, 255, 1);
+    border: 1px solid rgba(0, 255, 255, 1);
 }
 
 .answer-pagamo-block {
@@ -102,6 +85,7 @@
 @media (max-width: 768px) {
     .answer-section {
         padding: 20px;
+        width: 100%;
     }
 
     .answer-container {
@@ -112,10 +96,5 @@
     .answer-section h2 {
         font-size: 1.4rem;
         margin-bottom: 15px;
-    }
-
-    .answer-btn {
-        padding: 8px 12px;
-        font-size: 0.85rem;
     }
 }

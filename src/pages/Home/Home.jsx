@@ -43,8 +43,7 @@ export default function Home() {
                 <div className="card-divider"></div>
                 <p>
                     我是 <span style={{color: 'var(--accent-color)', fontWeight: '2000'}}>Ethan</span>，
-                    一名 <strong>{age} 歲</strong> 學生，
-                    學習程式設計已達 <strong>{age - 10}</strong> 年。
+                    一位來自<strong>台灣</strong>的學生，對程式設計充滿熱情。
                     <br/>
                     以下是我的社群連結。
                 </p>

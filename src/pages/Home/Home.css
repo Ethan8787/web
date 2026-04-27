@@ -67,20 +67,6 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    background: rgba(15, 15, 15, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
 .btn-icon {
     width: 20px !important;
@@ -95,23 +81,33 @@
 }
 
 .btn-discord:hover {
-    border-color: #5865f2;
-    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+    background-color: rgba(88, 101, 242, 1);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .btn-youtube:hover {
-    border-color: #ff0000;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    background-color: rgba(255, 0, 0, 1);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .btn-instagram:hover {
-    border-color: rgba(193, 53, 132, 2);
-    box-shadow: 0 0 15px rgba(193, 53, 132, 0.4);
+    background: linear-gradient(135deg,
+    #833AB4,
+    #C13584,
+    #E1306C,
+    #F77737,
+    #FCAF45
+    );
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .btn-github:hover {
-    border-color: #ffffff;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    background-color: rgba(48, 54, 61, 1);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .glass-card {

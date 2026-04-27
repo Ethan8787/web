@@ -25,13 +25,13 @@ export default function Answer() {
             <div className="card-divider"></div>
             <div className="answer-lang-switch">
                 <button
-                    className={`answer-btn ${lang === "zh" ? "active" : ""}`}
+                    className={`btn ${lang === "zh" ? "active" : ""}`}
                     onClick={() => setLang("zh")}
                 >
                     中文閱讀
                 </button>
                 <button
-                    className={`answer-btn ${lang === "en" ? "active" : ""}`}
+                    className={`btn ${lang === "en" ? "active" : ""}`}
                     onClick={() => setLang("en")}
                 >
                     英文閱讀
@@ -39,8 +39,8 @@ export default function Answer() {
             </div>
 
             <pre className="answer-pagamo-block">
-                            {lang === "zh" ? zhContent : enContent}
-                        </pre>
+                {lang === "zh" ? zhContent : enContent}
+            </pre>
         </div>
     </div>);
 }

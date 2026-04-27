@@ -30,10 +30,6 @@
     letter-spacing: 2px;
 }
 
-.grad-title-color {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 .days-display,
 .grad-days-display {
     font-family: var(--font-third), sans-serif;

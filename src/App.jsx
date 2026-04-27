@@ -11,10 +11,7 @@ import Answer from './pages/Answer/Answer.jsx';
 import Link from './pages/Link/Link.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
 import ExamCountdown from "./pages/Countdown/Countdown.jsx";
-import Clock from "./pages/Clock/Clock.jsx";
 import RandomWheel from "./pages/RandomWheel/RandomWheel.jsx";
-import StopWatch from "./pages/Stopwatch/Stopwatch.jsx";
-import Timer from "./pages/Timer/Timer.jsx";
 import DiscordTool from "./pages/DiscordTool/DiscordTool.jsx";
 import './App.css';
 
@@ -31,14 +28,9 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/code" element={<Code/>}/>
-
                     <Route path="/link" element={<Link/>}/>
-                    <Route path="/timer" element={<Timer/>}/>
-                    <Route path="/clock" element={<Clock/>}/>
-                    <Route path="/stopwatch" element={<StopWatch/>}/>
                     <Route path="/timestamp" element={<DiscordTool/>}/>
                     <Route path="/wheel" element={<RandomWheel/>}/>
-
                     <Route path="/115" element={<ExamCountdown/>}/>
                     <Route path="/background" element={<Background isPaused={isPaused}/>}/>
                     <Route path="/answer" element={<Answer/>}/>

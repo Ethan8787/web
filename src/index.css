@@ -34,10 +34,10 @@
     --bg-color: #000000;
     --text-color: #ffffff;
     --accent-color: #00FFFF;
-    --card-bg: rgba(0, 0, 0, 0.3);
-    --card-border: 1px solid rgba(255, 255, 255, 0.15);
+    --card-bg: rgba(10, 10, 10, 0.5);
+    --card-border: 1px solid rgba(255, 255, 255, 0.2);
     --card-border-radius: 20px;
-    --card-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --card-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --font-main: 'poppins', 'pinfang', sans-serif;
     --font-secondary: 'ubuntu', 'pinfang', sans-serif;
     --font-third: 'jett', 'pinfang', sans-serif;
@@ -65,6 +65,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    line-height: 1;
 }
 
 html, body {
@@ -84,3 +85,18 @@ html, body {
     flex-shrink: 0;
 }
 
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    background: rgba(15, 15, 15, 1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
