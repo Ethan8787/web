@@ -9,7 +9,6 @@ export default function Code() {
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
-        document.title = "Ethan's Web - Code & Answer";
         setCodeContent("正在讀取原始碼...");
 
         fetch(`/${activeTab}.txt`)

@@ -9,7 +9,6 @@ export default function Countdown() {
     const refs = {exam: useRef(null), grad: useRef(null)};
 
     useEffect(() => {
-        document.title = `Ethan's Web - Countdown`;
         const update = () => {
             const now = new Date();
             const d1 = new Date('2026-05-16T08:20:00') - now;

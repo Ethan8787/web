@@ -23,10 +23,7 @@ export default function Home() {
     };
 
     useEffect(() => {
-        document.title = "Ethan's Web - Home";
-        const id = requestAnimationFrame(() => setLoaded(true));
         setAge(calculateAge("2011-04-30"));
-        return () => cancelAnimationFrame(id);
     }, []);
 
     return (<div className="App">

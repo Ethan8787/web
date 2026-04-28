@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './Link.css';
 
 const GameIdMain = ({platform, color}) => {
@@ -83,9 +83,6 @@ const GameIdMain = ({platform, color}) => {
 };
 
 const Link = () => {
-    useEffect(() => {
-        document.title = "Ethan's Web - Data";
-    }, []);
 
     const [copiedId, setCopiedId] = useState(null);
     const initialAccounts = [

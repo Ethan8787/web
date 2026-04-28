@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './RandomWheel.css';
 
 export default function RandomWheel() {
-    useEffect(() => {
-        document.title = `Tools - Random Wheel`;
-    }, []);
 
     const [items, setItems] = useState(['1', '2', '3', '4', '5']);
     const [newItem, setNewItem] = useState('');
