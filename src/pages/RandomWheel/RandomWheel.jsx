@@ -21,14 +21,13 @@ export default function RandomWheel() {
         setWinnerIndex(null);
 
         const extraDegrees = Math.floor(Math.random() * 360);
-        const spinDegrees = 1800 + extraDegrees; // 旋轉 5 圈以上
+        const spinDegrees = 1800 + extraDegrees;
         const nextRotation = rotation + spinDegrees;
         setRotation(nextRotation);
 
         setTimeout(() => {
             setIsSpinning(false);
             const sliceDeg = 360 / items.length;
-            // 修正計算邏輯：指針在下方 (180度)，需考慮旋轉偏移
             const actualRotation = nextRotation % 360;
             const index = Math.floor(((180 - actualRotation + 360) % 360) / sliceDeg);
             setWinnerIndex(index);
@@ -41,6 +40,11 @@ export default function RandomWheel() {
             setNewItem('');
             setWinnerIndex(null);
         }
+    };
+
+    const deleteItem = (index) => {
+        setItems(items.filter((_, idx) => idx !== index));
+        setWinnerIndex(null);
     };
 
     const getWheelBackground = () => {
@@ -69,11 +73,11 @@ export default function RandomWheel() {
                         <div
                             key={i}
                             className="wheel-segment"
-                            style={{ transform: `rotate(${i * sliceDeg}deg)` }}
+                            style={{
+                                transform: `translateX(-50%) rotate(${i * sliceDeg + (sliceDeg / 2)}deg)`
+                            }}
                         >
-                            <span style={{ transform: `rotate(${- (i * sliceDeg) - rotation}deg)` }}>
-                                {item}
-                            </span>
+                            <span>{item}</span>
                         </div>
                     ))}
                 </div>
@@ -94,7 +98,7 @@ export default function RandomWheel() {
                     value={newItem}
                     onChange={(e) => setNewItem(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && addItem()}
-                    placeholder="在此輸入..."
+                    placeholder="新增選項..."
                 />
             </div>
 
@@ -104,7 +108,7 @@ export default function RandomWheel() {
                         {item}
                         <span
                             className="delete-x"
-                            onClick={() => setItems(items.filter((_, idx) => idx !== i))}
+                            onClick={() => deleteItem(i)}
                         >
                             ×
                         </span>

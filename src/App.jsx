@@ -12,7 +12,6 @@ import Link from './pages/Link/Link.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
 import ExamCountdown from "./pages/Countdown/Countdown.jsx";
 import RandomWheel from "./pages/RandomWheel/RandomWheel.jsx";
-import DiscordTool from "./pages/DiscordTool/DiscordTool.jsx";
 import './App.css';
 
 export default function App() {
@@ -29,7 +28,6 @@ export default function App() {
                     <Route path="/" element={<Home/>}/>
                     <Route path="/code" element={<Code/>}/>
                     <Route path="/link" element={<Link/>}/>
-                    <Route path="/timestamp" element={<DiscordTool/>}/>
                     <Route path="/wheel" element={<RandomWheel/>}/>
                     <Route path="/115" element={<ExamCountdown/>}/>
                     <Route path="/background" element={<Background isPaused={isPaused}/>}/>
