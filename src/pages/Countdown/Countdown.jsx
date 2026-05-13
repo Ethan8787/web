@@ -93,7 +93,7 @@ export default function Countdown() {
             </div>
 
             <div className="countdown-card glass-card" ref={refs.exam}>
-                <h2 className="countdown-title">會考倒數</h2>
+                <h2 className="countdown-title">67</h2>
                 <div className="card-divider"></div>
                 <ExamCard/>
                 <div className="days-display">
