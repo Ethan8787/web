@@ -92,21 +92,6 @@ export default function Countdown() {
                 </button>
             </div>
 
-            <div className="countdown-card glass-card" ref={refs.exam}>
-                <h2 className="countdown-title">67</h2>
-                <div className="card-divider"></div>
-                <ExamCard/>
-                <div className="days-display">
-                    <span className="days-left">{days.exam}</span>
-                    <span className="days-total"> / 365 Days</span>
-                </div>
-                <p className="time-date">2026/5/16 08:20</p>
-                <div className="card-divider"></div>
-                <div className="bar-container">
-                    <div className="bar-fill" style={{width: `${(days.exam / 365) * 100}%`}}></div>
-                </div>
-            </div>
-
             <div className="countdown-card glass-card" ref={refs.grad} style={{marginTop: '20px'}}>
                 <h2 className="countdown-title grad-title-color">畢業倒數</h2>
                 <div className="card-divider"></div>
