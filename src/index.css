@@ -34,14 +34,14 @@
     --bg-color: #000000;
     --text-color: #ffffff;
     --accent-color: #00FFFF;
-    --card-bg: rgba(10, 10, 10, 0.5);
+    --card-bg: rgba(10, 10, 10, 0.3);
     --card-border: 1px solid rgba(255, 255, 255, 0.2);
     --card-border-radius: 20px;
     --card-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --font-main: 'poppins', 'pinfang', sans-serif;
     --font-secondary: 'ubuntu', 'pinfang', sans-serif;
     --font-third: 'jett', 'pinfang', sans-serif;
-    --bg-glass: rgba(25, 25, 25, 0.75);
+    --bg-glass: rgba(0, 0, 0, 0.2);
     --border-glass: rgba(255, 255, 255, 0.1);
     --accent-blue: #007aff;
     --text-main: #ffffff;

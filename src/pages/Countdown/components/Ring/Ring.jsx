@@ -1,103 +1,63 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Ring.css';
 
-export default function Ring({ targetDate, type, max, label, colorClass }) {
+export default function Ring({targetDate, type, max, label, colorClass}) {
     const radius = 36;
-    const centerX = 50;
-    const centerY = 50;
+    const circumference = 2 * Math.PI * radius;
     const [displayValue, setDisplayValue] = useState(0);
-    const [pathD, setPathD] = useState("");
-    const [isAnimating, setIsAnimating] = useState(false);
-    const isResettingRef = useRef(false);
-    const prevValue = useRef(-1);
-    const requestRef = useRef();
-
-    const polarToCartesian = (cx, cy, r, angleInDegrees) => {
-        const radians = (angleInDegrees * Math.PI) / 180.0;
-        return {
-            x: cx + r * Math.cos(radians),
-            y: cy + r * Math.sin(radians)
-        };
-    };
-
-    const getPathData = (progress) => {
-        const startAngle = -90;
-        const endAngle = startAngle + (progress * 359.999);
-        const start = polarToCartesian(centerX, centerY, radius, startAngle);
-        const end = polarToCartesian(centerX, centerY, radius, endAngle);
-        const largeArcFlag = progress > 0.5 ? "1" : "0";
-        return [
-            "M", start.x, start.y,
-            "A", radius, radius, 0, largeArcFlag, 1, end.x, end.y
-        ].join(" ");
-    };
-
-    const update = () => {
-        if (isResettingRef.current) return;
-
-        const now = new Date();
-        const diff = targetDate - now;
-
-        if (diff <= 0) {
-            setPathD("");
-            setDisplayValue(0);
-            return;
-        }
-
-        let value;
-        let progress;
-
-        if (type === 's') {
-            const ms = diff % 60000;
-            value = Math.floor(ms / 1000);
-            progress = ms / 60000;
-        } else if (type === 'm') {
-            const totalMs = diff % 3600000;
-            value = Math.floor(totalMs / 60000);
-            progress = totalMs / 3600000;
-        } else if (type === 'h') {
-            const totalMs = diff % 86400000;
-            value = Math.floor(totalMs / 3600000);
-            progress = totalMs / 86400000;
-        } else {
-            value = Math.floor(diff / 86400000);
-            progress = value / max;
-        }
-
-        if (prevValue.current !== -1 && value > prevValue.current) {
-            isResettingRef.current = true;
-            setIsAnimating(true);
-            setPathD(getPathData(0.9999));
-            setDisplayValue(value);
-
-            setTimeout(() => {
-                isResettingRef.current = false;
-                setIsAnimating(false);
-                requestRef.current = requestAnimationFrame(update);
-            }, 500);
-        } else {
-            setPathD(getPathData(progress));
-            setDisplayValue(value);
-            requestRef.current = requestAnimationFrame(update);
-        }
-
-        prevValue.current = value;
-    };
+    const [offset, setOffset] = useState(circumference);
 
     useEffect(() => {
-        requestRef.current = requestAnimationFrame(update);
-        return () => cancelAnimationFrame(requestRef.current);
-    }, [targetDate]);
+        const update = () => {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                setOffset(circumference);
+                setDisplayValue(0);
+                return;
+            }
+
+            let value;
+            let progress;
+
+            if (type === 's') {
+                value = Math.floor((diff % 60000) / 1000);
+                progress = value / 60;
+            } else if (type === 'm') {
+                value = Math.floor((diff % 3600000) / 60000);
+                progress = value / 60;
+            } else if (type === 'h') {
+                value = Math.floor((diff % 86400000) / 3600000);
+                progress = value / 24;
+            } else {
+                value = Math.floor(diff / 86400000);
+                progress = value / max;
+            }
+
+            setOffset(circumference - (progress * circumference));
+            setDisplayValue(value);
+        };
+
+        update();
+        const intervalId = setInterval(update, 1000);
+        return () => clearInterval(intervalId);
+    }, [targetDate, type, max, circumference]);
 
     return (
         <div className="ring-item">
             <div className="svg-container">
                 <svg width="100" height="100" viewBox="0 0 100 100">
-                    <circle className="ring-bg" cx="50" cy="50" r={radius} fill="none" />
-                    <path
-                        className={`ring-fg ${colorClass} ${isAnimating ? 'is-animating' : ''}`}
-                        d={pathD}
+                    <circle className="ring-bg" cx="50" cy="50" r={radius} fill="none"/>
+                    <circle
+                        className={`ring-fg ${colorClass}`}
+                        cx="50"
+                        cy="50"
+                        r={radius}
                         fill="none"
+                        strokeDasharray={circumference}
+                        strokeDashoffset={offset}
+                        transform="rotate(-90 50 50)"
                     />
                 </svg>
                 <div className="ring-value">{displayValue}</div>

@@ -55,7 +55,7 @@ export default function Navbar({isPaused, setIsPaused}) {
                         </NavLink>
                         <NavLink to="/115" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
                             <ExamIcon/>
-                            <span>會考</span>
+                            <span>倒數</span>
                         </NavLink>
                     </div>
                 </div>

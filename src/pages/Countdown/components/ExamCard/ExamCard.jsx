@@ -3,7 +3,7 @@ import Ring from '../Ring/Ring';
 import './ExamCard.css';
 
 export default function ExamCard() {
-    const target = new Date('2026-05-16T08:20:00');
+    const target = new Date('2027-05-22T08:20:00');
 
     return (
         <div className="rings-container">
