@@ -8,6 +8,43 @@
     box-sizing: border-box;
 }
 
+.clock-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.clock-card {
+    padding: 25px 30px;
+}
+
+.clock-date-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 5px 0 0 0;
+}
+
+.clock-display {
+    font-family: var(--font-third), sans-serif;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 10px 0;
+}
+
+.clock-time {
+    font-size: 3.5rem;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
 .carousel-wrapper {
     display: flex;
     align-items: center;
@@ -112,7 +149,7 @@
     font-size: 2.5rem;
     color: #aa55ff;
     margin-right: 5px;
- }
+}
 
 .bar-container,
 .grad-bar-container {
@@ -148,8 +185,8 @@
 }
 
 .time-date {
-    color: #777;
-    font-weight: 800;
+    color: #fff;
+    font-weight: bold;
     letter-spacing: 1px;
 }
 
@@ -175,6 +212,19 @@
 @media (max-width: 768px) {
     .countdown-main-layout {
         padding: 10px;
+    }
+
+    .clock-wrapper {
+        margin-bottom: 15px;
+    }
+
+    .clock-date-text {
+        font-size: 0.95rem;
+    }
+
+    .clock-time {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
     }
 
     .carousel-wrapper {

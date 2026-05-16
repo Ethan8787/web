@@ -6,12 +6,14 @@ import './Countdown.css';
 
 export default function Countdown() {
     const [days, setDays] = useState({exam: 0, grad: 0});
+    const [time, setTime] = useState(new Date());
     const [activeCard, setActiveCard] = useState(0);
     const refs = {exam: useRef(null), grad: useRef(null)};
 
     useEffect(() => {
         const update = () => {
             const now = new Date();
+            setTime(now);
             const d1 = new Date('2027-05-22T08:20:00') - now;
             const d2 = new Date('2026-06-05T12:00:00') - now;
             setDays({
@@ -46,7 +48,7 @@ export default function Countdown() {
                     const card = clonedDoc.querySelector('.countdown-card');
                     if (card) {
                         const wm = clonedDoc.createElement('div');
-                        wm.innerText = '@ethantw.dev';
+                        wm.innerText = '';
                         wm.style.cssText = `
                         position:absolute;
                         top:0;
@@ -57,7 +59,7 @@ export default function Countdown() {
                         align-items:center;
                         justify-content:center;
                         opacity:0.5;
-                        font-size:0.8rem;
+                        font-size:0.5rem;
                         color:white;
                         pointer-events:none;
                         z-index:9999;
@@ -79,6 +81,19 @@ export default function Countdown() {
     const handlePrev = () => setActiveCard((prev) => (prev === 0 ? 1 : 0));
     const handleNext = () => setActiveCard((prev) => (prev === 1 ? 0 : 1));
 
+    const formatTime = (date) => {
+        return date.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    };
+
+    const formatDateString = (date) => {
+        const y = date.getFullYear();
+        const m = date.getMonth() + 1;
+        const d = date.getDate();
+        const weeks = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const w = weeks[date.getDay()];
+        return `${y} 年 ${m} 月 ${d} 日 • ${w}`;
+    };
+
     return (<div className="countdown-main-layout">
         <div className="side-tools">
             <button onClick={() => handleCapture(refs.exam, '115')} className="tool-btn" title="截圖會考倒數">
@@ -98,6 +113,15 @@ export default function Countdown() {
                     <circle cx="12" cy="13" r="4"></circle>
                 </svg>
             </button>
+        </div>
+
+        <div className="clock-wrapper">
+            <div className="countdown-card glass-card clock-card">
+                <p className="time-date clock-date-text">{formatDateString(time)}</p>
+                <div className="clock-display">
+                    <span className="clock-time">{formatTime(time)}</span>
+                </div>
+            </div>
         </div>
 
         <div className="carousel-wrapper">
