@@ -116,8 +116,8 @@ export default function Countdown() {
         </div>
 
         <div className="clock-wrapper">
-            <div className="countdown-card glass-card clock-card">
-                <p className="time-date clock-date-text">{formatDateString(time)}</p>
+            <div className="clock-card">
+                <p className="clock-date-text">{formatDateString(time)}</p>
                 <div className="clock-display">
                     <span className="clock-time">{formatTime(time)}</span>
                 </div>

@@ -18,6 +18,17 @@
 }
 
 .clock-card {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: var(--card-border-radius);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    position: relative;
+    padding: 30px;
+    box-sizing: border-box;
     padding: 25px 30px;
 }
 
@@ -214,19 +225,6 @@
         padding: 10px;
     }
 
-    .clock-wrapper {
-        margin-bottom: 15px;
-    }
-
-    .clock-date-text {
-        font-size: 0.95rem;
-    }
-
-    .clock-time {
-        font-size: 2.5rem;
-        letter-spacing: 2px;
-    }
-
     .carousel-wrapper {
         gap: 8px;
         padding: 0 5px;
@@ -254,6 +252,10 @@
     }
 
     .days-total {
+        font-size: 1rem;
+    }
+
+    .clock-date-text {
         font-size: 1rem;
     }
 
