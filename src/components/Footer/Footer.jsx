@@ -3,7 +3,6 @@ import './Footer.css'
 export default function Footer() {
     return (
         <footer>
-            <div className="card-divider"></div>
             <div className="bottom">
                 <div className="text-wrapper">
                     <p>Copyright &copy; 2026 Ethan. All Rights Reserved.</p>

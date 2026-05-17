@@ -71,9 +71,12 @@ const GameIdMain = ({platform, color}) => {
             </svg>
         ),
         Minecraft: (
-            <svg fill={color} width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M9.213 0c-5.088 0-9.213 4.125-9.213 9.213v22.787h22.787c5.088 0 9.213-4.125 9.213-9.213v-22.787zM22.697 3.459c0.756 0 1.365 3.339 1.365 4.093 0.025 0.771-0.593 1.407-1.365 1.407-0.771 0-1.391-0.636-1.364-1.407 0-0.755 0.615-4.093 1.364-4.093zM19.213 7.328c0.923 0.256 2.776 5.032 4.849 2.959 1.932-1.932 2.735 9.552 2.735 9.552l-2.735-1.365c0 0 0-2.728-4.093-5.457-5.079-3.391-10.923-1.156-10.923 4.088 0 10.713 17.751 6.828 17.751 6.828s-0.005 2.729-2.735 2.729h-16.375c-2.729 0-2.735-2.729-2.735-2.729v-13.645c0-2.735 2.735-2.735 2.735-2.735h5.457c2.729 0 5.459 2.735 5.459 2.735 0-1.989 0.156-2.803 0.437-2.943 0.057-0.027 0.115-0.032 0.172-0.016z"/>
+            <svg width="32px" height="32px" viewBox="0 0 12 12" fill={color}>
+                <g id="Dribbble-Light-Preview" transform="translate(-224.000000, -6127.000000)" fill={color}>
+                    <g id="icons" transform="translate(56.000000, 160.000000)"><path d="M172,5973 L170,5973 L170,5979 L172,5979 L172,5977 L176,5977 L176,5979 L178,5979 L178,5973 L176,5973 L176,5971 L172,5971 L172,5973 Z M176,5971 L180,5971 L180,5967 L176,5967 L176,5971 Z M168,5971 L172,5971 L172,5967 L168,5967 L168,5971 Z" id="emoji_minecraft_simple-[#464]">
+                    </path>
+                    </g>
+                </g>
             </svg>
         )
     };
@@ -83,7 +86,6 @@ const GameIdMain = ({platform, color}) => {
 };
 
 const Link = () => {
-
     const [copiedId, setCopiedId] = useState(null);
     const initialAccounts = [
         {
@@ -147,10 +149,10 @@ const Link = () => {
         {
             id: 8,
             platform: 'Minecraft',
-            username: '27ms__',
-            handle: '27ms__',
-            color: '#AA0000',
-            url: 'https://namemc.com/profile/27ms__'
+            username: 'eth4n_n',
+            handle: 'eth4n_n',
+            color: '#00AA00',
+            url: 'https://namemc.com/profile/eth4n_n'
         }
     ];
 
@@ -173,7 +175,10 @@ const Link = () => {
                     {sortedAccounts.map((acc, index) => {
                         return (
                             <React.Fragment key={acc.id}>
-                                <div className="game-id-item">
+                                <div
+                                    className="game-id-item"
+                                    onClick={acc.isCopy ? () => handleCopy(acc.handle, acc.id) : null}
+                                >
                                     <div className="game-id-content-left">
                                         <div className="icon-wrapper">
                                             <GameIdMain platform={acc.platform} color={acc.color}/>
@@ -196,7 +201,6 @@ const Link = () => {
                                     {acc.isCopy ? (
                                         <button
                                             className="game-copy-btn"
-                                            onClick={() => handleCopy(acc.handle, acc.id)}
                                             title="Copy ID"
                                         >
                                             {copiedId === acc.id ? (
@@ -225,13 +229,14 @@ const Link = () => {
                                         </a>
                                     )}
                                 </div>
+                                <div className="card-divider"></div>
                             </React.Fragment>
                         );
                     })}
                 </div>
             </main>
         </div>
-    );
+);
 };
 
 export default Link;

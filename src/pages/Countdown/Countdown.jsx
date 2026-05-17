@@ -125,7 +125,7 @@ export default function Countdown() {
         </div>
 
         <div className="carousel-wrapper">
-            <button onClick={handlePrev} className="nav-btn">‹</button>
+            <button onClick={handlePrev} className="nav-btn prev">«</button>
 
             <div className="carousel-viewport">
                 <div className="carousel-track" style={{transform: `translateX(-${activeCard * 100}%)`}}>
@@ -165,7 +165,7 @@ export default function Countdown() {
                 </div>
             </div>
 
-            <button onClick={handleNext} className="nav-btn">›</button>
+            <button onClick={handleNext} className="nav-btn next">»</button>
         </div>
     </div>);
 }

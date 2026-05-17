@@ -11,15 +11,16 @@
 .clock-wrapper {
     width: 100%;
     max-width: 480px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
 }
 
 .clock-card {
-    background: rgba(0, 0, 0, 0);
+    background: var(--card-bg);
     border: none;
+    backdrop-filter: blur(2px);
     border-radius: var(--card-border-radius);
     width: 100%;
     display: flex;
@@ -27,9 +28,8 @@
     gap: 16px;
     text-align: center;
     position: relative;
-    padding: 30px;
-    box-sizing: border-box;
     padding: 25px 30px;
+    box-sizing: border-box;
 }
 
 .clock-date-text {
@@ -60,10 +60,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
     width: 100%;
-    max-width: 600px;
+    max-width: 480px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .carousel-viewport {
@@ -83,7 +83,7 @@
     display: flex;
     justify-content: center;
     box-sizing: border-box;
-    padding: 0 5px;
+    padding: 0;
 }
 
 .nav-btn {
@@ -93,30 +93,37 @@
     font-size: 2rem;
     cursor: pointer;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.2s;
     flex-shrink: 0;
-    z-index: 2;
+    z-index: 10;
+    position: absolute;
+    top: 68%;
+    transform: translateY(-50%);
 }
 
-.nav-btn:hover {
-    background: rgba(255, 255, 255, 0);
+.nav-btn.prev {
+    left: 35px;
+}
+
+.nav-btn.next {
+    right: 35px;
 }
 
 .countdown-card {
     background: var(--card-bg);
     backdrop-filter: blur(2px);
-    border: var(--card-border);
+    border: none;
     border-radius: var(--card-border-radius);
     transition: var(--card-transition);
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     text-align: center;
     position: relative;
     padding: 30px;
@@ -151,7 +158,6 @@
 .days-left {
     font-family: var(--font-third), sans-serif;
     font-size: 2.5rem;
-    margin-right: 5px;
     color: #00ffff;
 }
 
@@ -159,7 +165,6 @@
     font-family: var(--font-third), sans-serif;
     font-size: 2.5rem;
     color: #aa55ff;
-    margin-right: 5px;
 }
 
 .bar-container,
@@ -196,7 +201,7 @@
 }
 
 .time-date {
-    color: #fff;
+    color: #bbb;
     font-weight: bold;
     letter-spacing: 1px;
 }
@@ -222,21 +227,24 @@
 
 @media (max-width: 768px) {
     .countdown-main-layout {
-        padding: 10px;
+        padding: 20px;
     }
 
     .carousel-wrapper {
-        gap: 8px;
-        padding: 0 5px;
+        padding: 0;
     }
 
     .countdown-card {
-        padding: 20px 15px;
+        padding: 20px;
     }
 
     .bar-container,
     .grad-bar-container {
         margin-top: 0;
+    }
+
+    .nav-btn {
+        top: 71%;
     }
 
     .side-tools {
@@ -248,11 +256,7 @@
     }
 
     .days-left, .grad-days-left {
-        font-size: 2rem;
-    }
-
-    .days-total {
-        font-size: 1rem;
+        font-size: 2.3rem;
     }
 
     .clock-date-text {
@@ -263,13 +267,17 @@
         font-size: 0.8rem;
     }
 
-    .countdown-title {
-        font-size: 1.2rem;
-    }
-
     .nav-btn {
         width: 36px;
         height: 36px;
         font-size: 1.5rem;
+    }
+
+    .nav-btn.prev {
+        left: 15px;
+    }
+
+    .nav-btn.next {
+        right: 15px;
     }
 }

@@ -36,63 +36,6 @@
     justify-content: flex-end;
 }
 
-.nav-left {
-    gap: 20px;
-}
-
-.side-icon {
-    width: 20px;
-    height: 20px;
-    color: #a0a0a0;
-    transition: color 0.3s ease;
-}
-
-.side-icon:hover {
-    color: #00ffff;
-}
-
-.brand-logo {
-    display: flex;
-    align-items: center;
-}
-
-.brand-logo svg {
-    height: 100%;
-    width: auto;
-}
-
-@media (max-width: 768px) {
-    .brand-logo {
-        display: flex;
-    }
-
-    .logo-icon {
-        padding-bottom: 15px;
-    }
-}
-
-.contact-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.contact-btn:hover {
-    background: rgba(0, 255, 255, 0.1);
-    border-color: #00ffff;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-}
-
 .nav-dock {
     display: flex;
     align-items: center;
@@ -215,17 +158,15 @@
         justify-content: center;
     }
 
-    .nav-dock {
-        gap: 4px;
-    }
 
-    .nav-item {
-        margin: 0 2px;
-        padding: 0.5rem;
-    }
 
     .nav-left {
         gap: 10px;
+    }
+
+    .nav-item:hover {
+        color: #ffffff;
+        padding: 0.6rem 0.6rem;
     }
 
     .nav-item span {

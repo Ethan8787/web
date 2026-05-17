@@ -9,17 +9,18 @@
     gap: 40px;
 }
 
-.intro-card, .section, .header-group {
+.intro-card, .section {
     display: flex;
     flex-direction: column;
     background: var(--card-bg);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    border: var(--card-border);
+    border: none;
+    max-width: 700px;
     border-radius: var(--card-border-radius);
     transition: var(--card-transition);
-    padding: 30px;
-    gap: 20px;
+    padding: 20px;
+    gap: 15px;
 }
 
 .intro-card h2, .section h2 {
@@ -29,11 +30,31 @@
 }
 
 .intro-card p {
-    color: #ffffff;
+    color: var(--text-color);
     font-size: 1.2rem;
     line-height: 2;
     margin: 0 0;
     text-align: justify;
+}
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-text h1 {
+    margin: 0;
+    font-size: 4rem;
+    color: #00FFFF;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.intro-text p {
+    margin: 0;
+    font-size: 1rem;
+    color: #777;
 }
 
 .header-group {
@@ -41,32 +62,23 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-}
-
-.header-group h1 {
-    margin: 0;
-    font-size: 4.5rem;
-    color: #00FFFF;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    gap: 15px;
 }
 
 #avatar {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     object-fit: cover;
     border: none;
     background: rgba(0, 255, 255, 0.05);
 }
 
-
 .button-group {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(4, 1fr);
 }
-
 
 .btn-icon {
     width: 20px !important;
@@ -83,13 +95,11 @@
 .btn-discord:hover {
     background-color: rgba(88, 101, 242, 1);
     background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .btn-youtube:hover {
     background-color: rgba(255, 0, 0, 1);
     background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .btn-instagram:hover {
@@ -101,13 +111,11 @@
     #FCAF45
     );
     background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .btn-github:hover {
     background-color: rgba(48, 54, 61, 1);
     background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .glass-card {
@@ -150,14 +158,10 @@
         margin: 15px auto;
     }
 
-    #avatar {
-        height: 4.5rem;
-        width: 4.5rem;
-        margin-right: 0;
-    }
-
     .header-group {
         text-align: center;
+        flex-direction: row;
+        gap: 15px;
     }
 
     .header-group h1 {

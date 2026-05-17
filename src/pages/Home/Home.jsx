@@ -4,8 +4,6 @@ import discordIcon from '../../assets/icons/discord.svg';
 import youtubeIcon from '../../assets/icons/youtube.svg';
 import instagramIcon from '../../assets/icons/instagram.svg';
 import githubIcon from '../../assets/icons/github.svg';
-import Skills from '../../components/Skills/Skills.jsx';
-import Projects from '../../components/Projects/Projects.jsx';
 import "./Home.css";
 
 export default function Home() {
@@ -28,22 +26,23 @@ export default function Home() {
 
     return (<div className="App">
         <div className="container">
-            <div className="header-group">
-                <div className="avatar-wrapper">
-                    <img id="avatar" src={avatarImg} alt="Avatar"/>
-                </div>
-                <h1>Ethan</h1>
-            </div>
-
             <div className="intro-card">
-                <h2>About Me</h2>
+                <div className="header-group">
+                    <div className="avatar-wrapper">
+                        <img id="avatar" src={avatarImg} alt="Avatar"/>
+                    </div>
+                    <div className="intro-text">
+                        <h1>Ethan</h1>
+                        <p>TW • DEV • STUDENT</p>
+                    </div>
+                </div>
+
                 <div className="card-divider"></div>
+
                 <p>
-                    我是 <span style={{color: 'var(--accent-color)', fontWeight: '2000'}}>Ethan</span>，
-                    一位來自<strong>台灣</strong>的學生，對程式設計充滿熱情。
-                    <br/>
-                    以下是我的社群連結。
+                    你好，我是 <span style={{color: '#fff', fontWeight: '1000'}}>Ethan</span>。 專注資訊科學與程式設計，具備後端、系統設計與前端基礎能力，偏向實作導向學習。
                 </p>
+
                 <div className="button-group">
                     <a className="btn btn-discord" href="https://discord.gg/AyucpYarpa" target="_blank"
                        rel="noreferrer">

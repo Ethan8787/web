@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Route, Routes, useLocation, Navigate} from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar.jsx';
-import Background from './Background/Background.jsx';
+import Background from './components/Background/Background.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
 import Home from './pages/Home/Home.jsx';

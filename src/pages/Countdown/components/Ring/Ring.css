@@ -48,8 +48,8 @@
 
 @media (max-width: 768px) {
     .svg-container svg {
-        width: 70px;
-        height: 70px;
+        width: 85px;
+        height: 85px;
     }
 
     .ring-value {
