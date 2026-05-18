@@ -14,7 +14,7 @@
     background: var(--card-bg);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    border: var(--card-border);
+    border: none;
     border-radius: var(--card-border-radius);
     transition: all 0.4s ease-in-out;
     display: flex;
@@ -29,7 +29,7 @@
 
 .answer-section h2 {
     font-size: 1.8rem;
-    color: var(--text-color);
+    color: #fff;
     text-align: center;
 }
 
