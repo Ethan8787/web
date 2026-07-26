@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Route, Routes, useLocation, Navigate} from 'react-router-dom';
+import {Route, Routes, useLocation} from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar.jsx';
 import Background from './components/Background/Background.jsx';
@@ -17,7 +17,7 @@ export default function App() {
     const [isPaused, setIsPaused] = useState(false);
 
     return (
-        <>
+        <div className="App">
             {!isBackgroundOnly && <Background isPaused={isPaused}/>}
             {!isBackgroundOnly && <Navbar isPaused={isPaused} setIsPaused={setIsPaused}/>}
             <div className="page-wrapper">
@@ -30,6 +30,6 @@ export default function App() {
                 </Routes>
             </div>
             {!isBackgroundOnly && <Footer/>}
-        </>
+        </div>
     );
 }

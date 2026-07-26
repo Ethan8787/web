@@ -103,9 +103,9 @@
 
 .nav-item.active {
     color: #ffffff;
-    background: rgba(88, 101, 242, 0.14);
-    border: 1px solid rgba(88, 101, 242, 0.5);
-    box-shadow: 0 0 18px rgba(88, 101, 242, 0.12);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
     font-weight: 600;
 }
 
@@ -130,7 +130,7 @@
 
 .nav-control-btn:hover {
     color: #5865f2;
-    background: rgba(88, 101, 242, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     transform: scale(1.1);
 }
 

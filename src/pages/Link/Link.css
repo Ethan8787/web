@@ -1,15 +1,16 @@
-.game-id-layout {
+.link-layout {
     display: flex;
-    margin: 15px auto;
-    padding: 20px;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative;
     width: 100%;
-    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
 }
 
-.game-id-main {
-    flex: 1;
+.link-main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +18,7 @@
     width: 100%;
 }
 
-.game-id-list {
+.link-list {
     width: 100%;
     max-width: 480px;
     display: flex;
@@ -25,7 +26,7 @@
     gap: 12px;
 }
 
-.game-id-item {
+.link-item {
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(2px);
@@ -37,9 +38,10 @@
     align-items: center;
     padding: 18px 24px;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.game-id-item:hover {
+.link-item:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
@@ -60,7 +62,7 @@
     transition: all 0.3s ease;
 }
 
-.game-id-content-left {
+.link-content-left {
     display: flex;
     align-items: center;
     gap: 18px;
@@ -100,21 +102,21 @@
     transition: all 0.25s ease;
 }
 
-.link-btn:hover {
+.link-item:hover .link-btn {
     color: #fff;
     transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
-    .game-id-layout {
+    .link-layout {
         padding: 12px;
     }
 
-    .game-id-list {
+    .link-list {
         max-width: 100%;
     }
 
-    .game-id-item {
+    .link-item {
         padding: 16px 18px;
     }
 }

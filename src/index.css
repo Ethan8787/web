@@ -48,8 +48,15 @@
 
 html, body {
     width: 100%;
+    min-height: 100vh;
     font-family: var(--font-main), sans-serif;
     background-color: #000000;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 ::-webkit-scrollbar {

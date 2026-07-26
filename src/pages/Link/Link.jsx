@@ -1,7 +1,7 @@
 import React from 'react';
 import './Link.css';
 
-const GameIdMain = ({ platform, color }) => {
+const LinkMain = ({ platform, color }) => {
     const icons = {
         Discord: (
             <svg viewBox="0 0 32 32" fill={color}>
@@ -86,37 +86,40 @@ const accounts = [
 
 const Link = () => {
     return (
-        <div className="game-id-layout">
-            <main className="game-id-main">
-                <div className="game-id-list">
+        <div className="link-layout">
+            <main className="link-main">
+                <div className="link-list">
                     {accounts.map((acc) => (
-                        <React.Fragment key={acc.id}>
-                            <div className="game-id-item">
-                                <div className="game-id-content-left">
-                                    <div className="icon-wrapper">
-                                        <GameIdMain platform={acc.platform} color={acc.color} />
-                                    </div>
-                                    <div className="text-wrapper">
-                                        <span className="user-name">{acc.username}</span>
-                                        <span className="platform-name">{acc.handle}</span>
-                                    </div>
+                        <a
+                            key={acc.id}
+                            href={acc.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="link-item"
+                        >
+                            <div className="link-content-left">
+                                <div className="icon-wrapper">
+                                    <LinkMain platform={acc.platform} color={acc.color} />
                                 </div>
-
-                                <a href={acc.url} target="_blank" rel="noreferrer" className="link-btn">
-                                    <svg
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                    >
-                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                                    </svg>
-                                </a>
+                                <div className="text-wrapper">
+                                    <span className="user-name">{acc.username}</span>
+                                    <span className="platform-name">{acc.handle}</span>
+                                </div>
                             </div>
-                            <div className="card-divider"></div>
-                        </React.Fragment>
+
+                            <div className="link-btn">
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                >
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                                </svg>
+                            </div>
+                        </a>
                     ))}
                 </div>
             </main>

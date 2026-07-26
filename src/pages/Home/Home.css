@@ -1,12 +1,20 @@
+.App {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     position: relative;
     z-index: 10;
+    width: 100%;
     max-width: 900px;
-    margin: 15px auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .intro {
@@ -21,7 +29,7 @@
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
     max-width: 650px;
     margin: 0 auto;
-    padding: 48px 32px;
+    padding: 32px;
     gap: 24px;
     text-align: center;
 }
@@ -51,7 +59,7 @@
     font-weight: 800;
     letter-spacing: -0.02em;
     color: #5865f2;
-    text-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 .intro-desc {
@@ -94,10 +102,10 @@
 
 .btn:hover {
     color: #fff;
-    background: rgba(88, 101, 242, 0.15);
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-3px);
-    border: 1px solid rgba(88, 101, 242, 0.5);
-    box-shadow: 0 0 18px rgba(88, 101, 242, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
 }
 
 .btn-icon {
@@ -107,7 +115,6 @@
     filter: invert(1) brightness(2);
     transition: transform 0.5s ease;
 }
-
 
 @media (max-width: 600px) {
     .header-group {

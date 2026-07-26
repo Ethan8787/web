@@ -1,10 +1,9 @@
 footer {
-    position: absolute;
+    position: relative;
     color: #e0e0e0;
     width: 100%;
     font-size: 1rem;
     z-index: 100;
-    transition: var(--card-transition);
 }
 
 .bottom {

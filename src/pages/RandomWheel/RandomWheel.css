@@ -12,7 +12,7 @@
     flex-direction: column;
     align-items: center;
     max-width: 450px;
-    margin: 35px auto;
+    margin: 0 auto;
 }
 
 .wheel-main {
@@ -119,7 +119,7 @@
     color: #5865F2;
     font-size: 1.75rem;
     font-weight: 800;
-    text-shadow: 0 0 10px rgba(88, 101, 242, 0.5);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .wheel-input-group {
