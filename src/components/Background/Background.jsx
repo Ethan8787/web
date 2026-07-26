@@ -24,7 +24,7 @@ const Background = ({ isPaused }) => {
         window.addEventListener('resize', resizeCanvas);
 
         const gridStep = 10;
-        const levels = 7;
+        const levels = 8;
 
         const render = (now) => {
             const dt = (now - lastTime) / 1000;
@@ -40,7 +40,7 @@ const Background = ({ isPaused }) => {
             ctx.fillStyle = '#000000';
             ctx.fillRect(0, 0, width, height);
 
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
             ctx.lineWidth = 1.2;
 
             const cols = Math.floor(width / gridStep) + 1;
