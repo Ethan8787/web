@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import './Navbar.css';
-import {CodeIcon, DataIcon, ExamIcon, HomeIcon, LogoIcon, LinkIcon} from './icons.jsx';
+import {WheelIcon, HomeIcon, LogoIcon, LinkIcon} from './icons.jsx';
 
 export default function Navbar({isPaused, setIsPaused}) {
     const [isVisible, setIsVisible] = useState(true);
@@ -40,22 +40,14 @@ export default function Navbar({isPaused, setIsPaused}) {
                             <HomeIcon/>
                             <span>首頁</span>
                         </NavLink>
-                        <NavLink to="/server" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
-                            <DataIcon/>
-                            <span>伺服器</span>
-                        </NavLink>
-                        <NavLink to="/answer" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
-                            <CodeIcon/>
-                            <span>答案</span>
-                        </NavLink>
                         <NavLink to="/link"
                                  className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
                             <LinkIcon/>
                             <span>連結</span>
                         </NavLink>
-                        <NavLink to="/115" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
-                            <ExamIcon/>
-                            <span>倒數</span>
+                        <NavLink to="/wheel" className={({isActive}) => (isActive ? 'nav-item active' : 'nav-item')}>
+                            <WheelIcon/>
+                            <span>轉盤</span>
                         </NavLink>
                     </div>
                 </div>

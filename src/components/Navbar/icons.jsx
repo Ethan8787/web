@@ -62,3 +62,18 @@ export function ExamIcon(props) {
               strokeLinejoin="round"/>
     </svg>);
 }
+
+export function WheelIcon(props) {
+    return (
+        <svg className="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+            <path d="M12 2.5L20 7V17L12 21.5L4 17V7L12 2.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d="M12 2.5V21.5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d="M4 7L12 11.5L20 7" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <circle cx="12" cy="7" r="1" fill="currentColor" />
+            <circle cx="7.5" cy="11.5" r="1" fill="currentColor" />
+            <circle cx="8.5" cy="16" r="1" fill="currentColor" />
+            <circle cx="16.5" cy="11.5" r="1" fill="currentColor" />
+            <circle cx="15.5" cy="16" r="1" fill="currentColor" />
+        </svg>
+    );
+}

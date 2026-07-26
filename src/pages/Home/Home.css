@@ -9,52 +9,21 @@
     gap: 40px;
 }
 
-.intro-card, .section {
-    display: flex;
-    flex-direction: column;
-    background: var(--card-bg);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border: none;
-    max-width: 700px;
-    border-radius: var(--card-border-radius);
-    transition: var(--card-transition);
-    padding: 20px;
-    gap: 15px;
-}
-
-.intro-card h2, .section h2 {
-    font-size: 2rem;
-    text-align: center;
-    color: #ffffff;
-}
-
-.intro-card p {
-    color: var(--text-color);
-    font-size: 1.2rem;
-    line-height: 2;
-    margin: 0 0;
-    text-align: justify;
-}
-
-.intro-text {
+.intro {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-.intro-text h1 {
-    margin: 0;
-    font-size: 4rem;
-    color: #00FFFF;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-}
-
-.intro-text p {
-    margin: 0;
-    font-size: 1rem;
-    color: #777;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 16px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    gap: 24px;
+    text-align: center;
 }
 
 .header-group {
@@ -65,107 +34,89 @@
     gap: 15px;
 }
 
+.avatar-wrapper {
+    position: relative;
+}
+
 #avatar {
-    width: 5rem;
-    height: 5rem;
+    width: 4.5rem;
+    height: 4.5rem;
     border-radius: 50%;
     object-fit: cover;
-    border: none;
-    background: rgba(0, 255, 255, 0.05);
+}
+
+.intro-text h1 {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #5865f2;
+    text-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
+}
+
+.intro-desc {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 500px;
+}
+
+.intro-desc strong {
+    color: #fff;
+    font-weight: 700;
 }
 
 .button-group {
     display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    max-width: 440px;
+    margin-top: 8px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
-    grid-template-columns: repeat(4, 1fr);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+    color: #fff;
+    background: rgba(88, 101, 242, 0.15);
+    transform: translateY(-3px);
+    border: 1px solid rgba(88, 101, 242, 0.5);
+    box-shadow: 0 0 18px rgba(88, 101, 242, 0.12);
 }
 
 .btn-icon {
-    width: 20px !important;
-    height: 20px !important;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
     filter: invert(1) brightness(2);
-    transition: all 0.8s ease;
+    transition: transform 0.5s ease;
 }
 
-.btn:hover .btn-icon {
-    transform: rotate(335deg);
-}
 
-.btn-discord:hover {
-    background-color: rgba(88, 101, 242, 1);
-    background-clip: padding-box;
-}
-
-.btn-youtube:hover {
-    background-color: rgba(255, 0, 0, 1);
-    background-clip: padding-box;
-}
-
-.btn-instagram:hover {
-    background: linear-gradient(135deg,
-    #833AB4,
-    #C13584,
-    #E1306C,
-    #F77737,
-    #FCAF45
-    );
-    background-clip: padding-box;
-}
-
-.btn-github:hover {
-    background-color: rgba(48, 54, 61, 1);
-    background-clip: padding-box;
-}
-
-.glass-card {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    padding: 2rem;
-    width: 100%;
-    max-width: 500px;
-    color: #ffffff;
-}
-
-.code-box {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.copy-btn {
-    background: transparent;
-    color: #00FFFF;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    transition: transform 0.2s;
-}
-
-.copy-btn:hover {
-    transform: scale(1.2);
-}
-
-@media (max-width: 768px) {
-    .container {
-        margin: 15px auto;
-    }
-
+@media (max-width: 600px) {
     .header-group {
-        text-align: center;
-        flex-direction: row;
-        gap: 15px;
+        flex-direction: column;
+        gap: 12px;
     }
 
-    .header-group h1 {
-        font-size: 3.5rem;
+    .intro-text h1 {
+        font-size: 2.8rem;
     }
 
     .button-group {

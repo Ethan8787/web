@@ -42,11 +42,12 @@
     gap: 0;
     padding: 0.4rem;
     border-radius: 50px;
-    background: var(--card-bg);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    border: var(--card-border);
-    transition: var(--card-transition);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .nav-item {
@@ -102,9 +103,9 @@
 
 .nav-item.active {
     color: #ffffff;
-    background: rgba(0, 255, 255, 0.14);
-    border: 1px solid rgba(0, 255, 255, 0.18);
-    box-shadow: 0 0 18px rgba(0, 255, 255, 0.12);
+    background: rgba(88, 101, 242, 0.14);
+    border: 1px solid rgba(88, 101, 242, 0.5);
+    box-shadow: 0 0 18px rgba(88, 101, 242, 0.12);
     font-weight: 600;
 }
 
@@ -128,8 +129,8 @@
 }
 
 .nav-control-btn:hover {
-    color: #00fff2;
-    background: rgba(0, 255, 242, 0.1);
+    color: #5865f2;
+    background: rgba(88, 101, 242, 0.1);
     transform: scale(1.1);
 }
 

@@ -6,11 +6,8 @@ import Background from './components/Background/Background.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
 import Home from './pages/Home/Home.jsx';
-import Code from './pages/Code/Code.jsx';
-import Answer from './pages/Answer/Answer.jsx';
 import Link from './pages/Link/Link.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
-import ExamCountdown from "./pages/Countdown/Countdown.jsx";
 import RandomWheel from "./pages/RandomWheel/RandomWheel.jsx";
 import './App.css';
 
@@ -26,12 +23,9 @@ export default function App() {
             <div className="page-wrapper">
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/code" element={<Code/>}/>
                     <Route path="/link" element={<Link/>}/>
                     <Route path="/wheel" element={<RandomWheel/>}/>
-                    <Route path="/115" element={<ExamCountdown/>}/>
                     <Route path="/background" element={<Background isPaused={isPaused}/>}/>
-                    <Route path="/answer" element={<Answer/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </div>

@@ -1,15 +1,14 @@
-.bg-canvas-wrapper {
+.background {
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
     z-index: 0;
     overflow: hidden;
-    pointer-events: none;
+    background: #000000;
 }
 
-.bg-canvas-wrapper canvas {
-    display: block;
+.contour-canvas {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
 }

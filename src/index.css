@@ -31,34 +31,12 @@
 }
 
 :root {
-    --bg-color: #000000;
     --text-color: #bbbbbb;
     --accent-color: #00FFFF;
-    --card-bg: rgba(10, 10, 10, 0.3);
-    --card-border: 1px solid rgba(255, 255, 255, 0.2);
-    --card-border-radius: 20px;
-    --card-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --font-main: 'poppins', 'pinfang', sans-serif;
     --font-secondary: 'ubuntu', 'pinfang', sans-serif;
     --font-third: 'jett', 'pinfang', sans-serif;
-    --bg-glass: rgba(0, 0, 0, 0.2);
-    --border-glass: rgba(255, 255, 255, 0.1);
-    --accent-blue: #007aff;
-    --text-main: #ffffff;
-    --text-dim: #a0a0a0;
     --font-mono: 'JetBrains Mono', 'Ubuntu Mono', monospace;
-    --ios-dark-blue: #5856d6;
-    --ios-deep-blue: #007aff;
-    --ios-blue: #34aadc;
-    --ios-light-blue: #5ac8fa;
-    --ios-green: #34c759;
-    --ios-pink: #ff2d55;
-    --ios-red: #ff3b30;
-    --ios-orange: #ff9500;
-    --ios-yellow: #ffcc00;
-    --ios-grey: #8e8e93;
-    --ios-light-grey: #ceced2;
-    --ios-background: #efeff4;
 }
 
 * {
@@ -77,26 +55,4 @@ html, body {
 ::-webkit-scrollbar {
     width: 6px;
     display: none;
-}
-
-.card-divider {
-    height: 2px;
-    background: rgba(255, 255, 255, 0.2);
-    flex-shrink: 0;
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    background: rgba(15, 15, 15, 0);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #ffffff;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
