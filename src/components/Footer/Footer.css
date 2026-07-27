@@ -4,6 +4,10 @@ footer {
     width: 100%;
     font-size: 1rem;
     z-index: 100;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 16px;
 }
 
 .bottom {

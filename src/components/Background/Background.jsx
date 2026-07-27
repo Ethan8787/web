@@ -20,8 +20,8 @@ const Background = ({ isPaused }) => {
         let time = 0;
         let lastTime = performance.now();
 
-        const gridStep = 6;
-        const levels = 8;
+        const gridStep = 10;
+        const levels = 7;
 
         let cols = 0;
         let rows = 0;
