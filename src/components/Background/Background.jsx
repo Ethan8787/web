@@ -2,6 +2,31 @@ import React, { useEffect, useRef } from 'react';
 import { createNoise3D } from 'simplex-noise';
 import './Background.css';
 
+// 依裝置能力分級：格點越密、層級越多、更新頻率越高 = 品質越好但越吃效能
+const QUALITY_TIERS = {
+    high:   { gridStep: 10, levels: 7, updateHz: 60, renderScale: 1 },
+    medium: { gridStep: 12, levels: 6, updateHz: 30, renderScale: 0.75 },
+    low:    { gridStep: 16, levels: 5, updateHz: 20, renderScale: 0.55 },
+};
+
+function detectInitialTier() {
+    if (typeof navigator === 'undefined') return 'high';
+    const cores = navigator.hardwareConcurrency || 4;
+    const mem = navigator.deviceMemory || 4; // Safari/iOS 不支援此 API，預設當作 4
+    const isCoarsePointer = window.matchMedia?.('(pointer: coarse)').matches;
+    const isNarrow = window.innerWidth < 768;
+
+    let score = 0;
+    if (cores <= 4) score += 1;
+    if (mem <= 4) score += 1;
+    if (isCoarsePointer) score += 1;
+    if (isNarrow) score += 1;
+
+    if (score >= 3) return 'low';
+    if (score >= 1) return 'medium';
+    return 'high';
+}
+
 const Background = ({ isPaused }) => {
     const canvasRef = useRef(null);
     const isPausedRef = useRef(isPaused);
@@ -18,45 +43,54 @@ const Background = ({ isPaused }) => {
         const noise3D = createNoise3D();
         let animationFrameId;
         let time = 0;
-        let lastTime = performance.now();
+        let lastFrameTime = performance.now();
 
-        const gridStep = 6;
-        const levels = 8;
+        let tierName = detectInitialTier();
+        let tier = QUALITY_TIERS[tierName];
 
         let cols = 0;
         let rows = 0;
         let grid = null;
+        let cachedPath = null; // 只有重算網格時才重建，其餘 RAF 直接沿用
+
+        let accumulator = 0; // 把「運算」跟「畫面」的頻率脫鉤
+
+        // 自動降級用的耗時量測
+        let sampleCount = 0;
+        let sampleTotal = 0;
+        const SAMPLE_WINDOW = 20;
 
         const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const scale = tier.renderScale;
+            canvas.width = Math.floor(window.innerWidth * scale);
+            canvas.height = Math.floor(window.innerHeight * scale);
 
-            cols = Math.floor(canvas.width / gridStep) + 1;
-            rows = Math.floor(canvas.height / gridStep) + 1;
+            cols = Math.floor(canvas.width / tier.gridStep) + 1;
+            rows = Math.floor(canvas.height / tier.gridStep) + 1;
 
             grid = new Float32Array(cols * rows);
+            cachedPath = null;
         };
 
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const render = (now) => {
-            const dt = (now - lastTime) / 1000;
-            lastTime = now;
+        let isTabVisible = true;
+        const handleVisibility = () => {
+            isTabVisible = document.visibilityState === 'visible';
+            if (isTabVisible) lastFrameTime = performance.now();
+        };
+        document.addEventListener('visibilitychange', handleVisibility);
 
-            if (!isPausedRef.current) {
-                time += 0.02 * Math.min(dt, 0.1);
-            }
+        const applyTier = (name) => {
+            if (name === tierName) return;
+            tierName = name;
+            tier = QUALITY_TIERS[tierName];
+            resizeCanvas();
+        };
 
-            const width = canvas.width;
-            const height = canvas.height;
-
-            ctx.fillStyle = '#000000';
-            ctx.fillRect(0, 0, width, height);
-
-            ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
-            ctx.lineWidth = 1.5;
-            ctx.lineCap = 'round';
+        const computeGridAndPath = () => {
+            const gridStep = tier.gridStep;
 
             for (let r = 0; r < rows; r++) {
                 for (let c = 0; c < cols; c++) {
@@ -73,10 +107,10 @@ const Background = ({ isPaused }) => {
                 }
             }
 
-            ctx.beginPath();
+            const path = new Path2D();
 
-            for (let level = 1; level < levels; level++) {
-                const threshold = level / levels;
+            for (let level = 1; level < tier.levels; level++) {
+                const threshold = level / tier.levels;
 
                 for (let r = 0; r < rows - 1; r++) {
                     for (let c = 0; c < cols - 1; c++) {
@@ -103,30 +137,78 @@ const Background = ({ isPaused }) => {
 
                         switch (cellSquare) {
                             case 1: case 14:
-                                ctx.moveTo(...left); ctx.lineTo(...bottom); break;
+                                path.moveTo(...left); path.lineTo(...bottom); break;
                             case 2: case 13:
-                                ctx.moveTo(...bottom); ctx.lineTo(...right); break;
+                                path.moveTo(...bottom); path.lineTo(...right); break;
                             case 3: case 12:
-                                ctx.moveTo(...left); ctx.lineTo(...right); break;
+                                path.moveTo(...left); path.lineTo(...right); break;
                             case 4: case 11:
-                                ctx.moveTo(...top); ctx.lineTo(...right); break;
+                                path.moveTo(...top); path.lineTo(...right); break;
                             case 5:
-                                ctx.moveTo(...left); ctx.lineTo(...top);
-                                ctx.moveTo(...bottom); ctx.lineTo(...right); break;
+                                path.moveTo(...left); path.lineTo(...top);
+                                path.moveTo(...bottom); path.lineTo(...right); break;
                             case 6: case 9:
-                                ctx.moveTo(...top); ctx.lineTo(...bottom); break;
+                                path.moveTo(...top); path.lineTo(...bottom); break;
                             case 7: case 8:
-                                ctx.moveTo(...left); ctx.lineTo(...top); break;
+                                path.moveTo(...left); path.lineTo(...top); break;
                             case 10:
-                                ctx.moveTo(...top); ctx.lineTo(...right);
-                                ctx.moveTo(...left); ctx.lineTo(...bottom); break;
+                                path.moveTo(...top); path.lineTo(...right);
+                                path.moveTo(...left); path.lineTo(...bottom); break;
                             default: break;
                         }
                     }
                 }
             }
 
-            ctx.stroke();
+            cachedPath = path;
+        };
+
+        const draw = () => {
+            ctx.fillStyle = '#111';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (cachedPath) {
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+                ctx.lineWidth = 1.5;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.stroke(cachedPath);
+            }
+        };
+
+        const render = (now) => {
+            const dt = (now - lastFrameTime) / 1000;
+            lastFrameTime = now;
+
+            if (!isPausedRef.current && isTabVisible) {
+                time += 0.02 * Math.min(dt, 0.1);
+                accumulator += dt;
+
+                const updateInterval = 1 / tier.updateHz;
+                if (accumulator >= updateInterval) {
+                    accumulator = 0;
+
+                    const t0 = performance.now();
+                    computeGridAndPath();
+                    const cost = performance.now() - t0;
+
+                    sampleTotal += cost;
+                    sampleCount += 1;
+                    if (sampleCount >= SAMPLE_WINDOW) {
+                        const avg = sampleTotal / sampleCount;
+                        sampleTotal = 0;
+                        sampleCount = 0;
+
+                        // 平均一次運算超過該 tier 更新間隔的 70%，代表快撐不住了，降一級
+                        if (avg > updateInterval * 1000 * 0.7) {
+                            if (tierName === 'high') applyTier('medium');
+                            else if (tierName === 'medium') applyTier('low');
+                        }
+                    }
+
+                    draw();
+                }
+            }
 
             animationFrameId = requestAnimationFrame(render);
         };
@@ -135,6 +217,7 @@ const Background = ({ isPaused }) => {
 
         return () => {
             window.removeEventListener('resize', resizeCanvas);
+            document.removeEventListener('visibilitychange', handleVisibility);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
