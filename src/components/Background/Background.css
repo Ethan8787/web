@@ -3,7 +3,6 @@
     inset: 0;
     z-index: 0;
     overflow: hidden;
-    background: #000000;
 }
 
 .contour-canvas {

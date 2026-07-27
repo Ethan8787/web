@@ -4,6 +4,11 @@ import './Background.css';
 
 const Background = ({ isPaused }) => {
     const canvasRef = useRef(null);
+    const isPausedRef = useRef(isPaused);
+
+    useEffect(() => {
+        isPausedRef.current = isPaused;
+    }, [isPaused]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -15,23 +20,32 @@ const Background = ({ isPaused }) => {
         let time = 0;
         let lastTime = performance.now();
 
+        const gridStep = 6;
+        const levels = 8;
+
+        let cols = 0;
+        let rows = 0;
+        let grid = null;
+
         const resizeCanvas = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+
+            cols = Math.floor(canvas.width / gridStep) + 1;
+            rows = Math.floor(canvas.height / gridStep) + 1;
+
+            grid = new Float32Array(cols * rows);
         };
 
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const gridStep = 10;
-        const levels = 8;
-
         const render = (now) => {
             const dt = (now - lastTime) / 1000;
             lastTime = now;
 
-            if (!isPaused) {
-                time += 0.08 * Math.min(dt, 0.1);
+            if (!isPausedRef.current) {
+                time += 0.02 * Math.min(dt, 0.1);
             }
 
             const width = canvas.width;
@@ -40,13 +54,9 @@ const Background = ({ isPaused }) => {
             ctx.fillStyle = '#000000';
             ctx.fillRect(0, 0, width, height);
 
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.lineWidth = 1.2;
-
-            const cols = Math.floor(width / gridStep) + 1;
-            const rows = Math.floor(height / gridStep) + 1;
-
-            const grid = new Float32Array(cols * rows);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
+            ctx.lineWidth = 1.5;
+            ctx.lineCap = 'round';
 
             for (let r = 0; r < rows; r++) {
                 for (let c = 0; c < cols; c++) {
@@ -63,14 +73,13 @@ const Background = ({ isPaused }) => {
                 }
             }
 
+            ctx.beginPath();
+
             for (let level = 1; level < levels; level++) {
                 const threshold = level / levels;
 
                 for (let r = 0; r < rows - 1; r++) {
                     for (let c = 0; c < cols - 1; c++) {
-                        const x = c * gridStep;
-                        const y = r * gridStep;
-
                         const vTL = grid[r * cols + c];
                         const vTR = grid[r * cols + (c + 1)];
                         const vBR = grid[(r + 1) * cols + (c + 1)];
@@ -84,12 +93,14 @@ const Background = ({ isPaused }) => {
 
                         if (cellSquare === 0 || cellSquare === 15) continue;
 
+                        const x = c * gridStep;
+                        const y = r * gridStep;
+
                         const top = [x + (gridStep * (threshold - vTL)) / (vTR - vTL || 0.0001), y];
                         const right = [x + gridStep, y + (gridStep * (threshold - vTR)) / (vBR - vTR || 0.0001)];
                         const bottom = [x + (gridStep * (threshold - vBL)) / (vBR - vBL || 0.0001), y + gridStep];
                         const left = [x, y + (gridStep * (threshold - vTL)) / (vBL - vTL || 0.0001)];
 
-                        ctx.beginPath();
                         switch (cellSquare) {
                             case 1: case 14:
                                 ctx.moveTo(...left); ctx.lineTo(...bottom); break;
@@ -111,10 +122,11 @@ const Background = ({ isPaused }) => {
                                 ctx.moveTo(...left); ctx.lineTo(...bottom); break;
                             default: break;
                         }
-                        ctx.stroke();
                     }
                 }
             }
+
+            ctx.stroke();
 
             animationFrameId = requestAnimationFrame(render);
         };
@@ -125,7 +137,7 @@ const Background = ({ isPaused }) => {
             window.removeEventListener('resize', resizeCanvas);
             cancelAnimationFrame(animationFrameId);
         };
-    }, [isPaused]);
+    }, []);
 
     return (
         <div className="background">
