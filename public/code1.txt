@@ -1,8 +1,0 @@
-print("90302 何康治")
-amount = int(input("請輸入書本冊數\n> "))
-price = 0
-if amount < 6:
-    price = 400 * amount
-else:
-    price = 400 * amount * 0.9
-print(f"需付金額為: {price}")
