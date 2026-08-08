@@ -10,7 +10,7 @@ import Link from './pages/Link/Link.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
 import RandomWheel from "./pages/RandomWheel/RandomWheel.jsx";
 import './App.css';
-import Amethyst from "./pages/Tutorial/Amethyst.jsx";
+import Amethyst from "../unused/Amethyst.jsx";
 
 export default function App() {
     const location = useLocation();
@@ -27,7 +27,6 @@ export default function App() {
                     <Route path="/link" element={<Link/>}/>
                     <Route path="/wheel" element={<RandomWheel/>}/>
                     <Route path="/background" element={<Background isPaused={isPaused}/>}/>
-                    <Route path="/tutorial-amethyst" element={<Amethyst/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </div>

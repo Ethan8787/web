@@ -1,5 +1,4 @@
 .App {
-    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,18 +8,4 @@
 .page-wrapper {
     background: #000000;
     width: 100%;
-}
-
-main {
-    width: 100%;
-}
-
-.tool-full-page {
-    min-height: calc(100vh - 80px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
 }
