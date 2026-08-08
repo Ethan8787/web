@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ethantw.dev/sitemap.xml
+Sitemap: https://www.ethantw.dev/sitemap.xml

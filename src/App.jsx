@@ -10,10 +10,11 @@ import Link from './pages/Link/Link.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
 import RandomWheel from "./pages/RandomWheel/RandomWheel.jsx";
 import './App.css';
+import Amethyst from "./pages/Tutorial/Amethyst.jsx";
 
 export default function App() {
     const location = useLocation();
-    const isBackgroundOnly = location.pathname === '/background';
+    const isBackgroundOnly = location.pathname === '/background' || location.pathname === '/tutorial-amethyst';
     const [isPaused, setIsPaused] = useState(false);
 
     return (
@@ -26,6 +27,7 @@ export default function App() {
                     <Route path="/link" element={<Link/>}/>
                     <Route path="/wheel" element={<RandomWheel/>}/>
                     <Route path="/background" element={<Background isPaused={isPaused}/>}/>
+                    <Route path="/tutorial-amethyst" element={<Amethyst/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </div>
