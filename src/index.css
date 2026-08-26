@@ -49,9 +49,7 @@ html, body {
     width: 100%;
     min-height: 100vh;
     font-family: var(--font-main), sans-serif;
-    background-color: #f8fafc;
-    color: #0f172a;
-    line-height: 1.5;
+    background-color: #000000;
 }
 
 #root {
