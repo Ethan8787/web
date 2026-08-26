@@ -10,7 +10,6 @@ import Link from './pages/Link/Link.jsx';
 import NotFound from './pages/NotFound/NotFound.jsx';
 import RandomWheel from "./pages/RandomWheel/RandomWheel.jsx";
 import './App.css';
-import Amethyst from "../unused/Amethyst.jsx";
 
 export default function App() {
     const location = useLocation();
