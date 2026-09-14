@@ -30,7 +30,7 @@
     max-width: 650px;
     margin: 0 auto;
     padding: 32px;
-    gap: 24px;
+    gap: 16px;
     text-align: center;
 }
 
@@ -39,7 +39,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .avatar-wrapper {
@@ -47,19 +47,19 @@
 }
 
 #avatar {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4.2rem;
+    height: 4.2rem;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .intro-text h1 {
-    margin: 0;
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 800;
-    letter-spacing: -0.02em;
+    line-height: 1;
     color: #ffffff;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    transform: translateY(1px);
 }
 
 .intro-desc {
@@ -81,14 +81,13 @@
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
     max-width: 440px;
-    margin-top: 8px;
 }
 
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
@@ -102,7 +101,7 @@
 
 .btn:hover {
     color: #fff;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-3px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
@@ -112,21 +111,36 @@
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    filter: invert(1) brightness(2);
+    filter: invert(0) brightness(2);
     transition: transform 0.5s ease;
 }
 
 @media (max-width: 600px) {
-    .header-group {
-        flex-direction: column;
+    .container {
+        padding: 12px;
+    }
+
+    .intro {
+        padding: 20px 16px;
         gap: 12px;
     }
 
-    .intro-text h1 {
-        font-size: 2.8rem;
+    #avatar {
+        width: 3.5rem;
+        height: 3.5rem;
     }
 
-    .button-group {
-        grid-template-columns: 1fr;
+    .intro-text h1 {
+        font-size: 3rem;
+    }
+
+    .intro-desc {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .btn {
+        padding: 10px 12px;
+        font-size: 0.875rem;
     }
 }

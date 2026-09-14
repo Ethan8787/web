@@ -7,9 +7,17 @@ import githubIcon from '../../assets/icons/github.svg';
 import "./Home.css";
 
 const SOCIAL_LINKS = [
+
+
+    {
+        name: 'GitHub',
+        url: 'https://github.com/Ethan8787/',
+        icon: githubIcon,
+        className: 'btn-github',
+    },
     {
         name: 'Discord',
-        url: 'https://discord.gg/AyucpYarpa',
+        url: 'https://discord.com/users/840394442275815455',
         icon: discordIcon,
         className: 'btn-discord',
     },
@@ -25,12 +33,6 @@ const SOCIAL_LINKS = [
         icon: instagramIcon,
         className: 'btn-instagram',
     },
-    {
-        name: 'GitHub',
-        url: 'https://github.com/Ethan8787/',
-        icon: githubIcon,
-        className: 'btn-github',
-    },
 ];
 
 export default function Home() {
@@ -39,16 +41,14 @@ export default function Home() {
             <div className="container">
                 <section className="intro">
                     <header className="header-group">
-                        <div className="avatar-wrapper">
-                            <img id="avatar" src={avatarImg} alt="Ethan Profile Avatar" />
-                        </div>
+                        <img id="avatar" src={avatarImg} alt="Ethan Profile Avatar" />
                         <div className="intro-text">
                             <h1>Ethan</h1>
                         </div>
                     </header>
 
                     <p className="intro-desc">
-                        Hi, I'm <strong>Ethan</strong>, a programmer from Taiwan.
+                        A <strong>programmer</strong> from Taiwan.
                     </p>
 
                     <nav className="button-group" aria-label="Social Links">

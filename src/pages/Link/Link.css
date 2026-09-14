@@ -20,7 +20,7 @@
 
 .link-list {
     width: 100%;
-    max-width: 480px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -28,7 +28,7 @@
 
 .link-item {
     border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 16px;
@@ -42,9 +42,10 @@
 }
 
 .link-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
 }
 
 .icon-wrapper {
@@ -108,15 +109,7 @@
 }
 
 @media (max-width: 768px) {
-    .link-layout {
-        padding: 12px;
-    }
-
     .link-list {
-        max-width: 100%;
-    }
-
-    .link-item {
-        padding: 16px 18px;
+        max-width: 300px;
     }
 }

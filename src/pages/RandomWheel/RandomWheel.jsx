@@ -15,20 +15,16 @@ export default function RandomWheel() {
 
     const getItemColor = (index, totalItems) => {
         if (totalItems <= 1) return baseColors[0];
-
         const colorCount = baseColors.length;
         let colorIndex = index % colorCount;
-
         if (totalItems > 1 && (totalItems % colorCount === 1) && (index === totalItems - 1)) {
             colorIndex = (colorIndex + 1) % colorCount;
         }
-
         return baseColors[colorIndex];
     };
 
     const handleSpin = () => {
         if (isSpinning || items.length < 2) return;
-
         setIsSpinning(true);
         setWinnerIndex(null);
 
@@ -100,7 +96,11 @@ export default function RandomWheel() {
                                 </div>
 
                                 <div className="wheel-pointer-bottom"></div>
-                                <button className="spin-btn" onClick={handleSpin} disabled={isSpinning || items.length < 2}>
+                                <button
+                                    className="spin-btn"
+                                    onClick={handleSpin}
+                                    disabled={isSpinning || items.length < 2}
+                                >
                                     SPIN
                                 </button>
                             </div>
@@ -120,20 +120,20 @@ export default function RandomWheel() {
                                     placeholder="新增選項..."
                                 />
                                 <button className="add-btn" onClick={addItem} disabled={!newItem.trim()}>
-                                    Add
+                                    新增
                                 </button>
                             </div>
 
                             <div className="items-header">
-                                <span className="items-count">{items.length} ITEMS</span>
+                                <span className="items-count">{items.length} 個選項</span>
                                 {items.length < 2 && (
-                                    <span className="items-hint">Add at least 2 to spin</span>
+                                    <span className="items-hint">至少需 2 個選項</span>
                                 )}
                             </div>
 
                             <div className="items-list">
                                 {items.length === 0 ? (
-                                    <div className="items-empty">No items yet — add one above</div>
+                                    <div className="items-empty">尚未新增選項</div>
                                 ) : (
                                     items.map((item, i) => (
                                         <div key={i} className="list-item">
@@ -144,9 +144,13 @@ export default function RandomWheel() {
                                                 />
                                                 <span className="item-name">{item}</span>
                                             </div>
-                                            <span className="delete-x" onClick={() => deleteItem(i)}>
-                                                ×
-                                            </span>
+                                            <button
+                                                className="delete-btn"
+                                                onClick={() => deleteItem(i)}
+                                                aria-label="刪除選項"
+                                            >
+                                                ✕
+                                            </button>
                                         </div>
                                     ))
                                 )}

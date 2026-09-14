@@ -42,7 +42,7 @@
     gap: 0;
     padding: 0.4rem;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.01);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -117,7 +117,7 @@
 .nav-control-btn {
     background: transparent;
     border: none;
-    color: rgba(221, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -128,7 +128,7 @@
 }
 
 .nav-control-btn:hover {
-    color: #5865f2;
+    color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
     transform: scale(1.1);
 }
