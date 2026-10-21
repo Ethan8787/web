@@ -1,5 +1,12 @@
+html,
+body {
+    margin: 0;
+    background: #000;
+}
+
 .App {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     width: 100%;

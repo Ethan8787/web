@@ -7,7 +7,6 @@ footer {
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    border-radius: 16px;
 }
 
 .bottom {
@@ -16,7 +15,6 @@ footer {
     align-items: center;
     max-width: 1200px;
     padding: 10px;
-
     margin: 0 auto;
 }
 
