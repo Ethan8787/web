@@ -278,7 +278,6 @@ const Background = ({isPaused}) => {
             if (gl && program) gl.deleteProgram(program);
         };
     }, []);
-
     return (
         <div className="background">
             <canvas ref={canvasRef} className="contour-canvas"/>
